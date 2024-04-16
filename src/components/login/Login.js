@@ -56,20 +56,20 @@ function Login() {
 
   return (
     <div className="mainLogin">
-      <div className="logo">
+      <div className="logo-login">
         <img
           src="conti_original-fundo-branco.jpg"
-          className="logoImage"
+          className="logoImage-login"
           alt="ConTi Logo"
         />
       </div>
       <div className="cardLogin">
         <form onSubmit={handleLogin}>
-          <div className="formGroup">
+          <div className="formGroup-login">
             <label htmlFor="username">Usuário:</label>
             <input
               type="text"
-              className="input"
+              className="input-login"
               id="username"
               name="username"
               placeholder="Usuário"
@@ -77,12 +77,12 @@ function Login() {
               onChange={(event) => setUsername(event.target.value)}
             />
           </div>
-          <div className="textfield">
-            <div className="formGroup">
+          <div className="textfield-login">
+            <div className="formGroup-login">
               <label htmlFor="password">Senha:</label>
               <input
                 type="password"
-                className="input"
+                className="input-login"
                 id="password"
                 name="password"
                 placeholder="Senha"

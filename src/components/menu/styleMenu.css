@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+#header-menu {
+  background-color: #0098c9;
+  color: #fff;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: margin-left 0.3s ease;
+  width: 120%;
+}
+
+.header-menu.menu-active {
+  margin-left: 250px;
+}
+
+#img-menu {
+  width: 300px;
+  height: 50px;
+  margin: 0 auto;
+}
+
+.footer {
+  background-color: #0098c9;
+  color: #fff;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer.menu-active {
+  margin-left: 250px;
+}
+
+.sidebar {
+  background-color: #ffffff;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  border-radius: 0px 18px 18px 0px;
+  transition: all 0.5s;
+  z-index: 2;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.sidebar.active {
+  left: 0;
+  padding: 12px;
+}
+
+.sidebar-title {
+  color: #211915;
+  padding: 1px 2px;
+  margin-bottom: 2px;
+}
+
+.content {
+  margin-left: 0;
+  padding: 20px;
+  text-align: center;
+}
+.conti-menu {
+  text-align: center;
+}
+.content.menu-active {
+  margin-left: 250px;
+}
+
+.nav-item {
+  padding: 7px 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 7px 0;
+}
+
+.nav-link:hover {
+  padding: 5px 10px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  background-color: #ebecee;
+  color: #0098c9;
+}
+.nav-link .fas {
+  margin-right: 10px;
+}
+
+.sub-menu {
+  padding-left: 20px;
+}
+
+.sub-menu:hover {
+  color: #0098c9;
+}
+
+.sub-menu .nav-item {
+  padding: 2px 0;
+}
+
+.sub-menu .nav-link {
+  color: #333;
+}
+
+#toggleMenu {
+  margin-right: 0 !important;
+}
+
+.sub-menu .nav-item {
+  list-style-type: none;
+  padding: 2px 0;
+}
+
+.sub-menu .nav-link {
+  text-decoration: none;
+  color: #333;
+}
+
+.sub-menu .nav-link:hover {
+  color: #0098c9;
+}
+
+.float-right {
+  float: right;
+}
+
+.mr-2 {
+  margin-right: 10px;
+}

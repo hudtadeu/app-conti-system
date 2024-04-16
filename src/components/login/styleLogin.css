@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 * {
-  font-family: "Poppins", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .mainLogin {
@@ -13,13 +13,13 @@
   align-items: center;
 }
 
-.logo {
+.logo-login {
   text-align: center;
   margin-bottom: 20px;
   width: 200%;
 }
 
-.logoImage {
+.logoImage-login {
   max-width: 300px;
 }
 
@@ -37,21 +37,21 @@
   margin-top: 20px;
 }
 
-.textfield {
+.textfield-login {
   margin-bottom: 15px;
 }
 
-.formGroup {
+.formGroup-login {
   margin-bottom: 10px;
 }
 
-.label {
+.label-login {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
 
-.input {
+.input-login {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
