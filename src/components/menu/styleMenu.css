@@ -50,7 +50,7 @@
   position: fixed;
   top: 0;
   left: -250px;
-  border-radius: 0px 18px 18px 0px;
+  border-radius: 0px 10px 10px 0px;
   transition: all 0.5s;
   z-index: 2;
   font-size: 18px;

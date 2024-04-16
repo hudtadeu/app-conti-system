@@ -42,6 +42,7 @@
 }
 
 .formGroup-login {
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
@@ -77,5 +78,5 @@
 }
 
 .btnLogin:hover {
-  background-color: #48599e;
+  background-color: #2196f3;
 }

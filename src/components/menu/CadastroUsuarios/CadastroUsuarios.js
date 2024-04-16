@@ -46,12 +46,15 @@ function CadastroUsuarios() {
   };
 
   return (
-    <div className="container-usuario">
-      <h1 className="cadastroUsuario">Cadastro de Usuários</h1>
-      <SearchComponent toggleModal={toggleModal} />
-      <UserTable users={users} />
-      {showModal && <NewUserModal toggleModal={toggleModal} />}
-    </div>
+    <body className="body-usuario">
+      <div className="container-usuario">
+        <h1 className="cadastroUsuario">Cadastro de Usuários</h1>
+        <br />
+        <SearchComponent toggleModal={toggleModal} />
+        <UserTable users={users} />
+        {showModal && <NewUserModal toggleModal={toggleModal} />}
+      </div>
+    </body>
   );
 }
 

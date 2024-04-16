@@ -4,6 +4,14 @@
   font-family: "Poppins", sans-serif;
 }
 
+.body-evento {
+  background-image: url("/public/fundo-form-conti.png");
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
 #eventoForm {
   max-width: 600px;
   margin: 50px auto;

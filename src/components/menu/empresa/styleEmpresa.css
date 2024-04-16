@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+.body-empresa {
+  background-image: url("/public/fundo-form-conti.png");
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.container-empresa {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px #ebecee;
+}
+.title-empresa {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0098c9;
+}
+
+.navbar {
+  background-color: #fff;
+  border-bottom: 2px solid #0098c9;
+}
+
+.navbar-nav-item {
+  margin-right: 10px;
+}
+
+.navbar-nav-link {
+  color: #0098c9;
+}
+
+.btn-primary,
+.btn-outline-primary,
+.btn-outline-secondary {
+  color: #fff;
+  border-color: #fff;
+  background-color: #0098c9;
+  padding: 6px 12px;
+  border-radius: 5px;
+}
+
+.btn-primary:hover,
+.btn-outline-primary-hover,
+.btn-outline-secondary-hover {
+  background-color: #0098c9;
+  border-color: #ebecee;
+}
+
+.table-striped {
+  width: 100%;
+  background-color: #fff;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.table-striped th,
+.table-striped td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid black;
+  background-color: #fff;
+  color: #0098c9;
+  font-size: 13px;
+}
+
+.table-striped th {
+  background-color: #fff;
+  color: #0098c9;
+}
+
+.table-striped-even {
+  background-color: #0098c9;
+}
+
+.table-striped-hover:hover {
+  background-color: #ddd;
+}
+
+.icon-small {
+  font-size: 15px;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  background-color: #0098c9;
+  color: #fff;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+}
+
+.modal-title {
+  font-weight: bold;
+}
+
+.modal-body {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.modal-body p {
+  margin-bottom: 10px;
+}
+
+.modal-body strong {
+  font-weight: bold;
+}
+
+.modal-footer {
+  background-color: #f0f0f0;
+  bordertop: none;
+  borderradius: 0 0 8px 8px;
+}
+
+.modal-footer-button {
+  marginright: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .table-striped {
+    overflow-x: auto;
+    display: block;
+  }
+
+  .table-striped th,
+  .table-striped td {
+    white-space: nowrap;
+  }
+}
