@@ -137,13 +137,13 @@ function Empresa() {
         <h1 className="title-empresa">Empresa</h1>
         <div className="controls-container">
           <button
-            className="btn btn-primary"
+            className="btn btn-primary-empresa"
             onClick={() => console.log("Abrindo modal para nova empresa")}
           >
             Nova Empresa
           </button>
           <button
-            className="btn btn-outline-primary"
+            className="btn btn-outline-primary-empresa"
             onClick={() => console.log("Mostrando opções")}
           >
             Outras Opções
@@ -151,16 +151,17 @@ function Empresa() {
           <div className="search-container">
             <input
               type="text"
-              className="form-control"
+              className="search-input-empresa"
               placeholder="Pesquisa rápida"
               value={pesquisa}
               onChange=""
             />
-            <button className="btn btn-outline-secondary" type="button">
+            <button className="btn btn-outline-secondary-empresa" type="button">
               <FontAwesomeIcon icon={faSearch} />
             </button>
           </div>
         </div>
+        <div></div>
         <table className="table table-striped" id="userTable">
           <thead className="thead-dark">
             <tr>

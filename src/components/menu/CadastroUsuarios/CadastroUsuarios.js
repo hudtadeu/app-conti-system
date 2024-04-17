@@ -9,6 +9,7 @@ import {
   faSearch,
   faEllipsisH,
 } from "@fortawesome/free-solid-svg-icons";
+import { isDOMComponent } from "react-dom/test-utils";
 
 function CadastroUsuarios() {
   const [users, setUsers] = useState([]);
@@ -82,6 +83,16 @@ function SearchComponent({ toggleModal }) {
 }
 
 function UserTable({ users }) {
+  const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null); // Guarda o índice da linha com o dropdown aberto
+
+  const toggleDropdown = (index) => {
+    if (dropdownOpenIndex === index) {
+      setDropdownOpenIndex(null); // Fechar o dropdown se clicar novamente no mesmo
+    } else {
+      setDropdownOpenIndex(index); // Abrir o dropdown da linha clicada
+    }
+  };
+
   return (
     <div className="table-responsive-usuario">
       <table className="user-table">
@@ -143,30 +154,35 @@ function UserTable({ users }) {
               ))}
               <td>
                 {/* Placeholder for options dropdown or similar functionality */}
-                <div class="dropdown">
-                  <button className="button-secondary-user">
+                <div className="dropdown">
+                  <button
+                    className="button-secondary-user"
+                    onClick={() => toggleDropdown(index)}
+                  >
                     <FontAwesomeIcon icon={faEllipsisH} />
                   </button>
-                  <div
-                    class="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton"
-                  >
-                    <a class="dropdown-item" href="#">
-                      Visualizar
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Editar
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Duplicar
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Exportar
-                    </a>
-                    <a class="dropdown-item red-text" href="#">
-                      Excluir
-                    </a>
-                  </div>
+                  {dropdownOpenIndex === index && (
+                    <div
+                      className="dropdown-menu show"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <a className="dropdown-item" href="#">
+                        Visualizar
+                      </a>
+                      <a className="dropdown-item" href="#">
+                        Editar
+                      </a>
+                      <a className="dropdown-item" href="#">
+                        Duplicar
+                      </a>
+                      <a className="dropdown-item" href="#">
+                        Exportar
+                      </a>
+                      <a className="dropdown-item red-text" href="#">
+                        Excluir
+                      </a>
+                    </div>
+                  )}
                 </div>
               </td>
             </tr>
@@ -197,7 +213,7 @@ function NewUserModal({ toggleModal }) {
         <div className="modal-footer">
           <button
             type="button"
-            className="button-secondary"
+            className="button-secondary-user"
             onClick={toggleModal}
           >
             Cancelar
