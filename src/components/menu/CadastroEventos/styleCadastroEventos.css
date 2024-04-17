@@ -12,6 +12,7 @@
   padding: 0;
   height: 100vh;
 }
+
 #eventoForm {
   max-width: 600px;
   margin: 50px auto;
@@ -25,6 +26,7 @@
   text-align: center;
   margin-top: 20px;
   color: #0098c9;
+  padding: 8px;
 }
 
 .label-evento {
@@ -59,6 +61,7 @@
 
 .input-evento[type="submit"]:hover {
   background-color: #007a9b;
+  transition: background-color 0.3s ease;
 }
 
 @media screen and (max-width: 600px) {
@@ -66,8 +69,4 @@
     width: 90%;
     margin: 20px auto;
   }
-}
-
-.input-evento[type="submit"]:hover {
-  transition: background-color 0.3s ease;
 }
