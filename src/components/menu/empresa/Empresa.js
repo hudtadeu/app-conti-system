@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./styleEmpresa.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function Empresa() {
   const [empresas, setEmpresas] = useState([]);
+  const [pesquisa, setPesquisa] = useState("");
   const apiUrl =
     "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa";
 
@@ -127,6 +130,32 @@ function Empresa() {
     <body className="body-empresa">
       <div className="container-empresa">
         <h1 className="title-empresa">Empresa</h1>
+        <div className="controls-container">
+          <button
+            className="btn btn-primary"
+            onClick={() => console.log("Abrindo modal para nova empresa")}
+          >
+            Nova Empresa
+          </button>
+          <button
+            className="btn btn-outline-primary"
+            onClick={() => console.log("Mostrando opções")}
+          >
+            Outras Opções
+          </button>
+          <div className="search-container">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Pesquisa rápida"
+              value={pesquisa}
+              onChange=""
+            />
+            <button className="btn btn-outline-secondary" type="button">
+              <i className="bi bi-search"></i>
+            </button>
+          </div>
+        </div>
         <table className="table table-striped" id="userTable">
           <thead className="thead-dark">
             <tr>
@@ -147,30 +176,35 @@ function Empresa() {
                 <td>{empresa["inscr-estad"]}</td>
                 <td>{empresa["razao-social"]}</td>
                 <td>
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={() => detalharModal(empresa["cod-estabel"])}
-                    title="Detalhar"
-                  >
-                    <i className="bi bi-eye icon-small"></i>
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-warning"
-                    onClick={() => editarEmpresa(empresa["cod-estabel"])}
-                    title="Editar"
-                  >
-                    <i className="bi bi-pencil icon-small"></i>
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-danger"
-                    onClick={() => excluirEmpresa(empresa["cod-estabel"])}
-                    title="Excluir"
-                  >
-                    <i className="bi bi-trash icon-small"></i>
-                  </button>
+                  <div className="container-de-botoes">
+                    <button
+                      type="button"
+                      className="btn btn-primary-options"
+                      onClick={() => detalharModal(empresa["cod-estabel"])}
+                      title="Detalhar"
+                    >
+                      <FontAwesomeIcon icon={faEye} className="icon-small" />
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-warning-options"
+                      onClick={() => editarEmpresa(empresa["cod-estabel"])}
+                      title="Editar"
+                    >
+                      <FontAwesomeIcon
+                        icon={faPencilAlt}
+                        className="icon-small"
+                      />
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-danger-options"
+                      onClick={() => excluirEmpresa(empresa["cod-estabel"])}
+                      title="Excluir"
+                    >
+                      <FontAwesomeIcon icon={faTrash} className="icon-small" />
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
