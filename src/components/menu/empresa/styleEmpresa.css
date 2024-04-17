@@ -203,3 +203,7 @@
   background-color: #c82333;
   border-color: #bd2130;
 }
+
+.btn-outline-secondary {
+  font-size: 9px;
+}

@@ -6,6 +6,8 @@ import {
   faTimesCircle,
   faPlus,
   faCog,
+  faSearch,
+  faEllipsisH,
 } from "@fortawesome/free-solid-svg-icons";
 
 function CadastroUsuarios() {
@@ -71,6 +73,9 @@ function SearchComponent({ toggleModal }) {
           placeholder="Pesquisar"
           className="search-input-usuario"
         />
+        <button className="button-search">
+          <FontAwesomeIcon className="icon-searc" size="sm" icon={faSearch} />
+        </button>
       </span>
     </div>
   );
@@ -138,7 +143,31 @@ function UserTable({ users }) {
               ))}
               <td>
                 {/* Placeholder for options dropdown or similar functionality */}
-                <button className="button-secondary-user">Opções</button>
+                <div class="dropdown">
+                  <button className="button-secondary-user">
+                    <FontAwesomeIcon icon={faEllipsisH} />
+                  </button>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                  >
+                    <a class="dropdown-item" href="#">
+                      Visualizar
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      Editar
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      Duplicar
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      Exportar
+                    </a>
+                    <a class="dropdown-item red-text" href="#">
+                      Excluir
+                    </a>
+                  </div>
+                </div>
               </td>
             </tr>
           ))}

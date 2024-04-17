@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./styleEmpresa.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEye,
+  faPencilAlt,
+  faTrash,
+  faSearch,
+} from "@fortawesome/free-solid-svg-icons";
 
 function Empresa() {
   const [empresas, setEmpresas] = useState([]);
@@ -152,7 +157,7 @@ function Empresa() {
               onChange=""
             />
             <button className="btn btn-outline-secondary" type="button">
-              <i className="bi bi-search"></i>
+              <FontAwesomeIcon icon={faSearch} />
             </button>
           </div>
         </div>
