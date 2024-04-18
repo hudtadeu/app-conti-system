@@ -14,11 +14,30 @@
   justify-content: space-between;
   align-items: center;
   transition: margin-left 0.3s ease;
-  width: 120%;
+  width: 100%;
 }
 
 .header-menu.menu-active {
-  margin-left: 250px;
+  margin-left: 100px;
+}
+
+.btn-outline-light {
+  margin-left: 265px;
+  padding: 2px 7px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  text-transform: uppercase;
+  background-color: #fff;
+  color: #0098c9;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  background-color: #fff;
+  box-shadow: 0px 3px 3px #211915;
 }
 
 #img-menu {
@@ -49,10 +68,12 @@
   height: 100vh;
   position: fixed;
   top: 0;
-  left: -250px;
+  left: 0;
+  bottom: 0;
   border-radius: 0px 10px 10px 0px;
-  transition: all 0.5s;
-  z-index: 2;
+  transition: transform 0.3s ease;
+  transform: translateX(-100%);
+  z-index: 1;
   font-size: 18px;
   padding: 10px;
 }
@@ -60,17 +81,19 @@
 .sidebar.active {
   left: 0;
   padding: 12px;
+  transform: translateX(0%);
 }
 
 .sidebar-title {
   color: #211915;
   padding: 1px 2px;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
+  font-size: 25px;
 }
 
 .content {
-  margin-left: 0;
-  padding: 20px;
+  margin-left: 280px;
+  padding: 30px;
   text-align: center;
 }
 .conti-menu {
@@ -81,25 +104,28 @@
 }
 
 .nav-item {
-  padding: 7px 0;
+  font-size: 19px;
+  padding: 3px 0;
+  cursor: pointer;
 }
 
 .nav-link {
   text-decoration: none;
-  color: #333;
+  color: #211915;
   transition: background-color 0.3s ease;
   border-radius: 5px;
-  font-size: 15px;
-  padding: 7px 0;
+  font-size: 14px;
+  display: block;
+  transition: transform 0.3s ease;
+  padding: 4px;
 }
 
 .nav-link:hover {
-  padding: 5px 10px;
   background-color: #3498db;
-  color: white;
   border: none;
   background-color: #ebecee;
   color: #0098c9;
+  transform: translateX(10px);
 }
 .nav-link .fas {
   margin-right: 10px;
@@ -144,5 +170,8 @@
 }
 
 .mr-2 {
+  font-size: 13px;
   margin-right: 10px;
+  padding: 2px 0;
+  color: #211915;
 }

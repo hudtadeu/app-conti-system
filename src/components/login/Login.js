@@ -66,7 +66,9 @@ function Login() {
       <div className="cardLogin">
         <form onSubmit={handleLogin}>
           <div className="formGroup-login">
-            <label htmlFor="username">Usuário:</label>
+            <label className="usuario-login" htmlFor="username">
+              Usuário:
+            </label>
             <input
               type="text"
               className="input-login"
@@ -79,7 +81,9 @@ function Login() {
           </div>
           <div className="textfield-login">
             <div className="formGroup-login">
-              <label htmlFor="password">Senha:</label>
+              <label className="senha-login" htmlFor="password">
+                Senha:
+              </label>
               <input
                 type="password"
                 className="input-login"

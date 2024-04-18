@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheckCircle,
   faTimesCircle,
-  faPlus,
   faCog,
   faSearch,
   faEllipsisH,
@@ -65,7 +64,6 @@ function SearchComponent({ toggleModal }) {
   return (
     <div className="search-section-usuario">
       <button className="button-primary-user" onClick={toggleModal}>
-        <FontAwesomeIcon icon={faPlus} />
         Novo Usuário
       </button>
       <span>

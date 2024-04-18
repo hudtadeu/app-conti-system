@@ -16,7 +16,7 @@
 .logo-login {
   text-align: center;
   margin-bottom: 20px;
-  width: 200%;
+  width: 100%;
 }
 
 .logoImage-login {
@@ -38,7 +38,7 @@
 }
 
 .textfield-login {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .formGroup-login {
@@ -53,12 +53,16 @@
 }
 
 .input-login {
+  display: block;
+  font-weight: bold;
   width: 100%;
-  padding: 10px;
+  padding: 8px;
   margin-bottom: 10px;
   border: 1px solid #939196;
   border-radius: 5px;
   box-sizing: border-box;
+  font-size: 13px;
+  margin: 6px 0;
 }
 
 .btnLogin {
@@ -70,7 +74,7 @@
   text-transform: uppercase;
   background-color: #0098c9;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -79,4 +83,10 @@
 
 .btnLogin:hover {
   background-color: #2196f3;
+}
+
+.usuario-login,
+.senha-login {
+  font-size: 14px;
+  color: #363636;
 }

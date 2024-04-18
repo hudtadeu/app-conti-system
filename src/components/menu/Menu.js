@@ -7,6 +7,7 @@ import {
   faCogs,
   faTasks,
   faChartBar,
+  faMagnifyingGlass,
   faSignOutAlt,
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
@@ -34,7 +35,7 @@ function Menu() {
     e.preventDefault();
     console.log("Logout clicado");
     sessionStorage.clear();
-    window.location.href = "../../login/login.html";
+    window.location.href = "/";
   };
 
   return (
@@ -120,8 +121,20 @@ function Menu() {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
+                <FontAwesomeIcon icon={faMagnifyingGlass} className="mr-2" />{" "}
+                Consultas
+                <span className="float-right">
+                  <FontAwesomeIcon icon={faChevronDown} />
+                </span>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">
                 <FontAwesomeIcon icon={faChartBar} className="mr-2" />{" "}
                 Relatórios
+                <span className="float-right">
+                  <FontAwesomeIcon icon={faChevronDown} />
+                </span>
               </a>
             </li>
             <li className="nav-item">
