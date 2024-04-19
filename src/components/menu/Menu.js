@@ -53,15 +53,15 @@ function Menu() {
         >
           <FontAwesomeIcon icon={faBars} />
         </button>
-        <img
-          id="img-menu"
-          src="./conti-bg.png"
-          alt="Logo da ConTI Consultoria"
-        />
       </header>
 
       <nav className={`sidebar ${menuActive ? "active" : ""}`}>
         <div className="sidebar-sticky">
+          <img
+            id="img-menu"
+            src="./conti_peb-transparente.png"
+            alt="Logo da ConTI Consultoria"
+          />
           <h2 className="sidebar-title">{username}</h2>
           <ul className="nav flex-column">
             <li className="nav-item">
@@ -150,18 +150,13 @@ function Menu() {
         </div>
       </nav>
 
-      <main className={`content ${menuActive ? "menu-active" : ""}`}>
-        <h1 className="mt-4">Conteúdo da Página</h1>
-        <p>Seu conteúdo aqui...</p>
-      </main>
+      <main className={`content ${menuActive ? "menu-active" : ""}`}></main>
 
       <footer
         className={`footer bg-primary text-light text-center ${
           menuActive ? "menu-active" : ""
         }`}
-      >
-        <p className="conti-menu">ConTI Consultoria - &copy; 2024</p>
-      </footer>
+      ></footer>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from "react";
 import "./styleCadastroUsuarios.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,7 +9,6 @@ import {
   faSearch,
   faEllipsisH,
 } from "@fortawesome/free-solid-svg-icons";
-import { isDOMComponent } from "react-dom/test-utils";
 
 function CadastroUsuarios() {
   const [users, setUsers] = useState([]);

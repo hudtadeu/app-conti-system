@@ -10,7 +10,7 @@
   background-position: center;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 90vh;
 }
 
 #eventoForm {
@@ -20,6 +20,7 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 10px #211915;
+  margin-top: -50px;
 }
 
 .cadastroEvento {

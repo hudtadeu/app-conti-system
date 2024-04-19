@@ -6,23 +6,24 @@
 
 .body-empresa {
   background-image: url("/public/fundo-form-conti.png");
-  background-size: cover;
   background-position: center;
+  background-size: cover;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 90vh;
 }
 
 .container-empresa {
   background-color: #ebecee;
   color: #0098c9;
-  padding: 20px;
+  padding: 10px;
   border-radius: 0px 0px 7px 7px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-  margin-left: 70px;
-  margin-right: 70px;
+  margin-left: 50px;
+  margin-right: 50px;
   font-size: 13px;
   overflow-x: auto;
+  margin-top: -50px;
 }
 
 .title-empresa {
@@ -63,6 +64,7 @@
 .btn-primary-empresa,
 .btn-outline-primary-empresa {
   margin-right: 8px;
+  float: left;
 }
 
 .btn-outline-secondary-empresa {
