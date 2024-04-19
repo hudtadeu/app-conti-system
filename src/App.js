@@ -12,9 +12,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/menu" element={<Menu />} />
-        <Route path="/cadastroEventos" element={<CadastroEventos />} />
-        <Route path="/cadastroUsuarios" element={<CadastroUsuarios />} />
-        <Route path="/empresa" element={<Empresa />} />
+        <Route path="cadastroEventos" element={<CadastroEventos />} />
+        <Route path="cadastroUsuarios" element={<CadastroUsuarios />} />
+        <Route path="empresa" element={<Empresa />} />
         {/* Other routes */}
       </Routes>
     </Router>
