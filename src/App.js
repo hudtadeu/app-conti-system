@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/login/Login";
-import Menu from "./components/menu/Menu";
 import CadastroUsuarios from "./components/menu/cadastroUsuarios/CadastroUsuarios";
 import CadastroEventos from "./components//menu/cadastroEventos/CadastroEventos";
 import Empresa from "./components/menu/empresa/Empresa";
@@ -14,14 +13,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route
-              path="/menu"
-              element={
-                <Layout>
-                  <Menu />
-                </Layout>
-              }
-            />
+            <Route path="/menu" element={<Layout></Layout>} />
             <Route
               path="cadastroEventos"
               element={

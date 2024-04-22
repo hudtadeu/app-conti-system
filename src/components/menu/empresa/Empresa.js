@@ -76,13 +76,11 @@ function Empresa() {
     const urlEditar = `${apiUrl}/?ep-codigo=${epCodigo}`;
 
     const dadosAtualizados = {
-      // Insira os dados atualizados da empresa aqui
       cod_estabel: "Novo Estabelecimento",
       cgc: "Novo CGC",
       ins_municipal: "Nova Inscrição Municipal",
       inscr_estad: "Nova Inscrição Estadual",
       razao_social: "Nova Razão Social",
-      // Etc...
     };
 
     fetch(urlEditar, {

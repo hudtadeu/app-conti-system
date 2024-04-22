@@ -12,7 +12,6 @@ const CadastroEventos = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Gerar o conteúdo do e-mail HTML
     const emailHTML = `
       <html>
       <head>
@@ -26,7 +25,6 @@ const CadastroEventos = () => {
       </html>
     `;
 
-    // Abrir um cliente de e-mail com o conteúdo gerado
     const mailtoLink = `mailto:?subject=${encodeURIComponent(
       assuntoEmail
     )}&body=${encodeURIComponent(emailHTML)}`;
