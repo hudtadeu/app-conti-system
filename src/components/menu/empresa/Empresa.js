@@ -7,10 +7,13 @@ import {
   faTrash,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
+import DetalhesModal from "./detalhesModal";
 
 function Empresa() {
   const [empresas, setEmpresas] = useState([]);
   const [pesquisa, setPesquisa] = useState("");
+  const [empresaDetalhes, setEmpresaDetalhes] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
   const apiUrl =
     "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa";
 
@@ -46,10 +49,8 @@ function Empresa() {
       });
   }, []);
 
-  function detalharModal(epCodigo) {
-    console.log("Código: ", epCodigo);
+  const detalharModal = (epCodigo) => {
     const urlDetalhar = `${apiUrl}/?ep-codigo=${epCodigo}`;
-
     fetch(urlDetalhar, {
       method: "GET",
       headers: {
@@ -57,19 +58,15 @@ function Empresa() {
         Authorization: `Basic ${sessionStorage.getItem("token")}`,
       },
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Erro ao solicitar os detalhes da empresa");
-        }
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((data) => {
-        console.log("Resposta da API de detalhar:", data);
+        setEmpresaDetalhes(data);
+        setModalOpen(true);
       })
-      .catch((error) => {
-        console.error("Erro ao carregar detalhes da empresa:", error);
-      });
-  }
+      .catch((error) =>
+        console.error("Erro ao carregar detalhes da empresa:", error)
+      );
+  };
 
   function editarEmpresa(epCodigo) {
     console.log("Código: ", epCodigo);
@@ -215,6 +212,11 @@ function Empresa() {
           </tbody>
         </table>
       </div>
+      <DetalhesModal
+        isOpen={modalOpen}
+        empresa={empresaDetalhes}
+        onClose={() => setModalOpen(false)}
+      />
     </body>
   );
 }
