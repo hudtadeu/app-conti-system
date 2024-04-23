@@ -17,7 +17,7 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
     <Modal isOpen={isOpen} onClose={onClose}>
       {empresa ? (
         <div>
-          <h2>Detalhes da Empresa</h2>
+          <h2 className="title-details">Detalhes da Empresa</h2>
           <div className="container-datails">
             <p>
               <strong>Código:</strong> {empresa["cod-estabel"]}
@@ -69,7 +69,7 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
 
           <div className="tab-content">
             {tab === "geral" && (
-              <div>
+              <div className="quadrante-details">
                 <p>
                   <strong>Pasta de Entrada:</strong> {empresa["pasta-entrada"]}
                 </p>
@@ -117,7 +117,7 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
             )}
 
             {tab === "traducao" && (
-              <div>
+              <div className="quadrante-traducao">
                 <p>
                   <strong>Utiliza Item Cliente/Fornecedor:</strong>{" "}
                   {getCheckboxHTML(empresa["l-item-fornec"])}
@@ -221,7 +221,7 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
               </div>
             )}
             {tab === "traducaoB" && (
-              <div>
+              <div className="quadrante-details">
                 <p>
                   <strong>Devolução Nota Própria:</strong>{" "}
                   {getCheckboxHTML(empresa["log-depos-devol"])} Define Depósito
@@ -260,7 +260,7 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
             )}
 
             {tab === "configuracoes" && (
-              <div>
+              <div className="quadrante-details">
                 <p>
                   <strong>Servidor E-mail:</strong> {empresa["servidor-email"]}
                 </p>
@@ -303,8 +303,7 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                   {empresa["senha-certificado"] ? "********" : "Não definida"}
                 </p>
                 <p>
-                  <strong>Arquivo Certificado:</strong>{" "}
-                  {empresa["arq-certificado"]}
+                  <strong>Arquivo Certificado:</strong> {empresa[""]}
                 </p>
                 <p>
                   <strong>Pasta Arq Configuração:</strong>{" "}
@@ -336,7 +335,7 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
             )}
 
             {tab === "servidor" && (
-              <div>
+              <div className="quadrante-details">
                 {" "}
                 <p>
                   <strong>Usa Linux RPW:</strong>{" "}

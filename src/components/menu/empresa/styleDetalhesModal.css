@@ -1,4 +1,16 @@
 /* styleEmpresa.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.title-details {
+  color: #0098c9;
+}
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -15,7 +27,7 @@
 .modal-content {
   background: white;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 7px;
   position: relative;
 }
 
@@ -77,6 +89,7 @@
   padding: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin: 15px;
+  border: 2px solid #0098c9;
 }
 
 .container-datails p {
@@ -86,4 +99,54 @@
 
 .container-datails strong {
   color: #0098c9;
+}
+
+.quadrante-details {
+  background-color: #ebecee;
+  border: 2px solid #0098c9;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+  text-align: left;
+  color: #0098c9;
+  margin-top: 10px;
+}
+
+.quadrante-details p {
+  color: #211915;
+  text-align: left;
+}
+
+.quadrante-details strong {
+  color: #0098c9;
+}
+
+.quadrante-details li {
+  list-style-type: none;
+  color: #211915;
+}
+
+.quadrante-traducao {
+  background-color: #ebecee;
+  border: 2px solid #0098c9;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+  text-align: left;
+  color: #0098c9;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.quadrante-traducao p {
+  flex: 1 1 50%;
+  box-sizing: border-box;
 }
