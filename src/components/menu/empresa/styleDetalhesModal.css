@@ -19,16 +19,23 @@
   position: relative;
 }
 
-.close-button {
+.modal-close {
   position: absolute;
   top: 10px;
   right: 10px;
   cursor: pointer;
+  padding: 0px 4px 0px 4px;
+  color: #fff;
+  border-radius: 3px;
+  background-color: #d11;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+  border: #fff;
 }
 
-.buttonFechar {
-  float: right;
-  color: red;
+.modal-close:hover {
+  color: #fff;
+  background-color: #a00;
 }
 
 #geralButton,
@@ -62,4 +69,21 @@
 #configuracoesButton:focus,
 #servidorButton:focus {
   outline: none;
+}
+
+.container-datails {
+  background-color: #ebecee;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 15px;
+}
+
+.container-datails p {
+  margin: 5px 0;
+  text-align: left;
+}
+
+.container-datails strong {
+  color: #0098c9;
 }
