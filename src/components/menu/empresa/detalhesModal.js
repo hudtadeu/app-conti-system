@@ -57,7 +57,7 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                   <strong>Código:</strong> {empresa["cod-estabel"]}
                 </p>
                 <p>
-                  <strong>Nome:</strong> {empresa.nome}
+                  <strong>Nome:</strong> {empresa["nome"]}
                 </p>
                 <p>
                   <strong>Razão Social:</strong> {empresa["razao-social"]}
@@ -68,6 +68,10 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                 <p>
                   <strong>Pasta Processo Email:</strong>{" "}
                   {empresa["pasta-proc-mail"]}
+                </p>
+                <p>
+                  <strong>Pasta Processo DFE:</strong>{" "}
+                  {empresa["pasta-proc-dfe"]}
                 </p>
                 <p>
                   <strong>Pasta de Erros:</strong> {empresa["pasta-erros"]}
@@ -110,38 +114,38 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                   <strong>Código:</strong> {empresa["cod-estabel"]}
                 </p>
                 <p>
-                  <strong>Nome:</strong> {empresa.nome}
+                  <strong>Nome:</strong> {empresa["nome"]}
                 </p>
                 <p>
-                  <strong>Razão Social:</strong> {empresa.razaoSocial}
+                  <strong>Razão Social:</strong> {empresa["razao-social"]}
                 </p>
                 <p>
                   <strong>Utiliza Item Cliente/Fornecedor:</strong>{" "}
-                  {getCheckboxHTML(empresa.lItemFornec)}
+                  {getCheckboxHTML(empresa["l-item-fornec"])}
                 </p>
                 <p>
                   <strong>Utiliza FIFO Ordem de Compra:</strong>{" "}
-                  {getCheckboxHTML(empresa.lFifoOrdemCompra)}
+                  {getCheckboxHTML(empresa["l-fifo-ordem-compra"])}
                 </p>
                 <p>
                   <strong>Importa Observação XML:</strong>{" "}
-                  {getCheckboxHTML(empresa.lObservacao)}
+                  {getCheckboxHTML(empresa["l-observacao"])}
                 </p>
                 <p>
                   <strong>Envia E-mail Eventos:</strong>{" "}
-                  {getCheckboxHTML(empresa.lEmailEventos)}
+                  {getCheckboxHTML(empresa["l-email-eventos"])}
                 </p>
                 <p>
                   <strong>Mantém Impostos do XML na Capa:</strong>{" "}
-                  {getCheckboxHTML(empresa.lImpostosCapa)}
+                  {getCheckboxHTML(empresa["l-impostos-capa"])}
                 </p>
                 <p>
                   <strong>Zera Valor IPI Outros:</strong>{" "}
-                  {getCheckboxHTML(empresa.lZeraIpiOutros)}
+                  {getCheckboxHTML(empresa["l-zera-ipi-outros"])}
                 </p>
                 <p>
                   <strong>Prioriza Documentos:</strong>{" "}
-                  {getCheckboxHTML(empresa.lPriorizaDocumento)}
+                  {getCheckboxHTML(empresa["l-prioriza-documento"])}
                 </p>
                 <p>
                   <strong>Informa Conta/CCusto Manual Item:</strong>{" "}
@@ -149,39 +153,35 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                 </p>
                 <p>
                   <strong>Usa Tag Ordem Compra:</strong>{" "}
-                  {getCheckboxHTML(empresa.lPriorizaDocumento)}
-                </p>
-                <p>
-                  <strong>Tag Ordem Compra:</strong>{" "}
-                  {getCheckboxHTML(empresa.lPriorizaDocumento)}
+                  {getCheckboxHTML(empresa["l-usa-tag-compra"])}
                 </p>
                 <p>
                   <strong>Usa NCM Fornecedor:</strong>{" "}
-                  {getCheckboxHTML(empresa.lPriorizaDocumento)}
+                  {getCheckboxHTML(empresa["log-ncm-fornec"])}
                 </p>
                 <p>
                   <strong>Altera NCM do item:</strong>{" "}
-                  {getCheckboxHTML(empresa.lPriorizaDocumento)}
+                  {getCheckboxHTML(empresa["log-altera-ncm"])}
                 </p>
                 <p>
                   <strong>Quantidade Manual:</strong>{" "}
-                  {getCheckboxHTML(empresa.lPriorizaDocumento)}
+                  {getCheckboxHTML(empresa["log-qt-manual"])}
                 </p>
                 <p>
                   <strong>Usa CST Fornecedor:</strong>{" "}
-                  {getCheckboxHTML(empresa.lPriorizaDocumento)}
+                  {getCheckboxHTML(empresa["log-cst-fornec"])}
                 </p>
                 <p>
                   <strong>Usa Duplicata Documento XML:</strong>{" "}
-                  {getCheckboxHTML(empresa.lPriorizaDocumento)}
+                  {getCheckboxHTML(empresa["l-duplic-docum"])}
                 </p>
                 <p>
                   <strong>Altera EAN/GTIN do item:</strong>{" "}
-                  {getCheckboxHTML(empresa.lPriorizaDocumento)}
+                  {getCheckboxHTML(empresa["log-altera-ean-gtin"])}
                 </p>
                 <p>
                   <strong>Grava Pesos Recebimento Físico:</strong>{" "}
-                  {getCheckboxHTML(empresa.lPriorizaDocumento)}
+                  {getCheckboxHTML(empresa["l-peso-doc-fisico"])}
                 </p>
                 <p>
                   <strong>Bloqueia Lançamento sem Confirmação:</strong>{" "}
@@ -189,27 +189,27 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                 </p>
                 <p>
                   <strong>Bloqueia UN Divergente:</strong>{" "}
-                  {getCheckboxHTML(empresa.lPriorizaDocumento)}
+                  {getCheckboxHTML(empresa["log-bloq-un-divergente"])}
                 </p>
                 <p>
                   <strong>Bloqueia OP Finaliz/Terminada:</strong>{" "}
-                  {getCheckboxHTML(empresa.lPriorizaDocumento)}
+                  {getCheckboxHTML(empresa["l-bloqueia-op-finaliz"])}
                 </p>
                 <p>
                   <strong>Bloqueia NCM Divergente:</strong>{" "}
-                  {getCheckboxHTML(empresa.lPriorizaDocumento)}
+                  {getCheckboxHTML(empresa["log-bloqueio-ncm-diverg"])}
                 </p>
                 <p>
                   <strong>Bloqueia Diverg Valor OC:</strong>{" "}
-                  {getCheckboxHTML(empresa.lPriorizaDocumento)}
+                  {getCheckboxHTML(empresa["l-bloq-var-valor"])}
                 </p>
                 <p>
                   <strong>Bloqueia Diverg Quantidade OC:</strong>{" "}
-                  {getCheckboxHTML(empresa.lPriorizaDocumento)}
+                  {getCheckboxHTML(empresa["l-bloq-var-quant"])}
                 </p>
                 <p>
                   <strong>Bloqueia Estab OC Divergente:</strong>{" "}
-                  {getCheckboxHTML(empresa.lPriorizaDocumento)}
+                  {getCheckboxHTML(empresa["l-bloq-estab-diveg"])}
                 </p>
                 <p>
                   <strong>Usa NCM Fornecedor Debito Direto:</strong>{" "}
@@ -227,7 +227,10 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                   <strong>Código:</strong> {empresa["cod-estabel"]}
                 </p>
                 <p>
-                  <strong>Nome:</strong> {empresa.nome}
+                  <strong>Nome:</strong> {empresa["nome"]}
+                </p>
+                <p>
+                  <strong>Razão Social:</strong> {empresa["razao-social"]}
                 </p>
                 <p>
                   <strong>Devolução Nota Própria:</strong>{" "}
@@ -272,19 +275,10 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                   <strong>Código:</strong> {empresa["cod-estabel"]}
                 </p>
                 <p>
-                  <strong>Nome:</strong> {empresa.nome}
+                  <strong>Nome:</strong> {empresa["nome"]}
                 </p>
                 <p>
-                  <strong>Razão Social:</strong> {empresa.razaoSocial}
-                </p>
-                <p>
-                  <strong>Código:</strong> {empresa["cod-estabel"]}
-                </p>
-                <p>
-                  <strong>Nome:</strong> {empresa.nome}
-                </p>
-                <p>
-                  <strong>Razão Social:</strong> {empresa.razaoSocial}
+                  <strong>Razão Social:</strong> {empresa["razao-social"]}
                 </p>
                 <p>
                   <strong>Servidor E-mail:</strong> {empresa["servidor-email"]}
@@ -367,10 +361,10 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                   <strong>Código:</strong> {empresa["cod-estabel"]}
                 </p>
                 <p>
-                  <strong>Nome:</strong> {empresa.nome}
+                  <strong>Nome:</strong> {empresa["nome"]}
                 </p>
                 <p>
-                  <strong>Razão Social:</strong> {empresa.razaoSocial}
+                  <strong>Razão Social:</strong> {empresa["razao-social"]}
                 </p>
                 <p>
                   <strong>Usa Linux RPW:</strong>{" "}
