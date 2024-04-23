@@ -60,7 +60,7 @@ function Empresa() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setEmpresaDetalhes(data);
+        setEmpresaDetalhes(data.items[0]);
         setModalOpen(true);
       })
       .catch((error) =>

@@ -4,7 +4,7 @@ import "./styleDetalhesModal.css";
 
 const DetalhesModal = ({ isOpen, empresa, onClose }) => {
   const [tab, setTab] = useState("geral");
-
+  console.log("Conteudo da empresa:", empresa);
   const changeTab = (newTab) => {
     setTab(newTab);
   };
@@ -18,7 +18,7 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
       {empresa ? (
         <div>
           <h2>Detalhes da Empresa</h2>
-          <div className="container-datails">
+          <div>
             <p>
               <strong>Código:</strong> {empresa["cod-estabel"]}
             </p>

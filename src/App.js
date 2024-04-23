@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/login/Login";
-import CadastroUsuarios from "./components/menu/cadastroUsuarios/CadastroUsuarios";
-import CadastroEventos from "./components//menu/cadastroEventos/CadastroEventos";
+import CadastroUsuarios from "./components/menu/CadastroUsuarios/CadastroUsuarios";
+import CadastroEventos from "./components/menu/CadastroEventos/CadastroEventos";
 import Empresa from "./components/menu/empresa/Empresa";
 import Layout from "./components/Layout";
 
