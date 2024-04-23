@@ -87,24 +87,28 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                 <p>
                   <strong>Armazenagem do XML:</strong>
                 </p>
-                <ul>
-                  <li>
-                    Não Armazena:{" "}
-                    {getCheckboxHTML(empresa["cd-armazena"] === 1)}
-                  </li>
-                  <li>
-                    Armazena em Pasta Física:{" "}
-                    {getCheckboxHTML(empresa["cd-armazena"] === 2)}
-                  </li>
-                  <li>
-                    Armazena em Banco de Dados:{" "}
-                    {getCheckboxHTML(empresa["cd-armazena"] === 3)}
-                  </li>
-                </ul>
-                <p>
-                  <strong>Habilita Pasta Log:</strong>{" "}
-                  {getCheckboxHTML(empresa["l-pasta-log"])}
-                </p>
+                <div id="infoArmazena">
+                  <ul>
+                    <li>
+                      Não Armazena:{" "}
+                      {getCheckboxHTML(empresa["cd-armazena"] === 1)}
+                    </li>
+                    <li>
+                      Armazena em Pasta Física:{" "}
+                      {getCheckboxHTML(empresa["cd-armazena"] === 2)}
+                    </li>
+                    <li>
+                      Armazena em Banco de Dados:{" "}
+                      {getCheckboxHTML(empresa["cd-armazena"] === 3)}
+                    </li>
+                  </ul>
+                  <div id="infoArmazena">
+                    <li>
+                      Habilita Pasta Log:{" "}
+                      {getCheckboxHTML(empresa["l-pasta-log"])}
+                    </li>
+                  </div>
+                </div>
                 <p>
                   <strong>Pasta de Armazenagem:</strong>{" "}
                   {empresa["pasta-armaz"]}
