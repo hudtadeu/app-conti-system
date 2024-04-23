@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Modal from "./modalEmpresa";
+import "./styleDetalhesModal.css";
 
 const DetalhesModal = ({ isOpen, empresa, onClose }) => {
   const [tab, setTab] = useState("geral");
@@ -16,33 +17,49 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
     <Modal isOpen={isOpen} onClose={onClose}>
       {empresa ? (
         <div>
-          <h3>Detalhes da Empresa</h3>
+          <h2>Detalhes da Empresa</h2>
+          <div>
+            <p>
+              <strong>Código:</strong> {empresa["cod-estabel"]}
+            </p>
+            <p>
+              <strong>Nome:</strong> {empresa["nome"]}
+            </p>
+            <p>
+              <strong>Razão Social:</strong> {empresa["razao-social"]}
+            </p>
+          </div>
           <div className="btn-group">
             <button
+              id="geralButton"
               onClick={() => changeTab("geral")}
               className={tab === "geral" ? "active" : ""}
             >
               Geral
             </button>
             <button
+              id="traducaoButton"
               onClick={() => changeTab("traducao")}
               className={tab === "traducao" ? "active" : ""}
             >
               Tradução
             </button>
             <button
+              id="traducaoButtonB"
               onClick={() => changeTab("traducaoB")}
               className={tab === "traducaoB" ? "active" : ""}
             >
               Tradução ||
             </button>
             <button
+              id="configuracoesButton"
               onClick={() => changeTab("configuracoes")}
               className={tab === "configuracoes" ? "active" : ""}
             >
               Configurações
             </button>
             <button
+              id="servidorButton"
               onClick={() => changeTab("servidor")}
               className={tab === "servidor" ? "active" : ""}
             >
@@ -53,15 +70,6 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
           <div className="tab-content">
             {tab === "geral" && (
               <div>
-                <p>
-                  <strong>Código:</strong> {empresa["cod-estabel"]}
-                </p>
-                <p>
-                  <strong>Nome:</strong> {empresa["nome"]}
-                </p>
-                <p>
-                  <strong>Razão Social:</strong> {empresa["razao-social"]}
-                </p>
                 <p>
                   <strong>Pasta de Entrada:</strong> {empresa["pasta-entrada"]}
                 </p>
@@ -110,15 +118,6 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
 
             {tab === "traducao" && (
               <div>
-                <p>
-                  <strong>Código:</strong> {empresa["cod-estabel"]}
-                </p>
-                <p>
-                  <strong>Nome:</strong> {empresa["nome"]}
-                </p>
-                <p>
-                  <strong>Razão Social:</strong> {empresa["razao-social"]}
-                </p>
                 <p>
                   <strong>Utiliza Item Cliente/Fornecedor:</strong>{" "}
                   {getCheckboxHTML(empresa["l-item-fornec"])}
@@ -213,7 +212,7 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                 </p>
                 <p>
                   <strong>Usa NCM Fornecedor Debito Direto:</strong>{" "}
-                  {getCheckboxHTML(empresa.lPriorizaDocumento)}
+                  {getCheckboxHTML(empresa["l-subst-ncm-dd"])}
                 </p>
                 <p>
                   <strong>Contingência Download XML:</strong>{" "}
@@ -223,15 +222,6 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
             )}
             {tab === "traducaoB" && (
               <div>
-                <p>
-                  <strong>Código:</strong> {empresa["cod-estabel"]}
-                </p>
-                <p>
-                  <strong>Nome:</strong> {empresa["nome"]}
-                </p>
-                <p>
-                  <strong>Razão Social:</strong> {empresa["razao-social"]}
-                </p>
                 <p>
                   <strong>Devolução Nota Própria:</strong>{" "}
                   {getCheckboxHTML(empresa["log-depos-devol"])} Define Depósito
@@ -271,15 +261,6 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
 
             {tab === "configuracoes" && (
               <div>
-                <p>
-                  <strong>Código:</strong> {empresa["cod-estabel"]}
-                </p>
-                <p>
-                  <strong>Nome:</strong> {empresa["nome"]}
-                </p>
-                <p>
-                  <strong>Razão Social:</strong> {empresa["razao-social"]}
-                </p>
                 <p>
                   <strong>Servidor E-mail:</strong> {empresa["servidor-email"]}
                 </p>
@@ -357,15 +338,6 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
             {tab === "servidor" && (
               <div>
                 {" "}
-                <p>
-                  <strong>Código:</strong> {empresa["cod-estabel"]}
-                </p>
-                <p>
-                  <strong>Nome:</strong> {empresa["nome"]}
-                </p>
-                <p>
-                  <strong>Razão Social:</strong> {empresa["razao-social"]}
-                </p>
                 <p>
                   <strong>Usa Linux RPW:</strong>{" "}
                   {getCheckboxHTML(empresa["l-usa-linux-rpw"])}

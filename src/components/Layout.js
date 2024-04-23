@@ -1,6 +1,6 @@
 // Layout.js
 import React from "react";
-import Menu from "./menu/Menu"; // Ajuste o caminho conforme necessário
+import Menu from "./menu/Menu";
 
 const Layout = ({ children }) => {
   return (

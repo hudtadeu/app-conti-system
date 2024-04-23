@@ -13,7 +13,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function Menu() {
-  console.log("Menu rendered from:");
   const [menuActive, setMenuActive] = useState(true);
   const [username, setUsername] = useState("");
 
@@ -43,7 +42,8 @@ function Menu() {
     <div className="App">
       <header
         id="header-menu"
-        className={`header text-light text-center py-3
+        className={`header text-light text-center py-3 ${
+          menuActive ? "menu-active" : ""
         }`}
       >
         <button

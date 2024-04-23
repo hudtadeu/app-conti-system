@@ -25,3 +25,41 @@
   right: 10px;
   cursor: pointer;
 }
+
+.buttonFechar {
+  float: right;
+  color: red;
+}
+
+#geralButton,
+#traducaoButton,
+#traducaoButtonB,
+#configuracoesButton,
+#servidorButton {
+  background-color: #0098c9;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  margin-right: 6px;
+}
+
+#geralButton:hover,
+#traducaoButton:hover,
+#traducaoButtonB:hover,
+#configuracoesButton:hover,
+#servidorButton:hover {
+  background-color: #0077a9;
+}
+
+#geralButton:focus,
+#traducaoButton:focus,
+#traducaoButtonB:focus,
+#configuracoesButton:focus,
+#servidorButton:focus {
+  outline: none;
+}

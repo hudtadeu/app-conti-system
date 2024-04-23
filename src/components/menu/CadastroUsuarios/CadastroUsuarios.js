@@ -8,6 +8,8 @@ import {
   faCog,
   faSearch,
   faEllipsisH,
+  faArrowUp,
+  faArrowDown,
 } from "@fortawesome/free-solid-svg-icons";
 
 function CadastroUsuarios() {
@@ -81,13 +83,13 @@ function SearchComponent({ toggleModal }) {
 }
 
 function UserTable({ users }) {
-  const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null); // Guarda o índice da linha com o dropdown aberto
+  const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
 
   const toggleDropdown = (index) => {
     if (dropdownOpenIndex === index) {
-      setDropdownOpenIndex(null); // Fechar o dropdown se clicar novamente no mesmo
+      setDropdownOpenIndex(null);
     } else {
-      setDropdownOpenIndex(index); // Abrir o dropdown da linha clicada
+      setDropdownOpenIndex(index);
     }
   };
 
@@ -111,7 +113,11 @@ function UserTable({ users }) {
               "Rec.Fiscal",
               "Rec.Físico",
             ].map((action) => (
-              <th scope="col">{action}</th>
+              <th scope="col" className="header-with-icon">
+                {action}
+                <FontAwesomeIcon className="icon-up" icon={faArrowUp} />
+                <FontAwesomeIcon className="icon-down" icon={faArrowDown} />
+              </th>
             ))}
             <th scope="col">
               <FontAwesomeIcon icon={faCog} />
@@ -151,7 +157,7 @@ function UserTable({ users }) {
                 </td>
               ))}
               <td>
-                {/* Placeholder for options dropdown or similar functionality */}
+                {}
                 <div className="dropdown">
                   <button
                     className="button-secondary-user"
