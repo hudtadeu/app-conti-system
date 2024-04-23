@@ -18,7 +18,7 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
       {empresa ? (
         <div>
           <h2>Detalhes da Empresa</h2>
-          <div>
+          <div className="container-datails">
             <p>
               <strong>Código:</strong> {empresa["cod-estabel"]}
             </p>
