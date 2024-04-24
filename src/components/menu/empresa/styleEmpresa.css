@@ -71,9 +71,13 @@
   background-color: #0098c9;
   color: #fff;
   border: none;
-  padding: 7px;
+  padding: 5px;
   border-radius: 0px 5px 5px 0px;
-  font-size: 12px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 10px 15px -14px #0098c9;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
 }
 
 .btn-primary-empresa:hover,

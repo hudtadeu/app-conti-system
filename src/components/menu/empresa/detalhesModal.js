@@ -159,6 +159,10 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                   {getCheckboxHTML(empresa["l-usa-tag-compra"])}
                 </p>
                 <p>
+                  <strong>Usa Tag Ordem Compra:</strong>{" "}
+                  {getCheckboxHTML(empresa["l-usa-tag-compra"])}
+                </p>
+                <p>
                   <strong>Usa NCM Fornecedor:</strong>{" "}
                   {getCheckboxHTML(empresa["log-ncm-fornec"])}
                 </p>
@@ -233,11 +237,15 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                 </p>
                 <p>
                   <strong>Depos Devolução:</strong>{" "}
-                  {empresa["cod-depos-dev"] || "Não encontrado"}
+                  <span id="infoArmazena">
+                    {empresa["cod-depos-dev"] || "Não encontrado."}
+                  </span>
                 </p>
                 <p>
                   <strong>Localiz Devolução:</strong>{" "}
-                  {empresa["cod-localiz-dev"] || "Não encontrado"}
+                  <span id="infoArmazena">
+                    {empresa["cod-localiz-dev"] || "Não encontrado."}
+                  </span>
                 </p>
                 <p>
                   <strong>Informações Lote Automática:</strong>{" "}
@@ -245,20 +253,28 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                 </p>
                 <p>
                   <strong>Lote Fixo:</strong>{" "}
-                  {empresa["lote"] || "Não encontrado"}{" "}
+                  <span id="infoArmazena">
+                    {empresa["lote"] || "Não encontrado."}{" "}
+                  </span>
                   <strong>Dt Validade:</strong>{" "}
-                  {empresa["dt-valid-lote"] || "Não encontrado"}
+                  <span id="infoArmazena">
+                    {empresa["dt-valid-lote"] || "Não encontrado."}
+                  </span>
                 </p>
                 <p>
                   {getCheckboxHTML(empresa["l-copia-gfe"])} Copia CT-e para GFE
                 </p>
                 <p>
                   <strong>Pasta Cópia GFE:</strong>{" "}
-                  {empresa["pasta-gfe"] || "Não encontrado"}
+                  <span id="infoArmazena">
+                    {empresa["pasta-gfe"] || "Não encontrado."}
+                  </span>
                 </p>
                 <p>
                   <strong>Anexos Divergência:</strong>{" "}
-                  {empresa["pasta-anexo-diverg"] || "Não encontrado"}
+                  <span id="infoArmazena">
+                    {empresa["pasta-anexo-diverg"] || "Não encontrado."}
+                  </span>
                 </p>
               </div>
             )}
@@ -281,11 +297,15 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                 </p>
                 <p>
                   <strong>Cliente ID:</strong>{" "}
-                  {empresa["client-id"] || "Não encontrado"}
+                  <span id="infoArmazena">
+                    {empresa["client-id"] || "Não encontrado."}
+                  </span>
                 </p>
                 <p>
                   <strong>Tenant ID:</strong>{" "}
-                  {empresa["tenant-id"] || "Não encontrado"}
+                  <span id="infoArmazena">
+                    {empresa["tenant-id"] || "Não encontrado."}
+                  </span>
                 </p>
                 <p>
                   <strong>Ambiente SEFAZ:</strong> {empresa["ambiente-sefaz"]}
@@ -322,14 +342,18 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                 </p>
                 <p>
                   <strong>Servidor Proxy:</strong>{" "}
-                  {empresa["servidor-proxy"] || "Não encontrado"}
+                  <span id="infoArmazena">
+                    {empresa["servidor-proxy"] || "Não encontrado."}
+                  </span>
                 </p>
                 <p>
                   <strong>Porta:</strong> {empresa["porta-proxy"]}
                 </p>
                 <p>
                   <strong>Usuário Proxy:</strong>{" "}
-                  {empresa["usuario-proxy"] || "Não encontrado"}
+                  <span id="infoArmazena">
+                    {empresa["usuario-proxy"] || "Não encontrado."}
+                  </span>
                 </p>
                 <p>
                   <strong>Senha Proxy:</strong>{" "}
