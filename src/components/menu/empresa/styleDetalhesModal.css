@@ -152,11 +152,14 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Cria duas colunas de igual largura */
 }
 
 .quadrante-traducao p {
   flex: 1 1 50%;
   box-sizing: border-box;
+  padding: 2px;
 }
 
 #infoArmazena {
