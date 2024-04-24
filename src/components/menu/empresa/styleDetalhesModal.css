@@ -173,3 +173,42 @@
   color: #211915;
   list-style-type: none;
 }
+
+@media (max-width: 768px) {
+  /* Estilos para tablets e dispositivos menores */
+  .table th,
+  .table td {
+    padding: 8px; /* Reduz o padding */
+    font-size: 14px; /* Diminui o tamanho da fonte */
+  }
+
+  .container-de-botoes button {
+    padding: 5px; /* Reduz o padding dos botões */
+    font-size: 12px; /* Diminui o tamanho da fonte dos ícones */
+  }
+
+  .search-container,
+  .btn,
+  input[type="text"] {
+    width: 100%; /* Faz com que a barra de pesquisa e botões ocupem todo o espaço */
+    margin-bottom: 10px; /* Adiciona espaço abaixo de cada elemento em telas pequenas */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Estilos para celulares */
+  .table thead {
+    display: none; /* Oculta os cabeçalhos da tabela em dispositivos muito pequenos */
+  }
+
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block; /* Torna a tabela como blocos para visualização tipo lista */
+  }
+
+  .table tr {
+    margin-bottom: 15px; /* Espaço entre cada item da lista */
+  }
+}

@@ -156,67 +156,71 @@ function Empresa() {
             </button>
           </div>
         </div>
-        <div></div>
-        <table className="table table-striped" id="userTable">
-          <thead className="thead-dark">
-            <tr>
-              <th scope="col">Código</th>
-              <th scope="col">Nome CGC</th>
-              <th scope="col">Inscrição Municipal</th>
-              <th scope="col">Inscrição Estadual</th>
-              <th scope="col">Razão Social</th>
-              <th scope="col">Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {empresas.map((empresa, index) => (
-              <tr key={index}>
-                <td>{empresa["cod-estabel"]}</td>
-                <td>{empresa["cgc"]}</td>
-                <td>{empresa["ins-municipal"]}</td>
-                <td>{empresa["inscr-estad"]}</td>
-                <td>{empresa["razao-social"]}</td>
-                <td>
-                  <div className="container-de-botoes">
-                    <button
-                      type="button"
-                      className="btn btn-primary-options"
-                      onClick={() => detalharModal(empresa["cod-estabel"])}
-                      title="Detalhar"
-                    >
-                      <FontAwesomeIcon icon={faEye} className="icon-small" />
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-warning-options"
-                      onClick={() => editarEmpresa(empresa["cod-estabel"])}
-                      title="Editar"
-                    >
-                      <FontAwesomeIcon
-                        icon={faPencilAlt}
-                        className="icon-small"
-                      />
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-danger-options"
-                      onClick={() => excluirEmpresa(empresa["cod-estabel"])}
-                      title="Excluir"
-                    >
-                      <FontAwesomeIcon icon={faTrash} className="icon-small" />
-                    </button>
-                  </div>
-                </td>
+        <div className="table-responsive">
+          <table className="table table-striped" id="userTable">
+            <thead className="thead-dark">
+              <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nome CGC</th>
+                <th scope="col">Inscrição Municipal</th>
+                <th scope="col">Inscrição Estadual</th>
+                <th scope="col">Razão Social</th>
+                <th scope="col">Ações</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {empresas.map((empresa, index) => (
+                <tr key={index}>
+                  <td>{empresa["cod-estabel"]}</td>
+                  <td>{empresa["cgc"]}</td>
+                  <td>{empresa["ins-municipal"]}</td>
+                  <td>{empresa["inscr-estad"]}</td>
+                  <td>{empresa["razao-social"]}</td>
+                  <td>
+                    <div className="container-de-botoes">
+                      <button
+                        type="button"
+                        className="btn btn-primary-options"
+                        onClick={() => detalharModal(empresa["cod-estabel"])}
+                        title="Detalhar"
+                      >
+                        <FontAwesomeIcon icon={faEye} className="icon-small" />
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-warning-options"
+                        onClick={() => editarEmpresa(empresa["cod-estabel"])}
+                        title="Editar"
+                      >
+                        <FontAwesomeIcon
+                          icon={faPencilAlt}
+                          className="icon-small"
+                        />
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-danger-options"
+                        onClick={() => excluirEmpresa(empresa["cod-estabel"])}
+                        title="Excluir"
+                      >
+                        <FontAwesomeIcon
+                          icon={faTrash}
+                          className="icon-small"
+                        />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <DetalhesModal
+          isOpen={modalOpen}
+          empresa={empresaDetalhes}
+          onClose={() => setModalOpen(false)}
+        />
       </div>
-      <DetalhesModal
-        isOpen={modalOpen}
-        empresa={empresaDetalhes}
-        onClose={() => setModalOpen(false)}
-      />
     </body>
   );
 }
