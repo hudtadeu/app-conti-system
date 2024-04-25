@@ -109,6 +109,10 @@
   background-color: #fff;
 }
 
+.user-title {
+  background-color: #fff !important;
+}
+
 .text-success {
   color: green;
   font-size: 16px;

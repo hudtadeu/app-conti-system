@@ -97,7 +97,7 @@ function UserTable({ users }) {
     <div className="table-responsive-usuario">
       <table className="user-table">
         <thead>
-          <tr>
+          <tr className="user-title">
             <th scope="col">Usuário</th>
             <th scope="col">Estabelecimento</th>
             {[
