@@ -15,7 +15,7 @@ function ToggleButton({ defaultChecked, onToggle }) {
 
   return (
     <div className="toggle-container">
-      <button className="toggle-button" onClick={handleToggle}>
+      <button className="toggle-button" onClick={handleToggle} disabled={true}>
         <FontAwesomeIcon
           icon={isChecked ? faToggleOn : faToggleOff}
           size="2x"
