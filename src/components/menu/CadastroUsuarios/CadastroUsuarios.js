@@ -50,7 +50,7 @@ function CadastroUsuarios() {
   };
 
   return (
-    <body className="body-usuario">
+    <div className="body-usuario">
       <div className="container-usuario">
         <h1 className="cadastroUsuario">Cadastro de Usuários</h1>
         <br />
@@ -58,7 +58,7 @@ function CadastroUsuarios() {
         <UserTable users={users} />
         {showModal && <NewUserModal toggleModal={toggleModal} />}
       </div>
-    </body>
+    </div>
   );
 }
 
@@ -112,8 +112,8 @@ function UserTable({ users }) {
               "Prioriza",
               "Rec.Fiscal",
               "Rec.Físico",
-            ].map((action) => (
-              <th scope="col" className="header-with-icon">
+            ].map((action, index) => (
+              <th key={index} scope="col" className="header-with-icon">
                 {action}
                 <FontAwesomeIcon className="icon-up" icon={faArrowUp} />
                 <FontAwesomeIcon className="icon-down" icon={faArrowDown} />
@@ -141,8 +141,8 @@ function UserTable({ users }) {
                 "l-prioriza-documento",
                 "l-recebe-fiscal",
                 "l-recebe-fisico",
-              ].map((permission) => (
-                <td>
+              ].map((permission, permissionIndex) => (
+                <td key={`${index}-${permissionIndex}`}>
                   {user[permission] ? (
                     <FontAwesomeIcon
                       icon={faCheckCircle}
@@ -160,7 +160,11 @@ function UserTable({ users }) {
                 {}
                 <div className="dropdown">
                   <button
-                    className="button-secondary-user"
+                    className="button-secondary-user dropdown-toggle"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
                     onClick={() => toggleDropdown(index)}
                   >
                     <FontAwesomeIcon icon={faEllipsisH} />
