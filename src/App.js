@@ -13,7 +13,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/menu" element={<Layout></Layout>} />
+            <Route path="/home" element={<Layout></Layout>} />
             <Route
               path="cadastroEventos"
               element={

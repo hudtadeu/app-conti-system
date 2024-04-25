@@ -12,8 +12,7 @@ import {
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 
-function Menu() {
-  const [menuActive, setMenuActive] = useState(true);
+function Menu({ menuActive, toggleMenu }) {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
@@ -26,10 +25,6 @@ function Menu() {
       setUsername("Bem-vindo");
     }
   }, []);
-
-  const handleToggleMenu = () => {
-    setMenuActive((prev) => !prev);
-  };
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -47,8 +42,9 @@ function Menu() {
         }`}
       >
         <button
+          id="botaoAbrirFechar"
           className="btn btn-outline-light"
-          onClick={handleToggleMenu}
+          onClick={toggleMenu}
           title={menuActive ? "Fechar Menu" : "Abrir Menu"}
         >
           <FontAwesomeIcon icon={faBars} />
@@ -150,7 +146,7 @@ function Menu() {
         </div>
       </nav>
 
-      <main className={`content ${menuActive ? "menu-active" : ""}`}></main>
+      <main className={`content ${menuActive ? "" : "menu-inactive"}`}></main>
 
       <footer
         className={`footer bg-primary text-light text-center ${

@@ -44,7 +44,7 @@ function Login() {
       ) {
         sessionStorage.setItem("token", base64Credentials);
         sessionStorage.setItem("username", username);
-        navigate("/menu");
+        navigate("/home");
       } else {
         throw new Error("Usuário ou senha incorretos");
       }

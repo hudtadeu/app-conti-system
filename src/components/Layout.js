@@ -1,11 +1,16 @@
-// Layout.js
-import React from "react";
+import React, { useState } from "react";
 import Menu from "./menu/Menu";
 
 const Layout = ({ children }) => {
+  const [menuActive, setMenuActive] = useState(true);
+
+  const handleToggleMenu = () => {
+    setMenuActive((prev) => !prev);
+  };
+
   return (
-    <div>
-      <Menu />
+    <div className={`layout ${menuActive ? "" : "menu-inactive"}`}>
+      <Menu menuActive={menuActive} toggleMenu={handleToggleMenu} />
       <div className="content">{children}</div>
     </div>
   );

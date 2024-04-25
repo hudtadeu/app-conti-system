@@ -79,16 +79,32 @@
   font-size: 25px;
 }
 
+#botaoAbrirFechar {
+  position: fixed;
+  right: 20px;
+  top: 5px;
+}
+
 .content {
-  margin-left: 280px;
   padding: 30px;
   text-align: center;
+  width: calc(100% - 210px);
+  margin-left: 210px;
+  transition: width 0.3s ease, margin-left 0.3s ease;
 }
+
+.layout.menu-active .content {
+  width: calc(100% - 210px);
+  margin-left: 210px;
+}
+
+.layout.menu-inactive .content {
+  width: 100%;
+  margin-left: 0;
+}
+
 .conti-menu {
   text-align: center;
-}
-.content.menu-active {
-  margin-left: 250px;
 }
 
 .nav-item {
