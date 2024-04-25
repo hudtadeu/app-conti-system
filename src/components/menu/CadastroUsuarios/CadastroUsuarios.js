@@ -16,10 +16,13 @@ import {
   faFileExport,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
+import VisualizarModal from "./VisualizarModal";
 
 function CadastroUsuarios() {
   const [users, setUsers] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [isViewModalOpen, setViewModalOpen] = useState(false);
 
   useEffect(() => {
     const base64Credentials = sessionStorage.getItem("token");
@@ -54,14 +57,26 @@ function CadastroUsuarios() {
     setShowModal(!showModal);
   };
 
+  const openViewModal = (user) => {
+    setSelectedUser(user);
+    setViewModalOpen(true);
+  };
+
   return (
     <div className="body-usuario">
       <div className="container-usuario">
         <h1 className="cadastroUsuario">Cadastro de Usuários</h1>
         <br />
         <SearchComponent toggleModal={toggleModal} />
-        <UserTable users={users} />
+        <UserTable users={users} openViewModal={openViewModal} />
         {showModal && <NewUserModal toggleModal={toggleModal} />}
+        {isViewModalOpen && (
+          <VisualizarModal
+            isOpen={isViewModalOpen}
+            onClose={() => setViewModalOpen(false)}
+            user={selectedUser}
+          />
+        )}
       </div>
     </div>
   );
@@ -87,7 +102,7 @@ function SearchComponent({ toggleModal }) {
   );
 }
 
-function UserTable({ users }) {
+function UserTable({ users, openViewModal }) {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
 
   const toggleDropdown = (index) => {
@@ -179,7 +194,14 @@ function UserTable({ users }) {
                       className="dropdown-menu show"
                       aria-labelledby="dropdownMenuButton"
                     >
-                      <a className="dropdown-item" href="#">
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault(); // Prevenir a ação padrão do link
+                          openViewModal(user);
+                        }}
+                      >
                         <FontAwesomeIcon icon={faEye} className="icon-option" />
                         Visualizar
                       </a>
