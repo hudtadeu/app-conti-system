@@ -1,8 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styleModalVisualizar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faToggleOn, faToggleOff } from "@fortawesome/free-solid-svg-icons";
+import "./styleModalVisualizar.css";
+
+function ToggleButton({ defaultChecked, onToggle }) {
+  const [isChecked, setIsChecked] = useState(defaultChecked);
+
+  const handleToggle = () => {
+    const newState = !isChecked;
+    setIsChecked(newState);
+    onToggle(newState);
+  };
+
+  return (
+    <div className="toggle-container">
+      <button className="toggle-button" onClick={handleToggle}>
+        <FontAwesomeIcon
+          icon={isChecked ? faToggleOn : faToggleOff}
+          size="2x"
+        />
+      </button>
+    </div>
+  );
+}
 
 function VisualizarModal({ isOpen, onClose, user }) {
   if (!isOpen || !user) return null;
+
+  const handleToggleActive = (isActive) => {
+    console.log(`O usuário está ${isActive ? "ativo" : "inativo"}`);
+  };
 
   return (
     <div className="modal-backdrop-user">
@@ -23,7 +51,112 @@ function VisualizarModal({ isOpen, onClose, user }) {
             <p>Código: {user["cod-estabel"]}</p>
             <p>Nome: {user["nome"]}</p>
             <p>Razão Social: {user["razao-social"]}</p>
-            {/* Adicione mais detalhes conforme necessário */}
+          </div>
+          <div className="quadrante-visualizar">
+            <p className="button-title-user">
+              {" "}
+              <ToggleButton
+                defaultChecked={true}
+                onToggle={handleToggleActive}
+              />{" "}
+              <span className="toggle-text">Importa XML</span>
+            </p>
+            <p className="button-title-user">
+              {" "}
+              <ToggleButton
+                defaultChecked={true}
+                onToggle={handleToggleActive}
+              />{" "}
+              <span className="toggle-text">Exporta XML</span>
+            </p>
+            <p className="button-title-user">
+              {" "}
+              <ToggleButton
+                defaultChecked={true}
+                onToggle={handleToggleActive}
+              />{" "}
+              <span className="toggle-text">Manifesta Documento</span>
+            </p>
+            <p className="button-title-user">
+              {" "}
+              <ToggleButton
+                defaultChecked={true}
+                onToggle={handleToggleActive}
+              />{" "}
+              <span className="toggle-text">Visualiza NFS-e</span>
+            </p>
+            <p className="button-title-user">
+              {" "}
+              <ToggleButton
+                defaultChecked={true}
+                onToggle={handleToggleActive}
+              />{" "}
+              <span className="toggle-text">Elimina XML</span>
+            </p>
+            <p className="button-title-user">
+              {" "}
+              <ToggleButton
+                defaultChecked={true}
+                onToggle={handleToggleActive}
+              />{" "}
+              <span className="toggle-text">Atualiza XML</span>
+            </p>
+            <p className="button-title-user">
+              {" "}
+              <ToggleButton
+                defaultChecked={true}
+                onToggle={handleToggleActive}
+              />{" "}
+              <span className="toggle-text">Prioriza/Confirma Documento</span>
+            </p>
+            <p className="button-title-user">
+              {" "}
+              <ToggleButton
+                defaultChecked={true}
+                onToggle={handleToggleActive}
+              />{" "}
+              <span className="toggle-text">Cancela Documento</span>
+            </p>
+            <p className="button-title-user">
+              {" "}
+              <ToggleButton
+                defaultChecked={true}
+                onToggle={handleToggleActive}
+              />{" "}
+              <span className="toggle-text">Efetua Download</span>
+            </p>
+            <p className="button-title-user">
+              {" "}
+              <ToggleButton
+                defaultChecked={true}
+                onToggle={handleToggleActive}
+              />{" "}
+              <span className="toggle-text">Recebimento Fiscal (RE1001)</span>
+            </p>
+            <p className="button-title-user">
+              {" "}
+              <ToggleButton
+                defaultChecked={true}
+                onToggle={handleToggleActive}
+              />{" "}
+              <span className="toggle-text">Altera CFOP</span>
+            </p>
+            <p className="button-title-user">
+              {" "}
+              <ToggleButton
+                defaultChecked={true}
+                onToggle={handleToggleActive}
+              />{" "}
+              <span className="toggle-text">Arquiva XML Manualmente</span>
+            </p>
+            <p className="button-title-user">
+              {" "}
+              <ToggleButton
+                defaultChecked={true}
+                onToggle={handleToggleActive}
+              />{" "}
+              <span className="toggle-text">Recebimento Físico (RE2001)</span>
+            </p>
           </div>
         </div>
       </div>
