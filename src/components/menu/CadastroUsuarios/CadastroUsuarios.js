@@ -10,7 +10,11 @@ import {
   faEllipsisH,
   faArrowUp,
   faArrowDown,
-  faCaretDown,
+  faEye,
+  faPencilAlt,
+  faClone,
+  faFileExport,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 
 function CadastroUsuarios() {
@@ -168,10 +172,7 @@ function UserTable({ users }) {
                     aria-expanded="false"
                     onClick={() => toggleDropdown(index)}
                   >
-                    <FontAwesomeIcon
-                      icon={faEllipsisH}
-                      className="icon-option"
-                    />
+                    <FontAwesomeIcon icon={faEllipsisH} />
                   </button>
                   {dropdownOpenIndex === index && (
                     <div
@@ -179,18 +180,35 @@ function UserTable({ users }) {
                       aria-labelledby="dropdownMenuButton"
                     >
                       <a className="dropdown-item" href="#">
+                        <FontAwesomeIcon icon={faEye} className="icon-option" />
                         Visualizar
                       </a>
                       <a className="dropdown-item" href="#">
+                        <FontAwesomeIcon
+                          icon={faPencilAlt}
+                          className="icon-option"
+                        />
                         Editar
                       </a>
                       <a className="dropdown-item" href="#">
+                        <FontAwesomeIcon
+                          icon={faClone}
+                          className="icon-option"
+                        />
                         Duplicar
                       </a>
                       <a className="dropdown-item" href="#">
+                        <FontAwesomeIcon
+                          icon={faFileExport}
+                          className="icon-option"
+                        />
                         Exportar
                       </a>
                       <a className="dropdown-item red-text" href="#">
+                        <FontAwesomeIcon
+                          icon={faTrash}
+                          className="icon-option"
+                        />
                         Excluir
                       </a>
                     </div>

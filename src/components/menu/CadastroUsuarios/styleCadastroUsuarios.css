@@ -250,3 +250,8 @@
     right: 0;
   }
 }
+
+.icon-option {
+  margin-right: 6px;
+  margin-left: -5px;
+}
