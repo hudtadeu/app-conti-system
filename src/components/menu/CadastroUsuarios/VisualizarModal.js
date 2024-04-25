@@ -54,7 +54,7 @@ function VisualizarModal({ isOpen, onClose, user }) {
             <p className="button-title-user">
               {" "}
               <ToggleButton
-                defaultChecked={true}
+                defaultChecked={user["l-importa"]}
                 onToggle={handleToggleActive}
               />{" "}
               <span className="toggle-text">Importa XML</span>
@@ -62,7 +62,7 @@ function VisualizarModal({ isOpen, onClose, user }) {
             <p className="button-title-user">
               {" "}
               <ToggleButton
-                defaultChecked={true}
+                defaultChecked={user["l-exporta"]}
                 onToggle={handleToggleActive}
               />{" "}
               <span className="toggle-text">Exporta XML</span>
@@ -70,7 +70,7 @@ function VisualizarModal({ isOpen, onClose, user }) {
             <p className="button-title-user">
               {" "}
               <ToggleButton
-                defaultChecked={true}
+                defaultChecked={user["l-manifesta"]}
                 onToggle={handleToggleActive}
               />{" "}
               <span className="toggle-text">Manifesta Documento</span>
@@ -78,7 +78,7 @@ function VisualizarModal({ isOpen, onClose, user }) {
             <p className="button-title-user">
               {" "}
               <ToggleButton
-                defaultChecked={true}
+                defaultChecked={user["l-nota-servico"]}
                 onToggle={handleToggleActive}
               />{" "}
               <span className="toggle-text">Visualiza NFS-e</span>
@@ -86,7 +86,7 @@ function VisualizarModal({ isOpen, onClose, user }) {
             <p className="button-title-user">
               {" "}
               <ToggleButton
-                defaultChecked={true}
+                defaultChecked={user["l-elimina"]}
                 onToggle={handleToggleActive}
               />{" "}
               <span className="toggle-text">Elimina XML</span>
@@ -94,7 +94,7 @@ function VisualizarModal({ isOpen, onClose, user }) {
             <p className="button-title-user">
               {" "}
               <ToggleButton
-                defaultChecked={true}
+                defaultChecked={user["l-atualiza"]}
                 onToggle={handleToggleActive}
               />{" "}
               <span className="toggle-text">Atualiza XML</span>
@@ -102,7 +102,7 @@ function VisualizarModal({ isOpen, onClose, user }) {
             <p className="button-title-user">
               {" "}
               <ToggleButton
-                defaultChecked={true}
+                defaultChecked={user["l-prioriza-documento"]}
                 onToggle={handleToggleActive}
               />{" "}
               <span className="toggle-text">Prioriza/Confirma Documento</span>
@@ -110,7 +110,7 @@ function VisualizarModal({ isOpen, onClose, user }) {
             <p className="button-title-user">
               {" "}
               <ToggleButton
-                defaultChecked={true}
+                defaultChecked={user["l-cancela-doc"]}
                 onToggle={handleToggleActive}
               />{" "}
               <span className="toggle-text">Cancela Documento</span>
@@ -118,7 +118,7 @@ function VisualizarModal({ isOpen, onClose, user }) {
             <p className="button-title-user">
               {" "}
               <ToggleButton
-                defaultChecked={true}
+                defaultChecked={user["l-efetua-download"]}
                 onToggle={handleToggleActive}
               />{" "}
               <span className="toggle-text">Efetua Download</span>
@@ -126,7 +126,7 @@ function VisualizarModal({ isOpen, onClose, user }) {
             <p className="button-title-user">
               {" "}
               <ToggleButton
-                defaultChecked={true}
+                defaultChecked={user["l-recebe-fiscal"]}
                 onToggle={handleToggleActive}
               />{" "}
               <span className="toggle-text">Recebimento Fiscal (RE1001)</span>
@@ -134,7 +134,7 @@ function VisualizarModal({ isOpen, onClose, user }) {
             <p className="button-title-user">
               {" "}
               <ToggleButton
-                defaultChecked={true}
+                defaultChecked={user["l-altera-cfop"]}
                 onToggle={handleToggleActive}
               />{" "}
               <span className="toggle-text">Altera CFOP</span>
@@ -142,7 +142,7 @@ function VisualizarModal({ isOpen, onClose, user }) {
             <p className="button-title-user">
               {" "}
               <ToggleButton
-                defaultChecked={true}
+                defaultChecked={user["l-arquiva-xml"]}
                 onToggle={handleToggleActive}
               />{" "}
               <span className="toggle-text">Arquiva XML Manualmente</span>
@@ -150,7 +150,7 @@ function VisualizarModal({ isOpen, onClose, user }) {
             <p className="button-title-user">
               {" "}
               <ToggleButton
-                defaultChecked={true}
+                defaultChecked={user["l-recebe-fisico"]}
                 onToggle={handleToggleActive}
               />{" "}
               <span className="toggle-text">Recebimento Físico (RE2001)</span>
