@@ -10,6 +10,7 @@ import {
   faEllipsisH,
   faArrowUp,
   faArrowDown,
+  faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
 
 function CadastroUsuarios() {
@@ -167,7 +168,10 @@ function UserTable({ users }) {
                     aria-expanded="false"
                     onClick={() => toggleDropdown(index)}
                   >
-                    <FontAwesomeIcon icon={faEllipsisH} />
+                    <FontAwesomeIcon
+                      icon={faEllipsisH}
+                      className="icon-option"
+                    />
                   </button>
                   {dropdownOpenIndex === index && (
                     <div

@@ -165,8 +165,6 @@
   min-width: 160px;
   z-index: 1000;
   padding: 0;
-  min-width: 160px; /* ou maior, se necessário */
-  overflow: visible;
 }
 
 .dropdown-menu a.dropdown-item {
