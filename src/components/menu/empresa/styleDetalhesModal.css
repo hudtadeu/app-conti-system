@@ -36,11 +36,11 @@
   top: 10px;
   right: 10px;
   cursor: pointer;
-  padding: 0px 4px 0px 4px;
+  padding: 0px 5px 0px 5px;
   color: #fff;
   border-radius: 3px;
   background-color: #d11;
-  font-size: 14px;
+  font-size: 16px;
   transition: background-color 0.3s, color 0.3s;
   border: #fff;
 }
@@ -154,7 +154,7 @@
   flex-wrap: wrap;
   align-items: flex-start;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Cria duas colunas de igual largura */
+  grid-template-columns: 1fr 1fr;
 }
 
 .quadrante-traducao p {

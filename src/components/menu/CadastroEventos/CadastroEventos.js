@@ -33,7 +33,7 @@ const CadastroEventos = () => {
   };
 
   return (
-    <body className="body-evento">
+    <div className="body-evento">
       <form id="eventoForm" onSubmit={handleSubmit}>
         <h1 className="cadastroEvento">Cadastro de Eventos</h1>
         <label className="label-evento" htmlFor="estabelecimento">
@@ -126,7 +126,7 @@ const CadastroEventos = () => {
 
         <input className="input-evento" type="submit" value="Gerar e-mail" />
       </form>
-    </body>
+    </div>
   );
 };
 

@@ -49,6 +49,10 @@ function Empresa() {
       });
   }, []);
 
+  const handleSearchChange = (event) => {
+    setPesquisa(event.target.value);
+  };
+
   const detalharModal = (epCodigo) => {
     const urlDetalhar = `${apiUrl}/?ep-codigo=${epCodigo}`;
     fetch(urlDetalhar, {
@@ -127,7 +131,7 @@ function Empresa() {
   }
 
   return (
-    <body className="body-empresa">
+    <div className="body-empresa">
       <div className="container-empresa">
         <h1 className="title-empresa">Empresa</h1>
         <div className="controls-container">
@@ -149,7 +153,7 @@ function Empresa() {
               className="search-input-empresa"
               placeholder="Pesquisa rápida"
               value={pesquisa}
-              onChange=""
+              onChange={handleSearchChange}
             />
             <button className="btn btn-outline-secondary-empresa" type="button">
               <FontAwesomeIcon icon={faSearch} />
@@ -221,7 +225,7 @@ function Empresa() {
           onClose={() => setModalOpen(false)}
         />
       </div>
-    </body>
+    </div>
   );
 }
 
