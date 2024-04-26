@@ -1,0 +1,15 @@
+.back-icon {
+  cursor: pointer;
+  color: #0098c9;
+  border-radius: 50%;
+  font-size: 26px;
+  margin-top: 5px;
+  transition: background-color 0.3s ease;
+  border: none;
+  right: 30px;
+  position: fixed;
+}
+
+.back-icon:hover {
+  box-shadow: 0px 3px 3px #211915;
+}
