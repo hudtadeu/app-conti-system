@@ -8,13 +8,13 @@ import {
   faCog,
   faSearch,
   faEllipsisH,
-  faArrowUp,
-  faArrowDown,
   faEye,
   faPencilAlt,
   faClone,
   faFileExport,
   faTrash,
+  faLongArrowAltDown,
+  faLongArrowAltUp,
 } from "@fortawesome/free-solid-svg-icons";
 import VisualizarModal from "./VisualizarModal";
 
@@ -135,8 +135,11 @@ function UserTable({ users, openViewModal }) {
             ].map((action, index) => (
               <th key={index} scope="col" className="header-with-icon">
                 {action}
-                <FontAwesomeIcon className="icon-up" icon={faArrowUp} />
-                <FontAwesomeIcon className="icon-down" icon={faArrowDown} />
+                <FontAwesomeIcon className="icon-up" icon={faLongArrowAltUp} />
+                <FontAwesomeIcon
+                  className="icon-down"
+                  icon={faLongArrowAltDown}
+                />
               </th>
             ))}
             <th scope="col">

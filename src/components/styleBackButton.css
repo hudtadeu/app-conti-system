@@ -8,6 +8,7 @@
   border: none;
   right: 30px;
   position: fixed;
+  background-color: transparent;
 }
 
 .back-icon:hover {
