@@ -47,8 +47,13 @@ function VisualizarModal({ isOpen, onClose, user }) {
             </button>
           </div>
           <div className="modal-body-user">
-            <p>Usuário: {user["cod-usuario"]}</p>
-            <p>Estabelecimento: {user["cod-estabel"]}</p>
+            <p>
+              Usuário: <span class="user-view">{user["cod-usuario"]}</span>
+            </p>
+            <p>
+              Estabelecimento:{" "}
+              <span class="user-view">{user["cod-estabel"]}</span>
+            </p>
           </div>
           <div className="quadrante-visualizar">
             <p className="button-title-user">

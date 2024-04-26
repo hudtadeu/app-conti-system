@@ -13,6 +13,13 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
     return <input type="checkbox" checked={condition} disabled />;
   };
 
+  const condicao1 = getCheckboxHTML(
+    empresa && empresa["tipo-certificado"] === 1
+  );
+  const condicao2 = getCheckboxHTML(
+    empresa && empresa["tipo-certificado"] === 2
+  );
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       {empresa ? (
@@ -232,8 +239,10 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
               <div className="quadrante-details">
                 <p>
                   <strong>Devolução Nota Própria:</strong>{" "}
-                  {getCheckboxHTML(empresa["log-depos-devol"])} Define Depósito
-                  de Devolução
+                  <div>
+                    {getCheckboxHTML(empresa["log-depos-devol"])} Define
+                    Depósito de Devolução
+                  </div>
                 </p>
                 <p>
                   <strong>Depos Devolução:</strong>{" "}
@@ -289,7 +298,7 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                 </p>
                 <p>
                   <strong>Senha E-mail:</strong>{" "}
-                  {empresa["senha-email"] ? "********" : "Não definida"}
+                  {empresa["senha-email"] ? "********" : "Não definida."}
                 </p>
                 <p>
                   <strong>Tipo Conexão:</strong>{" "}
@@ -315,16 +324,15 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                   {empresa["ambiente-destinadas"]}
                 </p>
                 <p>
-                  <strong>Tipo Certificado:</strong>{" "}
-                  {empresa["tipo-certificado"] === 1
-                    ? "A1"
-                    : empresa["tipo-certificado"] === 2
-                    ? "A3"
-                    : "Não especificado"}
+                  <strong>Tipo Certificado:</strong>
+                  <div id="infoArmazena">
+                    A1 {condicao1}
+                    A3 {condicao2}
+                  </div>
                 </p>
                 <p>
                   <strong>Senha Certificado:</strong>{" "}
-                  {empresa["senha-certificado"] ? "********" : "Não definida"}
+                  {empresa["senha-certificado"] ? "********" : "Não definida."}
                 </p>
                 <p>
                   <strong>Arquivo Certificado:</strong> {empresa[""]}
@@ -338,7 +346,13 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                 </p>
                 <p>
                   <strong>Utiliza Proxy:</strong>{" "}
-                  {empresa["l-utiliza-proxy"] ? "Sim" : "Não"}
+                </p>
+                <p>
+                  <strong>Utiliza Proxy:</strong>
+                  <div id="infoArmazena">
+                    {getCheckboxHTML(empresa && empresa["l-utiliza-proxy"])}{" "}
+                    Utiliza Proxy
+                  </div>
                 </p>
                 <p>
                   <strong>Servidor Proxy:</strong>{" "}
@@ -357,7 +371,7 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                 </p>
                 <p>
                   <strong>Senha Proxy:</strong>{" "}
-                  {empresa["senha-proxy"] ? "********" : "Não definida"}
+                  {empresa["senha-proxy"] ? "********" : "Não definida."}
                 </p>
               </div>
             )}
@@ -371,35 +385,35 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                 </p>
                 <p>
                   <strong>Arquivo Certificado Linux:</strong>{" "}
-                  {empresa["cod-arq-certificado-lnx"] || "Não disponível"}
+                  {empresa["cod-arq-certificado-lnx"] || "Não disponível."}
                 </p>
                 <p>
                   <strong>Nome Arquivo Configuração Linux:</strong>{" "}
-                  {empresa["nome-arq-config-lnx"] || "Não disponível"}
+                  {empresa["nome-arq-config-lnx"] || "Não disponível."}
                 </p>
                 <p>
                   <strong>Pasta Arquivo Configuração Linux:</strong>{" "}
-                  {empresa["pasta-arq-config-lnx"] || "Não disponível"}
+                  {empresa["pasta-arq-config-lnx"] || "Não disponível."}
                 </p>
                 <p>
                   <strong>Pasta de Entrada Linux:</strong>{" "}
-                  {empresa["pasta-entrada-lnx"] || "Não disponível"}
+                  {empresa["pasta-entrada-lnx"] || "Não disponível."}
                 </p>
                 <p>
                   <strong>Pasta Processo E-mail Linux:</strong>{" "}
-                  {empresa["pasta-proc-mail-lnx"] || "Não encontrado"}
+                  {empresa["pasta-proc-mail-lnx"] || "Não disponível."}
                 </p>
                 <p>
                   <strong>Pasta Processo DFE Linux:</strong>{" "}
-                  {empresa["pasta-proc-dfe-lnx"] || "Não encontrado"}
+                  {empresa["pasta-proc-dfe-lnx"] || "Não disponível."}
                 </p>
                 <p>
                   <strong>Pasta de Erros Linux:</strong>{" "}
-                  {empresa["pasta-erros-lnx"] || "Não disponível"}
+                  {empresa["pasta-erros-lnx"] || "Não disponível."}
                 </p>
                 <p>
                   <strong>Pasta de Log Linux:</strong>{" "}
-                  {empresa["pasta-grava-log-linux"] || "Não disponível"}
+                  {empresa["pasta-grava-log-linux"] || "Não disponível."}
                 </p>
               </div>
             )}
