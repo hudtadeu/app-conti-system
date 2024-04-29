@@ -116,3 +116,16 @@
   color: #211915;
   font-weight: normal;
 }
+
+.button-audit-user {
+  background-color: #0098c9;
+  color: #fff;
+  padding: 4px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px;
+  border: none;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 10px 15px -14px #0098c9;
+}

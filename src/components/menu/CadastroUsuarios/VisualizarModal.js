@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./styleModalVisualizar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faToggleOn, faToggleOff } from "@fortawesome/free-solid-svg-icons";
-import "./styleModalVisualizar.css";
+import AuditoriaModal from "./AuditoriaModal";
 
 function ToggleButton({ defaultChecked, onToggle }) {
   const [isChecked, setIsChecked] = useState(defaultChecked);
@@ -26,10 +26,15 @@ function ToggleButton({ defaultChecked, onToggle }) {
 }
 
 function VisualizarModal({ isOpen, onClose, user }) {
+  const [auditoriaModalOpen, setAuditoriaModalOpen] = useState(false);
   if (!isOpen || !user) return null;
 
   const handleToggleActive = (isActive) => {
     console.log(`O usuário está ${isActive ? "ativo" : "inativo"}`);
+  };
+
+  const toggleAuditoriaModal = () => {
+    setAuditoriaModalOpen(!auditoriaModalOpen);
   };
 
   return (
@@ -160,7 +165,18 @@ function VisualizarModal({ isOpen, onClose, user }) {
               />{" "}
               <span className="toggle-text">Recebimento Físico (RE2001)</span>
             </p>
+            <p className="button-title-user">
+              <button
+                className="button-audit-user"
+                onClick={toggleAuditoriaModal}
+              >
+                Acesso a Auditoria
+              </button>
+            </p>
           </div>
+          {auditoriaModalOpen && (
+            <AuditoriaModal onClose={toggleAuditoriaModal} />
+          )}
         </div>
       </div>
     </div>
