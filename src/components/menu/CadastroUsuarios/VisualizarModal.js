@@ -175,7 +175,7 @@ function VisualizarModal({ isOpen, onClose, user }) {
             </p>
           </div>
           {auditoriaModalOpen && (
-            <AuditoriaModal onClose={toggleAuditoriaModal} />
+            <AuditoriaModal onClose={toggleAuditoriaModal} user={user} />
           )}
         </div>
       </div>

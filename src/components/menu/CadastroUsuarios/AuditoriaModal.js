@@ -1,6 +1,9 @@
 import React from "react";
+import "./styleAuditoriaModal.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faToggleOn, faToggleOff } from "@fortawesome/free-solid-svg-icons";
 
-const AuditoriaModal = ({ onClose }) => {
+const AuditoriaModal = ({ onClose, user }) => {
   return (
     <div className="modal-backdrop-audit">
       <div className="modal-audit-usuario">
@@ -11,6 +14,60 @@ const AuditoriaModal = ({ onClose }) => {
               &times;
             </button>
           </h2>
+          <div className="quadrante-title-audit">
+            <p className="subtitle-audit">
+              Usuário: <span class="user-audit">{user["cod-usuario"]}</span>
+            </p>
+            <p>
+              Estabelecimento:{" "}
+              <span class="user-audit">{user["cod-estabel"]}</span>
+            </p>
+          </div>
+          <div className="quadrante-title-audit">
+            <h4 className="painel-title-audit">Acesso ao Painel</h4>
+            <span className="subtitle-audit">
+              <button className="toggle-button">
+                <FontAwesomeIcon
+                  icon-alternation={
+                    user["l-audit-portaria"] ? faToggleOn : faToggleOff
+                  }
+                />
+              </button>
+              Portaria{" "}
+            </span>
+            <span>
+              <button className="toggle-button">
+                <FontAwesomeIcon
+                  icon-alternation={
+                    user["l-audit-almox"] ? faToggleOn : faToggleOff
+                  }
+                />
+              </button>
+              Almoxarifado{" "}
+            </span>
+            <div>
+              <span>
+                <button className="toggle-button">
+                  <FontAwesomeIcon
+                    icon-alternation={
+                      user["l-audit-suprimentos"] ? faToggleOn : faToggleOff
+                    }
+                  />
+                </button>
+                Suprimentos{" "}
+              </span>
+              <span>
+                <button className="toggle-button">
+                  <FontAwesomeIcon
+                    icon-alternation={
+                      user["l-audit-fiscal"] ? faToggleOn : faToggleOff
+                    }
+                  />
+                </button>
+                Fiscal{" "}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
       <div className="modal-footer"></div>
