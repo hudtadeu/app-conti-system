@@ -166,6 +166,10 @@ function VisualizarModal({ isOpen, onClose, user }) {
               <span className="toggle-text">Recebimento Físico (RE2001)</span>
             </p>
             <p className="button-title-user">
+              <ToggleButton
+                defaultChecked={user[""]}
+                onToggle={handleToggleActive}
+              />{" "}
               <button
                 className="button-audit-user"
                 onClick={toggleAuditoriaModal}
