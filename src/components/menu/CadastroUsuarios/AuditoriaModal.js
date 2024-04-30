@@ -26,7 +26,7 @@ const AuditoriaModal = ({ onClose, user }) => {
           <div className="quadrante-title-audit">
             <h4 className="painel-title-audit">Acesso ao Painel</h4>
             <span className="subtitle-audit">
-              <button className="toggle-button">
+              <button className="toggle-button-audit">
                 <FontAwesomeIcon
                   icon={user["l-audit-portaria"] ? faToggleOn : faToggleOff}
                 />
@@ -34,7 +34,7 @@ const AuditoriaModal = ({ onClose, user }) => {
               Portaria{" "}
             </span>
             <span className="subtitle-audit">
-              <button className="toggle-button">
+              <button className="toggle-button-audit">
                 <FontAwesomeIcon
                   icon={user["l-audit-almox"] ? faToggleOn : faToggleOff}
                 />
@@ -42,7 +42,7 @@ const AuditoriaModal = ({ onClose, user }) => {
               Almoxarifado{" "}
             </span>
             <span className="subtitle-audit">
-              <button className="toggle-button">
+              <button className="toggle-button-audit">
                 <FontAwesomeIcon
                   icon={user["l-audit-suprimentos"] ? faToggleOn : faToggleOff}
                 />
@@ -50,7 +50,7 @@ const AuditoriaModal = ({ onClose, user }) => {
               Suprimentos{" "}
             </span>
             <span className="subtitle-audit">
-              <button className="toggle-button">
+              <button className="toggle-button-audit">
                 <FontAwesomeIcon
                   icon={user["l-audit-fiscal"] ? faToggleOn : faToggleOff}
                 />

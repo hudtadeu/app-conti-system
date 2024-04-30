@@ -36,8 +36,15 @@
   font-weight: normal;
 }
 
-.toggle-button {
-  font-size: 13px;
+.toggle-button-audit {
+  font-size: 15px;
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
 }
 
 .painel-title-audit {
