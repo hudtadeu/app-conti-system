@@ -1,7 +1,7 @@
 // ToggleButton.js
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { faToggleOn, faToggleOff } from "@fortawesome/free-solid-svg-icons";
 
 function ToggleButton({ defaultChecked, onToggle }) {
   const [isChecked, setIsChecked] = useState(defaultChecked);
@@ -20,7 +20,7 @@ function ToggleButton({ defaultChecked, onToggle }) {
         onClick={handleToggle}
       >
         <FontAwesomeIcon
-          icon={isChecked ? faCheckCircle : faTimesCircle}
+          icon={isChecked ? faToggleOn : faToggleOff}
           size="2x"
         />
       </button>

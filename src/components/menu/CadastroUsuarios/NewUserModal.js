@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ToggleButton from "./ToggleButton";
 
 function NewUserModal({ toggleModal, addNewUser }) {
@@ -30,6 +30,11 @@ function NewUserModal({ toggleModal, addNewUser }) {
     }
     setBase64Credentials(credentials);
   }, []);
+
+  const refs = {
+    "cod-usuario": useRef(),
+    "cod-estabel": useRef(),
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -65,10 +70,12 @@ function NewUserModal({ toggleModal, addNewUser }) {
       console.error("Erro ao salvar novo usuário:", error);
     }
   };
-
-  const handleFormKeyDown = (e) => {
+  const handleFormKeyDown = (e, nextInputRef) => {
     if (e.key === "Enter") {
-      e.preventDefault(); // Evita que o Enter envie o formulário
+      e.preventDefault(); 
+      if (nextInputRef) {
+        nextInputRef.current.focus(); 
+      }
     }
   };
 
@@ -76,7 +83,7 @@ function NewUserModal({ toggleModal, addNewUser }) {
     <div className="modal-usuario">
       <div className="modal-content-usuario">
         <div className="modal-header">
-          <h5 className="modal-title">Novo Usuário</h5>
+          <h2 className="modal-title">Novo Usuário</h2>
           <button
             type="button"
             className="close-button-usuario"
@@ -95,6 +102,8 @@ function NewUserModal({ toggleModal, addNewUser }) {
                   name="cod-usuario"
                   value={user["cod-usuario"]}
                   onChange={handleInputChange}
+                  ref={refs["cod-usuario"]}
+                  onKeyDown={(e) => handleFormKeyDown(e, refs["cod-estabel"])}
                   className="user-view"
                 />
               </p>
@@ -105,6 +114,8 @@ function NewUserModal({ toggleModal, addNewUser }) {
                   name="cod-estabel"
                   value={user["cod-estabel"]}
                   onChange={handleInputChange}
+                  ref={refs["cod-estabel"]}
+                  onKeyDown={(e) => handleFormKeyDown(e, null)}
                   className="user-view"
                 />
               </p>

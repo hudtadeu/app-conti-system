@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./styleLogin.css";
 import { useNavigate } from "react-router-dom";
 
@@ -7,6 +7,10 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  
+  const usernameRef = useRef();
+  const passwordRef = useRef();
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -54,6 +58,18 @@ function Login() {
     }
   };
 
+  const handleKeyDown = (e, nextFieldRef) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (nextFieldRef) {
+        nextFieldRef.current.focus(); // Navega para o próximo campo
+      } else {
+        handleLogin(e); // Se for o último campo, submete o formulário
+      }
+    }
+  };
+
+
   return (
     <div className="mainLogin">
       <div className="logo-login">
@@ -77,6 +93,8 @@ function Login() {
               placeholder="Usuário"
               value={username}
               onChange={(event) => setUsername(event.target.value)}
+              ref={usernameRef}
+              onKeyDown={(e) => handleKeyDown(e, passwordRef)}
             />
           </div>
           <div className="textfield-login">
@@ -92,6 +110,8 @@ function Login() {
                 placeholder="Senha"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
+                ref={passwordRef}
+                onKeyDown={(e) => handleKeyDown(e, null)}
               />
             </div>
           </div>
