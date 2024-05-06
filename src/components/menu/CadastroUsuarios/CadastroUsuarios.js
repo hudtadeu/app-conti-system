@@ -17,6 +17,7 @@ import {
   faLongArrowAltUp,
 } from "@fortawesome/free-solid-svg-icons";
 import VisualizarModal from "./VisualizarModal";
+import NewUserModal from "./NewUserModal";
 
 function CadastroUsuarios() {
   const [users, setUsers] = useState([]);
@@ -62,6 +63,10 @@ function CadastroUsuarios() {
     setViewModalOpen(true);
   };
 
+  const addNewUser = (newUser) => {
+    setUsers((prevUsers) => [...prevUsers, newUser]);
+  };
+
   return (
     <div className="body-usuario">
       <div className="container-usuario">
@@ -69,7 +74,7 @@ function CadastroUsuarios() {
         <br />
         <SearchComponent toggleModal={toggleModal} />
         <UserTable users={users} openViewModal={openViewModal} />
-        {showModal && <NewUserModal toggleModal={toggleModal} />}
+        {showModal && <NewUserModal toggleModal={toggleModal} addNewUser={addNewUser} />}
         {isViewModalOpen && (
           <VisualizarModal
             isOpen={isViewModalOpen}
@@ -244,40 +249,6 @@ function UserTable({ users, openViewModal }) {
           ))}
         </tbody>
       </table>
-    </div>
-  );
-}
-
-function NewUserModal({ toggleModal }) {
-  return (
-    <div className="modal-usuario">
-      <div className="modal-content-usuario">
-        <div className="modal-header">
-          <h5 className="modal-title">Novo Usuário</h5>
-          <button
-            type="button"
-            className="close-button-usuario"
-            onClick={toggleModal}
-          >
-            &times;
-          </button>
-        </div>
-        <div className="modal-body">
-          <form>{/* Form for new user */}</form>
-        </div>
-        <div className="modal-footer">
-          <button
-            type="button"
-            className="button-secondary-user"
-            onClick={toggleModal}
-          >
-            Cancelar
-          </button>
-          <button type="button" className="button-primary">
-            Salvar
-          </button>
-        </div>
-      </div>
     </div>
   );
 }

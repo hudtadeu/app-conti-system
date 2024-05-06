@@ -167,7 +167,7 @@ function VisualizarModal({ isOpen, onClose, user }) {
             </p>
             <p className="button-title-user">
               <ToggleButton
-                defaultChecked={user[""]}
+                defaultChecked={user["log-auditoria"]}
                 onToggle={handleToggleActive}
               />{" "}
               <button

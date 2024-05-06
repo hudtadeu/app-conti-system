@@ -9,7 +9,7 @@ const AuditoriaModal = ({ onClose, user }) => {
       <div className="modal-audit-usuario">
         <div className="modal-audit-user">
           <h2 className="title-audit">
-            Detalhes da Auditoria
+            Acesso a Auditoria
             <button onClick={onClose} className="close-button-audit">
               &times;
             </button>
