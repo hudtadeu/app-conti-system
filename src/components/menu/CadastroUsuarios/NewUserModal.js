@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import ToggleButton from "./ToggleButton";
-import "./styleNewUserModal.css"
+import "./styleNewUserModal.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import SearchUserModal from "./SearchUserModal";
 
 function NewUserModal({ toggleModal, addNewUser }) {
   const [base64Credentials, setBase64Credentials] = useState("");
@@ -22,6 +25,8 @@ function NewUserModal({ toggleModal, addNewUser }) {
     "l-recebe-fisico": false,
     "log-auditoria": false,
   });
+
+  const [showSearchUserModal, setShowSearchUserModal] = useState(false);
 
   useEffect(() => {
     const credentials = sessionStorage.getItem("token");
@@ -98,6 +103,14 @@ function NewUserModal({ toggleModal, addNewUser }) {
     }
   };
 
+  const handleUserSelect = (selectedUser) => {
+    setUser({ ...user, "cod-usuario": selectedUser.code, "nome-usuario": selectedUser.name });
+  };
+
+  const toggleSearchUserModal = () => {
+    setShowSearchUserModal((prev) => !prev);
+  };
+
   return (
     <div className="modal-backdrop-newuser">
       <div className="modal-content-newuser">
@@ -125,6 +138,11 @@ function NewUserModal({ toggleModal, addNewUser }) {
                   onKeyDown={(e) => handleFormKeyDown(e, refs["cod-estabel"])}
                   className="newuser-view"
                 />
+                <FontAwesomeIcon
+                icon={faSearch}
+                className="search-usericon"
+                onClick={toggleSearchUserModal}
+              />
               </div>
               <div>
                 Estabelecimento:{" "}
@@ -137,6 +155,10 @@ function NewUserModal({ toggleModal, addNewUser }) {
                   onKeyDown={(e) => handleFormKeyDown(e, null)}
                   className="newuser-view"
                 />
+                <FontAwesomeIcon
+                icon={faSearch}
+                className="search-usericon"
+              />
               </div>
             </div>
             <div className="quadrante-newuser">
@@ -183,6 +205,9 @@ function NewUserModal({ toggleModal, addNewUser }) {
             Salvar
           </button>
         </div>
+        {showSearchUserModal && (
+          <SearchUserModal toggleModal={toggleSearchUserModal} onUserSelect={handleUserSelect} />
+        )}
       </div>
     </div>
   );

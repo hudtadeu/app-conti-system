@@ -22,10 +22,11 @@ import EditUserModal from "./EditUserModal";
 
 function CadastroUsuarios() {
   const [users, setUsers] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+  const [showNewUserModal, setShowNewUserModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const [isViewModalOpen, setViewModalOpen] = useState(false);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
+
 
   useEffect(() => {
     const base64Credentials = sessionStorage.getItem("token");
@@ -56,8 +57,8 @@ function CadastroUsuarios() {
       .catch((error) => console.error("Error loading API data:", error));
   }, []);
 
-  const toggleModal = () => {
-    setShowModal(!showModal);
+  const toggleNewUserModal = () => {
+    setShowNewUserModal(!showNewUserModal);
   };
 
   const openViewModal = (user) => {
@@ -137,9 +138,9 @@ function CadastroUsuarios() {
       <div className="container-usuario">
         <h1 className="cadastroUsuario">Cadastro de Usuários</h1>
         <br />
-        <SearchComponent toggleModal={toggleModal} />
+        <SearchComponent toggleModal={toggleNewUserModal} />
         <UserTable users={users} openViewModal={openViewModal} openEditModal={openEditModal} deleteUser={deleteUser}/>
-        {showModal && <NewUserModal toggleModal={toggleModal} addNewUser={addNewUser} />}
+        {showNewUserModal && <NewUserModal toggleModal={toggleNewUserModal} addNewUser={addNewUser} />}
         {isViewModalOpen && (
           <VisualizarModal
             isOpen={isViewModalOpen}
