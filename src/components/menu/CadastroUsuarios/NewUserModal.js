@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import ToggleButton from "./ToggleButton";
+import "./styleNewUserModal.css"
 
 function NewUserModal({ toggleModal, addNewUser }) {
   const [base64Credentials, setBase64Credentials] = useState("");
@@ -63,7 +64,9 @@ function NewUserModal({ toggleModal, addNewUser }) {
         throw new Error("Erro ao criar usuário");
       }
 
-      const newUser = await response.json();
+      const responseText = await response.text();
+      const newUser = responseText ? JSON.parse(responseText) : {};
+
       addNewUser(newUser);
       toggleModal();
     } catch (error) {
@@ -80,22 +83,22 @@ function NewUserModal({ toggleModal, addNewUser }) {
   };
 
   return (
-    <div className="modal-usuario">
-      <div className="modal-content-usuario">
-        <div className="modal-header">
-          <h2 className="modal-title">Novo Usuário</h2>
+    <div className="modal-backdrop-newuser">
+      <div className="modal-content-newuser">
+        <div className="modal-newuser">
+          <h2 className="title-newuser">Novo Usuário</h2>
           <button
             type="button"
-            className="close-button-usuario"
+            className="close-button-newuser"
             onClick={toggleModal}
           >
             &times;
           </button>
         </div>
-        <div className="modal-body">
+        <div className="modal-body-usernew">
           <form onKeyDown={handleFormKeyDown}>
-            <div className="modal-body-user">
-              <p>
+            <div className="modal-body-newuser">
+              <div>
                 Usuário:{" "}
                 <input
                   type="text"
@@ -104,10 +107,10 @@ function NewUserModal({ toggleModal, addNewUser }) {
                   onChange={handleInputChange}
                   ref={refs["cod-usuario"]}
                   onKeyDown={(e) => handleFormKeyDown(e, refs["cod-estabel"])}
-                  className="user-view"
+                  className="newuser-view"
                 />
-              </p>
-              <p>
+              </div>
+              <div>
                 Estabelecimento:{" "}
                 <input
                   type="text"
@@ -116,11 +119,11 @@ function NewUserModal({ toggleModal, addNewUser }) {
                   onChange={handleInputChange}
                   ref={refs["cod-estabel"]}
                   onKeyDown={(e) => handleFormKeyDown(e, null)}
-                  className="user-view"
+                  className="newuser-view"
                 />
-              </p>
+              </div>
             </div>
-            <div className="quadrante-visualizar">
+            <div className="quadrante-newuser">
               {[
                 ["l-importa", "Importa XML"],
                 ["l-exporta", "Exporta XML"],
@@ -137,28 +140,28 @@ function NewUserModal({ toggleModal, addNewUser }) {
                 ["l-recebe-fisico", "Recebimento Físico (RE2001)"],
                 ["log-auditoria", "Auditoria"],
               ].map(([key, label]) => (
-                <p key={key} className="button-title-user">
+                <div key={key} className="button-title-newuser">
                   <ToggleButton
                     defaultChecked={user[key]}
                     onToggle={(newValue) => handleToggleChange(key, newValue)}
                   />
                   <span className="toggle-text">{label}</span>
-                </p>
+                </div>
               ))}
             </div>
           </form>
         </div>
-        <div className="modal-footer">
+        <div className="modal-footer-newuser">
           <button
             type="button"
-            className="button-secondary-user"
+            className="button-secondary-newuser"
             onClick={toggleModal}
           >
             Cancelar
           </button>
           <button
             type="button"
-            className="button-primary"
+            className="button-primary-newuser"
             onClick={handleSave}
           >
             Salvar

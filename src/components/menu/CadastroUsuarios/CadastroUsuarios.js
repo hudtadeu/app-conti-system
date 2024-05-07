@@ -18,12 +18,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import VisualizarModal from "./VisualizarModal";
 import NewUserModal from "./NewUserModal";
+import EditUserModal from "./EditUserModal";
 
 function CadastroUsuarios() {
   const [users, setUsers] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const [isViewModalOpen, setViewModalOpen] = useState(false);
+  const [isEditModalOpen, setEditModalOpen] = useState(false);
 
   useEffect(() => {
     const base64Credentials = sessionStorage.getItem("token");
@@ -63,6 +65,69 @@ function CadastroUsuarios() {
     setViewModalOpen(true);
   };
 
+  const openEditModal = (user) => {
+    setSelectedUser(user);
+    setEditModalOpen(true);
+  };
+
+
+  const deleteUser = async (user) => {
+    const base64Credentials = sessionStorage.getItem("token");
+    try {
+      const response = await fetch(
+        `http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestUsuarioLoader/${user["cod-usuario"]}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Basic ${base64Credentials}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Erro ao excluir usuário");
+      }
+
+      setUsers((prevUsers) =>
+        prevUsers.filter((u) => u["cod-usuario"] !== user["cod-usuario"])
+      );
+    } catch (error) {
+      console.error("Erro ao excluir usuário:", error);
+    }
+  };
+
+  const updateUser = async (updatedUser) => {
+    const base64Credentials = sessionStorage.getItem("token");
+    try {
+      const response = await fetch(
+        `http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestUsuarioLoader/${updatedUser["cod-usuario"]}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Basic ${base64Credentials}`,
+          },
+          body: JSON.stringify(updatedUser),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Erro ao atualizar usuário");
+      }
+
+      setUsers((prevUsers) =>
+        prevUsers.map((user) =>
+          user["cod-usuario"] === updatedUser["cod-usuario"]
+            ? updatedUser
+            : user
+        )
+      );
+      setEditModalOpen(false);
+    } catch (error) {
+      console.error("Erro ao atualizar usuário:", error);
+    }
+  };
+
   const addNewUser = (newUser) => {
     setUsers((prevUsers) => [...prevUsers, newUser]);
   };
@@ -73,13 +138,21 @@ function CadastroUsuarios() {
         <h1 className="cadastroUsuario">Cadastro de Usuários</h1>
         <br />
         <SearchComponent toggleModal={toggleModal} />
-        <UserTable users={users} openViewModal={openViewModal} />
+        <UserTable users={users} openViewModal={openViewModal} openEditModal={openEditModal} deleteUser={deleteUser}/>
         {showModal && <NewUserModal toggleModal={toggleModal} addNewUser={addNewUser} />}
         {isViewModalOpen && (
           <VisualizarModal
             isOpen={isViewModalOpen}
             onClose={() => setViewModalOpen(false)}
             user={selectedUser}
+          />
+        )}
+        {isEditModalOpen && (
+          <EditUserModal
+            isOpen={isEditModalOpen}
+            onClose={() => setEditModalOpen(false)}
+            user={selectedUser}
+            updateUser={updateUser}
           />
         )}
       </div>
@@ -107,7 +180,7 @@ function SearchComponent({ toggleModal }) {
   );
 }
 
-function UserTable({ users, openViewModal }) {
+function UserTable({ users, openViewModal, openEditModal, deleteUser }) {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
 
   const toggleDropdown = (index) => {
@@ -206,14 +279,18 @@ function UserTable({ users, openViewModal }) {
                         className="dropdown-item"
                         href="#"
                         onClick={(e) => {
-                          e.preventDefault(); // Prevenir a ação padrão do link
+                          e.preventDefault(); 
                           openViewModal(user);
                         }}
                       >
                         <FontAwesomeIcon icon={faEye} className="icon-option" />
                         Visualizar
                       </a>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        openEditModal(user);
+                      }}>
                         <FontAwesomeIcon
                           icon={faPencilAlt}
                           className="icon-option"
@@ -234,7 +311,11 @@ function UserTable({ users, openViewModal }) {
                         />
                         Exportar
                       </a>
-                      <a className="dropdown-item red-text" href="#">
+                      <a className="dropdown-item red-text" href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        deleteUser(user);
+                      }}>
                         <FontAwesomeIcon
                           icon={faTrash}
                           className="icon-option"
