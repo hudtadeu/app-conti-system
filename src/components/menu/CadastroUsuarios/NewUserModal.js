@@ -64,15 +64,31 @@ function NewUserModal({ toggleModal, addNewUser }) {
         throw new Error("Erro ao criar usuário");
       }
 
-      const responseText = await response.text();
-      const newUser = responseText ? JSON.parse(responseText) : {};
-
-      addNewUser(newUser);
+      addNewUser(user);
       toggleModal();
+      setUser({
+        "cod-usuario": "",
+        "cod-estabel": "",
+        "l-importa": false,
+        "l-exporta": false,
+        "l-manifesta": false,
+        "l-nota-servico": false,
+        "l-elimina": false,
+        "l-atualiza": false,
+        "l-prioriza-documento": false,
+        "l-cancela-doc": false,
+        "l-efetua-download": false,
+        "l-recebe-fiscal": false,
+        "l-altera-cfop": false,
+        "l-arquiva-xml": false,
+        "l-recebe-fisico": false,
+        "log-auditoria": false,
+      });
     } catch (error) {
       console.error("Erro ao salvar novo usuário:", error);
     }
   };
+
   const handleFormKeyDown = (e, nextInputRef) => {
     if (e.key === "Enter") {
       e.preventDefault(); 
