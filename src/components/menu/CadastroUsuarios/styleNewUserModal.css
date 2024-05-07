@@ -172,3 +172,21 @@
     justify-content: center;
     margin-top: 12px;
   }
+
+  .button-newuser-search {
+  background-color: #0098c9;
+  color: #fff;
+  border: none;
+  padding: 1px;
+  border-radius: 0px 3px 3px 0px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 10px 15px -14px #0098c9;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+  }
+
+
+  .search-usericon {
+    font-size: 12px;
+  }

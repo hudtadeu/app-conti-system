@@ -138,11 +138,13 @@ function NewUserModal({ toggleModal, addNewUser }) {
                   onKeyDown={(e) => handleFormKeyDown(e, refs["cod-estabel"])}
                   className="newuser-view"
                 />
+                <button className="button-newuser-search">
                 <FontAwesomeIcon
                 icon={faSearch}
                 className="search-usericon"
                 onClick={toggleSearchUserModal}
               />
+              </button>
               </div>
               <div>
                 Estabelecimento:{" "}
