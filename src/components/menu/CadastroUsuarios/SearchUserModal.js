@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./styleSearchUserModal.css";
 
-function SearchUserModal({ toggleModal, onUserSelect }) {
+function SearchUserModal({ onUserSelect }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [userList, setUserList] = useState([]);
   const [displayedUsers, setDisplayedUsers] = useState([]);
@@ -38,7 +38,7 @@ function SearchUserModal({ toggleModal, onUserSelect }) {
     fetchUsers();
   }, [itemsToShow]);
 
- 
+
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
     const filtered = userList.filter(
@@ -51,7 +51,6 @@ function SearchUserModal({ toggleModal, onUserSelect }) {
 
   const handleUserSelect = (user) => {
     onUserSelect(user);
-    toggleModal();
   };
 
   const handleScroll = () => {
@@ -80,7 +79,7 @@ function SearchUserModal({ toggleModal, onUserSelect }) {
       <div className="modal-content-searchuser">
         <div className="modal-searchuser">
           <h2 className="title-searchuser">Buscar Usuário</h2>
-          <button type="button" className="close-button-searchuser" onClick={toggleModal}>
+          <button type="button" className="close-button-searchuser" onClick={onUserSelect.bind(null, null)}>
             &times;
           </button>
         </div>

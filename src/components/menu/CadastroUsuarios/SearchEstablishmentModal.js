@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./styleSearchEstablishmentModal.css";
 
-function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect }) {
+function SearchUserEstablishmentModal({ onEstablishmentSelect }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [establishmentList, setEstablishmentList] = useState([]);
   const [displayedEstablishments, setDisplayedEstablishments] = useState([]);
@@ -50,7 +50,6 @@ function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect }) {
 
   const handleEstablishmentSelect = (item) => {
     onEstablishmentSelect(item);
-    toggleModal();
   };
 
   const handleScroll = () => {
@@ -79,7 +78,7 @@ function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect }) {
       <div className="modal-content-search-establishment">
         <div className="modal-hearder-search-establishment">
           <h2 className="title-modal-search-establishment">Buscar Estabelecimento</h2>
-          <button type="button" className="close-button-search-establishment" onClick={toggleModal}>
+          <button type="button" className="close-button-search-establishment" onClick={onEstablishmentSelect.bind(null, null)}>
             &times;
           </button>
         </div>
