@@ -1,9 +1,11 @@
+// NewUserModal.jsx
 import React, { useState, useEffect, useRef } from "react";
 import ToggleButton from "./ToggleButton";
 import "./styleNewUserModal.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import SearchUserModal from "./SearchUserModal";
+import SearchEstablishmentModal from "./SearchEstablishmentModal";
 
 function NewUserModal({ toggleModal, addNewUser }) {
   const [base64Credentials, setBase64Credentials] = useState("");
@@ -27,6 +29,7 @@ function NewUserModal({ toggleModal, addNewUser }) {
   });
 
   const [showSearchUserModal, setShowSearchUserModal] = useState(false);
+  const [showSearchEstablishmentModal, setShowSearchEstablishmentModal] = useState(false);
 
   useEffect(() => {
     const credentials = sessionStorage.getItem("token");
@@ -96,19 +99,29 @@ function NewUserModal({ toggleModal, addNewUser }) {
 
   const handleFormKeyDown = (e, nextInputRef) => {
     if (e.key === "Enter") {
-      e.preventDefault(); 
+      e.preventDefault();
       if (nextInputRef) {
-        nextInputRef.current.focus(); 
+        nextInputRef.current.focus();
       }
     }
   };
 
   const handleUserSelect = (selectedUser) => {
     setUser({ ...user, "cod-usuario": selectedUser.code, "nome-usuario": selectedUser.name });
+    setShowSearchUserModal(false);
+  };
+
+  const handleEstablishmentSelect = (selectedEstablishment) => {
+    setUser({ ...user, "cod-estabel": selectedEstablishment.code });
+    setShowSearchEstablishmentModal(false);
   };
 
   const toggleSearchUserModal = () => {
     setShowSearchUserModal((prev) => !prev);
+  };
+
+  const toggleSearchEstablishmentModal = () => {
+    setShowSearchEstablishmentModal((prev) => !prev);
   };
 
   return (
@@ -127,7 +140,7 @@ function NewUserModal({ toggleModal, addNewUser }) {
         <div className="modal-body-usernew">
           <form onKeyDown={handleFormKeyDown}>
             <div className="modal-body-newuser">
-              <div>
+              <div className="search-field">
                 Usuário:{" "}
                 <input
                   type="text"
@@ -138,15 +151,18 @@ function NewUserModal({ toggleModal, addNewUser }) {
                   onKeyDown={(e) => handleFormKeyDown(e, refs["cod-estabel"])}
                   className="newuser-view"
                 />
-                <button className="button-newuser-search">
-                <FontAwesomeIcon
-                icon={faSearch}
-                className="search-usericon"
-                onClick={toggleSearchUserModal}
-              />
-              </button>
+                <button
+                  type="button"
+                  className="button-newuser-search"
+                  onClick={toggleSearchUserModal}
+                >
+                  <FontAwesomeIcon
+                    icon={faSearch}
+                    className="search-usericon"
+                  />
+                </button>
               </div>
-              <div>
+              <div className="search-field">
                 Estabelecimento:{" "}
                 <input
                   type="text"
@@ -157,10 +173,16 @@ function NewUserModal({ toggleModal, addNewUser }) {
                   onKeyDown={(e) => handleFormKeyDown(e, null)}
                   className="newuser-view"
                 />
-                <FontAwesomeIcon
-                icon={faSearch}
-                className="search-usericon"
-              />
+                <button
+                  type="button"
+                  className="button-newuser-search"
+                  onClick={toggleSearchEstablishmentModal}
+                >
+                  <FontAwesomeIcon
+                    icon={faSearch}
+                    className="search-usericon"
+                  />
+                </button>
               </div>
             </div>
             <div className="quadrante-newuser">
@@ -208,7 +230,16 @@ function NewUserModal({ toggleModal, addNewUser }) {
           </button>
         </div>
         {showSearchUserModal && (
-          <SearchUserModal toggleModal={toggleSearchUserModal} onUserSelect={handleUserSelect} />
+          <SearchUserModal
+            toggleModal={toggleSearchUserModal}
+            onUserSelect={handleUserSelect}
+          />
+        )}
+        {showSearchEstablishmentModal && (
+          <SearchEstablishmentModal
+            toggleModal={toggleSearchEstablishmentModal}
+            onEstablishmentSelect={handleEstablishmentSelect}
+          />
         )}
       </div>
     </div>

@@ -1,6 +1,6 @@
 // SearchUserModal.js
 import React, { useState, useEffect } from "react";
-//import "./styleSearchUserModal.css";
+import "./styleSearchUserModal.css";
 
 function SearchUserModal({ toggleModal, onUserSelect }) {
   const [searchTerm, setSearchTerm] = useState("");
