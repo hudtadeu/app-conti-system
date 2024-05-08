@@ -12,8 +12,8 @@
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    margin: 50px auto;
+    width: 450px;
+    margin: 150px auto;
     padding: 16px;
     position: relative;
   }
@@ -37,22 +37,42 @@
     border-radius: 4px;
   }
   
+  .list-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 16px;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+  }
+  
   .dropdown-search-establishment {
     list-style: none;
     margin: 0;
     padding: 0;
     border: 1px solid #ccc;
     background: white;
+    max-height: 140px; /* Altura para 7 registros */
+    overflow-y: scroll;
     z-index: 1001;
   }
   
   .dropdown-search-establishment li {
+    display: flex;
+    justify-content: space-between;
     padding: 8px 16px;
     cursor: pointer;
   }
   
   .dropdown-search-establishment li:hover {
     background-color: #f0f0f0;
+  }
+  
+  .list-item-code-establishment {
+    width: 30%;
+  }
+  
+  .list-item-name-establishment {
+    width: 70%;
   }
   
   .close-button-search-establishment {

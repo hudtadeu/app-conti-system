@@ -12,8 +12,8 @@
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  margin: 50px auto;
+  width: 450px;
+  margin: 150px auto;
   padding: 16px;
   position: relative;
 }
@@ -30,11 +30,19 @@
   flex-direction: column;
 }
 
-.search-input {
+.search-input-newuser {
   padding: 8px;
   margin-bottom: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+  border-bottom: 1px solid #ccc;
+  font-weight: bold;
 }
 
 .user-list {
@@ -43,16 +51,28 @@
   padding: 0;
   border: 1px solid #ccc;
   background: white;
+  max-height: 140px; /* Altura para 7 registros */
+  overflow-y: scroll;
   z-index: 1001;
 }
 
 .user-list li {
+  display: flex;
+  justify-content: space-between;
   padding: 8px 16px;
   cursor: pointer;
 }
 
 .user-list li:hover {
   background-color: #f0f0f0;
+}
+
+.list-item-code-newuser {
+  width: 30%;
+}
+
+.list-item-name-newuser {
+  width: 40%;
 }
 
 .close-button-searchuser {
@@ -73,4 +93,3 @@
   color: #fff;
   background-color: #a00;
 }
-

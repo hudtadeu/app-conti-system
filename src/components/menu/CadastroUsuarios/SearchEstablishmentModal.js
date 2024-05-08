@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./styleSearchEstablishmentModal.css";
 
-function SearchUserModal({ toggleModal, onEstablishmentSelect }) {
+function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [establishmentList, setEstablishmentList] = useState([]);
+  const [displayedEstablishments, setDisplayedEstablishments] = useState([]);
+  const [itemsToShow, setItemsToShow] = useState(7);
+  const listRef = useRef(null);
 
   useEffect(() => {
     const fetchEstablishments = async () => {
@@ -21,31 +24,55 @@ function SearchUserModal({ toggleModal, onEstablishmentSelect }) {
           throw new Error("Erro ao buscar estabelecimentos");
         }
         const data = await response.json();
-        const filteredEstablishments = data.items.map((establishment) => ({
-          code: establishment["code"],
-          name: establishment["name"],
+        const filteredEstablishments = data.items.map((item) => ({
+          code: item["code"],
+          name: item["name"],
         }));
         setEstablishmentList(filteredEstablishments);
+        setDisplayedEstablishments(filteredEstablishments.slice(0, itemsToShow));
       } catch (error) {
         console.error("Erro ao buscar lista de estabelecimentos:", error);
       }
     };
 
     fetchEstablishments();
-  }, []);
+  }, [itemsToShow]);
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
+    const filtered = establishmentList.filter(
+      (item) =>
+        item.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        item.code.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setDisplayedEstablishments(filtered.slice(0, itemsToShow));
   };
 
-  const filteredEstablishments = establishmentList.filter((establishment) =>
-    establishment.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const handleEstablishmentSelect = (user) => {
-    onEstablishmentSelect(user);
+  const handleEstablishmentSelect = (item) => {
+    onEstablishmentSelect(item);
     toggleModal();
   };
+
+  const handleScroll = () => {
+    if (listRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = listRef.current;
+      if (scrollTop + clientHeight >= scrollHeight - 10) {
+        setItemsToShow((prev) => prev + 7);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (listRef.current) {
+      listRef.current.addEventListener("scroll", handleScroll);
+    }
+    return () => {
+      if (listRef.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        listRef.current.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [displayedEstablishments]);
 
   return (
     <div className="modal-backdrop-search-establishment">
@@ -64,10 +91,11 @@ function SearchUserModal({ toggleModal, onEstablishmentSelect }) {
             onChange={handleSearch}
             className="input-search-establishment"
           />
-          <ul className="dropdown-search-establishment">
-            {filteredEstablishments.map((establishment) => (
-              <li key={establishment.code} onClick={() => handleEstablishmentSelect(establishment)}>
-                {establishment.name} ({establishment.code})
+          <ul className="dropdown-search-establishment" ref={listRef}>
+            {displayedEstablishments.map((item) => (
+              <li key={item.code} onClick={() => handleEstablishmentSelect(item)}>
+                <span className="list-item-code">{item.code}</span>
+                <span className="list-item-name">{item.name}</span>
               </li>
             ))}
           </ul>
@@ -77,4 +105,4 @@ function SearchUserModal({ toggleModal, onEstablishmentSelect }) {
   );
 }
 
-export default SearchUserModal;
+export default SearchUserEstablishmentModal;

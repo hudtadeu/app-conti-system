@@ -1,10 +1,12 @@
-// SearchUserModal.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./styleSearchUserModal.css";
 
 function SearchUserModal({ toggleModal, onUserSelect }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [userList, setUserList] = useState([]);
+  const [displayedUsers, setDisplayedUsers] = useState([]);
+  const [itemsToShow, setItemsToShow] = useState(7);
+  const listRef = useRef(null);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -19,34 +21,59 @@ function SearchUserModal({ toggleModal, onUserSelect }) {
           }
         );
         if (!response.ok) {
-          throw new Error("Erro ao buscar usuários");
+            throw new Error("Erro ao buscar usuários");
+          }
+          const data = await response.json();
+          const filteredUsers = data.items.map((user) => ({
+            code: user["code"],
+            name: user["name"],
+          }));
+          setUserList(filteredUsers);
+          setDisplayedUsers(filteredUsers.slice(0, itemsToShow));
+        } catch (error) {
+          console.error("Erro ao buscar lista de usuários:", error);
         }
-        const data = await response.json();
-        const filteredUsers = data.items.map((user) => ({
-          code: user["code"],
-          name: user["name"],
-        }));
-        setUserList(filteredUsers);
-      } catch (error) {
-        console.error("Erro ao buscar lista de usuários:", error);
-      }
-    };
+      };
 
     fetchUsers();
-  }, []);
+  }, [itemsToShow]);
 
+ 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
+    const filtered = userList.filter(
+      (user) =>
+        user.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+        user.code.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setDisplayedUsers(filtered.slice(0, itemsToShow));
   };
-
-  const filteredUsers = userList.filter((user) =>
-    user.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
   const handleUserSelect = (user) => {
     onUserSelect(user);
     toggleModal();
   };
+
+  const handleScroll = () => {
+    if (listRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = listRef.current;
+      if (scrollTop + clientHeight >= scrollHeight - 10) {
+        setItemsToShow((prev) => prev + 7);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (listRef.current) {
+      listRef.current.addEventListener("scroll", handleScroll);
+    }
+    return () => {
+      if (listRef.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        listRef.current.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [displayedUsers]);
 
   return (
     <div className="modal-backdrop-searchuser">
@@ -63,12 +90,13 @@ function SearchUserModal({ toggleModal, onUserSelect }) {
             placeholder="Buscar usuário..."
             value={searchTerm}
             onChange={handleSearch}
-            className="search-input"
+            className="search-input-newuser"
           />
-          <ul className="user-list">
-            {filteredUsers.map((user) => (
+           <ul className="user-list" ref={listRef}>
+            {displayedUsers.map((user) => (
               <li key={user.code} onClick={() => handleUserSelect(user)}>
-                {user.name} ({user.code})
+                <span className="list-item-code-newuser">{user.code}</span>
+                <span className="list-item-name-newuser">{user.name}</span>
               </li>
             ))}
           </ul>
