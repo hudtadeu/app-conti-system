@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./styleSearchUserModal.css";
 
-function SearchUserModal({ onUserSelect }) {
+function SearchUserModal({ onUserSelect, toggleModal }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [userList, setUserList] = useState([]);
   const [displayedUsers, setDisplayedUsers] = useState([]);
@@ -50,7 +50,12 @@ function SearchUserModal({ onUserSelect }) {
   };
 
   const handleUserSelect = (user) => {
-    onUserSelect(user);
+    if (user && user.code) {
+      onUserSelect(user);
+      toggleModal();
+    } else {
+      console.warn("Tentando acessar um usuário inválido:", user);
+    }
   };
 
   const handleScroll = () => {
@@ -79,7 +84,7 @@ function SearchUserModal({ onUserSelect }) {
       <div className="modal-content-searchuser">
         <div className="modal-searchuser">
           <h2 className="title-searchuser">Buscar Usuário</h2>
-          <button type="button" className="close-button-searchuser" onClick={onUserSelect.bind(null, null)}>
+          <button type="button" className="close-button-searchuser" onClick={toggleModal}>
             &times;
           </button>
         </div>
