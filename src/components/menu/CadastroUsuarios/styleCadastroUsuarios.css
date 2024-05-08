@@ -61,6 +61,7 @@
   border: none;
   color: #0098c9;
   background: none;
+  cursor: pointer;
 }
 
 .search-input-usuario {
