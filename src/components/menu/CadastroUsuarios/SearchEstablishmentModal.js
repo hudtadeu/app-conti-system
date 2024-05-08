@@ -78,7 +78,7 @@ function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect }) {
     <div className="modal-backdrop-search-establishment">
       <div className="modal-content-search-establishment">
         <div className="modal-hearder-search-establishment">
-          <h2>Buscar Estabelecimento</h2>
+          <h2 className="title-modal-search-establishment">Buscar Estabelecimento</h2>
           <button type="button" className="close-button-search-establishment" onClick={toggleModal}>
             &times;
           </button>
@@ -91,11 +91,15 @@ function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect }) {
             onChange={handleSearch}
             className="input-search-establishment"
           />
+          <div className="list-header-establishment">
+            <span className="header-code-establishment">Código</span>
+            <span className="header-name-establishment">Nome</span>
+          </div>
           <ul className="dropdown-search-establishment" ref={listRef}>
             {displayedEstablishments.map((item) => (
               <li key={item.code} onClick={() => handleEstablishmentSelect(item)}>
-                <span className="list-item-code">{item.code}</span>
-                <span className="list-item-name">{item.name}</span>
+                <span className="list-item-code-establishment">{item.code}</span>
+                <span className="list-item-name-establishment">{item.name}</span>
               </li>
             ))}
           </ul>

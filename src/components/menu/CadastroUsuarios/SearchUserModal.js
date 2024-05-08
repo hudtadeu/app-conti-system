@@ -5,7 +5,7 @@ function SearchUserModal({ toggleModal, onUserSelect }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [userList, setUserList] = useState([]);
   const [displayedUsers, setDisplayedUsers] = useState([]);
-  const [itemsToShow, setItemsToShow] = useState(7);
+  const [itemsToShow, setItemsToShow] = useState(20);
   const listRef = useRef(null);
 
   useEffect(() => {
@@ -58,7 +58,7 @@ function SearchUserModal({ toggleModal, onUserSelect }) {
     if (listRef.current) {
       const { scrollTop, scrollHeight, clientHeight } = listRef.current;
       if (scrollTop + clientHeight >= scrollHeight - 10) {
-        setItemsToShow((prev) => prev + 7);
+        setItemsToShow((prev) => prev + 10);
       }
     }
   };
@@ -92,6 +92,10 @@ function SearchUserModal({ toggleModal, onUserSelect }) {
             onChange={handleSearch}
             className="search-input-newuser"
           />
+           <div className="list-header-newuser">
+            <span className="header-code-newuser">Código</span>
+            <span className="header-name-newuser">Nome</span>
+          </div>
            <ul className="user-list" ref={listRef}>
             {displayedUsers.map((user) => (
               <li key={user.code} onClick={() => handleUserSelect(user)}>

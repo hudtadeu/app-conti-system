@@ -12,7 +12,7 @@
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 450px;
+    width: 490px;
     margin: 150px auto;
     padding: 16px;
     position: relative;
@@ -20,14 +20,23 @@
   
   .modal-header-search-establishment {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
   
   .modal-body-search-establishment {
     display: flex;
     flex-direction: column;
+    max-height: 600px; /* Certifique-se de que a lista tenha altura suficiente */
+    overflow-y: auto;
+  }
+  
+  .title-modal-search-establishment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
   }
   
   .input-search-establishment {
@@ -37,12 +46,16 @@
     border-radius: 4px;
   }
   
-  .list-header {
+  .list-header-establishment {
     display: flex;
     justify-content: space-between;
     padding: 8px 16px;
     border-bottom: 1px solid #ccc;
     font-weight: bold;
+  }
+  
+  .header-name-establishment {
+    margin-left: 10px;
   }
   
   .dropdown-search-establishment {
@@ -51,7 +64,7 @@
     padding: 0;
     border: 1px solid #ccc;
     background: white;
-    max-height: 140px; /* Altura para 7 registros */
+    max-height: 400px; /* Aumentar a altura para mostrar mais registros */
     overflow-y: scroll;
     z-index: 1001;
   }
@@ -88,7 +101,7 @@
     transition: background-color 0.3s, color 0.3s;
     border: #fff;
   }
-
+  
   .close-button-search-establishment:hover {
     color: #fff;
     background-color: #a00;
