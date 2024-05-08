@@ -5,7 +5,7 @@ function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [establishmentList, setEstablishmentList] = useState([]);
   const [displayedEstablishments, setDisplayedEstablishments] = useState([]);
-  const [itemsToShow, setItemsToShow] = useState(7);
+  const [itemsToShow, setItemsToShow] = useState(20);
   const listRef = useRef(null);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect }) {
     if (listRef.current) {
       const { scrollTop, scrollHeight, clientHeight } = listRef.current;
       if (scrollTop + clientHeight >= scrollHeight - 10) {
-        setItemsToShow((prev) => prev + 7);
+        setItemsToShow((prev) => prev + 10);
       }
     }
   };
@@ -86,7 +86,7 @@ function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect }) {
         <div className="modal-body-search-establishment">
           <input
             type="text"
-            placeholder="Buscar usuário..."
+            placeholder="Buscar estabelecimento..."
             value={searchTerm}
             onChange={handleSearch}
             className="input-search-establishment"
