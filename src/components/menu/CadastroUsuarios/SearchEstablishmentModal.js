@@ -21,9 +21,9 @@ function SearchUserModal({ toggleModal, onEstablishmentSelect }) {
           throw new Error("Erro ao buscar estabelecimentos");
         }
         const data = await response.json();
-        const filteredEstablishments = data.items.map((establishement) => ({
-          code: establishement["code"],
-          name: establishement["name"],
+        const filteredEstablishments = data.items.map((establishment) => ({
+          code: establishment["code"],
+          name: establishment["name"],
         }));
         setEstablishmentList(filteredEstablishments);
       } catch (error) {
@@ -38,11 +38,11 @@ function SearchUserModal({ toggleModal, onEstablishmentSelect }) {
     setSearchTerm(e.target.value);
   };
 
-  const filteredEstablishments = establishmentList.filter((establishement) =>
-    establishement.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredEstablishments = establishmentList.filter((establishment) =>
+    establishment.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleEstablishementSelect = (user) => {
+  const handleEstablishmentSelect = (user) => {
     onEstablishmentSelect(user);
     toggleModal();
   };
@@ -65,9 +65,9 @@ function SearchUserModal({ toggleModal, onEstablishmentSelect }) {
             className="input-search-establishment"
           />
           <ul className="dropdown-search-establishment">
-            {filteredEstablishments.map((establishement) => (
-              <li key={establishement.code} onClick={() => handleEstablishementSelect(establishement)}>
-                {establishement.name} ({establishement.code})
+            {filteredEstablishments.map((establishment) => (
+              <li key={establishment.code} onClick={() => handleEstablishmentSelect(establishment)}>
+                {establishment.name} ({establishment.code})
               </li>
             ))}
           </ul>
