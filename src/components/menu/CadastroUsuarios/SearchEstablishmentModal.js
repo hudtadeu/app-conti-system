@@ -52,7 +52,7 @@ function SearchUserModal({ toggleModal, onEstablishmentSelect }) {
       <div className="modal-content-search-establishment">
         <div className="modal-hearder-search-establishment">
           <h2>Buscar Estabelecimento</h2>
-          <button type="button" className="close-button-search-establishement" onClick={toggleModal}>
+          <button type="button" className="close-button-search-establishment" onClick={toggleModal}>
             &times;
           </button>
         </div>

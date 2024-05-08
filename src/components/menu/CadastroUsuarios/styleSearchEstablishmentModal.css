@@ -56,9 +56,21 @@
   }
   
   .close-button-search-establishment {
-    background: transparent;
-    border: none;
-    font-size: 1.5em;
+    position: absolute;
+    top: 3px;
+    right: 5px;
     cursor: pointer;
+    padding: 0px 5px 0px 5px;
+    color: #fff;
+    border-radius: 3px;
+    background-color: #d11;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+    border: #fff;
+  }
+
+  .close-button-search-establishment:hover {
+    color: #fff;
+    background-color: #a00;
   }
   
