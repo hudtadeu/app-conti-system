@@ -68,11 +68,17 @@
   overflow-y: auto;
 }
 
-.search-input-newuser {
-  padding: 10px;
+.search-input-container {
+  display: flex;
+  align-items: center;
   margin-bottom: 16px;
+}
+
+.search-input-newuser {
+  flex: 1;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 6px 0 0 6px;
   font-size: 16px;
   outline: none;
   transition: border 0.3s, box-shadow 0.3s;
@@ -81,6 +87,58 @@
 .search-input-newuser:focus {
   border-color: #5a67d8;
   box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.3);
+}
+
+.filter-button {
+  background: #0098c9;
+  border: 1px solid #0098c9;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  margin-left: 0;
+  border-radius: 0 6px 6px 0;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.filter-button-label {
+  margin-left: 4px;
+  font-size: 14px;
+}
+
+.filter-button:hover {
+  background-color: #0077a0;
+  border-color: #0077a0;
+}
+
+.filter-dropdown-container {
+  position: relative;
+}
+
+.filter-dropdown-menu {
+  position: absolute;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-top: 8px;
+  padding: 8px 0;
+  list-style: none;
+  width: 150px;
+}
+
+.filter-dropdown-menu li {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filter-dropdown-menu li:hover {
+  background-color: #f1f1f1;
 }
 
 .list-header-newuser {
