@@ -64,6 +64,7 @@
     font-weight: bold;
 
   }
+
   .close-button-newuser {
     position: absolute;
     top: 3px;
@@ -82,6 +83,7 @@
     color: #fff;
     background-color: #a00;
   }
+
   .button-title-newuser {
     display: flex;
     align-items: center;
@@ -106,6 +108,7 @@
   .toggle-button:active {
     transform: scale(0.95);
   }
+  
   .toggle-button:focus {
     outline: none;
   }

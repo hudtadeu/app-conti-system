@@ -18,6 +18,7 @@
   margin-top: 10px;
   color: #0098c9;
   font-size: 35px;
+  margin-bottom: 20px;
 }
 
 .container-usuario {
@@ -49,6 +50,7 @@
   text-transform: uppercase;
   transition: background-color 0.3s ease;
   box-shadow: 0px 10px 15px -14px #0098c9;
+  margin-bottom: 10px;
 }
 
 .button-primary-user:hover {
