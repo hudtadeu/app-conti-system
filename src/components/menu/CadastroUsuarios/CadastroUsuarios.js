@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./styleCadastroUsuarios.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -22,13 +22,14 @@ import EditUserModal from "./EditUserModal";
 
 function CadastroUsuarios() {
   const [users, setUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState([]);
   const [showNewUserModal, setShowNewUserModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const [isViewModalOpen, setViewModalOpen] = useState(false);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
-
-  useEffect(() => {
+  const fetchUsers = useCallback(() => {
     const base64Credentials = sessionStorage.getItem("token");
     if (!base64Credentials) {
       console.error("base64Credentials not found in sessionStorage");
@@ -45,17 +46,33 @@ function CadastroUsuarios() {
         if (response.ok) {
           return response.json();
         }
-        throw new Error("Error fetching API data");
+        throw new Error("Erro ao buscar dados da API");
       })
       .then((data) => {
         if (data.items && data.items.length > 0) {
           setUsers(data.items);
         } else {
-          console.error("No items found in response.");
+          console.error("Nenhum item encontrado na resposta.");
         }
       })
-      .catch((error) => console.error("Error loading API data:", error));
+      .catch((error) => console.error("Erro ao carregar dados da API:", error));
   }, []);
+
+  useEffect(() => {
+    fetchUsers();
+  }, [fetchUsers]);
+
+  useEffect(() => {
+    if (searchTerm.trim() === "") {
+      setFilteredUsers(users);
+    } else {
+      const filtered = users.filter((user) =>
+        user["cod-usuario"].toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user["cod-estabel"].toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredUsers(filtered);
+    }
+  }, [searchTerm, users]);
 
   const toggleNewUserModal = () => {
     setShowNewUserModal(!showNewUserModal);
@@ -70,7 +87,6 @@ function CadastroUsuarios() {
     setSelectedUser(user);
     setEditModalOpen(true);
   };
-
 
   const deleteUser = async (user) => {
     const base64Credentials = sessionStorage.getItem("token");
@@ -133,13 +149,17 @@ function CadastroUsuarios() {
     setUsers((prevUsers) => [...prevUsers, newUser]);
   };
 
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  };
+
   return (
     <div className="body-usuario">
       <div className="container-usuario">
         <h1 className="cadastroUsuario">Cadastro de Usuários</h1>
         <br />
-        <SearchComponent toggleModal={toggleNewUserModal} />
-        <UserTable users={users} openViewModal={openViewModal} openEditModal={openEditModal} deleteUser={deleteUser}/>
+        <SearchComponent toggleModal={toggleNewUserModal} onSearch={handleSearch} />
+        <UserTable users={filteredUsers} openViewModal={openViewModal} openEditModal={openEditModal} deleteUser={deleteUser} />
         {showNewUserModal && <NewUserModal toggleModal={toggleNewUserModal} addNewUser={addNewUser} />}
         {isViewModalOpen && (
           <VisualizarModal
@@ -161,7 +181,15 @@ function CadastroUsuarios() {
   );
 }
 
-function SearchComponent({ toggleModal }) {
+function SearchComponent({ toggleModal, onSearch }) {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    onSearch(value);
+  };
+
   return (
     <div className="search-section-usuario">
       <button className="button-primary-user" onClick={toggleModal}>
@@ -170,11 +198,13 @@ function SearchComponent({ toggleModal }) {
       <span>
         <input
           type="text"
-          placeholder="Pesquisar"
+          placeholder="Pesquisa rápida"
           className="search-input-usuario"
+          value={searchTerm}
+          onChange={handleInputChange}
         />
         <button className="button-search">
-          <FontAwesomeIcon className="icon-searc" size="sm" icon={faSearch} />
+          <FontAwesomeIcon className="icon-search" size="sm" icon={faSearch} />
         </button>
       </span>
     </div>
@@ -259,7 +289,6 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser }) {
                 </td>
               ))}
               <td>
-                {}
                 <div className="dropdown">
                   <button
                     className="button-secondary-user dropdown-toggle"
@@ -280,18 +309,21 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser }) {
                         className="dropdown-item"
                         href="#"
                         onClick={(e) => {
-                          e.preventDefault(); 
+                          e.preventDefault();
                           openViewModal(user);
                         }}
                       >
                         <FontAwesomeIcon icon={faEye} className="icon-option" />
                         Visualizar
                       </a>
-                      <a className="dropdown-item" href="#"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        openEditModal(user);
-                      }}>
+                      <a
+                        className="dropdown-item"
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          openEditModal(user);
+                        }}
+                      >
                         <FontAwesomeIcon
                           icon={faPencilAlt}
                           className="icon-option"
@@ -312,11 +344,14 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser }) {
                         />
                         Exportar
                       </a>
-                      <a className="dropdown-item red-text" href="#"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        deleteUser(user);
-                      }}>
+                      <a
+                        className="dropdown-item red-text"
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          deleteUser(user);
+                        }}
+                      >
                         <FontAwesomeIcon
                           icon={faTrash}
                           className="icon-option"
