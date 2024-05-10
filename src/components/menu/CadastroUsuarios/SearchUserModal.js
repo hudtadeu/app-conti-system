@@ -133,13 +133,13 @@ function SearchUserModal({ toggleModal, onUserSelect = (user) => {} }) {
               <button className="filter-button" onClick={toggleFilterDropdown}>
                 <FontAwesomeIcon icon={faFilter} />
                 <span className="filter-button-label">
-                  {activeOnly ? "Usuários Ativos" : "Todos"}
+                  {activeOnly ? "Ativos" : "Todos"}
                 </span>
               </button>
               {isFilterDropdownOpen && (
                 <ul className="filter-dropdown-menu">
                   <li onClick={handleFilterToggle}>
-                    {activeOnly ? "Todos" : "Usuários Ativos"}
+                    {activeOnly ? "Todos" : "Ativos"}
                   </li>
                 </ul>
               )}
