@@ -11,6 +11,7 @@ import DetalhesModal from "./detalhesModal";
 
 function Empresa() {
   const [empresas, setEmpresas] = useState([]);
+  const [empresasFiltradas, setEmpresasFiltradas] = useState([]);
   const [pesquisa, setPesquisa] = useState("");
   const [empresaDetalhes, setEmpresaDetalhes] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -40,6 +41,7 @@ function Empresa() {
       .then((data) => {
         if (data.items && data.items.length > 0) {
           setEmpresas(data.items);
+          setEmpresasFiltradas(data.items);
         } else {
           console.error("Nenhum item encontrado na resposta.");
         }
@@ -50,7 +52,25 @@ function Empresa() {
   }, []);
 
   const handleSearchChange = (event) => {
-    setPesquisa(event.target.value);
+    const termo = event.target.value;
+    setPesquisa(termo);
+    filtrarEmpresas(termo);
+  };
+
+  const filtrarEmpresas = (termo) => {
+    if (termo.trim() === "") {
+      setEmpresasFiltradas(empresas);
+    } else {
+      const empresasFiltradas = empresas.filter(
+        (empresa) =>
+          empresa["cod-estabel"].toLowerCase().includes(termo.toLowerCase()) ||
+          empresa["cgc"].toLowerCase().includes(termo.toLowerCase()) ||
+          empresa["ins-municipal"].toLowerCase().includes(termo.toLowerCase()) ||
+          empresa["inscr-estad"].toLowerCase().includes(termo.toLowerCase()) ||
+          empresa["razao-social"].toLowerCase().includes(termo.toLowerCase())
+      );
+      setEmpresasFiltradas(empresasFiltradas);
+    }
   };
 
   const detalharModal = (epCodigo) => {
@@ -124,6 +144,10 @@ function Empresa() {
       })
       .then((data) => {
         console.log("Empresa excluída com sucesso:", data);
+        setEmpresas((prevEmpresas) =>
+          prevEmpresas.filter((empresa) => empresa["cod-estabel"] !== epCodigo)
+        );
+        filtrarEmpresas(pesquisa);
       })
       .catch((error) => {
         console.error("Erro ao excluir empresa:", error);
@@ -173,7 +197,7 @@ function Empresa() {
               </tr>
             </thead>
             <tbody>
-              {empresas.map((empresa, index) => (
+              {empresasFiltradas.map((empresa, index) => (
                 <tr key={index}>
                   <td>{empresa["cod-estabel"]}</td>
                   <td>{empresa["cgc"]}</td>
