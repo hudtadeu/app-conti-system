@@ -8,6 +8,7 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import DetalhesModal from "./detalhesModal";
+import EditEmpresaModal from "./EditEmpresaModal";
 
 function Empresa() {
   const [empresas, setEmpresas] = useState([]);
@@ -15,6 +16,8 @@ function Empresa() {
   const [pesquisa, setPesquisa] = useState("");
   const [empresaDetalhes, setEmpresaDetalhes] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [empresaEditando, setEmpresaEditando] = useState(null);
   const apiUrl =
     "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa";
 
@@ -92,18 +95,27 @@ function Empresa() {
       );
   };
 
-  function editarEmpresa(epCodigo) {
-    console.log("Código: ", epCodigo);
-    const urlEditar = `${apiUrl}/?ep-codigo=${epCodigo}`;
+  const openEditModal = (empresa) => {
+    setEmpresaEditando(empresa);
+    setEditModalOpen(true);
+  };
 
+  const saveEdition = (empresa) => {
+    editarEmpresa(empresa);
+    setEditModalOpen(false);
+  };
+
+  function editarEmpresa(empresa) {
+    const urlEditar = `${apiUrl}/${empresa.cod_estabel}`;
+  
     const dadosAtualizados = {
-      cod_estabel: "Novo Estabelecimento",
-      cgc: "Novo CGC",
-      ins_municipal: "Nova Inscrição Municipal",
-      inscr_estad: "Nova Inscrição Estadual",
-      razao_social: "Nova Razão Social",
+      cod_estabel: empresa.cod_estabel,
+      cgc: empresa.cgc,
+      ins_municipal: empresa.ins_municipal,
+      inscr_estad: empresa.inscr_estad,
+      razao_social: empresa.razao_social,
     };
-
+  
     fetch(urlEditar, {
       method: "PUT",
       headers: {
@@ -120,11 +132,22 @@ function Empresa() {
       })
       .then((data) => {
         console.log("Empresa editada com sucesso:", data);
+        setEmpresas((prevEmpresas) =>
+          prevEmpresas.map((emp) =>
+            emp.cod_estabel === empresa.cod_estabel ? { ...emp, ...dadosAtualizados } : emp
+          )
+        );
+        setEmpresasFiltradas((prevEmpresas) =>
+          prevEmpresas.map((emp) =>
+            emp.cod_estabel === empresa.cod_estabel ? { ...emp, ...dadosAtualizados } : emp
+          )
+        );
       })
       .catch((error) => {
         console.error("Erro ao editar empresa:", error);
       });
   }
+  
 
   function excluirEmpresa(epCodigo) {
     console.log("Código: ", epCodigo);
@@ -217,7 +240,7 @@ function Empresa() {
                       <button
                         type="button"
                         className="btn btn-warning-options"
-                        onClick={() => editarEmpresa(empresa["cod-estabel"])}
+                        onClick={() => openEditModal(empresa)}  
                         title="Editar"
                       >
                         <FontAwesomeIcon
@@ -247,6 +270,12 @@ function Empresa() {
           isOpen={modalOpen}
           empresa={empresaDetalhes}
           onClose={() => setModalOpen(false)}
+        />
+        <EditEmpresaModal
+          isOpen={editModalOpen}
+          onClose={() => setEditModalOpen(false)}
+          empresa={empresaEditando}
+          onSave={saveEdition}
         />
       </div>
     </div>

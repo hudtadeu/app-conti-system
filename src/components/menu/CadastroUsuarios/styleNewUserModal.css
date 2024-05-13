@@ -108,7 +108,7 @@
   .toggle-button:active {
     transform: scale(0.95);
   }
-  
+
   .toggle-button:focus {
     outline: none;
   }
@@ -168,10 +168,13 @@
     box-shadow: 0px 10px 15px -14px #0098c9;
     align-items: center;
     justify-content: center;
+    margin-left: 5px;
   }
 
   .button-secondary-newuser {
     margin-right: 5px;
+    background-color: #ccc;
+    color: #000;
   }
   
   .button-primary-newuser:hover,

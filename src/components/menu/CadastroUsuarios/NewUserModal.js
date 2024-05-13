@@ -214,19 +214,19 @@ function NewUserModal({ toggleModal, addNewUser }) {
           </form>
         </div>
         <div className="modal-footer-newuser">
+        <button
+            type="button"
+            className="button-primary-newuser"
+            onClick={handleSave}
+          >
+            Salvar
+          </button>
           <button
             type="button"
             className="button-secondary-newuser"
             onClick={toggleModal}
           >
             Cancelar
-          </button>
-          <button
-            type="button"
-            className="button-primary-newuser"
-            onClick={handleSave}
-          >
-            Salvar
           </button>
         </div>
         {showSearchUserModal && (
