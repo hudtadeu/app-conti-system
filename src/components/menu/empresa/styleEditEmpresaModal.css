@@ -6,7 +6,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-.modal-backdrop-editcompany {
+.modal-backdrop-editempresa {
   position: fixed;
   top: 0;
   left: 0;
@@ -19,7 +19,7 @@
   z-index: 1040;
 }
 
-.title-editcompany {
+.title-editempresa {
     color: #0098c9;
     align-items: center;
     display: flex;
@@ -28,7 +28,7 @@
     margin-bottom: 4px;
   }
 
-.modal-content-editcompany {
+.modal-content-editempresa {
   position: relative;
   width: 500px;
   max-width: 90%;
@@ -43,14 +43,14 @@
   font-weight: bold;
 }
 
-.modal-editcompany {
+.modal-editempresa {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.modal-body-editcompany {
+.modal-body-editempresa {
   background-color: #ebecee;
   border-radius: 8px;
   padding: 15px;
@@ -61,7 +61,7 @@
   display: block;
 }
 
-.close-button-editcompany {
+.close-button-editempresa {
   position: absolute;
   top: 3px;
   right: 5px;
@@ -75,12 +75,12 @@
   border: none;
 }
 
-.close-button-editcompany:hover {
+.close-button-editempresa:hover {
   color: #fff;
   background-color: #a00;
 }
 
-.quadrante-editcompany {
+.quadrante-editempresa {
   background-color: #ebecee;
   border-radius: 8px;
   padding: 10px;
@@ -93,14 +93,14 @@
   gap: 10px;
 }
 
-.button-primary-editcompany,
-.button-secondary-editcompany {
+.button-primary-editempresa,
+.button-secondary-editempresa {
   background-color: #0098c9;
   color: #fff;
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   border: none;
   text-transform: uppercase;
   transition: background-color 0.3s ease;
@@ -108,20 +108,113 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  margin-left: 5px;
 }
 
-.button-secondary-editcompany {
+.button-secondary-editempresa {
   background-color: #ccc;
   color: #000;
 }
 
-.button-primary-editcompany:hover,
-.button-secondary-editcompany:hover {
+.button-primary-editempresa:hover,
+.button-secondary-editempresa:hover {
   background-color: #007ca6;
 }
 
-.modal-footer-editcompany {
+.modal-footer-editempresa {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
+
+#geralButton,
+#traducaoButton,
+#traducaoButtonB,
+#configuracoesButton,
+#servidorButton {
+  background-color: #0098c9;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  margin-right: 6px;
+}
+
+#geralButton:hover,
+#traducaoButton:hover,
+#traducaoButtonB:hover,
+#configuracoesButton:hover,
+#servidorButton:hover {
+  background-color: #0077a9;
+}
+
+#geralButton:focus,
+#traducaoButton:focus,
+#traducaoButtonB:focus,
+#configuracoesButton:focus,
+#servidorButton:focus {
+  outline: none;
+}
+
+.container-editempresa {
+  background-color: #ebecee;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 15px;
+  border: 2px solid #0098c9;
+  text-align: left
+}
+
+.container-editempresa span {
+  margin-left: 5px;
+  color: #211915;
+  text-align: left;
+}
+
+.container-editempresa strong {
+  color: #0098c9;
+}
+
+.quadrante-editempresa {
+  background-color: #ebecee;
+  border: 2px solid #0098c9;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+  text-align: left;
+  color: #0098c9;
+  margin-top: 10px;
+}
+
+.quadrante-editempresa p {
+  color: #211915;
+  text-align: left;
+  margin: 6px;
+}
+
+.quadrante-editempresa strong {
+  color: #0098c9;
+}
+
+.quadrante-editempresa ul {
+  list-style-type: none;
+  color: #211915;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+}
+
+.quadrante-editempresa li {
+  margin-right: 10px;
+}
+
+

@@ -78,7 +78,7 @@
     border: #fff;
   }
   
-  .close-button-editser:hover {
+  .close-button-edituser:hover {
     color: #fff;
     background-color: #a00;
   }
@@ -156,10 +156,13 @@
     box-shadow: 0px 10px 15px -14px #0098c9;
     align-items: center;
     justify-content: center;
+    margin-left: 5px;
   }
 
   .button-secondary-edituser {
     margin-right: 5px;
+    background-color: #ccc;
+    color: #000;
   }
   
   .button-primary-edituser:hover,

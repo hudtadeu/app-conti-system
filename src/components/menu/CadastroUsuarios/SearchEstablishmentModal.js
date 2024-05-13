@@ -12,11 +12,11 @@ function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect = (it
     const fetchEstablishments = async () => {
       try {
         const response = await fetch(
-          "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/cdp/v1/establishmentsPublic",
+          "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/establishmentsPublic",
           {
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Basic ${sessionStorage.getItem("token")}`, // Substitua se necessário
+              Authorization: `Basic ${sessionStorage.getItem("token")}`, 
             },
           }
         );

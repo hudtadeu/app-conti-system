@@ -81,19 +81,19 @@ function EditUserModal({ isOpen, onClose, user, updateUser }) {
           </form>
         </div>
         <div className="modal-footer-edituser">
+        <button
+            type="button"
+            className="button-primary-edituser"
+            onClick={handleSave}
+          >
+            Salvar Alterações
+          </button>
           <button
             type="button"
             className="button-secondary-edituser"
             onClick={onClose}
           >
             Cancelar
-          </button>
-          <button
-            type="button"
-            className="button-primary-edituser"
-            onClick={handleSave}
-          >
-            Salvar
           </button>
         </div>
       </div>
