@@ -153,7 +153,7 @@ function SearchUserModal({ toggleModal, onUserSelect = (user) => {} }) {
             {displayedUsers.map((user) => (
               <li key={user.code} onClick={() => handleUserSelect(user)}>
                 <span className="list-item-code-newuser">{user.code}</span>
-                <span class="list-item-name-newuser">{user.name}</span>
+                <span className="list-item-name-newuser">{user.name}</span>
               </li>
             ))}
           </ul>
