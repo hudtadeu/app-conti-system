@@ -39,7 +39,6 @@ function VisualizarModal({ isOpen, onClose, user }) {
 
   return (
     <div className="modal-backdrop-user">
-      <div className="modal-usuario">
         <div className="modal-content-usuario">
           <div className="modal-header">
             <h2 className="title-user">Visualizar Usuário</h2>
@@ -183,7 +182,6 @@ function VisualizarModal({ isOpen, onClose, user }) {
           )}
         </div>
       </div>
-    </div>
   );
 }
 

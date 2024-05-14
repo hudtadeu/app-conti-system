@@ -17,6 +17,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1040;
+  overflow: auto; 
 }
 
 .title-newuser {
@@ -25,22 +26,22 @@
     display: flex;
     justify-content: center;
     font-size: 22px;
-    margin-bottom: 4px;
+    margin-bottom: -5px;
   }
 
   .modal-content-newuser {
-    position: relative;
-    width: 500px;
-    max-width: 90%;
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    text-align: left;
-    display: block;
-    font-size: 14px;
-    font-weight: bold;
+  position: relative;
+  width: 500px;
+  max-width: 90%;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  text-align: left;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
   }
 
   .modal-newuser {
@@ -51,37 +52,25 @@
   }
 
   .modal-body-newuser {
-    background-color: #ebecee;
     border-radius: 8px;
-    padding: 8px;
+    padding: 4px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 15px;
-    border: 2px solid #0098c9;
     text-align: left;
-    display: block;
-    margin: 5px 20px;
-    font-size: 14px;
-    font-weight: bold;
-
+    margin: 15px 0px;
   }
 
   .close-button-newuser {
     position: absolute;
-    top: 3px;
-    right: 5px;
+    top: -17px;
+    right: -10px;
     cursor: pointer;
     padding: 0px 5px 0px 5px;
-    color: #fff;
+    color: #211915;
     border-radius: 3px;
-    background-color: #d11;
-    font-size: 16px;
+    background-color: transparent;
+    font-size: 25px;
     transition: background-color 0.3s, color 0.3s;
     border: #fff;
-  }
-  
-  .close-button-newuser:hover {
-    color: #fff;
-    background-color: #a00;
   }
 
   .button-title-newuser {
@@ -122,20 +111,20 @@
   }
   
   .quadrante-newuser {
-    background-color: #ebecee;
-    border-radius: 8px;
-    padding: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    border: 2px solid #0098c9;
-    text-align: left;
+    flex-direction: column;
+    align-items: flex-start; 
+    flex-wrap: wrap;
     display: grid;
-    margin: 5px 20px;
-    font-size: 14px;
-    font-weight: bold;
     grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    margin-top: 20px;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 12px;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    text-align: left;
+    color: #0098c9;
+    margin-top: 18px;
   }
   
   .newuser-view {
@@ -154,38 +143,48 @@
     box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.3);
   }
 
-  .button-primary-newuser,
-  .button-secondary-newuser {
-    background-color: #0098c9;
-    color: #fff;
-    padding: 4px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 12px;
+  .button-primary-newuser {
+    background-color: #007bff;
+    color: white;
     border: none;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
-    box-shadow: 0px 10px 15px -14px #0098c9;
-    align-items: center;
-    justify-content: center;
-    margin-left: 5px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 8px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button-primary-newuser:hover {
+    background-color: #0056b3;
   }
 
   .button-secondary-newuser {
-    margin-right: 5px;
-    background-color: #ccc;
-    color: #000;
+    background-color: #939196;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   
-  .button-primary-newuser:hover,
   .button-secondary-newuser:hover {
-    background-color: #007ca6;
+    background-color: #545b62;
   }
 
   .modal-footer-newuser {
-    display: flex;
+    display: block;
     justify-content: center;
-    margin-top: 12px;
+    margin-top: 10px;
   }
 
   .button-newuser-search {
@@ -204,7 +203,6 @@
     background-color: #0077a0;
     border-color: #0077a0;
   }
-
 
   .search-usericon {
     font-size: 12px;
