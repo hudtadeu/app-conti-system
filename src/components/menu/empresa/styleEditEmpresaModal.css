@@ -305,7 +305,6 @@
     text-align: left;
     color: #0098c9;
     margin-top: 14px;
-    display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     display: grid;
