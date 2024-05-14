@@ -219,7 +219,7 @@ function NewUserModal({ toggleModal, addNewUser }) {
             className="button-primary-newuser"
             onClick={handleSave}
           >
-            Salvar
+            Salvar Usuário
           </button>
           <button
             type="button"
