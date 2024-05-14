@@ -9,6 +9,11 @@
 
 .title-details {
   color: #0098c9;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 4px;
 }
 
 .modal-overlay {
@@ -33,21 +38,16 @@
 
 .modal-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 2px;
+  right: 5px;
   cursor: pointer;
   padding: 0px 5px 0px 5px;
-  color: #fff;
+  color: #211915;
   border-radius: 3px;
-  background-color: #d11;
-  font-size: 16px;
+  background-color: transparent;
+  font-size: 25px;
   transition: background-color 0.3s, color 0.3s;
   border: #fff;
-}
-
-.modal-close:hover {
-  color: #fff;
-  background-color: #a00;
 }
 
 #geralButton,
@@ -55,16 +55,16 @@
 #traducaoButtonB,
 #configuracoesButton,
 #servidorButton {
-  background-color: #0098c9;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
+  background-color: #ffffff;
+  color: #333;
+  border: 2px solid #ddd;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-  margin-right: 6px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  margin-right: 5px; 
 }
 
 #geralButton:hover,
@@ -72,38 +72,46 @@
 #traducaoButtonB:hover,
 #configuracoesButton:hover,
 #servidorButton:hover {
-  background-color: #0077a9;
+  background-color: #f0f0f0;
 }
 
-#geralButton:focus,
-#traducaoButton:focus,
-#traducaoButtonB:focus,
-#configuracoesButton:focus,
-#servidorButton:focus {
-  outline: none;
+#geralButton.active,
+#traducaoButton.active,
+#traducaoButtonB.active,
+#configuracoesButton.active,
+#servidorButton.active {
+  background-color: #007bff;
+  color: #ffffff;
+  border-color: #007bff;
 }
 
 .container-datails {
-  background-color: #ebecee;
   border-radius: 8px;
-  padding: 8px;
+  padding: 2px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 15px;
-  border: 2px solid #0098c9;
+  text-align: left;
+  margin: 15px 0px;
+}
+
+.container-datails span {
+  margin-left: 4px;
+  color: #211915;
+  text-align: left;
+  font-size: 14px;
 }
 
 .container-datails p {
-  margin: 5px 0;
-  text-align: left;
+  margin-bottom: 1px;
+  padding: 3px;
 }
 
 .container-datails strong {
   color: #0098c9;
+  margin-right: 0px;
+  font-size: 14px;
 }
 
 .quadrante-details {
-  background-color: #ebecee;
-  border: 2px solid #0098c9;
   border-radius: 5px;
   padding: 8px;
   font-size: 12px;
@@ -112,7 +120,7 @@
   transition: box-shadow 0.3s ease-in-out;
   text-align: left;
   color: #0098c9;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .quadrante-details p {
@@ -139,8 +147,6 @@
 }
 
 .quadrante-traducao {
-  background-color: #ebecee;
-  border: 2px solid #0098c9;
   border-radius: 5px;
   padding: 8px;
   font-size: 12px;
@@ -149,7 +155,7 @@
   transition: box-shadow 0.3s ease-in-out;
   text-align: left;
   color: #0098c9;
-  margin-top: 10px;
+  margin-top: 15px;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -163,15 +169,3 @@
   padding: 2px;
 }
 
-#infoArmazena {
-  padding: 1px;
-  font-size: 12px;
-  border: 2px solid #0098c9;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease-in-out;
-  color: #211915;
-  list-style-type: none;
-  margin: 3px;
-}

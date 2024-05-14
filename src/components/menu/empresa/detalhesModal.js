@@ -27,13 +27,13 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
           <h2 className="title-details">Detalhes da Empresa</h2>
           <div className="container-datails">
             <p>
-              <strong>Código:</strong> {empresa["cod-estabel"]}
+              <strong>Código:</strong><span> {empresa["cod-estabel"]}</span>
             </p>
             <p>
-              <strong>Nome:</strong> {empresa["nome"]}
+              <strong>Nome:</strong><span> {empresa["nome"]}</span>
             </p>
             <p>
-              <strong>Razão Social:</strong> {empresa["razao-social"]}
+              <strong>Razão Social:</strong><span> {empresa["razao-social"]}</span>
             </p>
           </div>
           <div className="btn-group">

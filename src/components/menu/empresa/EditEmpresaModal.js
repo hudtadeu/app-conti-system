@@ -94,7 +94,7 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
             </div>
           )}
           { tab === "traducao" && (
-                <div className="quadrante-editempresa">
+                <div className="quadrante-editempresatraducao">
                 <label>
                     <strong>Utiliza Item Cliente/Fornecedor:</strong>
                     <input type="checkbox" name="l-item-fornec" checked={formData["l-item-fornec"] || false} onChange={handleChange} />
@@ -238,7 +238,7 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
               </div>
             )}
             {tab === "configuracoes" && (
-                <div className="quadrante-editempresa">
+                <div className="quadrante-editempresaconfiguracoes">
                   <label>
                     <strong>Servidor E-mail:</strong>
                     <input type="text" name="servidor-email" value={formData["servidor-email"] || ''} onChange={handleChange} />

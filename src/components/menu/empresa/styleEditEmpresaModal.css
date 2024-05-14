@@ -17,6 +17,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1040;
+  overflow: auto; 
 }
 
 .title-editempresa {
@@ -50,16 +51,6 @@
   align-items: center;
 }
 
-.modal-body-editempresa {
-  background-color: #ebecee;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 10px;
-  border: 2px solid #0098c9;
-  text-align: left;
-  display: block;
-}
 
 .close-button-editempresa {
   position: absolute;
@@ -67,18 +58,14 @@
   right: 5px;
   cursor: pointer;
   padding: 5px;
-  color: #fff;
+  color: #939196;
   border-radius: 3px;
-  background-color: #d11;
+  background-color: transparent;
   font-size: 16px;
   transition: background-color 0.3s, color 0.3s;
   border: none;
 }
 
-.close-button-editempresa:hover {
-  color: #fff;
-  background-color: #a00;
-}
 
 .button-primary-editempresa,
 .button-secondary-editempresa {
@@ -119,16 +106,16 @@
 #traducaoButtonB,
 #configuracoesButton,
 #servidorButton {
-  background-color: #0098c9;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
+  background-color: #ffffff;
+  color: #333;
+  border: 2px solid #ddd;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-  margin-right: 6px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  margin-right: 5px; 
 }
 
 #geralButton:hover,
@@ -136,53 +123,223 @@
 #traducaoButtonB:hover,
 #configuracoesButton:hover,
 #servidorButton:hover {
-  background-color: #0077a9;
+  background-color: #f0f0f0;
 }
 
-#geralButton:focus,
-#traducaoButton:focus,
-#traducaoButtonB:focus,
-#configuracoesButton:focus,
-#servidorButton:focus {
-  outline: none;
+#geralButton.active,
+#traducaoButton.active,
+#traducaoButtonB.active,
+#configuracoesButton.active,
+#servidorButton.active {
+  background-color: #007bff;
+  color: #ffffff;
+  border-color: #007bff;
 }
 
 .container-editempresa {
-  background-color: #ebecee;
-  border-radius: 8px;
-  padding: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 15px;
-  border: 2px solid #0098c9;
-  text-align: left
+    border-radius: 8px;
+    padding: 2px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin: 15px 0px;
 }
 
-.container-editempresa span {
-  margin-left: 5px;
-  color: #211915;
-  text-align: left;
-}
+.container-editempresa div {
+    margin-bottom: 1px;
+    padding: 3px;
+  }
 
-.container-editempresa strong {
-  color: #0098c9;
-}
+  .container-editempresa span {
+    margin-left: 4px;
+    color: #211915;
+    text-align: left;
+    font-size: 14px;
+  }
+  
+  .container-editempresa strong {
+    color: #0098c9;
+    margin-right: 0px;
+    font-size: 14px;
+
+  }
+  
+  label {
+    display: block;
+    align-items: center; 
+    flex-direction: center;
+    margin-bottom: 10px;
+  }
+
+  .quadrante-editempresatraducao input[type="checkbox"] {
+    margin-right: 10px;
+    margin-left: 5px;
+  }
+  
+  .quadrante-editempresa input[type="text"],
+  .quadrante-editempresa input[type="password"],
+  .quadrante-editempresa input[type="number"],
+  .quadrante-editempresa input[type="date"],
+  select {
+    padding: 2px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+    margin-left: 4px;
+    width: 300px;
+  }
+  
+  .quadrante-editempresa input[type="text"]:focus,
+  .quadrante-editempresa input[type="password"]:focus,
+  .quadrante-editempresa input[type="number"]:focus,
+  .quadrante-editempresa input[type="date"]:focus,
+  select:focus {
+    border-color: #0056b3;
+  }
+  
+  .quadrante-editempresa input[type="checkbox"] {
+    margin-right: 10px;
+    margin-left: 5px;
+  }
+  
+  .btn-group-editempresa {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .btn-group-editempresa button {
+    background: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-group-editempresa button.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .button-primary-editempresa {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 8px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .button-primary-editempresa:hover {
+    background-color: #0056b3;
+  }
+  
+  .button-secondary-editempresa {
+    background-color: #939196;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 8px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .button-secondary-editempresa:hover {
+    background-color: #545b62;
+  }
 
 .quadrante-editempresa {
   display: flex;
   flex-direction: column;
   align-items: flex-start; 
-  background-color: #ebecee;
-  border: 2px solid #0098c9;
   border-radius: 5px;
   padding: 8px;
   font-size: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
   text-align: left;
   color: #0098c9;
-  margin-top: 10px;
+  margin-top: 14px;
 }
+
+.quadrante-editempresatraducao {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 12px;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    text-align: left;
+    color: #0098c9;
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .quadrante-editempresaconfiguracoes {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 12px;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    text-align: left;
+    color: #0098c9;
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .quadrante-editempresaconfiguracoes input[type="text"],
+  .quadrante-editempresaconfiguracoes input[type="password"],
+  .quadrante-editempresaconfiguracoes input[type="number"],
+  .quadrante-editempresaconfiguracoes input[type="date"],
+  select {
+    padding: 2px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+    margin-left: 4px;
+    width: 300px;
+  }
+  
+  .quadrante-editempresaconfiguarcoes input[type="text"]:focus,
+  .quadrante-editempresaconfiguracoes input[type="password"]:focus,
+  .quadrante-editempresaconfiguracoes input[type="number"]:focus,
+  .quadrante-editempresaconfiguracoes input[type="date"]:focus,
+  select:focus {
+    border-color: #0056b3;
+  }
+  
+  .quadrante-editempresaconfiguracoes input[type="checkbox"] {
+    margin-right: 10px;
+    margin-left: 5px;
+  }
 
 .quadrante-editempresa p {
   color: #211915;
@@ -206,4 +363,17 @@
   margin-right: 10px;
 }
 
+@media (max-width: 600px) {
+    .modal-content-editempresa {
+      padding: 10px;
+      max-width: 100%;
+      margin: 10px;
+    }
+  
+    .button-primary-editempresa,
+    .button-secondary-editempresa {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+  }
 
