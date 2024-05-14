@@ -132,14 +132,18 @@
 }
 
 .button-audit-user {
-  background-color: #0098c9;
-  color: #fff;
-  padding: 4px;
-  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  padding: 5px 5px;
+  border-radius: 4px;
   cursor: pointer;
   font-size: 10px;
   border: none;
   text-transform: uppercase;
   transition: background-color 0.3s ease;
   box-shadow: 0px 10px 15px -14px #0098c9;
+}
+
+.button-audit-user:hover {
+  background-color: #0056b3;
 }

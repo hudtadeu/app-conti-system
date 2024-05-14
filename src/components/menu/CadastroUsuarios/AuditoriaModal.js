@@ -25,6 +25,7 @@ const AuditoriaModal = ({ onClose, user }) => {
           </div>
           <div className="quadrante-title-audit">
             <h4 className="painel-title-audit">Acesso ao Painel</h4>
+            <div className="audit-container">
             <span className="subtitle-audit">
               <button className="toggle-button-audit">
                 <FontAwesomeIcon
@@ -57,6 +58,7 @@ const AuditoriaModal = ({ onClose, user }) => {
               </button>
               Fiscal{" "}
             </span>
+          </div>
           </div>
         </div>
       </div>
