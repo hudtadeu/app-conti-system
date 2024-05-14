@@ -44,21 +44,16 @@
 
 .close-button-searchuser {
   position: absolute;
-  top: 8px;
-  right: 10px;
+  top: 1px;
+  right: 5px;
   cursor: pointer;
-  padding: 0px 4px 0px 4px;
-  color: #fff;
+  padding: 0px 5px 0px 5px;
+  color: #211915;
   border-radius: 3px;
-  background-color: #d11;
-  font-size: 16px;
-  border: none;
+  background-color: transparent;
+  font-size: 25px;
   transition: background-color 0.3s, color 0.3s;
-}
-
-.close-button-searchuser:hover {
-  color: #fff;
-  background-color: #a00;
+  border: #fff;
 }
 
 .modal-body-searchuser {

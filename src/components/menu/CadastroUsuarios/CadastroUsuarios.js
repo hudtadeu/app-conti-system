@@ -159,7 +159,7 @@ function CadastroUsuarios() {
         <h1 className="cadastroUsuario">Cadastro de Usuários</h1>
         <br />
         <SearchComponent toggleModal={toggleNewUserModal} onSearch={handleSearch} />
-        <UserTable users={filteredUsers} openViewModal={openViewModal} openEditModal={openEditModal} deleteUser={deleteUser} />
+        <UserTable users={filteredUsers} openViewModal={openViewModal} openEditModal={openEditModal} deleteUser={deleteUser} addNewUser={addNewUser} />
         {showNewUserModal && <NewUserModal toggleModal={toggleNewUserModal} addNewUser={addNewUser} />}
         {isViewModalOpen && (
           <VisualizarModal
@@ -211,7 +211,7 @@ function SearchComponent({ toggleModal, onSearch }) {
   );
 }
 
-function UserTable({ users, openViewModal, openEditModal, deleteUser }) {
+function UserTable({ users, openViewModal, openEditModal, deleteUser, addNewUser }) {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
 
   const toggleDropdown = (index) => {
@@ -220,6 +220,12 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser }) {
     } else {
       setDropdownOpenIndex(index);
     }
+  };
+
+  const handleDuplicateUser = (user) => {
+    const newUserCode = `${user['cod-usuario']} ${Date.now()}`;
+    const newUser = { ...user, "cod-usuario": newUserCode };
+    addNewUser(newUser);
   };
 
   return (
@@ -330,7 +336,12 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser }) {
                         />
                         Editar
                       </a>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item"
+                       href="#"
+                       onClick={(e) => {
+                        e.preventDefault();
+                        handleDuplicateUser(user);
+                      }}>
                         <FontAwesomeIcon
                           icon={faClone}
                           className="icon-option"
