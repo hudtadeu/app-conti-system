@@ -50,6 +50,24 @@
   border: #fff;
 }
 
+.modal-close {
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  padding: 0px 5px;
+  cursor: pointer;
+  color: #211915;
+  border-radius: 3px;
+  background-color: transparent;
+  font-size: 20px;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* Adicionado box-shadow na transição */
+  border: #fff;
+}
+
+.modal-close:hover {
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
 #geralButton,
 #traducaoButton,
 #traducaoButtonB,

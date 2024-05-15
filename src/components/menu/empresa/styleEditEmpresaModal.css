@@ -57,13 +57,17 @@
   top: 3px;
   right: 5px;
   cursor: pointer;
-  padding: 5px;
+  padding: 0px 5px;
   color: #939196;
   border-radius: 3px;
   background-color: transparent;
   font-size: 16px;
   transition: background-color 0.3s, color 0.3s;
   border: none;
+}
+
+.close-button-editempresa:hover {
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
 

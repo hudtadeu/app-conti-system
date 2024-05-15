@@ -56,6 +56,10 @@
   border: #fff;
 }
 
+.close-button-searchuser:hover {
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
 .modal-body-searchuser {
   display: flex;
   flex-direction: column;
