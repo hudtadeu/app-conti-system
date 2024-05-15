@@ -109,7 +109,7 @@ function Menu({ menuActive, toggleMenu }) {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="./CadastroEventos">
+                  <a className="nav-link" href="./cadastroEventos">
                     Cadastro de Eventos do XML Loader
                   </a>
                 </li>
@@ -117,12 +117,18 @@ function Menu({ menuActive, toggleMenu }) {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                <FontAwesomeIcon icon={faMagnifyingGlass} className="mr-2" />{" "}
-                Consultas
+                <FontAwesomeIcon icon={faMagnifyingGlass} className="mr-2" /> Consultas
                 <span className="float-right">
                   <FontAwesomeIcon icon={faChevronDown} />
                 </span>
               </a>
+              <ul className="nav flex-column pl-3 sub-menu">
+                <li className="nav-item">
+                  <a className="nav-link" href="./consultarDocumentos">
+                    Consultar Documento
+                  </a>
+                </li>
+              </ul>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">

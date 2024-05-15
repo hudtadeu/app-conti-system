@@ -31,8 +31,10 @@
 
 .modal-content-editempresa {
   position: relative;
-  width: 500px;
+  width: 500px; 
   max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto; 
   background-color: #fff;
   border-radius: 8px;
   padding: 20px;

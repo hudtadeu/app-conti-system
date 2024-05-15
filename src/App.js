@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/login/Login";
 import CadastroUsuarios from "./components/menu/CadastroUsuarios/CadastroUsuarios";
 import CadastroEventos from "./components/menu/CadastroEventos/CadastroEventos";
+import ConsultarDocumentos from "./components/menu/ConsultarDocumentos/ConsultarDocumentos";
 import Empresa from "./components/menu/empresa/Empresa";
 import Layout from "./components/Layout";
 
@@ -35,6 +36,14 @@ function App() {
               element={
                 <Layout>
                   <Empresa />
+                </Layout>
+              }
+            />
+            <Route
+              path="consultarDocumentos"
+              element={
+                <Layout>
+                  <ConsultarDocumentos />
                 </Layout>
               }
             />
