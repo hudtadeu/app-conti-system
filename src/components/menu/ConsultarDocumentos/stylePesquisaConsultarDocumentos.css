@@ -4,136 +4,209 @@
   font-family: "Poppins", sans-serif;
 }
 
-.body-pesquisaConsultarDocumetos {
+.body-pesquisaConsultarDocumentos {
   background-image: url("/public/fundo-form-conti.png");
   background-position: center;
   background-size: cover;
   margin: 0;
   padding: 0;
-  height: 90vh;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container-pesquisaConsultarDocumentos {
-    background-color: #ebecee;
-    color: #0098c9;
-    padding: 10px;
-    border-radius: 0px 0px 7px 7px;
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-    margin-left: 50px;
-    margin-right: 50px;
-    font-size: 13px;
-    overflow-x: auto;
-    margin-top: -50px;
-  }
+  background-color: #ebecee;
+  color: #0098c9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+  max-width: 1000px; /* Aumento do tamanho do contêiner */
+  width: 100%;
+}
 
-  .title-pesquisaConsultarDocumentos {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #0098c9;
-    font-size: 35px;
-  }
+.title-pesquisaConsultarDocumentos {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0098c9;
+  font-size: 35px;
+}
 
-  .search-container-pcd {
-    float: right;
-    margin-right: 10px;
-  }
+.controls-container-pesquisaConsultarDocumentos {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
 
-  .button-primary-pcd {
-    color: #fff;
-    border: none;
-    background-color: #0098c9;
-    padding: 6px 12px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
-    box-shadow: 0px 10px 40px -12px #0098c9;
-    cursor: pointer;
-    float: left;
-    margin-left: 10px;
-  }
-
-  .button-primary-pcd:hover {
-  background-color: #2196f3;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
-  }
-
- .btn-primary-pcd {
-  float: right;
+.search-container-pcd {
+  display: flex;
+  justify-content: flex-end; /* Mudança para alinhar à direita */
 }
 
 .search-input-pcd {
-    padding: 4px;
-    border: 2px solid #0098c9;
-    border-radius: 5px 0px 0px 5px;
-  }
+  padding: 8px;
+  border: 2px solid #0098c9;
+  border-radius: 5px 0 0 5px;
+}
 
 .button-search-pcd {
   background-color: #0098c9;
-  color: #fff;
   border: none;
-  padding: 5px;
-  border-radius: 0px 5px 5px 0px;
-  transition: background-color 0.3s ease;
-  box-shadow: 0px 10px 15px -14px #0098c9;
-  font-size: 14px;
+  padding: 8px;
+  border-radius: 0 5px 5px 0;
   color: #fff;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-primary-pcd {
+  background-color: #0098c9;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.button-primary-pcd:hover,
+.button-search-pcd:hover {
+  background-color: #007bb5;
 }
 
 .lista-documentos-pcd {
-    background-color: #fff;
-    border-radius: 5px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 70px;
-    position: relative;
-  }
-  
-  .documento-item-pcd {
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-    display: flex;
-  }
-  
-  .documento-item-pcd:last-child {
-    border-bottom: none;
-  }
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
 
-  .documento-item-pcd:nth-child(odd) {
-    background-color: #ebecee;
-  }
-  
-  .documento-item-pcd:nth-child(even) {
-    background-color: #fff;
-  }
-
-  .documento-item-pcd > div {
+.documento-item-pcd {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
   margin-bottom: 10px;
 }
 
-.documento-item-sub-pcd {
-  padding-left: 20px;
+.documento-item-pcd:last-child {
+  border-bottom: none;
 }
 
-  .button-secondary-pcd {
-    color: #fff;
-    border: none;
-    background-color: #0098c9;
-    padding: 4px 8px;
-    border-radius: 5px;
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
-    box-shadow: 0px 10px 40px -12px #0098c9;
-    cursor: pointer;
-    position: absolute;
-    right: 14px; 
-    font-size: 10px;
-  }
-  
+.documento-titulo-pcd {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  text-align: left; /* Alinha o título à esquerda */
+}
 
-  
+.documento-detalhes-pcd {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.documento-status-fornecedor-pcd {
+  flex: 2.6; /* Aumenta o tamanho da coluna */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha os itens à esquerda */
+}
+
+.status-container {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Espaçamento entre o círculo e a descrição */
+}
+
+.status-circle {
+  width: 20px; /* Largura do círculo */
+  height: 20px; /* Altura do círculo */
+  border-radius: 50%; /* Transforma o elemento em um círculo */
+  color: white; /* Cor do texto dentro do círculo */
+  text-align: center; /* Alinha o texto ao centro do círculo */
+  line-height: 20px; /* Centraliza verticalmente o texto dentro do círculo */
+}
+
+.status-description {
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #0098c9; /* Cor de fundo da descrição */
+}
+
+.documento-serie-natureza-pcd {
+  flex: 3; /* Aumenta o tamanho da coluna */
+  margin-left: 10px;
+}
+
+.documento-serie-natureza-pcd p,
+.documento-data-pcd p {
+  margin-left: 10px;
+}
+
+.documento-data-pcd {
+  flex: 1.5;
+  margin-left: 10px;
+}
+
+.documento-acoes-pcd {
+  flex: 0.4; /* Diminui o tamanho da coluna */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Alinha os ícones e opções */
+}
+
+.icon-edit {
+  cursor: pointer;
+}
+
+.button-secondary-pcd {
+  background-color: #0098c9;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.button-secondary-pcd:hover {
+  background-color: #007bb5;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
