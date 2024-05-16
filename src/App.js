@@ -6,6 +6,7 @@ import CadastroEventos from "./components/menu/CadastroEventos/CadastroEventos";
 import ConsultarDocumentos from "./components/menu/ConsultarDocumentos/ConsultarDocumentos";
 import Empresa from "./components/menu/empresa/Empresa";
 import Layout from "./components/Layout";
+import PesquisaConsultarDocumentos from "./components/menu/ConsultarDocumentos/pesquisaConsultarDocumentos";
 
 function App() {
   return (
@@ -44,6 +45,14 @@ function App() {
               element={
                 <Layout>
                   <ConsultarDocumentos />
+                </Layout>
+              }
+            />
+            <Route
+              path="pesquisaConsultarDocumentos"
+              element={
+                <Layout>
+                  <PesquisaConsultarDocumentos />
                 </Layout>
               }
             />
