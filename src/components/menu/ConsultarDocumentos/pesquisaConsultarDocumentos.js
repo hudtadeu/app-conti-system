@@ -1,8 +1,8 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useState } from 'react';
 import './stylePesquisaConsultarDocumentos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import DetalhesConsultarDocumentos from './detalhesConsultarDocumentos';
 
 function PesquisaConsultarDocumentos() {
   const documentos = [
@@ -56,6 +56,13 @@ function PesquisaConsultarDocumentos() {
     return { text: statusText, color: statusColor };
   };
 
+  const [selectedDocumento, setSelectedDocumento] = useState(null);
+
+  const handleDocumentoClick = (documento) => {
+    setSelectedDocumento(documento);
+
+  };
+
   return (
     <div className="body-pesquisaConsultarDocumentos">
       <div className="container-pesquisaConsultarDocumentos">
@@ -77,7 +84,7 @@ function PesquisaConsultarDocumentos() {
           {documentos.map((documento, index) => {
             const statusInfo = getStatusInfo(documento.status);
             return (
-              <div className="documento-item-pcd" key={index}>
+              <div className="documento-item-pcd" key={index} onClick={() => handleDocumentoClick(documento)}>
                 <div className="documento-titulo-pcd">
                   <p>{documento.documento.toUpperCase()}</p>
                 </div>
@@ -112,6 +119,7 @@ function PesquisaConsultarDocumentos() {
           })}
         </div>
       </div>
+      {selectedDocumento && (<DetalhesConsultarDocumentos documento={selectedDocumento} getStatusInfo={getStatusInfo} />)}
     </div>
   );
 }

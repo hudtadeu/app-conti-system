@@ -1,13 +1,13 @@
 import React, { useState, useRef } from 'react';
 import PesquisaConsultarDocumentos from './pesquisaConsultarDocumentos'; 
 import './styleConsultarDocumentos.css';
-import { useNavigate } from 'react-router-dom'; // Importando o useNavigate
+import { useNavigate } from 'react-router-dom'; 
 
 function ConsultarDocumentos() {
   const [showSearch, setShowSearch] = useState(true);
   const [showResults, setShowResults] = useState(false);
   const formRef = useRef(null);
-  const navigate = useNavigate(); // Obtendo a função navigate do React Router
+  const navigate = useNavigate(); 
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
@@ -26,7 +26,7 @@ function ConsultarDocumentos() {
     event.preventDefault();
     setShowSearch(false);
     setShowResults(true);
-    // Navegar para a página PesquisaConsultarDocumentos quando o formulário for submetido
+    
     navigate('/pesquisaConsultarDocumentos');
   };
 
