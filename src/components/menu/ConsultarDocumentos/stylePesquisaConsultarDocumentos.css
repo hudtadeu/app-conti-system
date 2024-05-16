@@ -6,24 +6,24 @@
 
 .body-pesquisaConsultarDocumentos {
   background-image: url("/public/fundo-form-conti.png");
-  background-position: center;
   background-size: cover;
+  background-position: center;
   margin: 0;
   padding: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 90vh;
+
 }
 
 .container-pesquisaConsultarDocumentos {
   background-color: #ebecee;
   color: #0098c9;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 10px;
+  border-radius: 0px 0px 7px 7px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-  max-width: 1000px; /* Aumento do tamanho do contêiner */
-  width: 100%;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 13px;
+  margin-top: -50px;
 }
 
 .title-pesquisaConsultarDocumentos {
@@ -41,7 +41,7 @@
 
 .search-container-pcd {
   display: flex;
-  justify-content: flex-end; /* Mudança para alinhar à direita */
+  justify-content: flex-end; 
 }
 
 .search-input-pcd {
@@ -99,7 +99,7 @@
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 10px;
-  text-align: left; /* Alinha o título à esquerda */
+  text-align: left; 
 }
 
 .documento-detalhes-pcd {
@@ -109,36 +109,38 @@
 }
 
 .documento-status-fornecedor-pcd {
-  flex: 2.6; /* Aumenta o tamanho da coluna */
+  flex: 2.6; 
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Alinha os itens à esquerda */
+  align-items: flex-start;
 }
 
 .status-container {
   display: flex;
+  font-size: 10px;
   align-items: center;
-  gap: 5px; /* Espaçamento entre o círculo e a descrição */
+  gap: 5px; 
+  margin-bottom: 6px;
 }
 
 .status-circle {
-  width: 20px; /* Largura do círculo */
-  height: 20px; /* Altura do círculo */
-  border-radius: 50%; /* Transforma o elemento em um círculo */
-  color: white; /* Cor do texto dentro do círculo */
-  text-align: center; /* Alinha o texto ao centro do círculo */
-  line-height: 20px; /* Centraliza verticalmente o texto dentro do círculo */
+  width: 20px;
+  height: 20px; 
+  border-radius: 50%; 
+  color: white; 
+  text-align: center; 
+  line-height: 20px; 
 }
 
 .status-description {
   color: #fff;
   padding: 5px;
   border-radius: 5px;
-  background-color: #0098c9; /* Cor de fundo da descrição */
+  background-color: #0098c9;
 }
 
 .documento-serie-natureza-pcd {
-  flex: 3; /* Aumenta o tamanho da coluna */
+  flex: 3; 
   margin-left: 10px;
 }
 
@@ -153,14 +155,10 @@
 }
 
 .documento-acoes-pcd {
-  flex: 0.4; /* Diminui o tamanho da coluna */
+  flex: 0.4;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Alinha os ícones e opções */
-}
-
-.icon-edit {
-  cursor: pointer;
+  justify-content: space-between;
 }
 
 .button-secondary-pcd {
@@ -181,6 +179,16 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  right: 1px;
+  top: -20px;
+}
+
+.dropbtn {
+  border: none;
+  color: #0098c9;
+  background: none;
+  cursor: pointer;
+  font-size: 25px;
 }
 
 .dropdown-content {
@@ -190,6 +198,8 @@
   min-width: 160px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   z-index: 1;
+  right: 16px;
+  top: 25px;
 }
 
 .dropdown-content a {
@@ -208,5 +218,5 @@
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #3e8e41;
+  background-color: transparent;
 }

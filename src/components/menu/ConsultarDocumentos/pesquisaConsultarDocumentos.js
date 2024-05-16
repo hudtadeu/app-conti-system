@@ -1,10 +1,10 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import './stylePesquisaConsultarDocumentos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 function PesquisaConsultarDocumentos() {
-  // Status: 1 - pendente 2 - atualizado 3 - cancelado
   const documentos = [
     {
       fornecedor: 'Fornecedor 1',
@@ -38,19 +38,19 @@ function PesquisaConsultarDocumentos() {
     switch (status) {
       case 1:
         statusText = 'Pendente';
-        statusColor = '#FFD700'; // Amarelo escuro
+        statusColor = '#FFD700'; 
         break;
       case 2:
         statusText = 'Atualizado';
-        statusColor = '#008000'; // Verde
+        statusColor = '#008000'; 
         break;
       case 3:
         statusText = 'Cancelado';
-        statusColor = '#FF0000'; // Vermelho
+        statusColor = '#FF0000'; 
         break;
       default:
         statusText = 'Status Desconhecido';
-        statusColor = '#808080'; // Cinza
+        statusColor = '#808080';
         break;
     }
     return { text: statusText, color: statusColor };
@@ -97,7 +97,6 @@ function PesquisaConsultarDocumentos() {
                     <p><strong>Data de Emissão:</strong> {documento.data_emissao}</p>
                   </div>
                   <div className="documento-acoes-pcd">
-                    <FontAwesomeIcon icon={faPencilAlt} title="Editar" className="icon-edit" />
                     <div className="dropdown" title="Outras opções">
                       <button className="dropbtn">...</button>
                       <div className="dropdown-content">
