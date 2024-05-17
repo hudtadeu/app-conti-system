@@ -7,6 +7,7 @@ import ConsultarDocumentos from "./components/menu/ConsultarDocumentos/Consultar
 import Empresa from "./components/menu/empresa/Empresa";
 import Layout from "./components/Layout";
 import PesquisaConsultarDocumentos from "./components/menu/ConsultarDocumentos/pesquisaConsultarDocumentos";
+import DetalhesConsultarDocumentos from "./components/menu/ConsultarDocumentos/detalhesConsultarDocumentos";
 
 function App() {
   return (

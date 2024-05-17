@@ -88,6 +88,12 @@
   border-bottom: 1px solid #ddd;
   padding: 10px 0;
   margin-bottom: 10px;
+  transition: box-shadow 0.3s ease;
+}
+
+.documento-item-pcd:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Sombra mais forte */
 }
 
 .documento-item-pcd:last-child {
@@ -100,12 +106,14 @@
   text-transform: uppercase;
   margin-bottom: 10px;
   text-align: left; 
+  margin-left: 10px;
 }
 
 .documento-detalhes-pcd {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-left: 10px;
 }
 
 .documento-status-fornecedor-pcd {

@@ -295,9 +295,9 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser, addNewUser
                 </td>
               ))}
               <td>
-                <div className="dropdown">
+                <div className="dropdown-user">
                   <button
-                    className="button-secondary-user dropdown-toggle"
+                    className="button-secondary-user"
                     id="dropdownMenuButton"
                     data-toggle="dropdown"
                     aria-haspopup="true"
@@ -308,22 +308,22 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser, addNewUser
                   </button>
                   {dropdownOpenIndex === index && (
                     <div
-                      className="dropdown-menu show"
+                      className="dropdown-menu-user show"
                       aria-labelledby="dropdownMenuButton"
                     >
                       <a
-                        className="dropdown-item"
+                        className="dropdown-item-user"
                         href="#"
                         onClick={(e) => {
                           e.preventDefault();
                           openViewModal(user);
                         }}
                       >
-                        <FontAwesomeIcon icon={faEye} className="icon-option" />
+                        <FontAwesomeIcon icon={faEye} className="icon-option-user" />
                         Visualizar
                       </a>
                       <a
-                        className="dropdown-item"
+                        className="dropdown-item-user"
                         href="#"
                         onClick={(e) => {
                           e.preventDefault();
@@ -332,11 +332,11 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser, addNewUser
                       >
                         <FontAwesomeIcon
                           icon={faPencilAlt}
-                          className="icon-option"
+                          className="icon-option-user"
                         />
                         Editar
                       </a>
-                      <a className="dropdown-item"
+                      <a className="dropdown-item-user"
                        href="#"
                        onClick={(e) => {
                         e.preventDefault();
@@ -344,19 +344,19 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser, addNewUser
                       }}>
                         <FontAwesomeIcon
                           icon={faClone}
-                          className="icon-option"
+                          className="icon-option-user"
                         />
                         Duplicar
                       </a>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item-user" href="#">
                         <FontAwesomeIcon
                           icon={faFileExport}
-                          className="icon-option"
+                          className="icon-option-user"
                         />
                         Exportar
                       </a>
                       <a
-                        className="dropdown-item red-text"
+                        className="dropdown-item-user red-text"
                         href="#"
                         onClick={(e) => {
                           e.preventDefault();
@@ -365,7 +365,7 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser, addNewUser
                       >
                         <FontAwesomeIcon
                           icon={faTrash}
-                          className="icon-option"
+                          className="icon-option-user"
                         />
                         Excluir
                       </a>

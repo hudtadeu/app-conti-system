@@ -64,6 +64,7 @@
   color: #0098c9;
   background: none;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .search-input-usuario {
@@ -155,7 +156,7 @@
   background: none;
 }
 
-.dropdown-menu {
+.dropdown-menu-user {
   display: block;
   position: absolute;
   top: 50%;
@@ -170,7 +171,7 @@
   padding: 0;
 }
 
-.dropdown-menu a.dropdown-item {
+.dropdown-menu-user a.dropdown-item-user {
   display: block;
   padding: 10px 15px;
   clear: both;
@@ -183,27 +184,27 @@
   cursor: pointer;
 }
 
-.dropdown-menu a.dropdown-item:hover,
-.dropdown-menu a.dropdown-item:focus {
+.dropdown-menu-user a.dropdown-item-user:hover,
+.dropdown-menu-user a.dropdown-item-user:focus {
   color: #0098c9;
   background-color: #f8f8f8;
   text-decoration: none;
 }
 
-.dropdown-menu a.dropdown-item.red-text {
+.dropdown-menu-user a.dropdown-item-user.red-text {
   color: #ff3860;
 }
 
-.dropdown-menu a.dropdown-item.red-text:hover,
-.dropdown-menu a.dropdown-item.red-text:focus {
+.dropdown-menu-user a.dropdown-item-user.red-text:hover,
+.dropdown-menu-user a.dropdown-item-user.red-text:focus {
   background-color: #ffebee;
 }
 
-.dropdown-menu.show {
+.dropdown-menu-user.show {
   display: block;
 }
 
-.dropdown-item {
+.dropdown-item-user {
   display: block;
   padding: 10px 15px;
   color: #0098c9;
@@ -248,13 +249,13 @@
 }
 
 @media (max-width: 768px) {
-  .dropdown-menu {
+  .dropdown-menu-user {
     left: auto;
     right: 0;
   }
 }
 
-.icon-option {
+.icon-option-user {
   margin-right: 6px;
   margin-left: -5px;
 }
