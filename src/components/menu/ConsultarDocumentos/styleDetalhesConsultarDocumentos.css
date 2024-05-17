@@ -38,7 +38,7 @@
 }
 
 .selected-documento-details p {
-  font-size: 16px;
+  font-size: 14px;
   color: #555555;
   margin: 5px 0;
 }
@@ -58,6 +58,7 @@
   color: #333333;
   cursor: pointer;
   margin: 0;
+  font-size: 12px;
 }
 
 .section-detailsdoc h2:hover {
@@ -119,6 +120,31 @@
 .content-section.show {
   display: block;
   border-top: none;
+}
+
+.document-info-dcd {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.document-details-dcd {
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  gap: 100px;
+  width: 100%;
+}
+
+.document-title-dcd {
+  margin-bottom: 20px;
+}
+
+
+strong {
+  font-weight: bold;
+  color: #0098c9;
 }
 
 
