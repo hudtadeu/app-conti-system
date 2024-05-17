@@ -97,13 +97,6 @@
   transition: background-color 0.3s ease, color 0.3s ease;
   margin-right: 10px;
   flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.button-bar button span {
-  margin-right: 5px;
 }
 
 .button-bar button:hover,
@@ -111,7 +104,6 @@
   background-color: #0098c9;
   color: white;
 }
-
 
 .content-section {
   padding: 10px;
@@ -128,6 +120,7 @@
   display: block;
   border-top: none;
 }
+
 
   
   

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import "./styleDetalhesConsultarDocumentos.css";
 
 function DetalhesConsultarDocumentos({ documento, getStatusInfo }) {
@@ -24,6 +24,7 @@ function DetalhesConsultarDocumentos({ documento, getStatusInfo }) {
   const handleButtonClick = (button) => {
     setActiveButton(prevButton => (prevButton === button ? '' : button));
   };
+  
 
   return (
     <div className="body-detailsdoc">
@@ -39,27 +40,27 @@ function DetalhesConsultarDocumentos({ documento, getStatusInfo }) {
         </div>
 
         <div className="section-detailsdoc" onClick={() => toggleSection('manutencao')}>
-          <h2>Manutenção <FontAwesomeIcon icon={sections.manutencao ? faChevronUp : faChevronDown} /></h2>
+          <h2>Manutenção <FontAwesomeIcon icon={sections.manutencao ? faChevronDown : faChevronRight} /></h2>
           <div className={`section-content-detailsdoc ${sections.manutencao ? 'show' : ''}`}>Conteúdo da Manutenção</div>
         </div>
 
         <div className="section-detailsdoc" onClick={() => toggleSection('datas')}>
-          <h2>Datas <FontAwesomeIcon icon={sections.datas ? faChevronUp : faChevronDown} /></h2>
+          <h2>Datas <FontAwesomeIcon icon={sections.datas ? faChevronDown : faChevronRight} /></h2>
           <div className={`section-content-detailsdoc ${sections.datas ? 'show' : ''}`}>Conteúdo das Datas</div>
         </div>
 
         <div className="section-detailsdoc" onClick={() => toggleSection('contabilizacao')}>
-          <h2>Contabilização <FontAwesomeIcon icon={sections.contabilizacao ? faChevronUp : faChevronDown} /></h2>
+          <h2>Contabilização <FontAwesomeIcon icon={sections.contabilizacao ? faChevronDown : faChevronRight} /></h2>
           <div className={`section-content-detailsdoc ${sections.contabilizacao ? 'show' : ''}`}>Conteúdo da Contabilização</div>
         </div>
 
         <div className="section-detailsdoc" onClick={() => toggleSection('documentacao')}>
-          <h2>Documentação <FontAwesomeIcon icon={sections.documentacao ? faChevronUp : faChevronDown} /></h2>
+          <h2>Documentação <FontAwesomeIcon icon={sections.documentacao ? faChevronDown : faChevronRight} /></h2>
           <div className={`section-content-detailsdoc ${sections.documentacao ? 'show' : ''}`}>Conteúdo da Documentação</div>
         </div>
 
         <div className="section-detailsdoc" onClick={() => toggleSection('assinatura')}>
-          <h2>Assinatura Aprovador <FontAwesomeIcon icon={sections.assinatura ? faChevronUp : faChevronDown} /></h2>
+          <h2>Assinatura Aprovador <FontAwesomeIcon icon={sections.assinatura ? faChevronDown : faChevronRight} /></h2>
           <div className={`section-content-detailsdoc ${sections.assinatura ? 'show' : ''}`}>Conteúdo da Assinatura Aprovador</div>
         </div>
 
