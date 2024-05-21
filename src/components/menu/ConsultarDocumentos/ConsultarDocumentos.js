@@ -23,6 +23,15 @@ function ConsultarDocumentos() {
     }
   };
 
+  const formatDate = (dateString) => {
+    const [day, month, year] = dateString.split('/');
+    const date = new Date(`${year}-${month}-${day}`);
+    const formattedDay = String(date.getDate()).padStart(2, '0');
+    const formattedMonth = String(date.getMonth() + 1).padStart(2, '0');
+    const formattedYear = date.getFullYear();
+    return `${formattedDay}${formattedMonth}${formattedYear}`;
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setShowSearch(false);
@@ -32,8 +41,8 @@ function ConsultarDocumentos() {
     const payload = {
       cod_estabel_ini: formData.get('codEstabelIni') || "1",
       cod_estabel_fim: formData.get('codEstabelFim') || "2",
-      dat_ini: formData.get('dataRecebimentoDe') || "01012024",
-      dat_fim: formData.get('dataRecebimentoAte') || "01122024",
+      dat_ini: formatDate(formData.get('dataRecebimentoDe')) || "01012024",
+      dat_fim: formatDate(formData.get('dataRecebimentoAte')) || "31122024",
       serie_docto_ini: formData.get('serieDe') || "",
       serie_docto_fim: formData.get('serieAte') || "ZZZZZ",
       nro_docto_ini: formData.get('documentoDe') || "",
@@ -42,7 +51,11 @@ function ConsultarDocumentos() {
       fornecedor_fim: formData.get('fornecedorAte') || 999999999,
     };
 
+    console.log("Payload enviado:", payload);
+
     const base64Credentials = sessionStorage.getItem("token");
+    console.log("Token de autenticação:", base64Credentials);
+    
     try {
       const response = await fetch(
         `http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/piGetDocumXML`,
@@ -61,9 +74,10 @@ function ConsultarDocumentos() {
       }
 
       const data = await response.json();
+      console.log("Dados recebidos:", data);
       setDocumentData(data);
     } catch (error) {
-      console.error(error);
+      console.error("Erro ao buscar documentos:", error);
     }
 
     navigate('/pesquisaConsultarDocumentos');
