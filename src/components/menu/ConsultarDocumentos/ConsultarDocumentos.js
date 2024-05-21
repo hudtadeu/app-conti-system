@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function ConsultarDocumentos() {
   const [showSearch, setShowSearch] = useState(true);
   const [showResults, setShowResults] = useState(false);
+  const [documentData, setDocumentData] = useState(null);
   const formRef = useRef(null);
   const navigate = useNavigate(); 
 
@@ -22,10 +23,48 @@ function ConsultarDocumentos() {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setShowSearch(false);
     setShowResults(true);
+
+    const formData = new FormData(formRef.current);
+    const payload = {
+      cod_estabel_ini: formData.get('codEstabelIni') || "10",
+      cod_estabel_fim: formData.get('codEstabelFim') || "10",
+      dat_ini: formData.get('dataRecebimentoDe') || "01012022",
+      dat_fim: formData.get('dataRecebimentoAte') || "01122024",
+      serie_docto_ini: formData.get('serieDe') || "",
+      serie_docto_fim: formData.get('serieAte') || "zzzzz",
+      nro_docto_ini: formData.get('documentoDe') || "",
+      nro_docto_fim: formData.get('documentoAte') || "ZZZZZZZZZZZZZZZZ",
+      fornecedor_ini: formData.get('fornecedorDe') || 0,
+      fornecedor_fim: formData.get('fornecedorAte') || 999999999
+    };
+
+    const base64Credentials = sessionStorage.getItem("token");
+    try {
+      const response = await fetch(
+        `http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/piGetDocumXML`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Basic ${base64Credentials}`,
+          },
+          body: JSON.stringify(payload)
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Erro ao buscar documentos");
+      }
+
+      const data = await response.json();
+      setDocumentData(data);
+    } catch (error) {
+      console.error(error);
+    }
     
     navigate('/pesquisaConsultarDocumentos');
   };
@@ -38,10 +77,10 @@ function ConsultarDocumentos() {
           <h3 className="title-consultarDocumentos">Pesquisar Documentos:</h3>
           <form ref={formRef} className="search-section-consultardocumentos" onKeyDown={handleKeyDown} onSubmit={handleSubmit}>
             <label>
-              Serie:
-              <input type="text" name="serieDe" />
+              Cod. Estabelecimento Inicial:
+              <input type="text" name="codEstabelIni" />
               até
-              <input type="text" name="serieAte" />
+              <input type="text" name="codEstabelFim" />
             </label>
             <br />
             <label>
@@ -66,6 +105,13 @@ function ConsultarDocumentos() {
             </label>
             <br />
             <label>
+              <span>Série Documento:</span>
+              <input type="text" name="serieDe" />
+              até
+              <input type="text" name="serieAte" />
+            </label>
+            <br />
+            <label>
               <span>Chave Documento:</span>
               <input type="text" name="chaveDocumentoDe" />
               até
@@ -77,7 +123,7 @@ function ConsultarDocumentos() {
         </div>
       )}
       {showResults && (
-        <PesquisaConsultarDocumentos />
+        <PesquisaConsultarDocumentos documentData={documentData} />
       )}
     </div>
   );

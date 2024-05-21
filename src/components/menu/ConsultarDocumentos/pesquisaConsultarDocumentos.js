@@ -1,54 +1,35 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './stylePesquisaConsultarDocumentos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import DetalhesConsultarDocumentos from './detalhesConsultarDocumentos';
 
-function PesquisaConsultarDocumentos() {
+function PesquisaConsultarDocumentos({ documentData }) {
+  const [selectedDocumento, setSelectedDocumento] = useState(null);
+  const [documentosAPI, setDocumentosAPI] = useState([]);
 
-  const documentos = [
-    {
-      fornecedor: 'Fornecedor 1',
-      documento: 'Documento 1',
-      serie: 'Série 1',
-      natureza_operacao: 'Natureza 1',
-      data_emissao: '01/03/2024',
-      status: 1
-    },
-    {
-      fornecedor: 'Fornecedor 2',
-      documento: 'Documento 2',
-      serie: 'Série 2',
-      natureza_operacao: 'Natureza 2',
-      data_emissao: '02/03/2024',
-      status: 2
-    },
-    {
-      fornecedor: 'Fornecedor 3',
-      documento: 'Documento 3',
-      serie: 'Série 3',
-      natureza_operacao: 'Natureza 3',
-      data_emissao: '03/03/2024',
-      status: 3
+  useEffect(() => {
+    if (documentData && documentData.items) {
+      setDocumentosAPI(documentData.items);
     }
-  ];
+  }, [documentData]);
 
-  const getStatusInfo = (status) => {
+  const getStatusInfo = (situacao) => {
     let statusText;
     let statusColor;
-    switch (status) {
-      case 1:
+    switch (situacao) {
+      case 'Pendente':
         statusText = 'Pendente';
-        statusColor = '#FFD700'; 
+        statusColor = '#FFD700';
         break;
-      case 2:
+      case 'Atualizado':
         statusText = 'Atualizado';
-        statusColor = '#008000'; 
+        statusColor = '#008000';
         break;
-      case 3:
+      case 'Cancelado':
         statusText = 'Cancelado';
-        statusColor = '#FF0000'; 
+        statusColor = '#FF0000';
         break;
       default:
         statusText = 'Status Desconhecido';
@@ -57,8 +38,6 @@ function PesquisaConsultarDocumentos() {
     }
     return { text: statusText, color: statusColor };
   };
-
-  const [selectedDocumento, setSelectedDocumento] = useState(null);
 
   const handleDocumentoClick = (documento) => {
     setSelectedDocumento(documento);
@@ -83,27 +62,27 @@ function PesquisaConsultarDocumentos() {
             </div>
           </div>
           <div className="lista-documentos-pcd">
-            {documentos.map((documento, index) => {
-              const statusInfo = getStatusInfo(documento.status);
+            {documentosAPI.map((documento, index) => {
+              const statusInfo = getStatusInfo(documento.situacao);
               return (
                 <div className="documento-item-pcd" key={index} onClick={() => handleDocumentoClick(documento)}>
                   <div className="documento-titulo-pcd">
-                    <p>{documento.documento.toUpperCase()}</p>
+                    <p>{documento.nro_docto.toUpperCase()}</p>
                   </div>
                   <div className="documento-detalhes-pcd">
                     <div className="documento-status-fornecedor-pcd">
                       <div className="status-container">
-                        <span className="status-circle" style={{ backgroundColor: statusInfo.color }}>{documento.status}</span>
+                        <span className="status-circle" style={{ backgroundColor: statusInfo.color }}></span>
                         <div className="status-description" style={{ backgroundColor: statusInfo.color }}>{statusInfo.text}</div>
                       </div>
-                      <p>{documento.fornecedor}</p>
+                      <p>{documento.forneced}</p>
                     </div>
                     <div className="documento-serie-natureza-pcd">
-                      <p><strong>Série:</strong> {documento.serie}</p>
-                      <p><strong>Natureza de Operação:</strong> {documento.natureza_operacao}</p>
+                      <p><strong>Série:</strong> {documento.serie_docto}</p>
+                      <p><strong>Natureza de Operação:</strong> {documento.tipo_doc}</p>
                     </div>
                     <div className="documento-data-pcd">
-                      <p><strong>Data de Emissão:</strong> {documento.data_emissao}</p>
+                      <p><strong>Data de Emissão:</strong> {documento.emissao}</p>
                     </div>
                     <div className="documento-acoes-pcd">
                       <div className="dropdown" title="Outras opções">
@@ -122,7 +101,9 @@ function PesquisaConsultarDocumentos() {
           </div>
         </div>
       )}
-      {selectedDocumento && <DetalhesConsultarDocumentos documento={selectedDocumento} getStatusInfo={getStatusInfo} />}
+      {selectedDocumento && (
+        <DetalhesConsultarDocumentos documento={selectedDocumento} />
+      )}
     </div>
   );
 }
