@@ -7,6 +7,7 @@ function ConsultarDocumentos() {
   const [showSearch, setShowSearch] = useState(true);
   const [showResults, setShowResults] = useState(false);
   const [documentData, setDocumentData] = useState(null);
+  const [error, setError] = useState('');
   const formRef = useRef(null);
   const navigate = useNavigate();
 
@@ -24,25 +25,28 @@ function ConsultarDocumentos() {
   };
 
   const formatDate = (dateString) => {
-    const [day, month, year] = dateString.split('/');
-    const date = new Date(`${year}-${month}-${day}`);
-    const formattedDay = String(date.getDate()).padStart(2, '0');
-    const formattedMonth = String(date.getMonth() + 1).padStart(2, '0');
-    const formattedYear = date.getFullYear();
-    return `${formattedDay}${formattedMonth}${formattedYear}`;
+    const [year, month, day] = dateString.split('-');
+    return `${day.padStart(2, '0')}${month.padStart(2, '0')}${year}`;
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setShowSearch(false);
-    setShowResults(true);
+    setError('');
 
     const formData = new FormData(formRef.current);
+    const dataRecebimentoDe = formData.get('dataRecebimentoDe');
+    const dataRecebimentoAte = formData.get('dataRecebimentoAte');
+
+    if (!dataRecebimentoDe || !dataRecebimentoAte) {
+      setError('Os campos de data de recebimento são obrigatórios.');
+      return;
+    }
+
     const payload = {
       cod_estabel_ini: formData.get('codEstabelIni') || "1",
       cod_estabel_fim: formData.get('codEstabelFim') || "2",
-      dat_ini: formatDate(formData.get('dataRecebimentoDe')) || "01012024",
-      dat_fim: formatDate(formData.get('dataRecebimentoAte')) || "31122024",
+      dat_ini: formatDate(dataRecebimentoDe),
+      dat_fim: formatDate(dataRecebimentoAte),
       serie_docto_ini: formData.get('serieDe') || "",
       serie_docto_fim: formData.get('serieAte') || "ZZZZZ",
       nro_docto_ini: formData.get('documentoDe') || "",
@@ -53,7 +57,7 @@ function ConsultarDocumentos() {
 
     console.log("Payload enviado:", payload);
     const base64Credentials = sessionStorage.getItem("token");
-    
+
     try {
       const response = await fetch(
         `http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/piGetDocumXML`,
@@ -75,11 +79,12 @@ function ConsultarDocumentos() {
       console.log("Dados recebidos:", data);
       if (data && data.items && data.items.length > 0) {
         setDocumentData(data.items);
-        navigate('/pesquisaConsultarDocumentos');
+        navigate('/pesquisaConsultarDocumentos', { state: { documentData: data.items } });
       } else {
-        console.error("Nenhum item encontrado na resposta.");
+        setError("Nenhum item encontrado na resposta.");
       }
     } catch (error) {
+      setError("Erro ao buscar documentos.");
       console.error("Erro ao buscar documentos:", error);
     }
   };
@@ -90,6 +95,7 @@ function ConsultarDocumentos() {
         <div className="container-consultardocumentos">
           <h2 className="consultarDocumentos">Consultar Documentos</h2>
           <h3 className="title-consultarDocumentos">Pesquisar Documentos:</h3>
+          {error && <p className="error-message">{error}</p>}
           <form ref={formRef} className="search-section-consultardocumentos" onKeyDown={handleKeyDown} onSubmit={handleSubmit}>
             <label>
               Cod. Estabelecimento:
@@ -114,9 +120,9 @@ function ConsultarDocumentos() {
             <br />
             <label>
               <span>Data de recebimento:</span>
-              <input type="date" name="dataRecebimentoDe" />
+              <input type="date" name="dataRecebimentoDe" required />
               até
-              <input type="date" name="dataRecebimentoAte" />
+              <input type="date" name="dataRecebimentoAte" required />
             </label>
             <br />
             <label>

@@ -3,15 +3,15 @@ import './stylePesquisaConsultarDocumentos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import DetalhesConsultarDocumentos from './detalhesConsultarDocumentos';
+import { useLocation } from 'react-router-dom';
 
-function PesquisaConsultarDocumentos({ documentData }) {
+function PesquisaConsultarDocumentos() {
+  const location = useLocation();
+  const { documentData } = location.state || { documentData: [] };
   const [selectedDocumento, setSelectedDocumento] = useState(null);
-  const [documentosAPI, setDocumentosAPI] = useState([]);
 
   useEffect(() => {
-    if (documentData && documentData.items) {
-      setDocumentosAPI(documentData.items);
-    }
+    console.log("Dados recebidos na nova tela:", documentData);
   }, [documentData]);
 
   const getStatusInfo = (situacao) => {
@@ -61,7 +61,7 @@ function PesquisaConsultarDocumentos({ documentData }) {
             </div>
           </div>
           <div className="lista-documentos-pcd">
-            {documentosAPI.map((documento, index) => {
+            {documentData.map((documento, index) => {
               const statusInfo = getStatusInfo(documento.situacao);
               return (
                 <div className="documento-item-pcd" key={index} onClick={() => handleDocumentoClick(documento)}>
