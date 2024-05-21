@@ -52,9 +52,7 @@ function ConsultarDocumentos() {
     };
 
     console.log("Payload enviado:", payload);
-
     const base64Credentials = sessionStorage.getItem("token");
-    console.log("Token de autenticação:", base64Credentials);
     
     try {
       const response = await fetch(
@@ -75,12 +73,15 @@ function ConsultarDocumentos() {
 
       const data = await response.json();
       console.log("Dados recebidos:", data);
-      setDocumentData(data);
+      if (data && data.items && data.items.length > 0) {
+        setDocumentData(data.items);
+        navigate('/pesquisaConsultarDocumentos');
+      } else {
+        console.error("Nenhum item encontrado na resposta.");
+      }
     } catch (error) {
       console.error("Erro ao buscar documentos:", error);
     }
-
-    navigate('/pesquisaConsultarDocumentos');
   };
 
   return (
