@@ -89,11 +89,12 @@
   padding: 10px 0;
   margin-bottom: 10px;
   transition: box-shadow 0.3s ease;
+  border-radius: 10px;
 }
 
 .documento-item-pcd:hover {
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Sombra mais forte */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 .documento-item-pcd:last-child {
@@ -115,6 +116,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   margin-left: 10px;
+  border-radius: 10px;
 }
 
 .documento-status-fornecedor-pcd {

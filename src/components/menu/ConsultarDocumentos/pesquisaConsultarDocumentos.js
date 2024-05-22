@@ -9,6 +9,7 @@ function PesquisaConsultarDocumentos() {
   const location = useLocation();
   const { documentData } = location.state || { documentData: [] };
   const [selectedDocumento, setSelectedDocumento] = useState(null);
+  const [selectedCId, setSelectedCId] = useState(null);
 
   useEffect(() => {
     console.log("Dados recebidos na nova tela:", documentData);
@@ -72,6 +73,7 @@ function PesquisaConsultarDocumentos() {
 
   const handleDocumentoClick = (documento) => {
     setSelectedDocumento(documento);
+    setSelectedCId(documento.cId);
   };
 
   return (
@@ -136,7 +138,7 @@ function PesquisaConsultarDocumentos() {
         </div>
       )}
       {selectedDocumento && (
-        <DetalhesConsultarDocumentos documento={selectedDocumento} />
+        <DetalhesConsultarDocumentos cId={selectedCId} documento={selectedDocumento} getStatusInfo={getStatusInfo} />
       )}
     </div>
   );
