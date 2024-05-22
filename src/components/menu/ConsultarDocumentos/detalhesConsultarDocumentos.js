@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import "./styleDetalhesConsultarDocumentos.css";
 
-function DetalhesConsultarDocumentos({ documento, getStatusInfo }) {
+function DetalhesConsultarDocumentos({ documento, getStatusInfo, cId }) {
   const [sections, setSections] = useState({
     manutencao: false,
     datas: false,
@@ -13,6 +13,22 @@ function DetalhesConsultarDocumentos({ documento, getStatusInfo }) {
   });
 
   const [activeButton, setActiveButton] = useState('');
+  const [documentoDetalhes, setDocumentoDetalhes] = useState(null);
+
+  useEffect(() => {
+    if (cId) {
+      const url = `http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/piGetDocumXML?pID=${cId}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          setDocumentoDetalhes(data);
+        })
+        .catch(error => {
+          console.error('Erro ao obter detalhes do documento:', error);
+        });
+    }
+  }, [cId]);
 
   const toggleSection = (section) => {
     setSections((prevSections) => ({
@@ -33,19 +49,19 @@ function DetalhesConsultarDocumentos({ documento, getStatusInfo }) {
           <h1 className="title-detailsdoc">Detalhes do Documento</h1>
           <div className="document-info-dcd">
             <div className="document-title-dcd" >
-              <p><strong>Documento:</strong> {documento.documento}</p>
+              <p><strong>Documento:</strong> {documento.nro_docto}</p>
               </div>
               <div className="document-details-dcd">
               <div>
-              <p><strong>Status:</strong> {getStatusInfo(documento.status).text}</p>
-              <p><strong>Fornecedor:</strong> {documento.fornecedor}</p>
+              <p><strong>Status:</strong> {getStatusInfo(documento.situacao).text}</p>
+              <p><strong>Fornecedor:</strong> {documento.forneced}</p>
             </div>
             <div>
-              <p><strong>Série:</strong> {documento.serie}</p>
-              <p><strong>Natureza de Operação:</strong> {documento.natureza_operacao}</p>
+              <p><strong>Série:</strong> {documento.serie_docto}</p>
+              <p><strong>Natureza de Operação:</strong> {documento.nat_operacao}</p>
             </div>
             <div>
-            <p><strong>Data de Emissão:</strong> {documento.data_emissao}</p>
+            <p><strong>Data de Emissão:</strong> {documento.emissao}</p>
             </div>
           </div>
           </div>

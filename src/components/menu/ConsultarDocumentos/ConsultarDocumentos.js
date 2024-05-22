@@ -8,11 +8,9 @@ function ConsultarDocumentos() {
   const [showResults, setShowResults] = useState(false);
   const [documentData, setDocumentData] = useState(null);
   const [error, setError] = useState('');
-  const [tipoDocumento, setTipoDocumento] = useState(99); 
   const formRef = useRef(null);
   const navigate = useNavigate();
 
- 
   useEffect(() => {
     const savedFormData = JSON.parse(localStorage.getItem('consultarDocumentosFormData'));
     if (savedFormData) {
@@ -23,8 +21,13 @@ function ConsultarDocumentos() {
           field.value = savedFormData[fieldName];
         }
       });
+    } else {
+      formRef.current.elements['tipoDocumento'].value = '';
     }
+  
+    formRef.current.elements['tipoDocumento'].value = '';
   }, []);
+  
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
@@ -51,9 +54,10 @@ function ConsultarDocumentos() {
     const formData = new FormData(formRef.current);
     const dataRecebimentoDe = formData.get('dataRecebimentoDe');
     const dataRecebimentoAte = formData.get('dataRecebimentoAte');
+    const selectedTipoDocumento = formData.get('tipoDocumento');
 
-    if (!dataRecebimentoDe || !dataRecebimentoAte) {
-      setError('Os campos de data de recebimento são obrigatórios.');
+    if (!selectedTipoDocumento || selectedTipoDocumento === '') {
+      setError('Por favor, selecione um tipo de documento.');
       return;
     }
 
@@ -68,7 +72,7 @@ function ConsultarDocumentos() {
       nro_docto_fim: formData.get('documentoAte') || "ZZZZZZZZZZZZZZZZ",
       fornecedor_ini: formData.get('fornecedorDe') || 0,
       fornecedor_fim: formData.get('fornecedorAte') || 999999999,
-      tipo_doc: tipoDocumento === 99 ? "" : tipoDocumento,
+      tipo_doc: selectedTipoDocumento,
     };
 
     console.log("Payload enviado:", payload);
@@ -105,6 +109,11 @@ function ConsultarDocumentos() {
       setError("Erro ao buscar documentos.");
       console.error("Erro ao buscar documentos:", error);
     }
+  };
+
+  const handleTipoDocumentoChange = (e) => {
+    setDocumentData(null); 
+    setError('');
   };
 
   return (
@@ -158,21 +167,22 @@ function ConsultarDocumentos() {
             </label>
             <br />
              <label>
-            <span>Tipo de Documento:</span>
-            <select
-              value={tipoDocumento}
-              onChange={(e) => setTipoDocumento(e.target.value)}
-              name="tipoDocumento"
-            >
-              <option value={99}>Todos</option>
-              <option value={1}>NF-e</option>
-              <option value={2}>CT-e</option>
-              <option value={3}>CT-e OS</option>
-              <option value={4}>NFS-e</option>
-              <option value={5}>NF3e</option>
-              <option value={6}>Diversos</option>
-            </select>
-          </label>
+              <span>Tipo de Documento:</span>
+              <select
+                onChange={handleTipoDocumentoChange}
+                name="tipoDocumento"
+                required 
+              >
+                <option value="">Selecione</option>
+                <option value="99">Todos</option>
+                <option value="1">NF-e</option>
+                <option value="2">CT-e</option>
+                <option value="3">CT-e OS</option>
+                <option value="4">NFS-e</option>
+                <option value="5">NF3e</option>
+                <option value="6">Diversos</option>
+              </select>
+            </label>
             <button type="submit" className="button-primary-consultardocumentos">Pesquisar</button>
           </form>
         </div>
