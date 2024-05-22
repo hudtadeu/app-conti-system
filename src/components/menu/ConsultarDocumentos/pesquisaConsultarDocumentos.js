@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './stylePesquisaConsultarDocumentos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import DetalhesConsultarDocumentos from './detalhesConsultarDocumentos';
+import DetalhesConsultarDocumentos from './DetalhesConsultarDocumentos';
 import { useLocation } from 'react-router-dom';
 
 function PesquisaConsultarDocumentos() {
@@ -38,6 +38,38 @@ function PesquisaConsultarDocumentos() {
     return { text: statusText, color: statusColor };
   };
 
+  const getTipoDocumentoInfo = (tipoDoc) => {
+    let tipoText;
+    let tipoColor;
+    switch (tipoDoc) {
+      case 'NF-e':
+        tipoText = 'NF-e';
+        tipoColor = '##32CD32';
+        break;
+      case 'CT-e':
+        tipoText = 'CT-e';
+        tipoColor = '#00BFFF';
+        break;
+      case 'CTe-OS':
+        tipoText = 'CTe-OS';
+        tipoColor = '#8A2BE2';
+        break;
+      case 'NFS-e':
+        tipoText = 'NFS-e';
+        tipoColor = '#FF8C00';
+        break;
+      case 'NF3e':
+        tipoText = 'NF3e';
+        tipoColor = '#FF1493';
+        break;
+      default:
+        tipoText = 'Diversos';
+        tipoColor = '#808080';
+        break;
+    }
+    return { text: tipoText, color: tipoColor };
+  };
+
   const handleDocumentoClick = (documento) => {
     setSelectedDocumento(documento);
   };
@@ -63,6 +95,7 @@ function PesquisaConsultarDocumentos() {
           <div className="lista-documentos-pcd">
             {documentData.map((documento, index) => {
               const statusInfo = getStatusInfo(documento.situacao);
+              const tipoDocumentoInfo = getTipoDocumentoInfo(documento.tipo_doc);
               return (
                 <div className="documento-item-pcd" key={index} onClick={() => handleDocumentoClick(documento)}>
                   <div className="documento-titulo-pcd">
@@ -71,14 +104,16 @@ function PesquisaConsultarDocumentos() {
                   <div className="documento-detalhes-pcd">
                     <div className="documento-status-fornecedor-pcd">
                       <div className="status-container">
-                        <span className="status-circle" style={{ backgroundColor: statusInfo.color }}></span>
                         <div className="status-description" style={{ backgroundColor: statusInfo.color }}>{statusInfo.text}</div>
+                      <div className="tipo-container">
+                        <div className="tipo-description" style={{ backgroundColor: tipoDocumentoInfo.color }}>{tipoDocumentoInfo.text}</div>
+                      </div>
                       </div>
                       <p>{documento.forneced}</p>
                     </div>
                     <div className="documento-serie-natureza-pcd">
                       <p><strong>Série:</strong> {documento.serie_docto}</p>
-                      <p><strong>Natureza de Operação:</strong> {documento.tipo_doc}</p>
+                      <p><strong>Natureza da Operação</strong> {documento.nat_operacao}</p>
                     </div>
                     <div className="documento-data-pcd">
                       <p><strong>Data de Emissão:</strong> {documento.emissao}</p>

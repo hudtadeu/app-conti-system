@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import PesquisaConsultarDocumentos from './pesquisaConsultarDocumentos';
+import React, { useState, useRef, useEffect } from 'react';
+import PesquisaConsultarDocumentos from './PesquisaConsultarDocumentos';
 import './styleConsultarDocumentos.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,8 +8,23 @@ function ConsultarDocumentos() {
   const [showResults, setShowResults] = useState(false);
   const [documentData, setDocumentData] = useState(null);
   const [error, setError] = useState('');
+  const [tipoDocumento, setTipoDocumento] = useState("Todos"); 
   const formRef = useRef(null);
   const navigate = useNavigate();
+
+ 
+  useEffect(() => {
+    const savedFormData = JSON.parse(localStorage.getItem('consultarDocumentosFormData'));
+    if (savedFormData) {
+      const form = formRef.current;
+      Object.keys(savedFormData).forEach((fieldName) => {
+        const field = form.elements[fieldName];
+        if (field) {
+          field.value = savedFormData[fieldName];
+        }
+      });
+    }
+  }, []);
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
@@ -53,6 +68,7 @@ function ConsultarDocumentos() {
       nro_docto_fim: formData.get('documentoAte') || "ZZZZZZZZZZZZZZZZ",
       fornecedor_ini: formData.get('fornecedorDe') || 0,
       fornecedor_fim: formData.get('fornecedorAte') || 999999999,
+      tipo_doc: tipoDocumento === "Todos" ? "" : tipoDocumento,
     };
 
     console.log("Payload enviado:", payload);
@@ -80,6 +96,8 @@ function ConsultarDocumentos() {
       if (data && data.items && data.items.length > 0) {
         setDocumentData(data.items);
         navigate('/pesquisaConsultarDocumentos', { state: { documentData: data.items } });
+
+        localStorage.setItem('consultarDocumentosFormData', JSON.stringify(Object.fromEntries(formData.entries())));
       } else {
         setError("Nenhum item encontrado na resposta.");
       }
@@ -139,6 +157,22 @@ function ConsultarDocumentos() {
               <input type="text" name="chaveDocumentoAte" />
             </label>
             <br />
+             <label>
+            <span>Tipo de Documento:</span>
+            <select
+              value={tipoDocumento}
+              onChange={(e) => setTipoDocumento(e.target.value)}
+              name="tipoDocumento"
+            >
+              <option value="Todos">Todos</option>
+              <option value="1">NF-e</option>
+              <option value="2">CT-e</option>
+              <option value="3">CT-e OS</option>
+              <option value="4">NFS-e</option>
+              <option value="5">NF3e</option>
+              <option value="6">Diversos</option>
+            </select>
+          </label>
             <button type="submit" className="button-primary-consultardocumentos">Pesquisar</button>
           </form>
         </div>

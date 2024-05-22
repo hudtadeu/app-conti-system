@@ -148,6 +148,13 @@
   background-color: #0098c9;
 }
 
+.tipo-description {
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #0098c9;
+}
+
 .documento-serie-natureza-pcd {
   flex: 2.7;
   margin-left: 10px;

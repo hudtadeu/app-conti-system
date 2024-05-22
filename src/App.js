@@ -6,8 +6,8 @@ import CadastroEventos from "./components/menu/CadastroEventos/CadastroEventos";
 import ConsultarDocumentos from "./components/menu/ConsultarDocumentos/ConsultarDocumentos";
 import Empresa from "./components/menu/empresa/Empresa";
 import Layout from "./components/Layout";
-import PesquisaConsultarDocumentos from "./components/menu/ConsultarDocumentos/pesquisaConsultarDocumentos";
-import DetalhesConsultarDocumentos from "./components/menu/ConsultarDocumentos/detalhesConsultarDocumentos";
+import PesquisaConsultarDocumentos from "./components/menu/ConsultarDocumentos/PesquisaConsultarDocumentos";
+import DetalhesConsultarDocumentos from "./components/menu/ConsultarDocumentos/DetalhesConsultarDocumentos";
 
 function App() {
   return (
