@@ -57,6 +57,14 @@ function App() {
                 </Layout>
               }
             />
+            <Route
+              path="detalhesConsultarDocumentos"
+              element={
+                <Layout>
+                  <DetalhesConsultarDocumentos />
+                </Layout>
+              }
+            />
             {/* Other routes */}
           </Routes>
         </main>

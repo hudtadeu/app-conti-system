@@ -147,6 +147,32 @@ strong {
   color: #0098c9;
 }
 
+.conteudoDetalhes {
+  text-align: left;
+}
+
+.conteudoDetalhes span {
+  color: #0098c9;
+  font-weight: bold;
+  margin-left: 200px;
+}
+
+.conteudoValores {
+  text-align: left;
+}
+
+.conteudoValoresB {
+  text-align: left;
+}
+
+.conteudoTransp {
+  text-align: left;
+}
+
+.conteudoNfe {
+  text-align: left;
+}
+
 
   
   

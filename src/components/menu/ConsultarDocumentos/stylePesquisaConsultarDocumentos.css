@@ -157,6 +157,11 @@
   background-color: #0098c9;
 }
 
+.title-forneced-pcd {
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .documento-serie-natureza-pcd {
   flex: 2.7;
   margin-left: 10px;
@@ -238,4 +243,9 @@
 
 .dropdown:hover .dropbtn {
   background-color: transparent;
+}
+
+#conteudoDetalhes {
+  display: none;
+  text-align: left; 
 }
