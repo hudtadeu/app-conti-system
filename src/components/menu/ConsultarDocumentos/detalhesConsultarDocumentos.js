@@ -109,14 +109,14 @@ function DetalhesConsultarDocumentos() {
             <p><strong>Estabelecimento:</strong> {documento.estabel}</p>
             <p><strong>Data da Transação:</strong> {documento.dt_trans}<span> Usuário Atualiza: {documento.usuario_atualiza}</span></p>
             <p><strong>Tipo de Documento:</strong> {documento.tipo_doc}</p>
-            <p><strong>Data de Importação:</strong> {documento.dt_importa}<span> Usuário de Importação: {documento.cod_usuario_importa}</span></p>
-            <p><strong>Data de Emissão:</strong> {documento.emissao}</p>
+            <p><strong>Data de Importação:</strong> {documento.dt_importa}<span> Usuário de Importação: {documento.cod_usuario_importa}</span>
+            <span><strong>Data de Emissão:</strong> {documento.emissao}</span></p>
             <p><strong>Chave do Documento:</strong> {documento.chave_documento}</p>
             <p><strong>Protocolo:</strong> {documento.protocolo}</p>
             <p><strong>Situação do Manifesto:</strong> {documento.situacao_manifesto}</p>
-            <p><strong>Protocolo Cancelamento:</strong> {documento.protocolo_cancel}</p>
-            <p><strong>Usuário Cancelamento:</strong> {documento.cod_usuario_cancel}</p>
-            <p><strong>Data de Cancelamento:</strong> {documento.dt_cancel_doc}</p>
+            <p><strong>Protocolo Cancelamento:</strong> {documento.protocolo_cancel}
+            <span><strong>Usuário Cancelamento:</strong> {documento.cod_usuario_cancel}
+            <span><strong>Data de Cancelamento:</strong> {documento.dt_cancel_doc}</span></span></p>
               </div>
               </div>
           </div>
@@ -125,23 +125,23 @@ function DetalhesConsultarDocumentos() {
           <div className="section-detailsdoc" onClick={() => toggleSection('valores')}>
             <h2>Valores  <FontAwesomeIcon icon={sections.valores ? faChevronDown : faChevronRight} /></h2>
             <div className={`section-content-detailsdoc ${sections.valores ? 'show' : ''}`}>
-              <p><strong>Valor Frete:</strong> {documento["valor-frete"]}</p>
-              <p><strong>Peso Total:</strong> {documento["tot-peso"]}</p>
-              <p><strong>Seguro:</strong> {documento["valor-seguro"]}</p>
-              <p><strong>Total Desconto:</strong> {documento["tot-desconto"]}</p>
-              <p><strong>Outras:</strong> {documento["valor-outras"]}</p>
-              <p><strong>Valor Tot Merc:</strong> {documento["valor-mercad"]}</p>
-              <p><strong>Base Cálculo ICMS:</strong> {documento["base-icm"]}</p>
-              <p><strong>Valor ICMS:</strong> {documento["valor-icms"]}</p>
-              <p><strong>Valor IPI:</strong> {documento["valor-ipi"]}</p>
-              <p><strong>Valor ISS:</strong> {documento["valor-iss"]}</p>
-              <p><strong>Base Subs. Trib:</strong> {documento["base-subs"]}</p>
-              <p><strong>Valor Subst Trib:</strong> {documento["vl-subs"]}</p>
+              <p><strong>Valor Frete:</strong> {documento["valor-frete"]}
+              <span><strong>Peso Total:</strong> {documento["tot-peso"]}</span></p>
+              <p><strong>Seguro:</strong> {documento["valor-seguro"]}
+              <span><strong>Total Desconto:</strong> {documento["tot-desconto"]}</span></p>
+              <p><strong>Outras:</strong> {documento["valor-outras"]}
+              <span><strong>Valor Tot Merc:</strong> {documento["valor-mercad"]}</span></p>
+              <p><strong>Base Cálculo ICMS:</strong> {documento["base-icm"]}
+              <span><strong>Valor ICMS:</strong> {documento["valor-icms"]}</span></p>
+              <p><strong>Valor IPI:</strong> {documento["valor-ipi"]}
+              <span><strong>Valor ISS:</strong> {documento["valor-iss"]}</span></p>
+              <p><strong>Base Subs. Trib:</strong> {documento["base-subs"]}
+              <span><strong>Valor Subst Trib:</strong> {documento["vl-subs"]}</span></p>
               <p><strong>Valor Total Nota:</strong> {documento["tot-valor"]}</p>
-              <p><strong>Peso Bruto:</strong> {documento["peso-bru"]}</p>
-              <p><strong>Quantidade:</strong> {documento["qt-volume"]}</p>
-              <p><strong>Peso Liq:</strong> {documento["peso-liq"]}</p>
-              <p><strong>Volume:</strong> {documento["volume"]}</p>
+              <p><strong>Peso Bruto:</strong> {documento["peso-bru"]}
+              <span><strong>Quantidade:</strong> {documento["qt-volume"]}</span></p>
+              <p><strong>Peso Liq:</strong> {documento["peso-liq"]}
+              <span><strong>Volume:</strong> {documento["volume"]}</span></p>
             </div>
           </div>
           </div>
@@ -164,7 +164,7 @@ function DetalhesConsultarDocumentos() {
               <p><strong>Valor COFINS Efetivo:</strong> {documento["vl-cofins-efet"]}</p>
               <p><strong>Valor PIS:</strong> {documento["vl-pis"]}</p>
               <p><strong>Valor PIS Efetivo:</strong> {documento["vl-pis-efet"]}</p>
-              <div><span>EC 87</span>
+              <div className='quadrante-ec'><span>EC 87</span>
               <p><strong>Valor Aprox  Trib:</strong> {documento[""]}</p>
               <p><strong>Valor ICMS Deson:</strong> {documento["vl-icms-deson"]}</p>
               <p><strong>Valor ICMS FCP Dest:</strong> {documento["vl-fcp-uf-dest"]}</p>
@@ -195,12 +195,12 @@ function DetalhesConsultarDocumentos() {
               <span><strong>UF 2:</strong> {documento[""]}</span></p>
               <p><strong>Placa 3:</strong> {documento[""]}
               <span><strong>UF 3:</strong> {documento[""]}</span></p>
-              <p><strong>Vale Transporte:</strong> {documento[""]}</p>
+              <p><strong>Via Transporte:</strong> {documento[""]}</p>
               <p><strong>Modalid. Frete:</strong> {documento["mod-frete"]}</p>
               <p><strong>Tipo CT-e:</strong> {documento[""]}</p>
               <p><strong>UF Orig/Dest(GIA-SP):</strong> {documento["uf-dest"]}</p>
-              <p><strong>Cód IBGE Munic Orig:</strong> {documento["municipio-entrega"]}</p>
-              <p><strong>Cód IBGE Munic Dest:</strong> {documento["municipio-retirada"]}</p>
+              <p><strong>Cód IBGE Munic Orig:</strong> {documento["municipio-entrega"]}
+              <p><strong>Cód IBGE Munic Dest:</strong> {documento["municipio-retirada"]}</p></p>
               </div>
           </div>
           </div>
