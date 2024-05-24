@@ -26,6 +26,11 @@
   margin-top: -30px;
 }
 
+.container-detailsdoc.blur {
+  filter: blur(5px);
+}
+
+
 .body-detailsdoc {
   position: relative;
   min-height: 100vh;

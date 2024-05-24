@@ -15,6 +15,7 @@ import {
   faTrash,
   faLongArrowAltDown,
   faLongArrowAltUp,
+  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 import VisualizarModal from "./VisualizarModal";
 import NewUserModal from "./NewUserModal";
@@ -28,6 +29,7 @@ function CadastroUsuarios() {
   const [isViewModalOpen, setViewModalOpen] = useState(false);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const fetchUsers = useCallback(() => {
     const base64Credentials = sessionStorage.getItem("token");
@@ -75,20 +77,27 @@ function CadastroUsuarios() {
   }, [searchTerm, users]);
 
   const toggleNewUserModal = () => {
+    setLoading(true);
     setShowNewUserModal(!showNewUserModal);
+    setLoading(false);
   };
 
   const openViewModal = (user) => {
+    setLoading(true);
     setSelectedUser(user);
     setViewModalOpen(true);
+    setLoading(false);
   };
 
   const openEditModal = (user) => {
+    setLoading(true);
     setSelectedUser(user);
     setEditModalOpen(true);
+    setLoading(false);
   };
 
   const deleteUser = async (user) => {
+    setLoading(true);
     const base64Credentials = sessionStorage.getItem("token");
     try {
       const response = await fetch(
@@ -110,10 +119,13 @@ function CadastroUsuarios() {
       );
     } catch (error) {
       console.error("Erro ao excluir usuário:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const updateUser = async (updatedUser) => {
+    setLoading(true);
     const base64Credentials = sessionStorage.getItem("token");
     try {
       const response = await fetch(
@@ -142,24 +154,50 @@ function CadastroUsuarios() {
       setEditModalOpen(false);
     } catch (error) {
       console.error("Erro ao atualizar usuário:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const addNewUser = (newUser) => {
+    setLoading(true);
     setUsers((prevUsers) => [...prevUsers, newUser]);
+    setLoading(false);
+  };
+
+  const handleDuplicateUser = (user) => {
+    setLoading(true);
+    const newUserCode = `${user['cod-usuario']}${Date.now()}`;
+    const newUser = { ...user, "cod-usuario": newUserCode };
+    addNewUser(newUser);
+    setLoading(false);
   };
 
   const handleSearch = (term) => {
     setSearchTerm(term);
   };
 
+  const handleExport = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000); 
+  };
+
   return (
     <div className="body-usuario">
-      <div className="container-usuario">
+      {loading && (
+        <div className="overlay-cadastro-usuarios">
+          <div className="loading-container-usuarios">
+            <FontAwesomeIcon icon={faSpinner} spin size="3x" />
+          </div>
+        </div>
+      )}
+      <div className={`container-usuario ${loading ? 'blur' : ''}`}>
         <h1 className="cadastroUsuario">Cadastro de Usuários</h1>
         <br />
         <SearchComponent toggleModal={toggleNewUserModal} onSearch={handleSearch} />
-        <UserTable users={filteredUsers} openViewModal={openViewModal} openEditModal={openEditModal} deleteUser={deleteUser} addNewUser={addNewUser} />
+        <UserTable users={filteredUsers} openViewModal={openViewModal} openEditModal={openEditModal} deleteUser={deleteUser} handleDuplicateUser={handleDuplicateUser} handleExport={handleExport} />
         {showNewUserModal && <NewUserModal toggleModal={toggleNewUserModal} addNewUser={addNewUser} />}
         {isViewModalOpen && (
           <VisualizarModal
@@ -211,7 +249,7 @@ function SearchComponent({ toggleModal, onSearch }) {
   );
 }
 
-function UserTable({ users, openViewModal, openEditModal, deleteUser, addNewUser }) {
+function UserTable({ users, openViewModal, openEditModal, deleteUser, handleDuplicateUser, handleExport }) {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
 
   const toggleDropdown = (index) => {
@@ -220,12 +258,6 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser, addNewUser
     } else {
       setDropdownOpenIndex(index);
     }
-  };
-
-  const handleDuplicateUser = (user) => {
-    const newUserCode = `${user['cod-usuario']} ${Date.now()}`;
-    const newUser = { ...user, "cod-usuario": newUserCode };
-    addNewUser(newUser);
   };
 
   return (
@@ -348,7 +380,7 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser, addNewUser
                         />
                         Duplicar
                       </a>
-                      <a className="dropdown-item-user" href="#">
+                      <a className="dropdown-item-user" href="#" onClick={(e) => { e.preventDefault(); handleExport(); }}>
                         <FontAwesomeIcon
                           icon={faFileExport}
                           className="icon-option-user"

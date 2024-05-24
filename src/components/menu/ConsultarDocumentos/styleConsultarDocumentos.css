@@ -13,6 +13,10 @@
   height: 90vh;
 }
 
+.container-consultardocumentos.blur {
+  filter: blur(5px);
+}
+
 .body-consultardocumentos {
   position: relative;
   min-height: 100vh;
@@ -48,6 +52,7 @@
     font-size: 13px;
     margin-top: -50px;
 }
+
 
 .consultarDocumentos {
     text-align: center;

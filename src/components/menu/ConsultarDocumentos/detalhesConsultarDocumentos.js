@@ -93,7 +93,7 @@ function DetalhesConsultarDocumentos() {
   const tipoDocumentoInfo = getTipoDocumentoInfo(documento.tipo_doc);
   return (
     <div className="body-detailsdoc">
-      <div className="container-detailsdoc">
+      <div className={`container-detailsdoc ${loading ? 'blur' : ''}`}>
         <div className="selected-documento-details">
           <h1 className="title-detailsdoc">Detalhes do Documento</h1>
           <div className="document-info-dcd">

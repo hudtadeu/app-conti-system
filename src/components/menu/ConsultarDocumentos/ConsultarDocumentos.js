@@ -125,7 +125,7 @@ function ConsultarDocumentos() {
   return (
     <div className="body-consultardocumentos">
       {showSearch && (
-        <div className="container-consultardocumentos">
+        <div className={`container-consultardocumentos ${loading ? 'blur' : ''}`}>
           <h2 className="consultarDocumentos">Consultar Documentos</h2>
           <h3 className="title-consultarDocumentos">Pesquisar Documentos:</h3>
           {error && <p className="error-message">{error}</p>}
