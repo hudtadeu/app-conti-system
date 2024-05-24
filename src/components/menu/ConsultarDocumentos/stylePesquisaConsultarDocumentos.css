@@ -11,7 +11,6 @@
   margin: 0;
   padding: 0;
   height: 90vh;
-
 }
 
 .container-pesquisaConsultarDocumentos {
@@ -250,4 +249,66 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+@media screen and (max-width: 768px) {
+  .container-pesquisaConsultarDocumentos {
+    margin: 0 20px;
+    padding: 10px;
+  }
+
+  .title-pesquisaConsultarDocumentos {
+    font-size: 28px;
+  }
+
+  .controls-container-pesquisaConsultarDocumentos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-container-pcd {
+    justify-content: center;
+  }
+
+  .search-input-pcd,
+  .button-search-pcd {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .button-primary-pcd {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .documento-detalhes-pcd {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .documento-serie-natureza-pcd,
+  .documento-data-pcd,
+  .documento-acoes-pcd {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .title-pesquisaConsultarDocumentos {
+    font-size: 24px;
+  }
+
+  .documento-titulo-pcd {
+    font-size: 16px;
+  }
+
+  .documento-detalhes-pcd p {
+    font-size: 12px;
+  }
+
+  .button-primary-pcd,
+  .button-secondary-pcd {
+    font-size: 12px;
+  }
 }

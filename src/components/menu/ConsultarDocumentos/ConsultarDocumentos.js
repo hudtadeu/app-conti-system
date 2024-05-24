@@ -27,10 +27,10 @@ function ConsultarDocumentos() {
     } else {
       formRef.current.elements['tipoDocumento'].value = '';
     }
-  
+
     formRef.current.elements['tipoDocumento'].value = '';
   }, []);
-  
+
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();

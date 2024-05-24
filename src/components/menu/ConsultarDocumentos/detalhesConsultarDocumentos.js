@@ -105,23 +105,23 @@ function DetalhesConsultarDocumentos() {
             <div className="document-title-dcd">
               <p> {documento.nro_docto}</p>
             </div>
-            <div className="documento-detalhes-pcd">
-                  <div className="documento-status-fornecedor-pcd">
-                    <div className="status-container">
-                      <div className="status-description" style={{ backgroundColor: statusInfo.color }}>{statusInfo.text}</div>
-                      <div className="tipo-container">
-                        <div className="tipo-description" style={{ backgroundColor: tipoDocumentoInfo.color }}>{tipoDocumentoInfo.text}</div>
-                      </div>
-                    </div>
-                    <p className='title-forneced-pcd'>{documento.forneced}</p>
+            <div className="document-details-dcd">
+              <div className="documento-status-fornecedor-pcd">
+                <div className="status-container">
+                  <div className="status-description" style={{ backgroundColor: statusInfo.color }}>{statusInfo.text}</div>
+                  <div className="tipo-container">
+                    <div className="tipo-description" style={{ backgroundColor: tipoDocumentoInfo.color }}>{tipoDocumentoInfo.text}</div>
                   </div>
-                  <div className="documento-serie-natureza-pcd">
-                    <p><strong>Série:</strong> {documento.serie_docto}</p>
-                    <p><strong>Natureza da Operação:</strong> {documento.nat_operacao}</p>
-                  </div>
-                  <div className="documento-data-pcd">
-                    <p><strong>Data de Emissão:</strong> {formatDate(documento.emissao)}</p>
-                  </div>
+                </div>
+                <p className='title-forneced-pcd'>{documento.forneced}</p>
+              </div>
+              <div className="documento-serie-natureza-pcd">
+                <p><strong>Série:</strong> {documento.serie_docto}</p>
+                <p><strong>Natureza da Operação:</strong> {documento.nat_operacao}</p>
+              </div>
+              <div className="documento-data-pcd">
+                <p><strong>Data de Emissão:</strong> {formatDate(documento.emissao)}</p>
+              </div>
             </div>
           </div>
           

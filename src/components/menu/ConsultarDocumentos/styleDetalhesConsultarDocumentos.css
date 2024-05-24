@@ -30,7 +30,6 @@
   filter: blur(5px);
 }
 
-
 .body-detailsdoc {
   position: relative;
   min-height: 100vh;
@@ -158,8 +157,8 @@
 }
 
 .document-details-dcd {
-  display: flex; 
-  justify-content: center; 
+  display: flex;
+  justify-content: center;
   align-items: center;
   gap: 100px;
   width: 100%;
@@ -168,22 +167,20 @@
 .document-title-dcd {
   text-align: left;
   font-size: 20px;
-  : #0098c9;
+  color: #0098c9;
   font-weight: bold;
 }
-
 
 strong {
   font-weight: bold;
   color: #0098c9;
-  font-size: 
 }
 
 .conteudoDetalhes {
   text-align: left;
 }
 
-.conteudoDetalhes p{
+.conteudoDetalhes p {
   font-size: 12px;
 }
 
@@ -196,6 +193,7 @@ strong {
 .conteudoValores {
   text-align: left;
 }
+
 .conteudoValoresB {
   display: flex;
   flex-wrap: wrap;
@@ -214,11 +212,6 @@ strong {
   margin: 0;
 }
 
-
-.conteudoValoresB {
-  text-align: left;
-}
-
 .conteudoValoresB p {
   font-size: 12px;
 }
@@ -231,7 +224,6 @@ strong {
   font-size: 12px;
 }
 
-
 .conteudoNfe {
   text-align: left;
 }
@@ -243,7 +235,6 @@ strong {
 .title-conteudo-details {
   font-size: 25px;
 }
-
 
 .quadrante-ec {
   flex: 1 1 100%;
@@ -262,35 +253,64 @@ strong {
   margin-bottom: 10px;
 }
 
-
-.section-detailsdoc h2 {
-  font-size: 14px;
-  margin: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.section-content-detailsdoc {
-  display: none;
-  margin-top: 10px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  text-align: left;
-}
-
-.section-content-detailsdoc.show {
-  display: block
-
-}
-
 .status-conteudo-forneced {
   display: inline;
 }
 
-  
-  
-  
+@media screen and (max-width: 768px) {
+  .container-detailsdoc {
+    margin: 0 20px;
+    padding: 10px;
+  }
+
+  .title-detailsdoc {
+    font-size: 28px;
+  }
+
+  .document-details-dcd {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .document-title-dcd {
+    text-align: center;
+    width: 100%;
+  }
+
+  .conteudoDetalhes span {
+    margin-left: 0;
+  }
+
+  .button-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button-bar button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .title-detailsdoc {
+    font-size: 24px;
+  }
+
+  .section-detailsdoc h2 {
+    font-size: 14px;
+  }
+
+  .section-content-detailsdoc {
+    font-size: 12px;
+  }
+
+  .document-title-dcd {
+    font-size: 18px;
+  }
+
+  .button-bar button {
+    font-size: 12px;
+  }
+}
