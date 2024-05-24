@@ -77,8 +77,8 @@ function DetalhesConsultarDocumentos() {
 
   if (loading) {
     return (
-      <div className="overlay">
-      <div className="loading-container">
+      <div className="overlay-dc">
+      <div className="loading-container-dc">
         <FontAwesomeIcon icon={faSpinner} spin size="3x" />
         </div>
       </div>

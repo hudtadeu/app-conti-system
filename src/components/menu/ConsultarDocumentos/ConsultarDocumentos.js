@@ -24,7 +24,11 @@ function ConsultarDocumentos() {
           field.value = savedFormData[fieldName];
         }
       });
+    } else {
+      formRef.current.elements['tipoDocumento'].value = '';
     }
+  
+    formRef.current.elements['tipoDocumento'].value = '';
   }, []);
   
   const handleKeyDown = (event) => {
@@ -190,8 +194,8 @@ function ConsultarDocumentos() {
         </div>
       )}
       {loading && (
-        <div className="overlay">
-          <div className="loading-container">
+        <div className="overlay-cd">
+          <div className="loading-container-cd">
             <FontAwesomeIcon icon={faSpinner} spin size="3x" />
           </div>
         </div>

@@ -6,6 +6,7 @@ import {
   faPencilAlt,
   faTrash,
   faSearch,
+  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 import DetalhesModal from "./detalhesModal";
 import EditEmpresaModal from "./EditEmpresaModal";
@@ -18,6 +19,8 @@ function Empresa() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [empresaEditando, setEmpresaEditando] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [overlayVisible, setOverlayVisible] = useState(false);
   const apiUrl =
     "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa";
 
@@ -77,6 +80,7 @@ function Empresa() {
   };
 
   const detalharModal = (epCodigo) => {
+    setOverlayVisible(true);
     const urlDetalhar = `${apiUrl}/?ep-codigo=${epCodigo}`;
     fetch(urlDetalhar, {
       method: "GET",
@@ -92,7 +96,10 @@ function Empresa() {
       })
       .catch((error) =>
         console.error("Erro ao carregar detalhes da empresa:", error)
-      );
+      )
+      .finally(() => {
+        setOverlayVisible(false);
+      });
   };
 
   const openEditModal = (empresa) => {
@@ -105,9 +112,10 @@ function Empresa() {
     setEditModalOpen(false);
   };
 
-  function editarEmpresa(empresa) {
+  const editarEmpresa = (empresa) => {
+    setOverlayVisible(true);
     const urlEditar = `${apiUrl}/${empresa.cod_estabel}`;
-  
+
     const dadosAtualizados = {
       cod_estabel: empresa.cod_estabel,
       cgc: empresa.cgc,
@@ -115,7 +123,7 @@ function Empresa() {
       inscr_estad: empresa.inscr_estad,
       razao_social: empresa.razao_social,
     };
-  
+
     fetch(urlEditar, {
       method: "PUT",
       headers: {
@@ -145,12 +153,14 @@ function Empresa() {
       })
       .catch((error) => {
         console.error("Erro ao editar empresa:", error);
+      })
+      .finally(() => {
+        setOverlayVisible(false);
       });
-  }
-  
+  };
 
-  function excluirEmpresa(epCodigo) {
-    console.log("Código: ", epCodigo);
+  const excluirEmpresa = (epCodigo) => {
+    setOverlayVisible(true);
     const urlExcluir = `${apiUrl}/?ep-codigo=${epCodigo}`;
 
     fetch(urlExcluir, {
@@ -174,23 +184,33 @@ function Empresa() {
       })
       .catch((error) => {
         console.error("Erro ao excluir empresa:", error);
+      })
+      .finally(() => {
+        setOverlayVisible(false);
       });
-  }
+  };
 
   return (
     <div className="body-empresa">
-      <div className="container-empresa">
+      {overlayVisible && (
+        <div className="overlay visible">
+          <div className="loading-container">
+            <FontAwesomeIcon icon={faSpinner} spin size="3x" />
+          </div>
+        </div>
+      )}
+      <div className={`container-empresa ${overlayVisible ? 'blur' : ''}`}>
         <h1 className="title-empresa">Empresa</h1>
         <div className="controls-container">
           <button
             className="btn btn-primary-empresa"
-            onClick={() => console.log("Abrindo modal para nova empresa")}
+            onClick={() => setOverlayVisible(true)}
           >
             Nova Empresa
           </button>
           <button
             className="btn btn-outline-primary-empresa"
-            onClick={() => console.log("Mostrando opções")}
+            onClick={() => setOverlayVisible(true)}
           >
             Outras Opções
           </button>
@@ -240,13 +260,10 @@ function Empresa() {
                       <button
                         type="button"
                         className="btn btn-warning-options"
-                        onClick={() => openEditModal(empresa)}  
+                        onClick={() => openEditModal(empresa)}
                         title="Editar"
                       >
-                        <FontAwesomeIcon
-                          icon={faPencilAlt}
-                          className="icon-small"
-                        />
+                        <FontAwesomeIcon icon={faPencilAlt} className="icon-small" />
                       </button>
                       <button
                         type="button"
@@ -254,10 +271,7 @@ function Empresa() {
                         onClick={() => excluirEmpresa(empresa["cod-estabel"])}
                         title="Excluir"
                       >
-                        <FontAwesomeIcon
-                          icon={faTrash}
-                          className="icon-small"
-                        />
+                        <FontAwesomeIcon icon={faTrash} className="icon-small" />
                       </button>
                     </div>
                   </td>

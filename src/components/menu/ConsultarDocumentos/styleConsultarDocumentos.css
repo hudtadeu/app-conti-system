@@ -18,7 +18,7 @@
   min-height: 100vh;
 }
 
-.overlay {
+.overlay-cd {
   position: fixed;
   top: 0;
   left: 0;
@@ -31,12 +31,11 @@
   z-index: 1000;
 }
 
-.loading-container {
+.loading-container-cd {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 
 .container-consultardocumentos {
     background-color: #ebecee;
