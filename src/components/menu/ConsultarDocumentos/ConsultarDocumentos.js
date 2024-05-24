@@ -2,12 +2,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import PesquisaConsultarDocumentos from './PesquisaConsultarDocumentos';
 import './styleConsultarDocumentos.css';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 function ConsultarDocumentos() {
   const [showSearch, setShowSearch] = useState(true);
   const [showResults, setShowResults] = useState(false);
   const [documentData, setDocumentData] = useState(null);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const formRef = useRef(null);
   const navigate = useNavigate();
 
@@ -21,14 +24,9 @@ function ConsultarDocumentos() {
           field.value = savedFormData[fieldName];
         }
       });
-    } else {
-      formRef.current.elements['tipoDocumento'].value = '';
     }
-  
-    formRef.current.elements['tipoDocumento'].value = '';
   }, []);
   
-
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
@@ -50,6 +48,7 @@ function ConsultarDocumentos() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError('');
+    setLoading(true);
 
     const formData = new FormData(formRef.current);
     const dataRecebimentoDe = formData.get('dataRecebimentoDe');
@@ -58,6 +57,7 @@ function ConsultarDocumentos() {
 
     if (!selectedTipoDocumento || selectedTipoDocumento === '') {
       setError('Por favor, selecione um tipo de documento.');
+      setLoading(false);
       return;
     }
 
@@ -108,6 +108,8 @@ function ConsultarDocumentos() {
     } catch (error) {
       setError("Erro ao buscar documentos.");
       console.error("Erro ao buscar documentos:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -185,6 +187,13 @@ function ConsultarDocumentos() {
             </label>
             <button type="submit" className="button-primary-consultardocumentos">Pesquisar</button>
           </form>
+        </div>
+      )}
+      {loading && (
+        <div className="overlay">
+          <div className="loading-container">
+            <FontAwesomeIcon icon={faSpinner} spin size="3x" />
+          </div>
         </div>
       )}
       {showResults && (

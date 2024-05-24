@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faChevronRight, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
 import "./styleDetalhesConsultarDocumentos.css";
 import { getStatusInfo, getTipoDocumentoInfo } from '../../utils';
@@ -9,6 +9,7 @@ function DetalhesConsultarDocumentos() {
   const location = useLocation();
   const { cId } = location.state;
   const [documento, setDocumento] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [sections, setSections] = useState({
     detalhes: false,
     valores: false,
@@ -46,6 +47,8 @@ function DetalhesConsultarDocumentos() {
         }
       } catch (error) {
         console.error('Erro ao buscar detalhes do documento:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -72,9 +75,20 @@ function DetalhesConsultarDocumentos() {
     setActiveButton(prevButton => (prevButton === button ? '' : button));
   };
 
-  if (!documento) {
-    return <div>Carregando...</div>;
+  if (loading) {
+    return (
+      <div className="overlay">
+      <div className="loading-container">
+        <FontAwesomeIcon icon={faSpinner} spin size="3x" />
+        </div>
+      </div>
+    );
   }
+
+  if (!documento) {
+    return <div>Documento não encontrado</div>;
+  }
+
   const statusInfo = getStatusInfo(documento.situacao);
   const tipoDocumentoInfo = getTipoDocumentoInfo(documento.tipo_doc);
   return (
