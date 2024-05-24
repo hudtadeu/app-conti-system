@@ -64,6 +64,11 @@ function DetalhesConsultarDocumentos() {
     return `${day < 10 ? '0' + day : day}-${month < 10 ? '0' + month : month}-${year}`;
   };
 
+  const formatKey = (key) => {
+    if (!key) return '';
+    return `${key.slice(0, 2)}.${key.slice(2, 6)}.${key.slice(6, 8)}.${key.slice(8, 11)}.${key.slice(11, 14)}/${key.slice(14, 18)}-${key.slice(18, 20)}-${key.slice(20, 22)}-${key.slice(22, 25)}.${key.slice(25, 34)}-${key.slice(34, 43)}-${key.slice(43, 45)}`;
+  };
+
   const toggleSection = (section) => {
     setSections((prevSections) => ({
       ...prevSections,
@@ -132,7 +137,7 @@ function DetalhesConsultarDocumentos() {
               <p><strong>Tipo de Documento:</strong> {documento.tipo_doc}</p>
               <p><strong>Data de Importação:</strong> {documento.dt_importa}<span> Usuário de Importação: {documento.cod_usuario_importa}</span></p>
               <p><strong>Data de Emissão:</strong> {documento.emissao}</p>
-              <p><strong>Chave do Documento:</strong> {documento.chave_documento}</p>
+              <p><strong>Chave do Documento:</strong> {formatKey(documento.chave_documento)}</p>
               <p><strong>Protocolo:</strong> {documento.protocolo}</p>
               <p><strong>Situação do Manifesto:</strong> {documento.situacao_manifesto}</p>
               <p><strong>Protocolo Cancelamento:</strong> {documento.protocolo_cancel}
