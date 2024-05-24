@@ -64,13 +64,17 @@
     top: -17px;
     right: -10px;
     cursor: pointer;
-    padding: 0px 5px 0px 5px;
+    padding: 0px 5px;
     color: #211915;
     border-radius: 3px;
     background-color: transparent;
-    font-size: 25px;
+    font-size: 20px;
     transition: background-color 0.3s, color 0.3s;
     border: #fff;
+  }
+
+  .close-button-newuser:hover {
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
   }
 
   .button-title-newuser {

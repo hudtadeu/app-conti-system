@@ -44,16 +44,20 @@
   
   .close-button-search-establishment {
     position: absolute;
-    top: 1px;
-    right: 5px;
+    top: 3px;
+    right: 6px;
     cursor: pointer;
-    padding: 0px 5px 0px 5px;
+    padding: 0px 5px;
     color: #211915;
     border-radius: 3px;
     background-color: transparent;
-    font-size: 25px;
+    font-size: 20px;
     transition: background-color 0.3s, color 0.3s;
     border: #fff;
+  }
+
+  .close-button-search-establishment:hover {
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
   }
   
   .modal-body-search-establishment {

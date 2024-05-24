@@ -59,20 +59,25 @@
     margin: 15px 15px;
 
   }
+
   .close-button-edituser {
     position: absolute;
-    top: -7px;
+    top: -5px;
     right: -3px;
     cursor: pointer;
-    padding: 0px 5px 0px 5px;
+    padding: 0px 5px;
     color: #211915;
     border-radius: 3px;
     background-color: transparent;
-    font-size: 25px;
+    font-size: 19px;
     transition: background-color 0.3s, color 0.3s;
     border: #fff;
   }
   
+  .close-button-edituser:hover {
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  }
+
   .button-title-edituser {
     display: flex;
     align-items: center;
