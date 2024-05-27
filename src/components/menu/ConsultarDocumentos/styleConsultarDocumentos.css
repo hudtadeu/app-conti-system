@@ -1,9 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
-
-* {
-  font-family: "Poppins", sans-serif;
-}
-
 .body-consultardocumentos {
   background-image: url("/public/fundo-form-conti.png");
   background-size: cover;
@@ -15,11 +9,6 @@
 
 .container-consultardocumentos.blur {
   filter: blur(5px);
-}
-
-.body-consultardocumentos {
-  position: relative;
-  min-height: 100vh;
 }
 
 .overlay-cd {
@@ -47,9 +36,12 @@
   padding: 10px;
   border-radius: 0px 0px 7px 7px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-  margin: 0 100px;
+  margin-left: 50px;
+  margin-right: 50px;
   font-size: 13px;
-  margin-top: -50px;
+  overflow-x: auto;
+  max-width: 800px;
+  margin: -30px auto; 
 }
 
 .consultarDocumentos {
@@ -91,25 +83,33 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  align-items: flex-start;
-  margin: 0 10px;
+  align-items: flex-end; 
+  margin: 0 auto;
+  width: 80%;
 }
 
 .search-section-consultardocumentos label {
   margin-bottom: 10px;
   color: #211915;
-  align-items: center;
-  padding-left: 100px;
   font-weight: bold;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  text-align: center;
 }
 
 .search-section-consultardocumentos input[type="text"],
-.search-section-consultardocumentos input[type="date"] {
+.search-section-consultardocumentos input[type="date"],
+.search-section-consultardocumentos select {
   padding: 3px;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-right: 5px;
   margin-left: 5px;
+  text-align: right; 
+  flex: 1;
+  text-align: center;
+  width: 50px;
 }
 
 @media screen and (max-width: 768px) {
@@ -136,7 +136,8 @@
   }
 
   .search-section-consultardocumentos input[type="text"],
-  .search-section-consultardocumentos input[type="date"] {
+  .search-section-consultardocumentos input[type="date"],
+  .search-section-consultardocumentos select {
     width: 100%;
     margin: 5px 0;
   }

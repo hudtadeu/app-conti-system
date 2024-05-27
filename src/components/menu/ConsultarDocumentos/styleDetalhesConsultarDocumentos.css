@@ -339,3 +339,11 @@ strong {
 .documento-data-pcd {
   margin-left: -50px;
 }
+
+.search-section-consultardocumentos {
+
+display: flex; 
+flex-direction: column; 
+align-items: felx-start; 
+justify-content: center; 
+}
