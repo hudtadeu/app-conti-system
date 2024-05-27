@@ -71,7 +71,7 @@
 }
 
 .section-detailsdoc {
-  margin-top: 20px;
+  margin-top: 10px;
   border-top: 1px solid #e0e0e0;
   padding-top: 10px;
   transition: all 0.3s ease;
@@ -82,11 +82,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 15px;
-  color: #333333;
+  font-size: 14px;
+  color: #333;
   cursor: pointer;
   margin: 0;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .section-detailsdoc h2:hover {
@@ -94,7 +94,7 @@
 }
 
 .section-content-detailsdoc {
-  margin-top: 10px;
+  margin-top: 5px;
   padding: 10px;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
@@ -103,6 +103,21 @@
   color: #666666;
   display: none;
   text-align: left;
+}
+
+.section-content-detailsdoc strong {
+  color: #333;
+  margin-left: 8px;
+}
+
+.section-content-detailsdoc p {
+  margin: 8px 0;
+  line-height: 1.6;
+  padding: 5px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
 }
 
 .section-content-detailsdoc.show {
@@ -315,4 +330,12 @@ strong {
   .button-bar button {
     font-size: 12px;
   }
+}
+
+.documento-serie-natureza-pcd {
+  margin-left: -50px;
+}
+
+.documento-data-pcd {
+  margin-left: -50px;
 }

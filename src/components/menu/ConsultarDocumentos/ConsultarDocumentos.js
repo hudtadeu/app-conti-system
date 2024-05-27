@@ -6,8 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 function ConsultarDocumentos() {
-  const [showSearch, setShowSearch] = useState(true);
-  const [showResults, setShowResults] = useState(false);
+  const [showSearch] = useState(true);
+  const [showResults] = useState(false);
   const [documentData, setDocumentData] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);

@@ -133,12 +133,12 @@ function DetalhesConsultarDocumentos() {
               <p><strong>Natureza da Operação:</strong> {documento.nat_operacao}</p>
               <p><strong>Observação:</strong> {documento.cod_observa}</p>
               <p><strong>Estabelecimento:</strong> {documento.estabel}</p>
-              <p><strong>Data da Transação:</strong> {documento.dt_trans}<span> Usuário Atualiza: {documento.usuario_atualiza}</span></p>
-              <p><strong>Tipo de Documento:</strong> {documento.tipo_doc}</p>
-              <p><strong>Data de Importação:</strong> {documento.dt_importa}<span> Usuário de Importação: {documento.cod_usuario_importa}</span></p>
-              <p><strong>Data de Emissão:</strong> {documento.emissao}</p>
-              <p><strong>Chave do Documento:</strong> {formatKey(documento.chave_documento)}</p>
-              <p><strong>Protocolo:</strong> {documento.protocolo}</p>
+              <p><strong>Data da Transação:</strong> {documento.dt_trans}<span><strong> Usuário Atualiza:</strong> {documento.usuario_atualiza}</span>
+              <span><strong>Tipo de Documento:</strong> {documento.tipo_doc}</span></p>
+              <p><strong>Data de Importação:</strong> {documento.dt_importa}<span><strong> Usuário de Importação:</strong> {documento.cod_usuario_importa}</span>
+              <span><strong>Data de Emissão:</strong> {documento.emissao}</span></p>
+              <p><strong>Chave do Documento:</strong> {formatKey(documento.chave_documento)}
+              <span><strong>Protocolo:</strong> {documento.protocolo}</span></p>
               <p><strong>Situação do Manifesto:</strong> {documento.situacao_manifesto}</p>
               <p><strong>Protocolo Cancelamento:</strong> {documento.protocolo_cancel}
               <span><strong>Usuário Cancelamento:</strong> {documento.cod_usuario_cancel}
