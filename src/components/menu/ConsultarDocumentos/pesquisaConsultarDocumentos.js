@@ -44,7 +44,6 @@ function PesquisaConsultarDocumentos() {
     );
   });
 
-  
   return (
     <div className="body-pesquisaConsultarDocumentos">
       <div className="container-pesquisaConsultarDocumentos">
