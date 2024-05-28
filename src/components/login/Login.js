@@ -1,19 +1,22 @@
 import React, { useRef, useState } from "react";
 import "./styleLogin.css";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  
   const usernameRef = useRef();
   const passwordRef = useRef();
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
 
     try {
       const dataToSend = {
@@ -55,6 +58,8 @@ function Login() {
     } catch (error) {
       setError(error.message);
       console.error("Erro ao efetuar login:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -62,13 +67,12 @@ function Login() {
     if (e.key === "Enter") {
       e.preventDefault();
       if (nextFieldRef) {
-        nextFieldRef.current.focus(); // Navega para o próximo campo
+        nextFieldRef.current.focus(); 
       } else {
-        handleLogin(e); // Se for o último campo, submete o formulário
+        handleLogin(e); 
       }
     }
   };
-
 
   return (
     <div className="mainLogin">
@@ -115,8 +119,8 @@ function Login() {
               />
             </div>
           </div>
-          <button type="submit" className="btnLogin">
-            Entrar
+          <button type="submit" className="btnLogin" disabled={isLoading}>
+            {isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : "Entrar"}
           </button>
         </form>
       </div>

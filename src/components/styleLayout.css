@@ -2,9 +2,34 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-image: url("/public/fundo-form-conti.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+  }
+  
+  .layout.home-background {
+    background-image: url("/public/papel-de-branco.png");
+  }
+  
+  .layout:not(.home-background) {
+    background-image: url("/public/fundo-form-conti.png");
+  }
+  
+  .content {
+    padding: 30px;
+    text-align: center;
+    width: calc(100% - 250px);
+    margin-left: 250px;
+    transition: width 0.3s ease, margin-left 0.3s ease;
+  }
+  
+  .layout.menu-active .content {
+    width: calc(100% - 250px);
+    margin-left: 250px;
+  }
+  
+  .layout.menu-inactive .content {
+    width: 100%;
+    margin-left: 0;
   }
   
