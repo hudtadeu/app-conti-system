@@ -172,20 +172,20 @@ function DetalhesConsultarDocumentos() {
           <div className="section-detailsdoc" onClick={() => toggleSection('valoresb')}>
             <h2>Valores || <FontAwesomeIcon icon={sections.valoresb ? faChevronDown : faChevronRight} /></h2>
             <div className={`section-content-detailsdoc ${sections.valoresb ? 'show' : ''}`}>
-              <p><strong>PIS Retido:</strong> {documento["vl-pis-ret"]}</p>
-              <p><strong>COFINS Retido:</strong> {documento["vl-cofins-ret"]}</p>
-              <p><strong>CSLL Retido:</strong> {documento["vl-csll-ret"]}</p>
-              <p><strong>Base IRRF:</strong> {documento["vl-base-irrf"]}</p>
-              <p><strong>Valor INSS:</strong> {documento["vl-inss"]}</p>
-              <p><strong>Valor IRRF:</strong> {documento["vl-irrf"]}</p>
-              <p><strong>Base Ret Prev Soc:</strong> {documento["vl-base-ret-prev"]}</p>
-              <p><strong>Vl Ret Prev Soc:</strong> {documento["vl-ret-prev"]}</p>
-              <p><strong>Base ISSQN:</strong> {documento["vl-base-issqn"]}</p>
-              <p><strong>Valor CSLL:</strong> {documento["vl-csll"]}</p>
-              <p><strong>Valor COFINS:</strong> {documento["vl-cofins"]}</p>
-              <p><strong>Valor COFINS Efetivo:</strong> {documento["vl-cofins-efet"]}</p>
-              <p><strong>Valor PIS:</strong> {documento["vl-pis"]}</p>
-              <p><strong>Valor PIS Efetivo:</strong> {documento["vl-pis-efet"]}</p>
+              <p><strong>PIS Retido:</strong> {documento["vl-pis-ret"]}
+              <span><strong>COFINS Retido:</strong> {documento["vl-cofins-ret"]}
+              <span><strong>CSLL Retido:</strong> {documento["vl-csll-ret"]}</span></span></p>
+              <p><strong>Base IRRF:</strong> {documento["vl-base-irrf"]}
+              <span><strong>Valor INSS:</strong> {documento["vl-inss"]}
+              <span><strong>Valor IRRF:</strong> {documento["vl-irrf"]}</span></span></p>
+              <p><strong>Base Ret Prev Soc:</strong> {documento["vl-base-ret-prev"]}
+              <span><strong>Vl Ret Prev Soc:</strong> {documento["vl-ret-prev"]}
+              <span><strong>Base ISSQN:</strong> {documento["vl-base-issqn"]}</span></span></p>
+              <p><strong>Valor CSLL:</strong> {documento["vl-csll"]}
+              <span><strong>Valor COFINS:</strong> {documento["vl-cofins"]}
+              <span><strong>Valor COFINS Efetivo:</strong> {documento["vl-cofins-efet"]}</span></span></p>
+              <p><strong>Valor PIS:</strong> {documento["vl-pis"]}
+              <span><strong>Valor PIS Efetivo:</strong> {documento["vl-pis-efet"]}</span></p>
               <div className='quadrante-ec'>
                 <h5>EC 87</h5>
                 <p><strong>Valor Aprox Trib:</strong> {documento["vl-aprox-trib"]}</p>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Menu from "./menu/Menu";
 import BackButton from "./BackButton";
 import ForwardButton from "./ForwardButton";
+import "./styleLayout.css";
 
 const Layout = ({ children }) => {
   const [menuActive, setMenuActive] = useState(true);
