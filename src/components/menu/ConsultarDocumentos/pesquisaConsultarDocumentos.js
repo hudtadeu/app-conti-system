@@ -40,7 +40,8 @@ function PesquisaConsultarDocumentos() {
       documento.forneced.toLowerCase().includes(searchTerm.toLowerCase()) ||
       documento.serie_docto.toLowerCase().includes(searchTerm.toLowerCase()) ||
       documento.nat_operacao.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      documento.emissao.toLowerCase().includes(searchTerm.toLowerCase())
+      documento.tipo_doc.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      documento.emissao.toLowerCase().includes(searchTerm.toLowerCase()) 
     );
   });
 
