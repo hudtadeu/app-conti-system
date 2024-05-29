@@ -1,5 +1,5 @@
 html, body {
-  overflow-x: hidden; /* Remove a rolagem horizontal */
+  overflow-x: hidden; 
   margin: 0;
   padding: 0;
   width: 100%;
@@ -7,7 +7,6 @@ html, body {
 }
 
 .body-consultardocumentos {
-  //background-image: url("/public/fundo-form-conti.png");
   background-size: cover;
   background-position: center;
   margin: 0;
