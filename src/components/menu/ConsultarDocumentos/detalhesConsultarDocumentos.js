@@ -18,7 +18,7 @@ function DetalhesConsultarDocumentos() {
     transp: false,
     nfe: false
   });
-  
+
   const [activeButton, setActiveButton] = useState('');
 
   useEffect(() => {
@@ -166,7 +166,7 @@ function DetalhesConsultarDocumentos() {
               <p><strong>Peso Bruto:</strong> {documento["peso-bru"]}
               <span><strong>Quantidade:</strong> {documento["qt-volume"]}</span></p>
               <p><strong>Peso Liq:</strong> {documento["peso-liq"]}
-              <span><strong>Volume:</strong> {documento["volume"]}</span></p>
+              <span><strong>Volume:</strong> {documento["Volume"]}</span></p>
             </div>
           </div>
 

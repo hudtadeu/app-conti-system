@@ -123,8 +123,8 @@ function Login() {
             {isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : "Entrar"}
           </button>
         </form>
+        {error && <p className="error-message-login">{error}</p>}
       </div>
-      {error && <p>{error}</p>}
     </div>
   );
 }
