@@ -186,7 +186,6 @@ function ConsultarDocumentos() {
                 <option value="3">CT-e OS</option>
                 <option value="4">NFS-e</option>
                 <option value="5">NF3e</option>
-                <option value="6">Diversos</option>
               </select>
             </label>
             <button type="submit" className="button-primary-consultardocumentos">Pesquisar</button>

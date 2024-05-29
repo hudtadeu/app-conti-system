@@ -18,6 +18,7 @@ function DetalhesConsultarDocumentos() {
     transp: false,
     nfe: false
   });
+  
   const [activeButton, setActiveButton] = useState('');
 
   useEffect(() => {
