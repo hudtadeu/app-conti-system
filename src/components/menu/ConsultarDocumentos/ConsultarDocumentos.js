@@ -24,6 +24,7 @@ function ConsultarDocumentos() {
           field.value = savedFormData[fieldName];
         }
       });
+      
     } else {
       formRef.current.elements['tipoDocumento'].value = '';
     }

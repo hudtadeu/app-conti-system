@@ -78,7 +78,7 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px 0 0 6px;
-  font-size: 16px;
+  font-size: 14px;
   outline: none;
   transition: border 0.3s, box-shadow 0.3s;
 }
@@ -143,6 +143,7 @@
 .list-header-newuser {
   display: flex;
   justify-content: space-between;
+  margin-top: 8px;
   padding: 8px 16px;
   border-bottom: 2px solid #e0e0e0;
   font-weight: bold;
