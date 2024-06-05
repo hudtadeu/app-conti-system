@@ -6,6 +6,7 @@ import {
   faBars,
   faCogs,
   faTasks,
+  faUserCircle,
   faChartBar,
   faMagnifyingGlass,
   faSignOutAlt,
@@ -58,7 +59,9 @@ function Menu({ menuActive, toggleMenu }) {
             src="./conti-bg.png"
             alt="Logo da ConTI Consultoria"
           />
-          <h2 className="sidebar-title">{username}</h2>
+          <h2 className="sidebar-title">
+            <FontAwesomeIcon icon={faUserCircle} className="user-icon" /> {username}
+          </h2>
           <ul className="nav flex-column">
             <li className="nav-item">
               <a className="nav-link">
