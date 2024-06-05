@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import "./styleLogin.css";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faSpinner, faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 
 function Login() {
   const navigate = useNavigate();
@@ -89,34 +89,40 @@ function Login() {
             <label className="usuario-login" htmlFor="username">
               Usuário:
             </label>
-            <input
-              type="text"
-              className="input-login"
-              id="username"
-              name="username"
-              placeholder="Usuário"
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
-              ref={usernameRef}
-              onKeyDown={(e) => handleKeyDown(e, passwordRef)}
-            />
+            <div className="input-container-login">
+              <FontAwesomeIcon icon={faUser} className="input-icon-login" />
+              <input
+                type="text"
+                className="input-login"
+                id="username"
+                name="username"
+                placeholder="Usuário"
+                value={username}
+                onChange={(event) => setUsername(event.target.value)}
+                ref={usernameRef}
+                onKeyDown={(e) => handleKeyDown(e, passwordRef)}
+              />
+            </div>
           </div>
           <div className="textfield-login">
             <div className="formGroup-login">
               <label className="senha-login" htmlFor="password">
                 Senha:
               </label>
-              <input
-                type="password"
-                className="input-login"
-                id="password"
-                name="password"
-                placeholder="Senha"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                ref={passwordRef}
-                onKeyDown={(e) => handleKeyDown(e, null)}
-              />
+              <div className="input-container-login">
+                <FontAwesomeIcon icon={faLock} className="input-icon-login" />
+                <input
+                  type="password"
+                  className="input-login"
+                  id="password"
+                  name="password"
+                  placeholder="Senha"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  ref={passwordRef}
+                  onKeyDown={(e) => handleKeyDown(e, null)}
+                />
+              </div>
             </div>
           </div>
           <button type="submit" className="btnLogin" disabled={isLoading}>

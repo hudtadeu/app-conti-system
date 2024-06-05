@@ -15,7 +15,6 @@
 
 .mainLogin {
   position: relative;
-  /* outros estilos */
 }
 
 .faSpinner {
@@ -38,7 +37,7 @@
 
 .logo-login {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   width: 100%;
 }
 
@@ -47,9 +46,9 @@
 }
 
 .cardLogin {
-  width: 50%;
-  max-width: 300px;
-  display: flex;
+  width: 80%;
+  max-width: 350px;
+  display: block;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -79,18 +78,18 @@
   display: block;
   font-weight: bold;
   width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
+  padding: 8px 6px 6px 25px;
+  margin-bottom: 20px;
   border: 1px solid #939196;
   border-radius: 5px;
   box-sizing: border-box;
   font-size: 13px;
-  margin: 6px 0;
+  margin: 6px 0 15px;
 }
 
 .btnLogin {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   border: none;
   border-radius: 5px;
   outline: none;
@@ -102,6 +101,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   box-shadow: 0px 10px 40px -12px #0098c9;
+  margin-top: 2px;
 }
 
 .btnLogin:hover {
@@ -112,6 +112,7 @@
 .senha-login {
   font-size: 14px;
   color: #363636;
+  margin-bottom: 3px;
 }
 
 .error-message-login {
@@ -119,5 +120,20 @@
   margin-top: 10px;
   text-align: center;
   font-weight: bold;
+}
+
+.input-icon-login {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #0098c9;
+  font-size: 12px;
+}
+
+.input-container-login {
+  position: relative;
+  width: 100%;
 }
 
