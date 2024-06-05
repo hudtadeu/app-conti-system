@@ -118,6 +118,13 @@ html, body {
   width: 50px;
 }
 
+.search-section-consultardocumentos input[type="text"]:focus,
+.search-section-consultardocumentos input[type="date"]:focus,
+.search-section-consultardocumentos select:focus {
+  border-color: #48599e;
+  outline: none;
+}
+
 @media screen and (max-width: 768px) {
   .container-consultardocumentos {
     margin: 0 20px;
