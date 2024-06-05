@@ -26,7 +26,7 @@
     display: flex;
     justify-content: center;
     font-size: 22px;
-    margin-top: -3px;
+    margin-top: 5px;
   }
 
 .modal-content-editempresa {
@@ -52,7 +52,6 @@
   justify-content: center;
   align-items: center;
 }
-
 
 .close-button-editempresa {
   position: absolute;
@@ -104,7 +103,7 @@
 .modal-footer-editempresa {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 #geralButton,
@@ -153,7 +152,7 @@
 
 .container-editempresa div {
     margin-bottom: 1px;
-    padding: 3px;
+    padding: 1px;
   }
 
   .container-editempresa span {
@@ -187,7 +186,7 @@
   .quadrante-editempresa input[type="number"],
   .quadrante-editempresa input[type="date"],
   select {
-    padding: 2px;
+    padding: 1px;
     border: 2px solid #ddd;
     border-radius: 4px;
     transition: border-color 0.3s;
@@ -303,7 +302,7 @@
   .quadrante-editempresaconfiguracoes {
     flex-direction: column;
     border-radius: 5px;
-    padding: 8px;
+    padding: 1px;
     font-size: 12px;
     margin-bottom: 14px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -377,5 +376,14 @@
       padding: 5px 10px;
       font-size: 12px;
     }
+  }
+
+  .modal-contentedit-fixed {
+    min-height: 600px; 
+    max-height: 600px; 
+    overflow-y: auto; 
+    min-width: 700px;
+    max-width: 500px; 
+    overflow-x: auto; 
   }
 

@@ -29,6 +29,7 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
+      <div className="modal-contentedit-fixed">
       <form onSubmit={handleSubmit}>
         <h2 className="title-editempresa">Editar Empresa</h2>
         <div className="container-editempresa">
@@ -363,6 +364,7 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
         <button type="submit" className="button-primary-editempresa">Salvar Alterações</button>
         <button type="button" onClick={onClose} className="button-secondary-editempresa">Cancelar</button>
       </form>
+      </div>
     </Modal>
   );
 };

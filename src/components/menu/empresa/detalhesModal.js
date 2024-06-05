@@ -4,7 +4,7 @@ import "./styleDetalhesModal.css";
 
 const DetalhesModal = ({ isOpen, empresa, onClose }) => {
   const [tab, setTab] = useState("geral");
-  console.log("Conteudo da empresa:", empresa);
+
   const changeTab = (newTab) => {
     setTab(newTab);
   };
@@ -13,17 +13,13 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
     return <input type="checkbox" checked={condition} disabled />;
   };
 
-  const condicao1 = getCheckboxHTML(
-    empresa && empresa["tipo-certificado"] === 1
-  );
-  const condicao2 = getCheckboxHTML(
-    empresa && empresa["tipo-certificado"] === 2
-  );
+  const condicao1 = getCheckboxHTML(empresa && empresa["tipo-certificado"] === 1);
+  const condicao2 = getCheckboxHTML(empresa && empresa["tipo-certificado"] === 2);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       {empresa ? (
-        <div>
+        <div className="modal-content-fixed">
           <h2 className="title-details">Detalhes da Empresa</h2>
           <div className="container-datails">
             <p>
@@ -289,90 +285,94 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
             )}
 
             {tab === "configuracoes" && (
-              <div className="quadrante-details">
-                <p>
-                  <strong>Servidor E-mail:</strong> {empresa["servidor-email"]}
-                </p>
-                <p>
-                  <strong>E-mail NFe:</strong> {empresa["e-mail-nfe"]}
-                </p>
-                <p>
-                  <strong>Senha E-mail:</strong>{" "}
-                  {empresa["senha-email"] ? "********" : "Não definida."}
-                </p>
-                <p>
-                  <strong>Tipo Conexão:</strong>{" "}
-                  {empresa["tipo-conexao-mail"] === 1 ? "Segura" : "Não segura"}
-                </p>
-                <p>
-                  <strong>Cliente ID:</strong>{" "}
-                  <span id="infoArmazena">
-                    {empresa["client-id"] || "Não encontrado."}
-                  </span>
-                </p>
-                <p>
-                  <strong>Tenant ID:</strong>{" "}
-                  <span id="infoArmazena">
-                    {empresa["tenant-id"] || "Não encontrado."}
-                  </span>
-                </p>
-                <p>
-                  <strong>Ambiente SEFAZ:</strong> {empresa["ambiente-sefaz"]}
-                </p>
-                <p>
-                  <strong>Ambiente Destinada:</strong>{" "}
-                  {empresa["ambiente-destinadas"]}
-                </p>
-                <p>
-                  <strong>Tipo Certificado:</strong>
-                  <div id="infoArmazena">
-                    A1 {condicao1}
-                    A3 {condicao2}
+              <div className="quadrante-configuracoes">
+                <div className="coluna">
+                  <p>
+                    <strong>Servidor E-mail:</strong> {empresa["servidor-email"]}
+                  </p>
+                  <p>
+                    <strong>E-mail NFe:</strong> {empresa["e-mail-nfe"]}
+                  </p>
+                  <p>
+                    <strong>Senha E-mail:</strong>{" "}
+                    {empresa["senha-email"] ? "********" : "Não definida."}
+                  </p>
+                  <p>
+                    <strong>Tipo Conexão:</strong>{" "}
+                    {empresa["tipo-conexao-mail"] === 1 ? "Segura" : "Não segura"}
+                  </p>
+                  <p>
+                    <strong>Cliente ID:</strong>{" "}
+                    <span id="infoArmazena">
+                      {empresa["client-id"] || "Não encontrado."}
+                    </span>
+                  </p>
+                  <p>
+                    <strong>Tenant ID:</strong>{" "}
+                    <span id="infoArmazena">
+                      {empresa["tenant-id"] || "Não encontrado."}
+                    </span>
+                  </p>
+                  <p>
+                    <strong>Ambiente SEFAZ:</strong> {empresa["ambiente-sefaz"]}
+                  </p>
+                  <p>
+                    <strong>Ambiente Destinada:</strong>{" "}
+                    {empresa["ambiente-destinadas"]}
+                  </p>
+                  <p>
+                    <strong>Tipo Certificado:</strong>
+                    <div id="infoArmazena">
+                      A1 {condicao1}
+                      A3 {condicao2}
+                    </div>
+                  </p>
+                  <p>
+                    <strong>Senha Certificado:</strong>{" "}
+                    {empresa["senha-certificado"] ? "********" : "Não definida."}
+                  </p>
                   </div>
-                </p>
-                <p>
-                  <strong>Senha Certificado:</strong>{" "}
-                  {empresa["senha-certificado"] ? "********" : "Não definida."}
-                </p>
-                <p>
-                  <strong>Arquivo Certificado:</strong> {empresa[""]}
-                </p>
-                <p>
-                  <strong>Pasta Arq Configuração:</strong>{" "}
-                  {empresa["pasta-arq-config"]}
-                </p>
-                <p>
-                  <strong>Nome Arq Config:</strong> {empresa["nome-arq-config"]}
-                </p>
-                <p>
-                  <strong>Utiliza Proxy:</strong>{" "}
-                </p>
-                <p>
-                  <strong>Utiliza Proxy:</strong>
-                  <div id="infoArmazena">
-                    {getCheckboxHTML(empresa && empresa["l-utiliza-proxy"])}{" "}
-                    Utiliza Proxy
-                  </div>
-                </p>
-                <p>
-                  <strong>Servidor Proxy:</strong>{" "}
-                  <span id="infoArmazena">
-                    {empresa["servidor-proxy"] || "Não encontrado."}
-                  </span>
-                </p>
-                <p>
-                  <strong>Porta:</strong> {empresa["porta-proxy"]}
-                </p>
-                <p>
-                  <strong>Usuário Proxy:</strong>{" "}
-                  <span id="infoArmazena">
-                    {empresa["usuario-proxy"] || "Não encontrado."}
-                  </span>
-                </p>
-                <p>
-                  <strong>Senha Proxy:</strong>{" "}
-                  {empresa["senha-proxy"] ? "********" : "Não definida."}
-                </p>
+                <div className="coluna">
+                  <p>
+                    <strong>Arquivo Certificado:</strong> {empresa[""]}
+                  </p>
+                  <p>
+                    <strong>Pasta Arq Configuração:</strong>{" "}
+                    {empresa["pasta-arq-config"]}
+                  </p>
+                  <p>
+                    <strong>Nome Arq Config:</strong> {empresa["nome-arq-config"]}
+                  </p>
+                  <p>
+                    <strong>Utiliza Proxy:</strong>
+                  </p>
+                  <p>
+                    <strong>Utiliza Proxy:</strong>
+                    <div id="infoArmazena">
+                      {getCheckboxHTML(empresa && empresa["l-utiliza-proxy"])}{" "}
+                      Utiliza Proxy
+                    </div>
+                  </p>
+                  <p>
+                    <strong>Servidor Proxy:</strong>{" "}
+                    <span id="infoArmazena">
+                      {empresa["servidor-proxy"] || "Não encontrado."}
+                    </span>
+                  </p>
+                  <p>
+                    <strong>Porta:</strong> {empresa["porta-proxy"]}
+                  </p>
+                  <p>
+                    <strong>Usuário Proxy:</strong>{" "}
+                    <span id="infoArmazena">
+                      {empresa["usuario-proxy"] || "Não encontrado."}
+                    </span>
+                  </p>
+                  <p>
+                    <strong>Senha Proxy:</strong>{" "}
+                    {empresa["senha-proxy"] ? "********" : "Não definida."}
+                  </p>
+                </div>
               </div>
             )}
 

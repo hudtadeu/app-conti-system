@@ -1,4 +1,3 @@
-// utils.js
 export const getStatusInfo = (situacao) => {
     let statusText;
     let statusColor;
