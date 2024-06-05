@@ -133,7 +133,7 @@ html, body {
 
 .user-table th,
 .user-table td {
-  text-align: left;
+  text-align: center;
   padding: 15px;
   border-bottom: 1px solid #ccc;
 }
