@@ -76,7 +76,7 @@
 
 .input-login {
   display: block;
-  font-weight: bold;
+  font-weight: 600;
   width: 100%;
   padding: 8px 6px 6px 25px;
   margin-bottom: 20px;
@@ -85,6 +85,15 @@
   box-sizing: border-box;
   font-size: 13px;
   margin: 6px 0 15px;
+}
+
+.input-login::placeholder {
+  font-weight: bold; /* Placeholder permanece em negrito */
+}
+
+.input-login:focus {
+  border-color: #48599e;
+  outline: none;
 }
 
 .btnLogin {
@@ -112,7 +121,6 @@
 .senha-login {
   font-size: 14px;
   color: #363636;
-  margin-bottom: 3px;
 }
 
 .error-message-login {
