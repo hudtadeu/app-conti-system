@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Modal from "./modalEmpresa";
 import "./styleDetalhesModal.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFolder, faFile, faUndoAlt, faMapMarkerAlt, faBox, faCalendarAlt, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 
 const DetalhesModal = ({ isOpen, empresa, onClose }) => {
   const [tab, setTab] = useState("geral");
@@ -73,23 +75,40 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
           <div className="tab-content">
             {tab === "geral" && (
               <div className="quadrante-details">
-                <p>
-                  <strong>Pasta de Entrada:</strong> {empresa["pasta-entrada"]}
-                </p>
-                <p>
+                <div>
+                  <strong>Pasta de Entrada:</strong>
+                  <div className="input-icon-wrapper">
+                  <FontAwesomeIcon icon={faFolder} className="input-wrapper-details"/>
+                  <input className="input-detailsmodal" type="text" value={empresa["pasta-entrada"]} readOnly />
+                  </div> 
+                </div>
+                <div>
                   <strong>Pasta Processo Email:</strong>{" "}
-                  {empresa["pasta-proc-mail"]}
-                </p>
-                <p>
+                  <div className="input-icon-wrapper">
+                  <FontAwesomeIcon icon={faFolder} className="input-wrapper-details"/>
+                  <input className="input-detailsmodal" type="text" value={empresa["pasta-proc-mail"]} readOnly />
+                  </div>
+                </div>
+                <div>
                   <strong>Pasta Processo DFE:</strong>{" "}
-                  {empresa["pasta-proc-dfe"]}
-                </p>
-                <p>
-                  <strong>Pasta de Erros:</strong> {empresa["pasta-erros"]}
-                </p>
-                <p>
+                  <div className="input-icon-wrapper">
+                  <FontAwesomeIcon icon={faFolder} className="input-wrapper-details"/>
+                  <input className="input-detailsmodal" type="text" value={empresa["pasta-proc-dfe"]} readOnly />
+                  </div>
+                </div>
+                <div>
+                  <strong>Pasta de Erros:</strong>
+                  <div className="input-icon-wrapper">
+                  <FontAwesomeIcon icon={faFolder} className="input-wrapper-details"/>
+                  <input className="input-detailsmodal" type="text" value= {empresa["pasta-erros"]} readOnly />
+                  </div>
+                </div>
+                <div>
                   <strong>Armazenagem do XML:</strong>
-                </p>
+                  <p>
+                  <input className="input-detailsmodal" type="text" value= {""} readOnly />
+                  </p>
+                </div>
                 <div id="infoArmazena">
                   <ul>
                     <li>
@@ -112,14 +131,20 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                     </li>
                   </div>
                 </div>
-                <p>
+                <div>
                   <strong>Pasta de Armazenagem:</strong>{" "}
-                  {empresa["pasta-armaz"]}
-                </p>
-                <p>
+                  <div className="input-icon-wrapper">
+                  <FontAwesomeIcon icon={faFolder} className="input-wrapper-details"/>
+                  <input className="input-detailsmodal" type="text" value= {empresa["pasta-armaz"]} readOnly />
+                  </div>
+                </div>
+                <div>
                   <strong>Pasta de Gravação do Log:</strong>{" "}
-                  {empresa["pasta-grava-log"]}
-                </p>
+                  <div className="input-icon-wrapper">
+                  <FontAwesomeIcon icon={faFolder} className="input-wrapper-details"/>
+                  <input className="input-detailsmodal" type="text" value= {empresa["pasta-grava-log"]} readOnly />
+                  </div>
+                </div>
               </div>
             )}
 
@@ -233,54 +258,72 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
             )}
             {tab === "traducaoB" && (
               <div className="quadrante-details">
-                <p>
+                <div>
                   <strong>Devolução Nota Própria:</strong>{" "}
                   <div>
                     {getCheckboxHTML(empresa["log-depos-devol"])} Define
                     Depósito de Devolução
                   </div>
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Depos Devolução:</strong>{" "}
-                  <span id="infoArmazena">
-                    {empresa["cod-depos-dev"] || "Não encontrado."}
-                  </span>
-                </p>
-                <p>
+                  <div id="infoArmazena">
+                  <div className="input-icon-wrapper">
+                  <FontAwesomeIcon icon={faUndoAlt} className="input-wrapper-details"/>
+                  <input className="input-detailsmodal" type="text" value= {empresa["cod-depos-dev"] || "Não encontrado."} readOnly />
+                  </div>
+                  </div>
+                </div>
+                <div>
                   <strong>Localiz Devolução:</strong>{" "}
-                  <span id="infoArmazena">
-                    {empresa["cod-localiz-dev"] || "Não encontrado."}
-                  </span>
-                </p>
-                <p>
+                  <div id="infoArmazena">
+                  <div className="input-icon-wrapper">
+                  <FontAwesomeIcon icon={faMapMarkerAlt} className="input-wrapper-details"/>
+                  <input className="input-detailsmodal" type="text" value=  {empresa["cod-localiz-dev"] || "Não encontrado."} readOnly />
+                  </div>
+                  </div>
+                </div>
+                <div>
                   <strong>Informações Lote Automática:</strong>{" "}
                   {getCheckboxHTML(empresa["l-fixa-lote"])} Insere Lote Fixo
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Lote Fixo:</strong>{" "}
-                  <span id="infoArmazena">
-                    {empresa["lote"] || "Não encontrado."}{" "}
-                  </span>
-                  <strong>Dt Validade:</strong>{" "}
-                  <span id="infoArmazena">
-                    {empresa["dt-valid-lote"] || "Não encontrado."}
-                  </span>
-                </p>
-                <p>
+                  <div id="infoArmazena">
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faBox} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value=  {empresa["lote"] || "Não encontrado."} readOnly />
+                      </div>
+                      </div>
+                      <strong>Dt Validade:</strong>{" "}
+                      <div id="infoArmazena">
+                      <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faCalendarAlt} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value=  {empresa["dt-valid-lote"] || "Não encontrado."} readOnly />
+                     </div>
+                  </div>
+                </div>
+                <div>
                   {getCheckboxHTML(empresa["l-copia-gfe"])} Copia CT-e para GFE
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Pasta Cópia GFE:</strong>{" "}
-                  <span id="infoArmazena">
-                    {empresa["pasta-gfe"] || "Não encontrado."}
-                  </span>
-                </p>
-                <p>
+                  <div id="infoArmazena">
+                  <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faFolder} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value=  {empresa["pasta-gfe"] || "Não encontrado."} readOnly />
+                     </div>
+                  </div>
+                </div>
+                <div>
                   <strong>Anexos Divergência:</strong>{" "}
-                  <span id="infoArmazena">
-                    {empresa["pasta-anexo-diverg"] || "Não encontrado."}
-                  </span>
-                </p>
+                  <div id="infoArmazena">
+                  <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faPaperclip} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value=  {empresa["pasta-anexo-diverg"] || "Não encontrado."} readOnly />
+                     </div>
+                  </div>
+                </div>
               </div>
             )}
 
@@ -379,42 +422,66 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
             {tab === "servidor" && (
               <div className="quadrante-details">
                 {" "}
-                <p>
+                <div>
                   <strong>Usa Linux RPW:</strong>{" "}
                   {getCheckboxHTML(empresa["l-usa-linux-rpw"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Arquivo Certificado Linux:</strong>{" "}
-                  {empresa["cod-arq-certificado-lnx"] || "Não disponível."}
-                </p>
-                <p>
+                  <div className="input-icon-wrapper">
+                  <FontAwesomeIcon icon={faFile} className="input-wrapper-details"/>
+                  <input className="input-detailsmodal" type="text" value= {empresa["cod-arq-certificado-lnx"] || "Não disponível."} readOnly />
+                  </div>
+                </div>
+                <div>
                   <strong>Nome Arquivo Configuração Linux:</strong>{" "}
-                  {empresa["nome-arq-config-lnx"] || "Não disponível."}
-                </p>
-                <p>
+                  <div className="input-icon-wrapper">
+                  <FontAwesomeIcon icon={faFile} className="input-wrapper-details"/>
+                  <input className="input-detailsmodal" type="text" value= {empresa["nome-arq-config-lnx"] || "Não disponível."} readOnly />
+                  </div>
+                </div>
+                <div>
                   <strong>Pasta Arquivo Configuração Linux:</strong>{" "}
-                  {empresa["pasta-arq-config-lnx"] || "Não disponível."}
-                </p>
-                <p>
+                  <div className="input-icon-wrapper">
+                  <FontAwesomeIcon icon={faFolder} className="input-wrapper-details"/>
+                  <input className="input-detailsmodal" type="text" value= {empresa["pasta-arq-config-lnx"] || "Não disponível."} readOnly />
+                  </div>
+                </div>
+                <div>
                   <strong>Pasta de Entrada Linux:</strong>{" "}
-                  {empresa["pasta-entrada-lnx"] || "Não disponível."}
-                </p>
-                <p>
+                  <div className="input-icon-wrapper">
+                  <FontAwesomeIcon icon={faFolder} className="input-wrapper-details"/>
+                  <input className="input-detailsmodal" type="text" value= {empresa["pasta-entrada-lnx"] || "Não disponível."} readOnly />
+                  </div>
+                </div>
+                <div>
                   <strong>Pasta Processo E-mail Linux:</strong>{" "}
-                  {empresa["pasta-proc-mail-lnx"] || "Não disponível."}
-                </p>
-                <p>
+                  <div className="input-icon-wrapper">
+                  <FontAwesomeIcon icon={faFolder} className="input-wrapper-details"/>
+                  <input className="input-detailsmodal" type="text" value= {empresa["pasta-proc-mail-lnx"] || "Não disponível."} readOnly />
+                  </div>
+                </div>
+                <div>
                   <strong>Pasta Processo DFE Linux:</strong>{" "}
-                  {empresa["pasta-proc-dfe-lnx"] || "Não disponível."}
-                </p>
-                <p>
+                  <div className="input-icon-wrapper">
+                  <FontAwesomeIcon icon={faFolder} className="input-wrapper-details"/>
+                  <input className="input-detailsmodal" type="text" value= {empresa["pasta-proc-dfe-lnx"] || "Não disponível."} readOnly />
+                  </div>
+                </div>
+                <div>
                   <strong>Pasta de Erros Linux:</strong>{" "}
-                  {empresa["pasta-erros-lnx"] || "Não disponível."}
-                </p>
-                <p>
+                  <div className="input-icon-wrapper">
+                  <FontAwesomeIcon icon={faFolder} className="input-wrapper-details"/>
+                  <input className="input-detailsmodal" type="text" value= {empresa["pasta-erros-lnx"] || "Não disponível."} readOnly />
+                  </div>
+                </div>
+                <div>
                   <strong>Pasta de Log Linux:</strong>{" "}
-                  {empresa["pasta-grava-log-linux"] || "Não disponível."}
-                </p>
+                  <div className="input-icon-wrapper">
+                  <FontAwesomeIcon icon={faFolder} className="input-wrapper-details"/>
+                  <input className="input-detailsmodal" type="text" value= {empresa["pasta-grava-log-linux"] || "Não disponível."} readOnly />
+                  </div>
+                </div>
               </div>
             )}
           </div>

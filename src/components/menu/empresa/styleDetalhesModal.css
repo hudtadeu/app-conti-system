@@ -183,14 +183,14 @@
 .quadrante-traducao p {
   flex: 1 1 50%;
   box-sizing: border-box;
-  padding: 2px;
+  padding: 5px;
 }
 
 .modal-content-fixed {
-  min-height: 540px; 
+  min-height: 610px; 
   overflow-y: auto; 
   min-width: 700px; 
-  max-width: 500px; 
+  max-width: 050px; 
   overflow-x: auto; 
 }
 
@@ -238,4 +238,49 @@
 
 #infoArmazena {
   display: inline;
+}
+
+.input-detailsmodal {
+  border: 1px solid #ccc;
+  padding: 3.5px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  color: #333;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+  font-size: 11px;
+  margin-top: 2px;
+  pointer-events: none;
+  margin-bottom: 3px;
+}
+
+.input-detailsmodal:read-only {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.tab-content {
+  margin-top: -15px;
+}
+
+.input-icon-wrapper-details {
+  position: relative;
+}
+
+.input-wrapper-details {
+  position: absolute;
+  left: 6px;
+  top: 48%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 10;
+  font-size: 10px;
+  color: #939196;
+}
+
+.input-icon-wrapper-details input {
+  width: 100%; 
+  padding-left: 22px; 
+  box-sizing: border-box;
 }
