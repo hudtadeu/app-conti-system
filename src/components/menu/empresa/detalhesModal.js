@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Modal from "./modalEmpresa";
 import "./styleDetalhesModal.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFolder, faFile, faUndoAlt, faMapMarkerAlt, faBox, faCalendarAlt, faPaperclip } from '@fortawesome/free-solid-svg-icons';
+import { faFolder, faFile, faUndoAlt, faMapMarkerAlt, faBox, faCalendarAlt, 
+faPaperclip, faServer, faFileInvoice, faLock, faNetworkWired, faTag, faUser} from '@fortawesome/free-solid-svg-icons';
 
 const DetalhesModal = ({ isOpen, empresa, onClose }) => {
   const [tab, setTab] = useState("geral");
@@ -267,20 +268,16 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                 </div>
                 <div>
                   <strong>Depos Devolução:</strong>{" "}
-                  <div id="infoArmazena">
                   <div className="input-icon-wrapper">
                   <FontAwesomeIcon icon={faUndoAlt} className="input-wrapper-details"/>
                   <input className="input-detailsmodal" type="text" value= {empresa["cod-depos-dev"] || "Não encontrado."} readOnly />
                   </div>
-                  </div>
                 </div>
                 <div>
                   <strong>Localiz Devolução:</strong>{" "}
-                  <div id="infoArmazena">
                   <div className="input-icon-wrapper">
                   <FontAwesomeIcon icon={faMapMarkerAlt} className="input-wrapper-details"/>
                   <input className="input-detailsmodal" type="text" value=  {empresa["cod-localiz-dev"] || "Não encontrado."} readOnly />
-                  </div>
                   </div>
                 </div>
                 <div>
@@ -289,18 +286,14 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                 </div>
                 <div>
                   <strong>Lote Fixo:</strong>{" "}
-                  <div id="infoArmazena">
                     <div className="input-icon-wrapper">
                       <FontAwesomeIcon icon={faBox} className="input-wrapper-details"/>
                       <input className="input-detailsmodal" type="text" value=  {empresa["lote"] || "Não encontrado."} readOnly />
                       </div>
-                      </div>
                       <strong>Dt Validade:</strong>{" "}
-                      <div id="infoArmazena">
                       <div className="input-icon-wrapper">
                       <FontAwesomeIcon icon={faCalendarAlt} className="input-wrapper-details"/>
                       <input className="input-detailsmodal" type="text" value=  {empresa["dt-valid-lote"] || "Não encontrado."} readOnly />
-                     </div>
                   </div>
                 </div>
                 <div>
@@ -308,20 +301,16 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                 </div>
                 <div>
                   <strong>Pasta Cópia GFE:</strong>{" "}
-                  <div id="infoArmazena">
                   <div className="input-icon-wrapper">
                       <FontAwesomeIcon icon={faFolder} className="input-wrapper-details"/>
                       <input className="input-detailsmodal" type="text" value=  {empresa["pasta-gfe"] || "Não encontrado."} readOnly />
-                     </div>
                   </div>
                 </div>
                 <div>
                   <strong>Anexos Divergência:</strong>{" "}
-                  <div id="infoArmazena">
                   <div className="input-icon-wrapper">
                       <FontAwesomeIcon icon={faPaperclip} className="input-wrapper-details"/>
                       <input className="input-detailsmodal" type="text" value=  {empresa["pasta-anexo-diverg"] || "Não encontrado."} readOnly />
-                     </div>
                   </div>
                 </div>
               </div>
@@ -330,91 +319,123 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
             {tab === "configuracoes" && (
               <div className="quadrante-configuracoes">
                 <div className="coluna">
-                  <p>
-                    <strong>Servidor E-mail:</strong> {empresa["servidor-email"]}
-                  </p>
-                  <p>
-                    <strong>E-mail NFe:</strong> {empresa["e-mail-nfe"]}
-                  </p>
-                  <p>
+                  <div>
+                    <strong>Servidor E-mail:</strong>
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faServer} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value= {empresa["servidor-email"]} readOnly />
+                  </div> 
+                  </div>
+                  <div>
+                    <strong>E-mail NFe:</strong> 
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faFileInvoice} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value= {empresa["e-mail-nfe"]} readOnly />
+                  </div> 
+                  </div>
+                  <div>
                     <strong>Senha E-mail:</strong>{" "}
-                    {empresa["senha-email"] ? "********" : "Não definida."}
-                  </p>
-                  <p>
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faLock} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value= {empresa["senha-email"] ? "********" : "Não definida."} readOnly />
+                  </div> 
+                  </div>
+                  <div>
                     <strong>Tipo Conexão:</strong>{" "}
-                    {empresa["tipo-conexao-mail"] === 1 ? "Segura" : "Não segura"}
-                  </p>
-                  <p>
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faNetworkWired} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value= {empresa["tipo-conexao-mail"] === 1 ? "Segura" : "Não segura"} readOnly />
+                  </div> 
+                  </div>
+                  <div>
                     <strong>Cliente ID:</strong>{" "}
-                    <span id="infoArmazena">
-                      {empresa["client-id"] || "Não encontrado."}
-                    </span>
-                  </p>
-                  <p>
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faTag} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value= {empresa["client-id"] || "Não encontrado."} readOnly />
+                    </div>
+                  </div>
+                  <div>
                     <strong>Tenant ID:</strong>{" "}
-                    <span id="infoArmazena">
-                      {empresa["tenant-id"] || "Não encontrado."}
-                    </span>
-                  </p>
-                  <p>
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faTag} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value= {empresa["tenant-id"] || "Não encontrado."} readOnly />
+                    </div>
+                  </div>
+                  <div>
                     <strong>Ambiente SEFAZ:</strong> {empresa["ambiente-sefaz"]}
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     <strong>Ambiente Destinada:</strong>{" "}
                     {empresa["ambiente-destinadas"]}
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     <strong>Tipo Certificado:</strong>
-                    <div id="infoArmazena">
+                    <div>
                       A1 {condicao1}
                       A3 {condicao2}
                     </div>
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     <strong>Senha Certificado:</strong>{" "}
-                    {empresa["senha-certificado"] ? "********" : "Não definida."}
-                  </p>
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faLock} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value= {empresa["senha-certificado"] ? "********" : "Não definida."} readOnly />
+                    </div> 
+                  </div>
                   </div>
                 <div className="coluna">
-                  <p>
-                    <strong>Arquivo Certificado:</strong> {empresa[""]}
-                  </p>
-                  <p>
+                  <div>
+                    <strong>Arquivo Certificado:</strong>
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faFile} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value= {empresa[""] || "Não encontrado."} readOnly />
+                    </div>   
+                  </div>
+                  <div>
                     <strong>Pasta Arq Configuração:</strong>{" "}
-                    {empresa["pasta-arq-config"]}
-                  </p>
-                  <p>
-                    <strong>Nome Arq Config:</strong> {empresa["nome-arq-config"]}
-                  </p>
-                  <p>
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faFile} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value= {empresa["pasta-arq-config"]} readOnly />
+                    </div>   
+                  </div>
+                  <div>
+                    <strong>Nome Arq Config:</strong>
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faFile} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value= {empresa["nome-arq-config"]} readOnly />
+                    </div>
+                  </div>
+                  <div>
                     <strong>Utiliza Proxy:</strong>
-                  </p>
-                  <p>
-                    <strong>Utiliza Proxy:</strong>
-                    <div id="infoArmazena">
+                    <div>
                       {getCheckboxHTML(empresa && empresa["l-utiliza-proxy"])}{" "}
                       Utiliza Proxy
                     </div>
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     <strong>Servidor Proxy:</strong>{" "}
-                    <span id="infoArmazena">
-                      {empresa["servidor-proxy"] || "Não encontrado."}
-                    </span>
-                  </p>
-                  <p>
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faServer} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value= {empresa["servidor-proxy"] || "Não encontrado."} readOnly />
+                    </div> 
+                  </div>
+                  <div>
                     <strong>Porta:</strong> {empresa["porta-proxy"]}
-                  </p>
-                  <p>
+                  </div>
+                  <div>
                     <strong>Usuário Proxy:</strong>{" "}
-                    <span id="infoArmazena">
-                      {empresa["usuario-proxy"] || "Não encontrado."}
-                    </span>
-                  </p>
-                  <p>
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faUser} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value= {empresa["usuario-proxy"] || "Não encontrado."} readOnly />
+                    </div>   
+                  </div>
+                  <div>
                     <strong>Senha Proxy:</strong>{" "}
-                    {empresa["senha-proxy"] ? "********" : "Não definida."}
-                  </p>
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faLock} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value= {empresa["senha-proxy"] ? "********" : "Não definida."} readOnly />
+                    </div> 
+                  </div>
                 </div>
               </div>
             )}
