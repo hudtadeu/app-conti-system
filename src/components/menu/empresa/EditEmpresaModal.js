@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Modal from "./modalEmpresa";
 import "./styleEditEmpresaModal.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+
 
 const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
   const [tab, setTab] = useState("geral");
@@ -250,7 +253,10 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                   </label>
                   <label>
                     <strong>Senha E-mail:</strong>
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faLock} className="icon" />
                     <input type="password" name="senha-email" value={formData["senha-email"] || ''} onChange={handleChange} />
+                    </div>
                   </label>
                   <label>
                     <strong>Tipo Conexão:</strong>
@@ -284,7 +290,10 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                   </label>
                   <label>
                     <strong>Senha Certificado:</strong>
-                    <input type="password" name="senha-certificado" value={formData["senha-certificado"] || ''} onChange={handleChange} />
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faLock} className="icon" />
+                      <input type="password" name="senha-certificado" value={formData["senha-certificado"] || ''} onChange={handleChange} />
+                    </div>
                   </label>
                   <label>
                     <strong>Arquivo Certificado:</strong>
@@ -312,11 +321,17 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                   </label>
                   <label>
                     <strong>Usuário Proxy:</strong>
-                    <input type="text" name="usuario-proxy" value={formData["usuario-proxy"] || ''} onChange={handleChange} />
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faUser} className="icon" />
+                      <input type="text" name="usuario-proxy" value={formData["usuario-proxy"] || ''} onChange={handleChange} />
+                    </div>
                   </label>
                   <label>
                     <strong>Senha Proxy:</strong>
-                    <input type="password" name="senha-proxy" value={formData["senha-proxy"] || ''} onChange={handleChange} />
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faLock} className="icon" />
+                      <input type="password" name="senha-proxy" value={formData["senha-proxy"] || ''} onChange={handleChange} />
+                    </div>
                   </label>
                 </div>
               )}
