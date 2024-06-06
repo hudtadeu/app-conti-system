@@ -71,8 +71,7 @@
 }
 
 
-.button-primary-editempresa,
-.button-secondary-editempresa {
+.button-primary-editempresa {
   background-color: #0098c9;
   color: #fff;
   padding: 5px;
@@ -89,13 +88,27 @@
   margin-left: 5px;
 }
 
+
+
 .button-secondary-editempresa {
   background-color: #ccc;
   color: #000;
+  background-color: #0098c9;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  border: none;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
 }
 
-.button-primary-editempresa:hover,
-.button-secondary-editempresa:hover {
+.button-primary-editempresa:hover {
   background-color: #007ca6;
 }
 
