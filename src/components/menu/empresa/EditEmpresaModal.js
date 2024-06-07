@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import Modal from "./modalEmpresa";
 import "./styleEditEmpresaModal.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faFolder, faFile, faUndoAlt, faMapMarkerAlt, faBox, faPaperclip, faServer,
+ faFileInvoice, faLock, faNetworkWired, faTag, faUser, faGlobe,
+ faDoorClosed, faCalendarAlt, faWarehouse,
+ faCertificate} from '@fortawesome/free-solid-svg-icons';
 
 
 const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
@@ -61,28 +64,42 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
             <div className="quadrante-editempresa">
               <div>
                 <strong>Pasta de Entrada:</strong>
-
+                <div className="input-containeredit">
+                <FontAwesomeIcon icon={faFolder} className="icon" />
                 <input type="text" name="pasta-entrada" value={formData["pasta-entrada"] || ''} onChange={handleChange} />
+                </div>
               </div>
               <div>
                 <strong>Pasta Processo Email:</strong>
+                <div className="input-containeredit">
+                  <FontAwesomeIcon icon={faFolder} className="icon" />
                 <input type="text" name="pasta-proc-mail" value={formData["pasta-proc-mail"] || ''} onChange={handleChange} />
+                </div>
               </div>
               <div>
                 <strong>Pasta Processo DFE:</strong>
+                <div className="input-containeredit">
+                  <FontAwesomeIcon icon={faFolder} className="icon" />
                 <input type="text" name="pasta-proc-dfe" value={formData["pasta-proc-dfe"] || ''} onChange={handleChange} />
+                </div>
               </div>
               <div>
                 <strong>Pasta de Erros:</strong>
+                <div className="input-containeredit">
+                <FontAwesomeIcon icon={faFolder} className="icon" />
                 <input type="text" name="pasta-erros" value={formData["pasta-erros"] || ''} onChange={handleChange} />
+                </div>
               </div>
               <div>
                 <strong>Armazenagem do XML:</strong>
+                <div className="input-containeredit">
+                  <FontAwesomeIcon icon={faWarehouse} className="icon" />
                 <select name="cd-armazena" value={formData["cd-armazena"] || ''} onChange={handleChange}>
                   <option value={1}>Não Armazena</option>
                   <option value={2}>Armazena em Pasta Física</option>
                   <option value={3}>Armazena em Banco de Dados</option>
                 </select>
+                </div>
               </div>
               <div>
                 <strong>Habilita Pasta Log:</strong>
@@ -90,11 +107,17 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
               </div>
               <div>
                 <strong>Pasta de Armazenagem:</strong>
+                <div className="input-containeredit">
+                  <FontAwesomeIcon icon={faFolder} className="icon" />
                 <input type="text" name="pasta-armaz" value={formData["pasta-armaz"] || ''} onChange={handleChange} />
+                </div>
               </div>
               <div>
                 <strong>Pasta de Gravação do Log:</strong>
+                <div className="input-containeredit">
+                 <FontAwesomeIcon icon={faFolder} className="icon" />
                 <input type="text" name="pasta-grava-log" value={formData["pasta-grava-log"] || ''} onChange={handleChange} />
+                </div>
               </div>
             </div>
           )}
@@ -210,11 +233,17 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                 </div>
                 <div>
                   <strong>Depósito Devolução:</strong>
+                  <div className="input-containeredit">
+                    <FontAwesomeIcon icon={faUndoAlt} className="icon" />
                   <input type="text" name="cod-depos-dev" value={formData["cod-depos-dev"] || ''} onChange={handleChange} />
+                  </div>
                 </div>
                 <div>
                   <strong>Localização Devolução:</strong>
+                  <div className="input-containeredit">
+                    <FontAwesomeIcon icon={faMapMarkerAlt} className="icon" />
                   <input type="text" name="cod-localiz-dev" value={formData["cod-localiz-dev"] || ''} onChange={handleChange} />
+                  </div>
                 </div>
                 <div>
                   <strong>Informações Lote Automática:</strong>
@@ -222,11 +251,17 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                 </div>
                 <div>
                   <strong>Lote Fixo:</strong>
+                  <div className="input-containeredit">
+                    <FontAwesomeIcon icon={faBox} className="icon" />
                   <input type="text" name="lote" value={formData["lote"] || ''} onChange={handleChange} />
+                  </div>
                 </div>
                 <div>
                   <strong>Data de Validade:</strong>
+                  <div className="input-containeredit">
+                    <FontAwesomeIcon icon={faCalendarAlt} className="icon" />
                   <input type="date" name="dt-valid-lote" value={formData["dt-valid-lote"] || ''} onChange={handleChange} />
+                  </div>
                 </div>
                 <div>
                   <strong>Copia CT-e para GFE:</strong>
@@ -234,11 +269,17 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                 </div>
                 <div>
                   <strong>Pasta Cópia GFE:</strong>
+                  <div className="input-containeredit">
+                    <FontAwesomeIcon icon={faFolder} className="icon" />
                   <input type="text" name="pasta-gfe" value={formData["pasta-gfe"] || ''} onChange={handleChange} />
+                  </div>
                 </div>
                 <div>
                   <strong>Anexos Divergência:</strong>
+                  <div className="input-containeredit">
+                    <FontAwesomeIcon icon={faPaperclip} className="icon" />
                   <input type="text" name="pasta-anexo-diverg" value={formData["pasta-anexo-diverg"] || ''} onChange={handleChange} />
+                  </div>
                 </div>
               </div>
             )}
@@ -246,67 +287,100 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                 <div className="quadrante-editempresaconfiguracoes">
                   <div>
                     <strong>Servidor E-mail:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faServer} className="icon" />
                     <input type="text" name="servidor-email" value={formData["servidor-email"] || ''} onChange={handleChange} />
+                  </div>
                   </div>
                   <div>
                     <strong>E-mail NFe:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faFileInvoice} className="icon" />
                     <input type="text" name="e-mail-nfe" value={formData["e-mail-nfe"] || ''} onChange={handleChange} />
+                  </div>
                   </div>
                   <div>
                     <strong>Senha E-mail:</strong>
-                    <div className="input-icon-wrapper">
+                    <div className="input-containeredit">
                       <FontAwesomeIcon icon={faLock} className="icon" />
                     <input type="password" name="senha-email" value={formData["senha-email"] || ''} onChange={handleChange} />
                     </div>
                   </div>
                   <div>
                     <strong>Tipo Conexão:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faNetworkWired} className="icon" />
                     <select name="tipo-conexao-mail" value={formData["tipo-conexao-mail"] || ''} onChange={handleChange}>
                       <option value="1">Segura</option>
                       <option value="2">Não Segura</option>
                     </select>
                   </div>
+                  </div>
                   <div>
                     <strong>Cliente ID:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faTag} className="icon" />
                     <input type="text" name="client-id" value={formData["client-id"] || ''} onChange={handleChange} />
+                  </div>
                   </div>
                   <div>
                     <strong>Tenant ID:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faTag} className="icon" />
                     <input type="text" name="tenant-id" value={formData["tenant-id"] || ''} onChange={handleChange} />
+                  </div>
                   </div>
                   <div>
                     <strong>Ambiente SEFAZ:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faGlobe} className="icon" />
                     <input type="text" name="ambiente-sefaz" value={formData["ambiente-sefaz"] || ''} onChange={handleChange} />
+                  </div>
                   </div>
                   <div>
                     <strong>Ambiente Destinada:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faGlobe} className="icon" />
                     <input type="text" name="ambiente-destinadas" value={formData["ambiente-destinadas"] || ''} onChange={handleChange} />
+                  </div>
                   </div>
                   <div>
                     <strong>Tipo Certificado:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faCertificate} className="icon" />
                     <select name="tipo-certificado" value={formData["tipo-certificado"] || ''} onChange={handleChange}>
                       <option value="A1">A1</option>
                       <option value="A3">A3</option>
                     </select>
                   </div>
+                  </div>
                   <div>
                     <strong>Senha Certificado:</strong>
-                    <div className="input-icon-wrapper">
+                    <div className="input-containeredit">
                       <FontAwesomeIcon icon={faLock} className="icon" />
                       <input type="password" name="senha-certificado" value={formData["senha-certificado"] || ''} onChange={handleChange} />
                     </div>
                   </div>
                   <div>
                     <strong>Arquivo Certificado:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faFile} className="icon" />
                     <input type="text" name="arquivo-certificado" value={formData["arquivo-certificado"] || ''} onChange={handleChange} />
+                  </div>
                   </div>
                   <div>
                     <strong>Pasta Arq Configuração:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faFile} className="icon" />
                     <input type="text" name="pasta-arq-config" value={formData["pasta-arq-config"] || ''} onChange={handleChange} />
+                  </div>
                   </div>
                   <div>
                     <strong>Nome Arq Config:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faFile} className="icon" />
                     <input type="text" name="nome-arq-config" value={formData["nome-arq-config"] || ''} onChange={handleChange} />
+                  </div>
                   </div>
                   <div>
                     <strong>Utiliza Proxy:</strong>
@@ -314,22 +388,28 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                   </div>
                   <div>
                     <strong>Servidor Proxy:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faServer} className="icon" />
                     <input type="text" name="servidor-proxy" value={formData["servidor-proxy"] || ''} onChange={handleChange} />
+                  </div>
                   </div>
                   <div>
                     <strong>Porta:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faDoorClosed} className="icon" />
                     <input type="number" name="porta-proxy" value={formData["porta-proxy"] || ''} onChange={handleChange} />
+                  </div>
                   </div>
                   <div>
                     <strong>Usuário Proxy:</strong>
-                    <div className="input-icon-wrapper">
+                    <div className="input-containeredit">
                       <FontAwesomeIcon icon={faUser} className="icon" />
                       <input type="text" name="usuario-proxy" value={formData["usuario-proxy"] || ''} onChange={handleChange} />
                     </div>
                   </div>
                   <div>
                     <strong>Senha Proxy:</strong>
-                    <div className="input-icon-wrapper">
+                    <div className="input-containeredit">
                       <FontAwesomeIcon icon={faLock} className="icon" />
                       <input type="password" name="senha-proxy" value={formData["senha-proxy"] || ''} onChange={handleChange} />
                     </div>
@@ -344,36 +424,60 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                   </div>
                   <div>
                     <strong>Arquivo Certificado Linux:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faFile} className="icon" />
                     <input type="text" name="cod-arq-certificado-lnx" value={formData["cod-arq-certificado-lnx"] || ''} onChange={handleChange} />
+                    </div>
                   </div>
                   <div>
                     <strong>Nome Arquivo Configuração Linux:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faFile} className="icon" />
                     <input type="text" name="nome-arq-config-lnx" value={formData["nome-arq-config-lnx"] || ''} onChange={handleChange} />
+                    </div>
                   </div>
                   <div>
                     <strong>Pasta Arquivo Configuração Linux:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faFolder} className="icon" />
                     <input type="text" name="pasta-arq-config-lnx" value={formData["pasta-arq-config-lnx"] || ''} onChange={handleChange} />
+                    </div>
                   </div>
                   <div>
                     <strong>Pasta de Entrada Linux:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faFolder} className="icon" />
                     <input type="text" name="pasta-entrada-lnx" value={formData["pasta-entrada-lnx"] || ''} onChange={handleChange} />
+                    </div>
                   </div>
                   <div>
                     <strong>Pasta Processo E-mail Linux:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faFolder} className="icon" />
                     <input type="text" name="pasta-proc-mail-lnx" value={formData["pasta-proc-mail-lnx"] || ''} onChange={handleChange} />
+                    </div>
                   </div>
                   <div>
                     <strong>Pasta Processo DFE Linux:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faFolder} className="icon" />
                     <input type="text" name="pasta-proc-dfe-lnx" value={formData["pasta-proc-dfe-lnx"] || ''} onChange={handleChange} />
+                    </div>
                   </div>
                   <div>
                     <strong>Pasta de Erros Linux:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faFolder} className="icon" />
                     <input type="text" name="pasta-erros-lnx" value={formData["pasta-erros-lnx"] || ''} onChange={handleChange} />
+                    </div>
                   </div>
                   <div>
                     <strong>Pasta de Log Linux:</strong>
+                    <div className="input-containeredit">
+                      <FontAwesomeIcon icon={faFolder} className="icon" />
                     <input type="text" name="pasta-grava-log-linux" value={formData["pasta-grava-log-linux"] || ''} onChange={handleChange} />
                   </div>
+                </div>
                 </div>
               )}
         </div>

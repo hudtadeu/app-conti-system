@@ -291,3 +291,24 @@
   padding-left: 22px; 
   box-sizing: border-box;
 }
+
+.input-icon-wrapper {
+  position: relative;
+}
+
+.input-icon-wrapper .icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 10;
+  font-size: 10px;
+}
+
+.input-icon-wrapper input {
+  width: 100%; 
+  padding-left: 20px; 
+  box-sizing: border-box;
+}
+
