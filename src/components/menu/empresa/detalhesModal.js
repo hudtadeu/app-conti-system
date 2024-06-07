@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Modal from "./modalEmpresa";
 import "./styleDetalhesModal.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFolder, faFile, faUndoAlt, faMapMarkerAlt, faBox, faCalendarAlt, 
-faPaperclip, faServer, faFileInvoice, faLock, faNetworkWired, faTag, faUser} from '@fortawesome/free-solid-svg-icons';
+import { faFolder, faFile, faUndoAlt, faMapMarkerAlt, faBox, faCalendarAlt, faWarehouse,
+faPaperclip, faServer, faFileInvoice, faLock, faNetworkWired, faTag, faUser, faGlobe} from '@fortawesome/free-solid-svg-icons';
 
 const DetalhesModal = ({ isOpen, empresa, onClose }) => {
   const [tab, setTab] = useState("geral");
@@ -106,9 +106,10 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                 </div>
                 <div>
                   <strong>Armazenagem do XML:</strong>
-                  <p>
+                  <div className="input-icon-wrapper">
+                  <FontAwesomeIcon icon={faWarehouse} className="input-wrapper-details"/>
                   <input className="input-detailsmodal" type="text" value= {""} readOnly />
-                  </p>
+                  </div>
                 </div>
                 <div id="infoArmazena">
                   <ul>
@@ -362,18 +363,23 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                     </div>
                   </div>
                   <div>
-                    <strong>Ambiente SEFAZ:</strong> {empresa["ambiente-sefaz"]}
+                    <strong>Ambiente SEFAZ:</strong> 
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faGlobe} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value= {empresa["ambiente-sefaz"] || "Não encontrado."} readOnly />
+                  </div>
                   </div>
                   <div>
                     <strong>Ambiente Destinada:</strong>{" "}
-                    {empresa["ambiente-destinadas"]}
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faGlobe} className="input-wrapper-details"/>
+                      <input className="input-detailsmodal" type="text" value= {empresa["ambiente-destinadas"] || "Não encontrado."} readOnly />
+                  </div>
                   </div>
                   <div>
                     <strong>Tipo Certificado:</strong>
-                    <div>
-                      A1 {condicao1}
-                      A3 {condicao2}
-                    </div>
+                      <span>A1 {condicao1}</span>
+                      <span>A3 {condicao2}</span>    
                   </div>
                   <div>
                     <strong>Senha Certificado:</strong>{" "}
