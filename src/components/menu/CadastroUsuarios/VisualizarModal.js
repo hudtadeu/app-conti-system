@@ -52,7 +52,7 @@ function VisualizarModal({ isOpen, onClose, user }) {
           </div>
           <div className="modal-body-user">
             <p>
-              Usuário: <span class="user-view">{user["cod-usuario"]}</span>
+              Usuário: <span className="user-view">{user["cod-usuario"]}</span>
             </p>
             <p>
               Estabelecimento:{" "}
@@ -166,7 +166,9 @@ function VisualizarModal({ isOpen, onClose, user }) {
             </div>
             <div className="button-title-user">
               <ToggleButton
-                defaultChecked={user["log-auditoria"]}
+                defaultChecked={user["log-auditoria"
+                  
+                ]}
                 onToggle={handleToggleActive}
               />{" "}
               <button

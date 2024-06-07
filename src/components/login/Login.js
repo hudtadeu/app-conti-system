@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import "./styleLogin.css";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner, faUser, faLock } from "@fortawesome/free-solid-svg-icons";
+import { faSpinner, faUser, faLock, faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 
 function Login() {
   const navigate = useNavigate();
@@ -10,6 +10,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const usernameRef = useRef();
   const passwordRef = useRef();
@@ -112,7 +113,7 @@ function Login() {
               <div className="input-container-login">
                 <FontAwesomeIcon icon={faLock} className="input-icon-login" />
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   className="input-login"
                   id="password"
                   name="password"
@@ -121,6 +122,11 @@ function Login() {
                   onChange={(event) => setPassword(event.target.value)}
                   ref={passwordRef}
                   onKeyDown={(e) => handleKeyDown(e, null)}
+                />
+                <FontAwesomeIcon
+                  icon={showPassword ? faEyeSlash : faEye}
+                  className="toggle-password-icon"
+                  onClick={() => setShowPassword(!showPassword)}
                 />
               </div>
             </div>
