@@ -148,7 +148,7 @@ function Menu({ menuActive, toggleMenu }) {
                 className="nav-link logout-link"
                 onClick={handleLogout}
               >
-                <FontAwesomeIcon icon={faSignOutAlt} className="mr-2" /> Logout
+                <FontAwesomeIcon icon={faSignOutAlt} className="mr-2" /> Sair
               </a>
             </li>
           </ul>
