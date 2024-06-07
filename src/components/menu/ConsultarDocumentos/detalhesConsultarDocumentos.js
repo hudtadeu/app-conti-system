@@ -7,7 +7,8 @@ import { getStatusInfo, getTipoDocumentoInfo } from '../../utils';
 
 function DetalhesConsultarDocumentos() {
   const location = useLocation();
-  const { cId } = location.state;
+  const { cId } = location.state || {};
+
   const [documento, setDocumento] = useState(null);
   const [loading, setLoading] = useState(true);
   const [sections, setSections] = useState({
@@ -22,6 +23,8 @@ function DetalhesConsultarDocumentos() {
   const [activeButton, setActiveButton] = useState('');
 
   useEffect(() => {
+    if (!cId) return;
+    
     const fetchDocumentoDetails = async () => {
       const base64Credentials = sessionStorage.getItem("token");
 
