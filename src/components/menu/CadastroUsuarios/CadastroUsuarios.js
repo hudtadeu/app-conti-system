@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import "./styleCadastroUsuarios.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -251,6 +251,7 @@ function SearchComponent({ toggleModal, onSearch }) {
 
 function UserTable({ users, openViewModal, openEditModal, deleteUser, handleDuplicateUser, handleExport }) {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
+  const dropdownRefs = useRef([]);
 
   const toggleDropdown = (index) => {
     if (dropdownOpenIndex === index) {
@@ -259,6 +260,20 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser, handleDupl
       setDropdownOpenIndex(index);
     }
   };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleClickOutside = (event) => {
+    if (dropdownOpenIndex !== null && dropdownRefs.current[dropdownOpenIndex] && !dropdownRefs.current[dropdownOpenIndex].contains(event.target)) {
+      setDropdownOpenIndex(null);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownOpenIndex, handleClickOutside]);
 
   return (
     <div className="table-responsive-usuario">
@@ -327,7 +342,7 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser, handleDupl
                 </td>
               ))}
               <td>
-                <div className="dropdown-user">
+              <div className="dropdown-user" ref={(el) => (dropdownRefs.current[index] = el)}>
                   <button
                     className="button-secondary-user"
                     id="dropdownMenuButton"
