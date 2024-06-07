@@ -203,11 +203,11 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                     <strong>Bloqueia NCM Divergente:</strong>
                     <input type="checkbox" name="log-bloqueio-ncm-diverg" checked={formData["log-bloqueio-ncm-diverg"] || false} onChange={handleChange} />
                 </div>
-                <div>
+                <div className="flex-break">
                     <strong>Bloqueia Divergência de Valor na Ordem de Compra:</strong>
                     <input type="checkbox" name="l-bloq-var-valor" checked={formData["l-bloq-var-valor"] || false} onChange={handleChange} />
                 </div>
-                <div>
+                <div className="flex-break">
                     <strong>Bloqueia Divergência de Quantidade na Ordem de Compra:</strong>
                     <input type="checkbox" name="l-bloq-var-quant" checked={formData["l-bloq-var-quant"] || false} onChange={handleChange} />
                 </div>
