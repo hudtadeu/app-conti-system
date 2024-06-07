@@ -145,3 +145,14 @@
   width: 100%;
 }
 
+.logo-login-footer {
+  text-align: center;
+  width: 100%;
+  margin-top: 7px;
+}
+
+.logo-footer-login {
+  max-width: 170px;
+  margin-bottom: -20px;
+}
+

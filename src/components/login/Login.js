@@ -130,6 +130,13 @@ function Login() {
           </button>
         </form>
         {error && <p className="error-message-login">{error}</p>}
+        <div className="logo-login-footer">
+        <img
+          src="xmlloader-logo-preview.png"
+          className="logo-footer-login"
+          alt="ConTi Logotech"
+        />
+      </div>
       </div>
     </div>
   );
