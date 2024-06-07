@@ -382,7 +382,7 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                     <input type="text" name="nome-arq-config" value={formData["nome-arq-config"] || ''} onChange={handleChange} />
                   </div>
                   </div>
-                  <div>
+                  <div className="proxy-edit">
                     <strong>Utiliza Proxy:</strong>
                     <input type="checkbox" name="l-utiliza-proxy" checked={formData["l-utiliza-proxy"] || false} onChange={handleChange} />
                   </div>

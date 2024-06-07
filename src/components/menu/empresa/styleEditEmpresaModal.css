@@ -331,6 +331,7 @@
     align-items: flex-start;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 3px;
   }
 
   .quadrante-editempresaconfiguracoes input[type="text"],
@@ -428,4 +429,13 @@
 .flex-break strong {
     white-space: pre-wrap;
     word-wrap: break-word; 
+}
+
+.proxy-edit {
+  margin-top: 15px;
+
+}
+
+.proxy-edit strong {
+  margin-right: 3px; 
 }
