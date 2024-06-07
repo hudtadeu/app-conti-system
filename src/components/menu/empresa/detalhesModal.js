@@ -381,6 +381,8 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                       <span>A1 {condicao1}</span>
                       <span>A3 {condicao2}</span>    
                   </div>
+                  </div>
+                <div className="coluna">
                   <div>
                     <strong>Senha Certificado:</strong>{" "}
                     <div className="input-icon-wrapper">
@@ -388,8 +390,6 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                       <input className="input-detailsmodal" type="text" value= {empresa["senha-certificado"] ? "********" : "Não definida."} readOnly />
                     </div> 
                   </div>
-                  </div>
-                <div className="coluna">
                   <div>
                     <strong>Arquivo Certificado:</strong>
                     <div className="input-icon-wrapper">
