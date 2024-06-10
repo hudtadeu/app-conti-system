@@ -108,7 +108,7 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                   <strong>Armazenagem do XML:</strong>
                   <div className="input-icon-wrapper">
                   <FontAwesomeIcon icon={faWarehouse} className="input-wrapper-details"/>
-                  <input className="input-detailsmodal" type="text" value= {""} readOnly />
+                  <input className="input-detailsmodal" type="text" value= {empresa["armazena-xml"] || "Não encontrado."} readOnly />
                   </div>
                 </div>
                 <div id="infoArmazena">
