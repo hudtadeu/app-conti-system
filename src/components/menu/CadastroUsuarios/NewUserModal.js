@@ -1,4 +1,3 @@
-// NewUserModal.jsx
 import React, { useState, useEffect, useRef } from "react";
 import ToggleButton from "./ToggleButton";
 import "./styleNewUserModal.css";
@@ -124,8 +123,14 @@ function NewUserModal({ toggleModal, addNewUser }) {
     setShowSearchEstablishmentModal((prev) => !prev);
   };
 
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      toggleModal();
+    }
+  };
+
   return (
-    <div className="modal-backdrop-newuser">
+    <div className="modal-backdrop-newuser" onClick={handleBackdropClick}>
       <div className="modal-content-newuser">
         <div className="modal-newuser">
           <h2 className="title-newuser">Novo Usuário</h2>
@@ -214,7 +219,7 @@ function NewUserModal({ toggleModal, addNewUser }) {
           </form>
         </div>
         <div className="modal-footer-newuser">
-        <button
+          <button
             type="button"
             className="button-primary-newuser"
             onClick={handleSave}

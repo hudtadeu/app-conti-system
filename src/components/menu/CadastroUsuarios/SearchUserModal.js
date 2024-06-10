@@ -107,8 +107,14 @@ function SearchUserModal({ toggleModal, onUserSelect = (user) => {} }) {
     };
   }, [displayedUsers]);
 
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      toggleModal();
+    }
+  };
+
   return (
-    <div className="modal-backdrop-searchuser">
+    <div className="modal-backdrop-searchuser" onClick={handleBackdropClick}>
       <div className="modal-content-searchuser">
         <div className="modal-searchuser">
           <h2 className="title-searchuser">Buscar Usuário</h2>

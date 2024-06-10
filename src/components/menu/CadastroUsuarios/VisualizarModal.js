@@ -27,6 +27,7 @@ function ToggleButton({ defaultChecked, onToggle }) {
 
 function VisualizarModal({ isOpen, onClose, user }) {
   const [auditoriaModalOpen, setAuditoriaModalOpen] = useState(false);
+
   if (!isOpen || !user) return null;
 
   const handleToggleActive = (isActive) => {
@@ -37,153 +38,76 @@ function VisualizarModal({ isOpen, onClose, user }) {
     setAuditoriaModalOpen(!auditoriaModalOpen);
   };
 
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="modal-backdrop-user">
-        <div className="modal-content-usuario">
-          <div className="modal-header">
-            <h2 className="title-user">Visualizar Usuário</h2>
+    <div className="modal-backdrop-user" onClick={handleBackdropClick}>
+      <div className="modal-content-usuario">
+        <div className="modal-header">
+          <h2 className="title-user">Visualizar Usuário</h2>
+          <button
+            type="button"
+            className="close-button-usuario"
+            onClick={onClose}
+          >
+            &times;
+          </button>
+        </div>
+        <div className="modal-body-user">
+          <p>
+            Usuário: <span className="user-view">{user["cod-usuario"]}</span>
+          </p>
+          <p>
+            Estabelecimento:{" "}
+            <span className="user-view">{user["cod-estabel"]}</span>
+          </p>
+        </div>
+        <div className="quadrante-visualizar">
+          {[
+            ["l-importa", "Importa XML"],
+            ["l-exporta", "Exporta XML"],
+            ["l-manifesta", "Manifesta Documento"],
+            ["l-nota-servico", "Visualiza NFS-e"],
+            ["l-elimina", "Elimina XML"],
+            ["l-atualiza", "Atualiza XML"],
+            ["l-prioriza-documento", "Prioriza/Confirma Documento"],
+            ["l-cancela-doc", "Cancela Documento"],
+            ["l-efetua-download", "Efetua Download"],
+            ["l-recebe-fiscal", "Recebimento Fiscal (RE1001)"],
+            ["l-altera-cfop", "Altera CFOP"],
+            ["l-arquiva-xml", "Arquiva XML Manualmente"],
+            ["l-recebe-fisico", "Recebimento Físico (RE2001)"],
+          ].map(([key, label]) => (
+            <div key={key} className="button-title-user">
+              <ToggleButton
+                defaultChecked={user[key]}
+                onToggle={handleToggleActive}
+              />
+              <span className="toggle-text">{label}</span>
+            </div>
+          ))}
+          <div className="button-title-user">
+            <ToggleButton
+              defaultChecked={user["log-auditoria"]}
+              onToggle={handleToggleActive}
+            />
             <button
-              type="button"
-              className="close-button-usuario"
-              onClick={onClose}
+              className="button-audit-user"
+              onClick={toggleAuditoriaModal}
             >
-              &times;
+              Acesso a Auditoria
             </button>
           </div>
-          <div className="modal-body-user">
-            <p>
-              Usuário: <span className="user-view">{user["cod-usuario"]}</span>
-            </p>
-            <p>
-              Estabelecimento:{" "}
-              <span className="user-view">{user["cod-estabel"]}</span>
-            </p>
-          </div>
-          <div className="quadrante-visualizar">
-            <div className="button-title-user">
-              {" "}
-              <ToggleButton
-                defaultChecked={user["l-importa"]}
-                onToggle={handleToggleActive}
-              />{" "}
-              <span className="toggle-text">Importa XML</span>
-            </div>
-            <div className="button-title-user">
-              {" "}
-              <ToggleButton
-                defaultChecked={user["l-exporta"]}
-                onToggle={handleToggleActive}
-              />{" "}
-              <span className="toggle-text">Exporta XML</span>
-            </div>
-            <div className="button-title-user">
-              {" "}
-              <ToggleButton
-                defaultChecked={user["l-manifesta"]}
-                onToggle={handleToggleActive}
-              />{" "}
-              <span className="toggle-text">Manifesta Documento</span>
-            </div>
-            <div className="button-title-user">
-              {" "}
-              <ToggleButton
-                defaultChecked={user["l-nota-servico"]}
-                onToggle={handleToggleActive}
-              />{" "}
-              <span className="toggle-text">Visualiza NFS-e</span>
-            </div>
-            <div className="button-title-user">
-              {" "}
-              <ToggleButton
-                defaultChecked={user["l-elimina"]}
-                onToggle={handleToggleActive}
-              />{" "}
-              <span className="toggle-text">Elimina XML</span>
-            </div>
-            <div className="button-title-user">
-              {" "}
-              <ToggleButton
-                defaultChecked={user["l-atualiza"]}
-                onToggle={handleToggleActive}
-              />{" "}
-              <span className="toggle-text">Atualiza XML</span>
-            </div>
-            <div className="button-title-user">
-              {" "}
-              <ToggleButton
-                defaultChecked={user["l-prioriza-documento"]}
-                onToggle={handleToggleActive}
-              />{" "}
-              <span className="toggle-text">Prioriza/Confirma Documento</span>
-            </div>
-            <div className="button-title-user">
-              {" "}
-              <ToggleButton
-                defaultChecked={user["l-cancela-doc"]}
-                onToggle={handleToggleActive}
-              />{" "}
-              <span className="toggle-text">Cancela Documento</span>
-            </div>
-            <div className="button-title-user">
-              {" "}
-              <ToggleButton
-                defaultChecked={user["l-efetua-download"]}
-                onToggle={handleToggleActive}
-              />{" "}
-              <span className="toggle-text">Efetua Download</span>
-            </div>
-            <div className="button-title-user">
-              {" "}
-              <ToggleButton
-                defaultChecked={user["l-recebe-fiscal"]}
-                onToggle={handleToggleActive}
-              />{" "}
-              <span className="toggle-text">Recebimento Fiscal (RE1001)</span>
-            </div>
-            <div className="button-title-user">
-              {" "}
-              <ToggleButton
-                defaultChecked={user["l-altera-cfop"]}
-                onToggle={handleToggleActive}
-              />{" "}
-              <span className="toggle-text">Altera CFOP</span>
-            </div>
-            <div className="button-title-user">
-              {" "}
-              <ToggleButton
-                defaultChecked={user["l-arquiva-xml"]}
-                onToggle={handleToggleActive}
-              />{" "}
-              <span className="toggle-text">Arquiva XML Manualmente</span>
-            </div>
-            <div className="button-title-user">
-              {" "}
-              <ToggleButton
-                defaultChecked={user["l-recebe-fisico"]}
-                onToggle={handleToggleActive}
-              />{" "}
-              <span className="toggle-text">Recebimento Físico (RE2001)</span>
-            </div>
-            <div className="button-title-user">
-              <ToggleButton
-                defaultChecked={user["log-auditoria"
-                  
-                ]}
-                onToggle={handleToggleActive}
-              />{" "}
-              <button
-                className="button-audit-user"
-                onClick={toggleAuditoriaModal}
-              >
-                Acesso a Auditoria
-              </button>
-            </div>
-          </div>
-          {auditoriaModalOpen && (
-            <AuditoriaModal onClose={toggleAuditoriaModal} user={user} />
-          )}
         </div>
+        {auditoriaModalOpen && (
+          <AuditoriaModal onClose={toggleAuditoriaModal} user={user} />
+        )}
       </div>
+    </div>
   );
 }
 

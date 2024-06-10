@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./styleSearchEstablishmentModal.css";
 
-function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect = (item) => {}  }) {
+function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect = (item) => {} }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [establishmentList, setEstablishmentList] = useState([]);
   const [displayedEstablishments, setDisplayedEstablishments] = useState([]);
@@ -16,7 +16,7 @@ function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect = (it
           {
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Basic ${sessionStorage.getItem("token")}`, 
+              Authorization: `Basic ${sessionStorage.getItem("token")}`,
             },
           }
         );
@@ -78,10 +78,16 @@ function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect = (it
     };
   }, [displayedEstablishments]);
 
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      toggleModal();
+    }
+  };
+
   return (
-    <div className="modal-backdrop-search-establishment">
+    <div className="modal-backdrop-search-establishment" onClick={handleBackdropClick}>
       <div className="modal-content-search-establishment">
-        <div className="modal-hearder-search-establishment">
+        <div className="modal-header-search-establishment">
           <h2 className="title-modal-search-establishment">Buscar Estabelecimento</h2>
           <button type="button" className="close-button-search-establishment" onClick={toggleModal}>
             &times;

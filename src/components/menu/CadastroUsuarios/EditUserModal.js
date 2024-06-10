@@ -15,8 +15,14 @@ function EditUserModal({ isOpen, onClose, user, updateUser }) {
 
   if (!isOpen) return null;
 
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="modal-backdrop-edituser">
+    <div className="modal-backdrop-edituser" onClick={handleBackdropClick}>
       <div className="modal-content-edituser">
         <div className="modal-edituser">
           <h2 className="title-edituser">Editar Usuário</h2>
@@ -31,26 +37,26 @@ function EditUserModal({ isOpen, onClose, user, updateUser }) {
         <div>
           <form>
             <div className="modal-body-edituser">
-                <div>
-              Usuário:{" "}
-              <input
-                type="text"
-                name="cod-usuario"
-                value={editableUser["cod-usuario"]}
-                readOnly
-                className="edituser-view"
-              />
-            </div>
-            <div>
-              Estabelecimento:{" "}
-              <input
-                type="text"
-                name="cod-estabel"
-                value={editableUser["cod-estabel"]}
-                readOnly
-                className="edituser-view"
-              />
-            </div>
+              <div>
+                Usuário:{" "}
+                <input
+                  type="text"
+                  name="cod-usuario"
+                  value={editableUser["cod-usuario"]}
+                  readOnly
+                  className="edituser-view"
+                />
+              </div>
+              <div>
+                Estabelecimento:{" "}
+                <input
+                  type="text"
+                  name="cod-estabel"
+                  value={editableUser["cod-estabel"]}
+                  readOnly
+                  className="edituser-view"
+                />
+              </div>
             </div>
             <div className="quadrante-edituser">
               {[
@@ -81,7 +87,7 @@ function EditUserModal({ isOpen, onClose, user, updateUser }) {
           </form>
         </div>
         <div className="modal-footer-edituser">
-        <button
+          <button
             type="button"
             className="button-primary-edituser"
             onClick={handleSave}
