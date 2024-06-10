@@ -124,10 +124,11 @@ html, body {
 
 .table-responsive-usuario {
   overflow-x: auto;
+  width: 100%;
 }
 
 .user-table {
-  width: 95%;
+  width: 100%;
   border-collapse: collapse;
 }
 
