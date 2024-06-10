@@ -259,7 +259,7 @@ function DetalhesConsultarDocumentos() {
               className={activeButton === 'valoresb' ? 'active' : ''}
               onClick={() => handleButtonClick('valoresb')}
             >
-              Valores||
+              Valores ||
             </button>
             <button
               className={activeButton === 'observacao' ? 'active' : ''}
