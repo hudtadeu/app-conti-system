@@ -3,6 +3,7 @@ import Modal from "./modalEmpresa";
 import "./styleEditEmpresaModal.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolder, faWarehouse, faServer, faFileInvoice, faLock, faNetworkWired, faTag, faGlobe, faCertificate, faUndoAlt, faMapMarkerAlt, faBox, faPaperclip, faCalendarAlt, faUser, faDoorClosed, faFile } from '@fortawesome/free-solid-svg-icons';
+import "./styleNovaEmpresa.css";
 
 const NovaEmpresaModal = ({ isOpen, onClose, onSave }) => {
   const [tab, setTab] = useState("geral");
@@ -46,15 +47,15 @@ const NovaEmpresaModal = ({ isOpen, onClose, onSave }) => {
           <div className="container-editempresa">
             <div>
               <strong>Código:</strong>
-              <input type="text" name="cod-estabel" value={formData["cod-estabel"]} onChange={handleChange} />
+              <input type="text" className="newempresa-input" name="cod-estabel" value={formData["cod-estabel"]} onChange={handleChange} />
             </div>
             <div>
               <strong>Nome:</strong>
-              <input type="text" name="nome" value={formData["nome"]} onChange={handleChange} />
+              <input type="text" className="newempresa-input" name="nome" value={formData["nome"]} onChange={handleChange} />
             </div>
             <div>
               <strong>Razão Social:</strong>
-              <input type="text" name="razao-social" value={formData["razao-social"]} onChange={handleChange} />
+              <input type="text" className="newempresa-input" name="razao-social" value={formData["razao-social"]} onChange={handleChange} />
             </div>
           </div>
           <div className="btn-group-editempresa">

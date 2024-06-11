@@ -31,15 +31,15 @@ const cdArmazenaTexto = cdArmazena === 1 ? "Não Armazena" :
         <div className="modal-content-fixed">
           <h2 className="title-details">Detalhes da Empresa</h2>
           <div className="container-datails">
-            <p>
+            <div>
               <strong>Código:</strong><span> {empresa["cod-estabel"]}</span>
-            </p>
-            <p>
+            </div>
+            <div>
               <strong>Nome:</strong><span> {empresa["nome"]}</span>
-            </p>
-            <p>
+            </div>
+            <div>
               <strong>Razão Social:</strong><span> {empresa["razao-social"]}</span>
-            </p>
+            </div>
           </div>
           <div className="btn-group">
             <button
@@ -142,110 +142,110 @@ const cdArmazenaTexto = cdArmazena === 1 ? "Não Armazena" :
 
             {tab === "traducao" && (
               <div className="quadrante-traducao">
-                <p>
+                <div>
                   <strong>Utiliza Item Cliente/Fornecedor:</strong>{" "}
                   {getCheckboxHTML(empresa["l-item-fornec"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Utiliza FIFO Ordem de Compra:</strong>{" "}
                   {getCheckboxHTML(empresa["l-fifo-ordem-compra"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Importa Observação XML:</strong>{" "}
                   {getCheckboxHTML(empresa["l-observacao"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Envia E-mail Eventos:</strong>{" "}
                   {getCheckboxHTML(empresa["l-email-eventos"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Mantém Impostos do XML na Capa:</strong>{" "}
                   {getCheckboxHTML(empresa["l-impostos-capa"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Zera Valor IPI Outros:</strong>{" "}
                   {getCheckboxHTML(empresa["l-zera-ipi-outros"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Prioriza Documentos:</strong>{" "}
                   {getCheckboxHTML(empresa["l-prioriza-documento"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Informa Conta/CCusto Manual Item:</strong>{" "}
                   {getCheckboxHTML(empresa.lPriorizaDocumento)}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Usa Tag Ordem Compra:</strong>{" "}
                   {getCheckboxHTML(empresa["l-usa-tag-compra"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Usa Tag Ordem Compra:</strong>{" "}
                   {getCheckboxHTML(empresa["l-usa-tag-compra"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Usa NCM Fornecedor:</strong>{" "}
                   {getCheckboxHTML(empresa["log-ncm-fornec"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Altera NCM do item:</strong>{" "}
                   {getCheckboxHTML(empresa["log-altera-ncm"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Quantidade Manual:</strong>{" "}
                   {getCheckboxHTML(empresa["log-qt-manual"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Usa CST Fornecedor:</strong>{" "}
                   {getCheckboxHTML(empresa["log-cst-fornec"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Usa Duplicata Documento XML:</strong>{" "}
                   {getCheckboxHTML(empresa["l-duplic-docum"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Altera EAN/GTIN do item:</strong>{" "}
                   {getCheckboxHTML(empresa["log-altera-ean-gtin"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Grava Pesos Recebimento Físico:</strong>{" "}
                   {getCheckboxHTML(empresa["l-peso-doc-fisico"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Bloqueia Lançamento sem Confirmação:</strong>{" "}
                   {getCheckboxHTML(empresa.lPriorizaDocumento)}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Bloqueia UN Divergente:</strong>{" "}
                   {getCheckboxHTML(empresa["log-bloq-un-divergente"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Bloqueia OP Finaliz/Terminada:</strong>{" "}
                   {getCheckboxHTML(empresa["l-bloqueia-op-finaliz"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Bloqueia NCM Divergente:</strong>{" "}
                   {getCheckboxHTML(empresa["log-bloqueio-ncm-diverg"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Bloqueia Diverg Valor OC:</strong>{" "}
                   {getCheckboxHTML(empresa["l-bloq-var-valor"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Bloqueia Diverg Quantidade OC:</strong>{" "}
                   {getCheckboxHTML(empresa["l-bloq-var-quant"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Bloqueia Estab OC Divergente:</strong>{" "}
                   {getCheckboxHTML(empresa["l-bloq-estab-diveg"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Usa NCM Fornecedor Debito Direto:</strong>{" "}
                   {getCheckboxHTML(empresa["l-subst-ncm-dd"])}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Contingência Download XML:</strong>{" "}
                   {getCheckboxHTML(empresa.lPriorizaDocumento)}
-                </p>
+                </div>
               </div>
             )}
             {tab === "traducaoB" && (
@@ -408,12 +408,9 @@ const cdArmazenaTexto = cdArmazena === 1 ? "Não Armazena" :
                       <input className="input-detailsmodal" type="text" value= {empresa["nome-arq-config"]} readOnly />
                     </div>
                   </div>
-                  <div>
+                  <div >
                     <strong>Utiliza Proxy:</strong>
-                    <div>
                       {getCheckboxHTML(empresa && empresa["l-utiliza-proxy"])}{" "}
-                      Utiliza Proxy
-                    </div>
                   </div>
                   <div>
                     <strong>Servidor Proxy:</strong>{" "}

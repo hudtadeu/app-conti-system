@@ -1,0 +1,16 @@
+.newempresa-input {
+    color: #211915;
+    font-weight: normal;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    margin-left: 5px;
+    border-radius: 6px 6px 6px 6px;
+    outline: none;
+    transition: border 0.3s, box-shadow 0.3s;
+    font-size: 14px;
+  }
+
+  .newempresa-input:focus {
+    border-color: #5a67d8;
+    box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.3);
+  }
