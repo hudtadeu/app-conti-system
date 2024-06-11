@@ -275,7 +275,7 @@ html, body {
   border-radius: 5px;
   transition: background-color 0.3s, border-color 0.3s;
 }
-s .btn-danger-options:hover,
+.btn-danger-options:hover,
 .btn-danger-options:focus {
   background-color: #c82333;
   border-color: #bd2130;
