@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import DetalhesModal from "./detalhesModal";
 import EditEmpresaModal from "./EditEmpresaModal";
+import NovaEmpresaModal from "./NovaEmpresaModal";
 
 function Empresa() {
   const [empresas, setEmpresas] = useState([]);
@@ -19,6 +20,7 @@ function Empresa() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [empresaEditando, setEmpresaEditando] = useState(null);
+  const [novaEmpresaModalOpen, setNovaEmpresaModalOpen] = useState(false);
   //const [loading, setLoading] = useState(false);
   const [overlayVisible, setOverlayVisible] = useState(false);
   const apiUrl =
@@ -190,6 +192,35 @@ function Empresa() {
       });
   };
 
+  const handleSaveNovaEmpresa = (novaEmpresa) => {
+    setOverlayVisible(true);
+    fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Basic ${sessionStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(novaEmpresa),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Erro ao adicionar nova empresa");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setEmpresas([...empresas, data]);
+        setEmpresasFiltradas([...empresas, data]);
+      })
+      .catch((error) => {
+        console.error("Erro ao adicionar nova empresa:", error);
+      })
+      .finally(() => {
+        setOverlayVisible(false);
+        setNovaEmpresaModalOpen(false);
+      });
+  };
+
   return (
     <div className="body-empresa">
       {overlayVisible && (
@@ -204,7 +235,7 @@ function Empresa() {
         <div className="controls-container">
           <button
             className="btn btn-primary-empresa"
-            onClick={() => setOverlayVisible(true)}
+            onClick={() => setNovaEmpresaModalOpen(true)}
           >
             Nova Empresa
           </button>
@@ -290,6 +321,11 @@ function Empresa() {
           onClose={() => setEditModalOpen(false)}
           empresa={empresaEditando}
           onSave={saveEdition}
+        />
+        <NovaEmpresaModal
+          isOpen={novaEmpresaModalOpen}
+          onClose={() => setNovaEmpresaModalOpen(false)}
+          onSave={handleSaveNovaEmpresa}
         />
       </div>
     </div>
