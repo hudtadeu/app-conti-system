@@ -9,6 +9,7 @@
   right: 60px;
   position: fixed;
   background-color: transparent;
+  z-index: 2000;
 }
 
 .back-icon:hover {
