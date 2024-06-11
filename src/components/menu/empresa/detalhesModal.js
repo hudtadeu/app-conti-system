@@ -3,7 +3,7 @@ import Modal from "./modalEmpresa";
 import "./styleDetalhesModal.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolder, faFile, faUndoAlt, faMapMarkerAlt, faBox, faCalendarAlt, faWarehouse,
-faPaperclip, faServer, faFileInvoice, faLock, faNetworkWired, faTag, faUser, faGlobe} from '@fortawesome/free-solid-svg-icons';
+faPaperclip, faServer, faFileInvoice, faLock, faNetworkWired, faTag, faUser, faGlobe, faCertificate} from '@fortawesome/free-solid-svg-icons';
 
 const DetalhesModal = ({ isOpen, empresa, onClose }) => {
   const [tab, setTab] = useState("geral");
@@ -16,8 +16,8 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
     return <input type="checkbox" checked={condition} disabled />;
   };
 
-  const condicao1 = getCheckboxHTML(empresa && empresa["tipo-certificado"] === 1);
-  const condicao2 = getCheckboxHTML(empresa && empresa["tipo-certificado"] === 2);
+  const tipoCertificado = empresa && empresa["tipo-certificado"];
+const tipoCertificadoTexto = tipoCertificado === 1 ? "A1" : tipoCertificado === 2 ? "A2" : "Não encontrado.";
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -378,8 +378,15 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
                   </div>
                   <div>
                     <strong>Tipo Certificado:</strong>
-                      <span>A1 {condicao1}</span>
-                      <span>A3 {condicao2}</span>    
+                    <div className="input-icon-wrapper">
+                      <FontAwesomeIcon icon={faCertificate} className="input-wrapper-details"/>
+                      <input
+                        className="input-detailsmodal"
+                        type="text"
+                        value={tipoCertificadoTexto}
+                        readOnly
+                      />
+                    </div>   
                   </div>
                   </div>
                 <div className="coluna">
