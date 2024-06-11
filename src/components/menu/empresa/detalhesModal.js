@@ -16,8 +16,14 @@ const DetalhesModal = ({ isOpen, empresa, onClose }) => {
     return <input type="checkbox" checked={condition} disabled />;
   };
 
-  const tipoCertificado = empresa && empresa["tipo-certificado"];
+const tipoCertificado = empresa && empresa["tipo-certificado"];
 const tipoCertificadoTexto = tipoCertificado === 1 ? "A1" : tipoCertificado === 2 ? "A2" : "Não encontrado.";
+
+const cdArmazena = empresa && empresa["cd-armazena"];
+const cdArmazenaTexto = cdArmazena === 1 ? "Não Armazena" :
+                        cdArmazena === 2 ? "Armazena em Pasta Física" :
+                        cdArmazena === 3 ? "Armazena em Banco de Dados" :
+                        "Não encontrado.";
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -108,24 +114,8 @@ const tipoCertificadoTexto = tipoCertificado === 1 ? "A1" : tipoCertificado === 
                   <strong>Armazenagem do XML:</strong>
                   <div className="input-icon-wrapper">
                   <FontAwesomeIcon icon={faWarehouse} className="input-wrapper-details"/>
-                  <input className="input-detailsmodal" type="text" value= {empresa["armazena-xml"] || "Não encontrado."} readOnly />
+                  <input className="input-detailsmodal" type="text" value= {cdArmazenaTexto} readOnly />
                   </div>
-                </div>
-                <div id="infoArmazena">
-                  <ul>
-                    <li>
-                      Não Armazena:{" "}
-                      {getCheckboxHTML(empresa["cd-armazena"] === 1)}
-                    </li>
-                    <li>
-                      Armazena em Pasta Física:{" "}
-                      {getCheckboxHTML(empresa["cd-armazena"] === 2)}
-                    </li>
-                    <li>
-                      Armazena em Banco de Dados:{" "}
-                      {getCheckboxHTML(empresa["cd-armazena"] === 3)}
-                    </li>
-                  </ul>
                   <div id="infoArmazena">
                     <li>
                       Habilita Pasta Log:{" "}
