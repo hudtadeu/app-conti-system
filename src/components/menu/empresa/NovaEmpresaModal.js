@@ -244,7 +244,7 @@ const NovaEmpresaModal = ({ isOpen, onClose, onSave }) => {
               <div className="quadrante-editempresa">
                 <div>
                   <strong>Devolução Nota Própria:</strong>
-                  <input type="checkbox" name="log-depos-devol" checked={formData["log-depos-devol"]} onChange={handleChange} />
+                  <input type="checkbox" name="log-depos-devol" checked={formData["log-depos-devol"]} onChange={handleChange} onKeyDown={handleKeyDown}/>
                 </div>
                 <div>
                   <strong>Depósito Devolução:</strong>
@@ -262,7 +262,7 @@ const NovaEmpresaModal = ({ isOpen, onClose, onSave }) => {
                 </div>
                 <div>
                   <strong>Informações Lote Automática:</strong>
-                  <input type="checkbox" name="l-fixa-lote" checked={formData["l-fixa-lote"]} onChange={handleChange} />
+                  <input type="checkbox" name="l-fixa-lote" checked={formData["l-fixa-lote"]} onChange={handleChange} onKeyDown={handleKeyDown}/>
                 </div>
                 <div>
                   <strong>Lote Fixo:</strong>
@@ -280,7 +280,7 @@ const NovaEmpresaModal = ({ isOpen, onClose, onSave }) => {
                 </div>
                 <div>
                   <strong>Copia CT-e para GFE:</strong>
-                  <input type="checkbox" name="l-copia-gfe" checked={formData["l-copia-gfe"]} onChange={handleChange} />
+                  <input type="checkbox" name="l-copia-gfe" checked={formData["l-copia-gfe"]} onChange={handleChange} onKeyDown={handleKeyDown}/>
                 </div>
                 <div>
                   <strong>Pasta Cópia GFE:</strong>
@@ -399,7 +399,7 @@ const NovaEmpresaModal = ({ isOpen, onClose, onSave }) => {
                 </div>
                 <div className="proxy-edit">
                   <strong>Utiliza Proxy:</strong>
-                  <input type="checkbox" name="l-utiliza-proxy" checked={formData["l-utiliza-proxy"]} onChange={handleChange} />
+                  <input type="checkbox" name="l-utiliza-proxy" checked={formData["l-utiliza-proxy"]} onChange={handleChange} onKeyDown={handleKeyDown}/>
                 </div>
                 <div>
                   <strong>Servidor Proxy:</strong>
@@ -435,7 +435,7 @@ const NovaEmpresaModal = ({ isOpen, onClose, onSave }) => {
               <div className="quadrante-editempresa">
                 <div>
                   <strong>Usa Linux RPW:</strong>
-                  <input type="checkbox" name="l-usa-linux-rpw" checked={formData["l-usa-linux-rpw"]} onChange={handleChange} />
+                  <input type="checkbox" name="l-usa-linux-rpw" checked={formData["l-usa-linux-rpw"]} onChange={handleChange} onKeyDown={handleKeyDown}/>
                 </div>
                 <div>
                   <strong>Arquivo Certificado Linux:</strong>
