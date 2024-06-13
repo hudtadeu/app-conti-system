@@ -172,12 +172,13 @@
   transition: box-shadow 0.3s ease-in-out;
   text-align: left;
   color: #0098c9;
-  margin-top: 15px;
+  margin-top: 25px;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 7px;
 }
 
 .quadrante-traducao p {
