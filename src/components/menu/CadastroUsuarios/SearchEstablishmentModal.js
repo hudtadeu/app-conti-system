@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./styleSearchEstablishmentModal.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect = (item) => {} }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -7,10 +9,12 @@ function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect = (it
   const [establishmentList, setEstablishmentList] = useState([]);
   const [displayedEstablishments, setDisplayedEstablishments] = useState([]);
   const [itemsToShow, setItemsToShow] = useState(20);
+  const [loading, setLoading] = useState(false);
   const listRef = useRef(null);
 
   useEffect(() => {
     const fetchEstablishments = async () => {
+      setLoading(true);
       try {
         const response = await fetch(
           "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/establishmentsPublic",
@@ -33,6 +37,8 @@ function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect = (it
         setDisplayedEstablishments(filteredEstablishments.slice(0, itemsToShow));
       } catch (error) {
         console.error("Erro ao buscar lista de estabelecimentos:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -119,14 +125,20 @@ function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect = (it
             <span className="header-code-establishment">Código</span>
             <span className="header-name-establishment">Nome</span>
           </div>
-          <ul className="dropdown-search-establishment" ref={listRef}>
-            {displayedEstablishments.map((item) => (
-              <li key={item.code} onClick={() => handleEstablishmentSelect(item)}>
-                <span className="list-item-code-establishment">{item.code}</span>
-                <span className="list-item-name-establishment">{item.name}</span>
-              </li>
-            ))}
-          </ul>
+          {loading ? (
+            <div className="spinner-container">
+              <FontAwesomeIcon icon={faSpinner} spin size="2x" />
+            </div>
+          ) : (
+            <ul className="dropdown-search-establishment" ref={listRef}>
+              {displayedEstablishments.map((item) => (
+                <li key={item.code} onClick={() => handleEstablishmentSelect(item)}>
+                  <span className="list-item-code-establishment">{item.code}</span>
+                  <span className="list-item-name-establishment">{item.name}</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>

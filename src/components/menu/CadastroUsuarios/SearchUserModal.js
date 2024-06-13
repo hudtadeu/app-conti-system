@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import "./styleSearchUserModal.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import { faFilter, faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 function SearchUserModal({ toggleModal, onUserSelect = (user) => {} }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -11,6 +11,7 @@ function SearchUserModal({ toggleModal, onUserSelect = (user) => {} }) {
   const [itemsToShow, setItemsToShow] = useState(20);
   const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false);
   const [activeOnly, setActiveOnly] = useState(false);
+  const [loading, setLoading] = useState(false);
   const listRef = useRef(null);
 
   const filterAndSetDisplayedUsers = useCallback(
@@ -32,6 +33,7 @@ function SearchUserModal({ toggleModal, onUserSelect = (user) => {} }) {
 
   useEffect(() => {
     const fetchUsers = async () => {
+      setLoading(true);
       try {
         const response = await fetch(
           "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/users",
@@ -55,6 +57,8 @@ function SearchUserModal({ toggleModal, onUserSelect = (user) => {} }) {
         filterAndSetDisplayedUsers(filteredUsers, debouncedSearchTerm, activeOnly);
       } catch (error) {
         console.error("Erro ao buscar lista de usuários:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -164,14 +168,20 @@ function SearchUserModal({ toggleModal, onUserSelect = (user) => {} }) {
             <span className="header-code-newuser">Código</span>
             <span className="header-name-newuser">Nome</span>
           </div>
-          <ul className="user-list" ref={listRef}>
-            {displayedUsers.map((user) => (
-              <li key={user.code} onClick={() => handleUserSelect(user)}>
-                <span className="list-item-code-newuser">{user.code}</span>
-                <span className="list-item-name-newuser">{user.name}</span>
-              </li>
-            ))}
-          </ul>
+          {loading ? (
+            <div className="spinner-container">
+              <FontAwesomeIcon icon={faSpinner} spin size="2x" />
+            </div>
+          ) : (
+            <ul className="user-list" ref={listRef}>
+              {displayedUsers.map((user) => (
+                <li key={user.code} onClick={() => handleUserSelect(user)}>
+                  <span className="list-item-code-newuser">{user.code}</span>
+                  <span className="list-item-name-newuser">{user.name}</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>
