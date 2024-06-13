@@ -5,6 +5,7 @@ import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
 function SearchUserModal({ toggleModal, onUserSelect = (user) => {} }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
   const [userList, setUserList] = useState([]);
   const [displayedUsers, setDisplayedUsers] = useState([]);
   const [itemsToShow, setItemsToShow] = useState(20);
@@ -51,20 +52,28 @@ function SearchUserModal({ toggleModal, onUserSelect = (user) => {} }) {
           ativo: user["ativo"],
         }));
         setUserList(filteredUsers);
-        filterAndSetDisplayedUsers(filteredUsers, searchTerm, activeOnly);
+        filterAndSetDisplayedUsers(filteredUsers, debouncedSearchTerm, activeOnly);
       } catch (error) {
         console.error("Erro ao buscar lista de usuários:", error);
       }
     };
 
     fetchUsers();
-  }, [filterAndSetDisplayedUsers, searchTerm, activeOnly]);
+  }, [filterAndSetDisplayedUsers, debouncedSearchTerm, activeOnly]);
 
   const handleSearch = (e) => {
-    const term = e.target.value;
-    setSearchTerm(term);
-    filterAndSetDisplayedUsers(userList, term, activeOnly);
+    setSearchTerm(e.target.value);
   };
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 300);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [searchTerm]);
 
   const toggleFilterDropdown = () => {
     setIsFilterDropdownOpen((prev) => !prev);
@@ -73,7 +82,7 @@ function SearchUserModal({ toggleModal, onUserSelect = (user) => {} }) {
   const handleFilterToggle = () => {
     const newActiveOnly = !activeOnly;
     setActiveOnly(newActiveOnly);
-    filterAndSetDisplayedUsers(userList, searchTerm, newActiveOnly);
+    filterAndSetDisplayedUsers(userList, debouncedSearchTerm, newActiveOnly);
     setIsFilterDropdownOpen(false);
   };
 

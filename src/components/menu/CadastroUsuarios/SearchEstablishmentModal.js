@@ -3,6 +3,7 @@ import "./styleSearchEstablishmentModal.css";
 
 function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect = (item) => {} }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
   const [establishmentList, setEstablishmentList] = useState([]);
   const [displayedEstablishments, setDisplayedEstablishments] = useState([]);
   const [itemsToShow, setItemsToShow] = useState(20);
@@ -38,14 +39,27 @@ function SearchUserEstablishmentModal({ toggleModal, onEstablishmentSelect = (it
     fetchEstablishments();
   }, [itemsToShow]);
 
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 300);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [searchTerm]);
+
+  useEffect(() => {
     const filtered = establishmentList.filter(
       (item) =>
-        item.name.toLowerCase().includes(e.target.value.toLowerCase()) ||
-        item.code.toLowerCase().includes(e.target.value.toLowerCase())
+        item.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
+        item.code.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
     );
     setDisplayedEstablishments(filtered.slice(0, itemsToShow));
+  }, [debouncedSearchTerm, establishmentList, itemsToShow]);
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
   };
 
   const handleEstablishmentSelect = (item) => {
