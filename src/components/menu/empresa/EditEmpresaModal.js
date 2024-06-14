@@ -9,6 +9,11 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
   const [tab, setTab] = useState("geral");
   const [formData, setFormData] = useState({});
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
+  const [passwordData, setPasswordData] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmNewPassword: '',
+  });
 
   useEffect(() => {
     setFormData(empresa || {});
@@ -48,9 +53,42 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
     setIsPasswordModalOpen(false);
   };
 
+  const handlePasswordInputChange = (event) => {
+    const { name, value } = event.target;
+    setPasswordData({
+      ...passwordData,
+      [name]: value
+    });
+  };
+
   const handlePasswordChange = (e) => {
     e.preventDefault();
-    //Implementar lógica
+
+    if (passwordData.newPassword !== passwordData.confirmNewPassword) {
+      alert("A nova senha e a confirmação não são iguais.");
+      return;
+    }
+
+    console.log("Atualizando senha...", passwordData);
+
+     fetch('/api/updatePassword', {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json',
+         'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+       },
+       body: JSON.stringify(passwordData),
+     })
+     .then(response => response.json())
+     .then(data => {
+       if (data.success) {
+         alert("Senha atualizada com sucesso!");
+      handlePasswordModalClose();
+       } else {
+        alert("Erro ao atualizar a senha.");
+       }
+     });
+
     handlePasswordModalClose();
   };
 
@@ -528,18 +566,26 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
           <div className="modal-content-alterar-senha" onClick={(e) => e.stopPropagation()}>
             <h2>Alterar Senha</h2>
             <form onSubmit={handlePasswordChange}>
-              <div>
-                <label>Senha Atual:</label>
-                <input className="input-alterar-senha" type="password" name="current-password" />
-              </div>
-              <div>
-                <label>Nova Senha:</label>
-                <input className="input-alterar-senha" type="password" name="new-password" />
-              </div>
-              <div>
-                <label>Confirmar Nova Senha:</label>
-                <input className="input-alterar-senha" type="password" name="confirm-new-password" />
-              </div>
+            <div>
+          <label>Nova Senha:</label>
+          <input
+            className="input-alterar-senha"
+            type="password"
+            name="newPassword"
+            value={passwordData.newPassword}
+            onChange={handlePasswordInputChange}
+          />
+        </div>
+        <div>
+          <label>Confirmar Nova Senha:</label>
+          <input
+            className="input-alterar-senha"
+            type="password"
+            name="confirmNewPassword"
+            value={passwordData.confirmNewPassword}
+            onChange={handlePasswordInputChange}
+          />
+        </div>
               <button className="submit-alterar-senha" type="submit">Alterar</button>
               <button className="button-alterar-senha" type="button" onClick={handlePasswordModalClose}>
                 Cancelar
