@@ -335,9 +335,9 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                             onClick={handlePasswordModalOpen}
                           />
                         </Tooltip.Trigger>
-                        <Tooltip.Content side="top" align="center">
+                        <Tooltip.Content className="radix-tooltip-content" side="top" align="center">
                           Alterar Senha
-                          <Tooltip.Arrow />
+                          <Tooltip.Arrow className="radix-tooltip-arrow" />
                         </Tooltip.Content>
                       </Tooltip.Root>
                     </Tooltip.Provider>
