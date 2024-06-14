@@ -144,4 +144,11 @@
     width: 70%;
     color: #333;
   }
+
+  .spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px; 
+  }
   

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Modal from "./modalEmpresa";
+import * as Tooltip from '@radix-ui/react-tooltip';
 import "./styleEditEmpresaModal.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolder, faFile, faUndoAlt, faMapMarkerAlt, faBox, faPaperclip, faServer, faFileInvoice, faLock, faNetworkWired, faTag, faUser, faGlobe, faDoorClosed, faCalendarAlt, faWarehouse, faCertificate } from '@fortawesome/free-solid-svg-icons';
@@ -7,6 +8,7 @@ import { faFolder, faFile, faUndoAlt, faMapMarkerAlt, faBox, faPaperclip, faServ
 const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
   const [tab, setTab] = useState("geral");
   const [formData, setFormData] = useState({});
+  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
 
   useEffect(() => {
     setFormData(empresa || {});
@@ -36,6 +38,20 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
       const index = Array.prototype.indexOf.call(form, event.target);
       form.elements[index + 1]?.focus();
     }
+  };
+
+  const handlePasswordModalOpen = () => {
+    setIsPasswordModalOpen(true);
+  };
+
+  const handlePasswordModalClose = () => {
+    setIsPasswordModalOpen(false);
+  };
+
+  const handlePasswordChange = (e) => {
+    e.preventDefault();
+    //Implementar lógica
+    handlePasswordModalClose();
   };
 
   return (
@@ -300,15 +316,32 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                 <div>
                   <strong>E-mail NFe:</strong>
                   <div className="input-containeredit">
-                    <FontAwesomeIcon icon={faFileInvoice} className="icon" />
-                    <input type="text" name="e-mail-nfe" value={formData["e-mail-nfe"] || ''} onChange={handleChange} onKeyDown={handleKeyDown} />
-                  </div>
-                </div>
-                <div>
-                  <strong>Senha E-mail:</strong>
-                  <div className="input-containeredit">
-                    <FontAwesomeIcon icon={faLock} className="icon" />
-                    <input type="password" name="senha-email" value={formData["senha-email"] || ''} onChange={handleChange} onKeyDown={handleKeyDown} />
+                    <FontAwesomeIcon icon={faFileInvoice} className="icon-left" />
+                    <input
+                      type="text"
+                      name="e-mail-nfe"
+                      value={formData["e-mail-nfe"] || ""}
+                      onChange={handleChange}
+                      onKeyDown={handleKeyDown}
+                    />
+                   <Tooltip.Provider>
+                      <Tooltip.Root>
+                        <Tooltip.Trigger asChild>
+                          <FontAwesomeIcon
+                            icon={faLock}
+                            name="senha-email"
+                            className="icon-right"
+                            value={formData["senha-email"] || ''}
+                            onClick={handlePasswordModalOpen}
+                          />
+                        </Tooltip.Trigger>
+                        <Tooltip.Content side="top" align="center">
+                          Alterar Senha
+                          <Tooltip.Arrow />
+                        </Tooltip.Content>
+                      </Tooltip.Root>
+                    </Tooltip.Provider>
+
                   </div>
                 </div>
                 <div>
@@ -490,6 +523,31 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
           <button type="button" onClick={onClose} className="button-secondary-editempresa">Cancelar</button>
         </form>
       </div>
+      {isPasswordModalOpen && (
+        <div className="modal-backdrop-alterar-senha" onClick={handlePasswordModalClose}>
+          <div className="modal-content-alterar-senha" onClick={(e) => e.stopPropagation()}>
+            <h2>Alterar Senha</h2>
+            <form onSubmit={handlePasswordChange}>
+              <div>
+                <label>Senha Atual:</label>
+                <input className="input-alterar-senha" type="password" name="current-password" />
+              </div>
+              <div>
+                <label>Nova Senha:</label>
+                <input className="input-alterar-senha" type="password" name="new-password" />
+              </div>
+              <div>
+                <label>Confirmar Nova Senha:</label>
+                <input className="input-alterar-senha" type="password" name="confirm-new-password" />
+              </div>
+              <button className="submit-alterar-senha" type="submit">Alterar</button>
+              <button className="button-alterar-senha" type="button" onClick={handlePasswordModalClose}>
+                Cancelar
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </Modal>
   );
 };
