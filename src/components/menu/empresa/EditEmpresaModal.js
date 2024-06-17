@@ -105,6 +105,14 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
     }));
   };
 
+  const handleKeyDownPasswordInput = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      const form = event.target.form;
+      const index = Array.prototype.indexOf.call(form, event.target);
+      form.elements[index + 1]?.focus();
+    }
+  };
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="modal-contentedit-fixed">
@@ -588,6 +596,7 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                     name="newPassword"
                     value={passwordData.newPassword}
                     onChange={handlePasswordInputChange}
+                    onKeyDown={handleKeyDownPasswordInput}
                   />
                   <FontAwesomeIcon
                     icon={showPassword.newPassword ? faEyeSlash : faEye}
@@ -605,6 +614,7 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                     name="confirmNewPassword"
                     value={passwordData.confirmNewPassword}
                     onChange={handlePasswordInputChange}
+                    onKeyDown={handleKeyDownPasswordInput}
                   />
                   <FontAwesomeIcon
                     icon={showPassword.confirmNewPassword ? faEyeSlash : faEye}
