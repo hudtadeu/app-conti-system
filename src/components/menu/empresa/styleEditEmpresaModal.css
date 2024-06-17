@@ -569,3 +569,17 @@
 .button-alterar-senha:hover {
   background-color: #545b62;
 }
+
+.password-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 30px;
+  top: 45%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 12px;
+}

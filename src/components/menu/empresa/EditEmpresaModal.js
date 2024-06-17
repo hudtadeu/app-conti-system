@@ -3,7 +3,7 @@ import Modal from "./modalEmpresa";
 import * as Tooltip from '@radix-ui/react-tooltip';
 import "./styleEditEmpresaModal.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFolder, faFile, faUndoAlt, faMapMarkerAlt, faBox, faPaperclip, faServer, faFileInvoice, faLock, faNetworkWired, faTag, faUser, faGlobe, faDoorClosed, faCalendarAlt, faWarehouse, faCertificate } from '@fortawesome/free-solid-svg-icons';
+import { faFolder, faFile, faUndoAlt, faMapMarkerAlt, faBox, faPaperclip, faServer, faFileInvoice, faLock, faNetworkWired, faTag, faUser, faGlobe, faDoorClosed, faCalendarAlt, faWarehouse, faCertificate, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
   const [tab, setTab] = useState("geral");
@@ -13,6 +13,10 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
     currentPassword: '',
     newPassword: '',
     confirmNewPassword: '',
+  });
+  const [showPassword, setShowPassword] = useState({
+    newPassword: false,
+    confirmNewPassword: false,
   });
 
   useEffect(() => {
@@ -90,6 +94,15 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
      });
 
     handlePasswordModalClose();
+
+    
+  };
+
+  const toggleShowPassword = (field) => {
+    setShowPassword((prevState) => ({
+      ...prevState,
+      [field]: !prevState[field]
+    }));
   };
 
   return (
@@ -566,26 +579,40 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
           <div className="modal-content-alterar-senha" onClick={(e) => e.stopPropagation()}>
             <h2>Alterar Senha</h2>
             <form onSubmit={handlePasswordChange}>
-            <div>
-          <label>Nova Senha:</label>
-          <input
-            className="input-alterar-senha"
-            type="password"
-            name="newPassword"
-            value={passwordData.newPassword}
-            onChange={handlePasswordInputChange}
-          />
-        </div>
-        <div>
-          <label>Confirmar Nova Senha:</label>
-          <input
-            className="input-alterar-senha"
-            type="password"
-            name="confirmNewPassword"
-            value={passwordData.confirmNewPassword}
-            onChange={handlePasswordInputChange}
-          />
-        </div>
+              <div>
+                <label>Nova Senha:</label>
+                <div className="password-input-container">
+                  <input
+                    className="input-alterar-senha"
+                    type={showPassword.newPassword ? "text" : "password"}
+                    name="newPassword"
+                    value={passwordData.newPassword}
+                    onChange={handlePasswordInputChange}
+                  />
+                  <FontAwesomeIcon
+                    icon={showPassword.newPassword ? faEyeSlash : faEye}
+                    className="password-toggle-icon"
+                    onClick={() => toggleShowPassword("newPassword")}
+                  />
+                </div>
+              </div>
+              <div>
+                <label>Confirmar Nova Senha:</label>
+                <div className="password-input-container">
+                  <input
+                    className="input-alterar-senha"
+                    type={showPassword.confirmNewPassword ? "text" : "password"}
+                    name="confirmNewPassword"
+                    value={passwordData.confirmNewPassword}
+                    onChange={handlePasswordInputChange}
+                  />
+                  <FontAwesomeIcon
+                    icon={showPassword.confirmNewPassword ? faEyeSlash : faEye}
+                    className="password-toggle-icon"
+                    onClick={() => toggleShowPassword("confirmNewPassword")}
+                  />
+                </div>
+              </div>
               <button className="submit-alterar-senha" type="submit">Alterar</button>
               <button className="button-alterar-senha" type="button" onClick={handlePasswordModalClose}>
                 Cancelar
