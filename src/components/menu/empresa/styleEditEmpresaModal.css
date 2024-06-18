@@ -519,11 +519,11 @@
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 6px 6px 6px 6px;
-  font-size: 10px;
+  font-size: 12px;
   outline: none;
   transition: border 0.3s, box-shadow 0.3s;
   width: 80%;
-  margin-top: -5px;
+  margin-top: 1px;
 }
 
 .input-alterar-senha:focus {
