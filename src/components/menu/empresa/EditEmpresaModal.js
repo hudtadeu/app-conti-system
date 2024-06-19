@@ -10,10 +10,10 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
   const [formData, setFormData] = useState({});
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
   const [passwordData, setPasswordData] = useState({
-    currentPassword: '',
     newPassword: '',
     confirmNewPassword: '',
   });
+
   const [showPassword, setShowPassword] = useState({
     newPassword: false,
     confirmNewPassword: false,
@@ -73,29 +73,47 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
       return;
     }
 
-    console.log("Atualizando senha...", passwordData);
+    const encodedPassword = btoa(passwordData.newPassword);
+    const payload = {
+      pwMail64: encodedPassword
+    };
 
-     fetch('/api/updatePassword', {
-       method: 'POST',
-       headers: {
-         'Content-Type': 'application/json',
-         'Authorization': `Bearer ${sessionStorage.getItem('token')}`
-       },
-       body: JSON.stringify(passwordData),
-     })
-     .then(response => response.json())
-     .then(data => {
-       if (data.success) {
-         alert("Senha atualizada com sucesso!");
-      handlePasswordModalClose();
-       } else {
+    const token = sessionStorage.getItem('token');
+
+    if (!token) {
+      alert("Token de autenticação não encontrado. Por favor, faça login novamente.");
+      return;
+    }
+
+    console.log("Payload to be sent:", payload);
+
+    fetch(`http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa/byid/uppwdm/${empresa.cId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(payload),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log("Response from API:", data);
+      if (data.success) {
+        alert("Senha atualizada com sucesso!");
+        handlePasswordModalClose();
+      } else {
         alert("Erro ao atualizar a senha.");
-       }
-     });
-
-    handlePasswordModalClose();
-
-    
+      }
+    })
+    .catch(error => {
+      console.error("Error during API call:", error);
+      alert("Erro ao atualizar a senha. Verifique o console para mais detalhes.");
+    });
   };
 
   const toggleShowPassword = (field) => {
@@ -113,6 +131,7 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
       form.elements[index + 1]?.focus();
     }
   };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="modal-contentedit-fixed">
