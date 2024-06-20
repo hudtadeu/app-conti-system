@@ -471,17 +471,27 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                   </div>
                 </div>
                 <div>
-                  <strong>Senha Certificado:</strong>
-                  <div className="input-containeredit">
-                    <FontAwesomeIcon icon={faLock} className="icon" />
-                    <input type="password" name="senha-certificado" value={formData["senha-certificado"] || ''} onChange={handleChange} onKeyDown={handleKeyDown} />
-                  </div>
-                </div>
-                <div>
                   <strong>Arquivo Certificado:</strong>
                   <div className="input-containeredit">
-                    <FontAwesomeIcon icon={faFile} className="icon" />
+                    <FontAwesomeIcon icon={faFile} className="icon-left" />
                     <input type="text" name="arquivo-certificado" value={formData["arquivo-certificado"] || ''} onChange={handleChange} onKeyDown={handleKeyDown} />
+                    <Tooltip.Provider>
+                      <Tooltip.Root>
+                        <Tooltip.Trigger asChild>
+                          <FontAwesomeIcon
+                            icon={faLock}
+                            name="senha-certificado"
+                            className="icon-right"
+                            value={formData["senha-certificado"] || ''}
+                            onClick={handlePasswordModalOpen}
+                          />
+                        </Tooltip.Trigger>
+                        <Tooltip.Content className="radix-tooltip-content" side="top" align="center">
+                          Alterar Senha
+                          <Tooltip.Arrow className="radix-tooltip-arrow" />
+                        </Tooltip.Content>
+                      </Tooltip.Root>
+                    </Tooltip.Provider>
                   </div>
                 </div>
                 <div>
