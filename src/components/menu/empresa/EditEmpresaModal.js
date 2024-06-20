@@ -474,7 +474,14 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                   <strong>Arquivo Certificado:</strong>
                   <div className="input-containeredit">
                     <FontAwesomeIcon icon={faFile} className="icon-left" />
-                    <input type="text" name="arquivo-certificado" value={formData["arquivo-certificado"] || ''} onChange={handleChange} onKeyDown={handleKeyDown} />
+                    <input
+                      type="password"
+                      name="arquivo-certificado"
+                      value={formData["arquivo-certificado"] || ''}
+                      onChange={handleChange}
+                      onKeyDown={handleKeyDown}
+                    />
+                    <FontAwesomeIcon icon={faEyeSlash} className="icon-editeye" />
                     <Tooltip.Provider>
                       <Tooltip.Root>
                         <Tooltip.Trigger asChild>
