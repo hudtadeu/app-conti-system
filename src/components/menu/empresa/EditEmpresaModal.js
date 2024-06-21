@@ -13,6 +13,11 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
     newPassword: '',
     confirmNewPassword: '',
   });
+  const [isCertPasswordModalOpen, setIsCertPasswordModalOpen] = useState(false);
+  const [certPasswordData, setCertPasswordData] = useState({
+    newPassword: '',
+    confirmNewPassword: '',
+  });
 
   const [showPassword, setShowPassword] = useState({
     newPassword: false,
@@ -57,10 +62,26 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
     setIsPasswordModalOpen(false);
   };
 
+  const handleCertPasswordModalOpen = () => {
+    setIsCertPasswordModalOpen(true);
+  };
+
+  const handleCertPasswordModalClose = () => {
+    setIsCertPasswordModalOpen(false);
+  };
+
   const handlePasswordInputChange = (event) => {
     const { name, value } = event.target;
     setPasswordData({
       ...passwordData,
+      [name]: value
+    });
+  };
+
+  const handleCertPasswordInputChange = (event) => {
+    const { name, value } = event.target;
+    setCertPasswordData({
+      ...certPasswordData,
       [name]: value
     });
   };
@@ -113,6 +134,57 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
     .catch(error => {
       console.error("Error during API call:", error);
       alert("Erro ao atualizar a senha. Verifique o console para mais detalhes.");
+    });
+  };
+
+  const handleCertPasswordChange = (e) => {
+    e.preventDefault();
+
+    if (certPasswordData.newPassword !== certPasswordData.confirmNewPassword) {
+      alert("A nova senha e a confirmação não são iguais.");
+      return;
+    }
+
+    const encodedPassword = btoa(certPasswordData.newPassword);
+    const payload = {
+      pwCert64: encodedPassword
+    };
+
+    const token = sessionStorage.getItem('token');
+
+    if (!token) {
+      alert("Token de autenticação não encontrado. Por favor, faça login novamente.");
+      return;
+    }
+
+    console.log("Payload to be sent:", payload);
+
+    fetch(`http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa/byid/uppwdcr/${empresa.cId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(payload),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log("Response from API:", data);
+      if (data.success) {
+        alert("Senha do certificado atualizada com sucesso!");
+        handleCertPasswordModalClose();
+      } else {
+        alert("Erro ao atualizar a senha do certificado.");
+      }
+    })
+    .catch(error => {
+      console.error("Error during API call:", error);
+      alert("Erro ao atualizar a senha do certificado. Verifique o console para mais detalhes.");
     });
   };
 
@@ -490,11 +562,11 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
                             name="senha-certificado"
                             className="icon-right"
                             value={formData["senha-certificado"] || ''}
-                            onClick={handlePasswordModalOpen}
+                            onClick={handleCertPasswordModalOpen}
                           />
                         </Tooltip.Trigger>
                         <Tooltip.Content className="radix-tooltip-content" side="top" align="center">
-                          Alterar Senha
+                          Alterar Senha do Certificado
                           <Tooltip.Arrow className="radix-tooltip-arrow" />
                         </Tooltip.Content>
                       </Tooltip.Root>
@@ -661,6 +733,55 @@ const EditEmpresaModal = ({ isOpen, empresa, onClose, onSave }) => {
               </div>
               <button className="submit-alterar-senha" type="submit">Alterar</button>
               <button className="button-alterar-senha" type="button" onClick={handlePasswordModalClose}>
+                Cancelar
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+      {isCertPasswordModalOpen && (
+        <div className="modal-backdrop-alterar-senha" onClick={handleCertPasswordModalClose}>
+          <div className="modal-content-alterar-senha" onClick={(e) => e.stopPropagation()}>
+            <h2>Alterar Senha</h2>
+            <form onSubmit={handleCertPasswordChange}>
+              <div>
+                <label>Nova Senha:</label>
+                <div className="password-input-container">
+                  <input
+                    className="input-alterar-senha"
+                    type={showPassword.newPassword ? "text" : "password"}
+                    name="newPassword"
+                    value={certPasswordData.newPassword}
+                    onChange={handleCertPasswordInputChange}
+                    onKeyDown={handleKeyDownPasswordInput}
+                  />
+                  <FontAwesomeIcon
+                    icon={showPassword.newPassword ? faEyeSlash : faEye}
+                    className="password-toggle-icon"
+                    onClick={() => toggleShowPassword("newPassword")}
+                  />
+                </div>
+              </div>
+              <div>
+                <label>Confirmar Nova Senha:</label>
+                <div className="password-input-container">
+                  <input
+                    className="input-alterar-senha"
+                    type={showPassword.confirmNewPassword ? "text" : "password"}
+                    name="confirmNewPassword"
+                    value={certPasswordData.confirmNewPassword}
+                    onChange={handleCertPasswordInputChange}
+                    onKeyDown={handleKeyDownPasswordInput}
+                  />
+                  <FontAwesomeIcon
+                    icon={showPassword.confirmNewPassword ? faEyeSlash : faEye}
+                    className="password-toggle-icon"
+                    onClick={() => toggleShowPassword("confirmNewPassword")}
+                  />
+                </div>
+              </div>
+              <button className="submit-alterar-senha" type="submit">Alterar</button>
+              <button className="button-alterar-senha" type="button" onClick={handleCertPasswordModalClose}>
                 Cancelar
               </button>
             </form>
