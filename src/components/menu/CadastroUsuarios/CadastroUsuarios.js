@@ -3,8 +3,8 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import "./styleCadastroUsuarios.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCheckCircle,
-  faTimesCircle,
+  faCheck,
+  faTimes,
   faCog,
   faSearch,
   faEllipsisH,
@@ -330,12 +330,12 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser, handleDupl
                 <td key={`${index}-${permissionIndex}`}>
                   {user[permission] ? (
                     <FontAwesomeIcon
-                      icon={faCheckCircle}
+                      icon={faCheck}
                       className="text-success"
                     />
                   ) : (
                     <FontAwesomeIcon
-                      icon={faTimesCircle}
+                      icon={faTimes}
                       className="text-danger"
                     />
                   )}
