@@ -25,7 +25,7 @@
   max-width: 90%;
   background-color: #fff;
   border-radius: 8px;
-  padding: 20px;
+  padding: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
   text-align: left;
@@ -37,7 +37,7 @@
 .title-user {
   color: #0098c9;
   background-color: #fff;
-  margin-top: -7px;
+  margin-top: 3px;
   margin-bottom: 25px;
   font-size: 22px;
   position: relative;
@@ -51,7 +51,7 @@
   padding: 4px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: left;
-  margin: 15px 0px;
+  margin: 15px 15px;
   display: block;
   font-size: 14px;
   font-weight: bold;
@@ -103,13 +103,13 @@
   outline: none;
 }
 
-.fa-toggle-on {
-  color: #2196f3; 
-}
-
-.fa-toggle-off {
-  color: #757575;
-}
+  .fa-toggle-on {
+    color: #2196f3; 
+  }
+  
+  .fa-toggle-off {
+    color: #757575;
+  }
 
 .quadrante-visualizar {
   flex-direction: column;
@@ -117,7 +117,7 @@
   flex-wrap: wrap;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border-radius: 5px;
+  border-radius: 7px;
   padding: 8px;
   font-size: 12px;
   margin-bottom: 14px;
@@ -125,9 +125,8 @@
   transition: box-shadow 0.3s ease-in-out;
   text-align: left;
   color: #0098c9;
-  margin-top: 18px;
-;
-  font-weight: bold;
+  margin: 15px 15px;
+  gap: 10px;
 }
 
 .user-view {

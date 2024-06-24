@@ -106,14 +106,6 @@
     outline: none;
   }
   
-  .fa-toggle-on {
-    color: #4caf50;
-  }
-  
-  .fa-toggle-off {
-    color: #f44336;
-  }
-  
   .quadrante-newuser {
     flex-direction: column;
     align-items: flex-start; 
@@ -129,6 +121,7 @@
     text-align: left;
     color: #0098c9;
     margin-top: 18px;
+    gap: 10px;
   }
   
   .newuser-view {

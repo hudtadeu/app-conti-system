@@ -113,6 +113,7 @@
   .fa-toggle-off {
     color: #757575;
   }
+
   .quadrante-edituser {
     flex-direction: column;
     align-items: flex-start; 
@@ -128,6 +129,7 @@
     text-align: left;
     color: #0098c9;
     margin: 15px 15px;
+    gap: 10px;
   }
   
   .edituser-view {
