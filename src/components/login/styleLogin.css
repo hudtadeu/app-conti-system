@@ -169,3 +169,19 @@
   color: #0098c9;
   font-size: 12px;
 }
+
+.input-error {
+  border-color: red;
+}
+
+.error-icon {
+  color: red;
+  margin-right: 5px;
+}
+
+.error-message-login {
+  color: red;
+  margin-top: 10px;
+}
+
+

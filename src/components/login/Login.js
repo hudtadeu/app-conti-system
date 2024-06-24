@@ -89,12 +89,13 @@ function Login() {
           <div className="formGroup-login">
             <label className="usuario-login" htmlFor="username">
               Usuário:
+              {error && <span className="error-icon">*</span>}
             </label>
             <div className="input-container-login">
-              <FontAwesomeIcon icon={faUser} className="input-icon-login" />
+              <FontAwesomeIcon icon={faUser} className={`input-icon-login ${error && 'error-icon'}`} />
               <input
                 type="text"
-                className="input-login"
+                className={`input-login ${error && 'input-error'}`}
                 id="username"
                 name="username"
                 placeholder="Usuário"
@@ -109,12 +110,13 @@ function Login() {
             <div className="formGroup-login">
               <label className="senha-login" htmlFor="password">
                 Senha:
+                {error && <span className="error-icon">*</span>}
               </label>
               <div className="input-container-login">
-                <FontAwesomeIcon icon={faLock} className="input-icon-login" />
+                <FontAwesomeIcon icon={faLock} className={`input-icon-login ${error && 'error-icon'}`} />
                 <input
                   type={showPassword ? "text" : "password"}
-                  className="input-login"
+                  className={`input-login ${error && 'input-error'}`}
                   id="password"
                   name="password"
                   placeholder="Senha"
@@ -137,12 +139,12 @@ function Login() {
         </form>
         {error && <p className="error-message-login">{error}</p>}
         <div className="logo-login-footer">
-        <img
-          src="xmlloader-logo-preview.png"
-          className="logo-footer-login"
-          alt="ConTi Logotech"
-        />
-      </div>
+          <img
+            src="xmlloader-logo-preview.png"
+            className="logo-footer-login"
+            alt="ConTi Logotech"
+          />
+        </div>
       </div>
     </div>
   );
