@@ -164,7 +164,7 @@
 }
 
 .quadrante-details div {
-  margin-bottom: 2px; 
+  margin-bottom: 5px; 
 }
 
 .quadrante-traducao {
@@ -191,8 +191,12 @@
   padding: 5px;
 }
 
+.quadrante-traducao div {
+  margin-bottom: 6px;
+}
+
 .modal-content-fixed {
-  min-height: 625px; 
+  min-height: 660px; 
   overflow-y: auto; 
   min-width: 760px; 
   max-width: 500px; 
@@ -223,15 +227,6 @@
   padding: 2px;
 }
 
-.quadrante-configuracoes p {
-  color: #211915;
-  text-align: left;
-  margin: 1px;
-  flex: 1 1 50%;
-  box-sizing: border-box;
-  padding: 2px;
-}
-
 .quadrante-configuracoes strong {
   color: #0098c9;
   margin: 5px 0; 
@@ -244,6 +239,10 @@
   flex-direction: row;
   padding: 0;
   margin: 0;
+}
+
+.quadrante-configuracoes div {
+ gap: 4px;
 }
 
 .coluna {
