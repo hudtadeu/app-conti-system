@@ -34,21 +34,6 @@
   border-radius: 7px;
   position: relative;
 }
-
-.modal-close {
-  position: absolute;
-  top: 2px;
-  right: 5px;
-  cursor: pointer;
-  padding: 0px 5px 0px 5px;
-  color: #211915;
-  border-radius: 3px;
-  background-color: transparent;
-  font-size: 25px;
-  transition: background-color 0.3s, color 0.3s;
-  border: #fff;
-}
-
 .modal-close {
   position: absolute;
   top: 4px;
