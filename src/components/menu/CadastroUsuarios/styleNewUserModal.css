@@ -70,11 +70,12 @@
     background-color: transparent;
     font-size: 20px;
     transition: background-color 0.3s, color 0.3s;
-    border: #fff;
+    border: none;
   }
 
   .close-button-newuser:hover {
-    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    color: #ff0000;
+    transform: scale(1.1); 
   }
 
   .button-title-newuser {

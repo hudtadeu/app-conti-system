@@ -34,22 +34,24 @@
   border-radius: 7px;
   position: relative;
 }
+
 .modal-close {
   position: absolute;
   top: 4px;
   right: 5px;
   padding: 0px 5px;
   cursor: pointer;
-  color: #211915;
+  color: #211915; /* Cor do ícone quando não hover */
   border-radius: 3px;
   background-color: transparent;
   font-size: 20px;
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; 
-  border: #fff;
+  transition: color 0.3s, transform 0.3s, box-shadow 0.3s; /* Transições aplicadas */
+  border: none; /* Removendo a borda para um visual mais limpo */
 }
 
 .modal-close:hover {
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  color: #ff0000;
+  transform: scale(1.1); /* Efeito de escala ao passar o mouse */
 }
 
 #geralButton,

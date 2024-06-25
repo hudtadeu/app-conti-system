@@ -58,16 +58,16 @@
   right: 5px;
   cursor: pointer;
   padding: 0px 5px;
-  color: #939196;
-  border-radius: 3px;
+  color: #211915;
   background-color: transparent;
-  font-size: 16px;
+  font-size: 20px;
   transition: background-color 0.3s, color 0.3s;
   border: none;
 }
 
 .close-button-editempresa:hover {
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  color: #ff0000;
+  transform: scale(1.2);
 }
 
 
@@ -87,8 +87,6 @@
   justify-content: center;
   margin-left: 5px;
 }
-
-
 
 .button-secondary-editempresa {
   background-color: #ccc;
