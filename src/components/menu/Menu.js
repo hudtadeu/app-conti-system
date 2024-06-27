@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import "./styleMenu.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,10 +12,13 @@ import {
   faMagnifyingGlass,
   faSignOutAlt,
   faChevronDown,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 function Menu({ menuActive, toggleMenu }) {
   const [username, setUsername] = useState("");
+  const [activeMenu, setActiveMenu] = useState(null);
+  const submenuRef = useRef(null); 
 
   useEffect(() => {
     const storedUsername = sessionStorage.getItem("username");
@@ -32,6 +36,19 @@ function Menu({ menuActive, toggleMenu }) {
     console.log("Logout clicado");
     sessionStorage.clear();
     window.location.href = "/";
+  };
+
+  const handleMenuClick = (menu) => {
+    if (activeMenu === menu) {
+      setActiveMenu(null);
+    } else {
+      setActiveMenu(menu);
+    }
+  };
+
+  const handleSubMenuClick = (e, menu) => {
+    e.stopPropagation(); 
+    setActiveMenu(menu);
   };
 
   return (
@@ -63,84 +80,124 @@ function Menu({ menuActive, toggleMenu }) {
             <FontAwesomeIcon icon={faUserCircle} className="user-icon" /> {username}
           </h2>
           <ul className="nav flex-column">
-            <li className="nav-item">
+            <li className="nav-item" onClick={() => handleMenuClick("cadastros")}>
               <a className="nav-link">
-                <FontAwesomeIcon icon={faCogs} className="mr-2" /> Manutenção
+                <FontAwesomeIcon icon={faCogs} className="mr-2" /> Cadastros
                 <span className="float-right">
-                  <FontAwesomeIcon icon={faChevronDown} />
+                  <FontAwesomeIcon icon={activeMenu === "cadastros" ? faChevronDown : faChevronRight} />
                 </span>
               </a>
-              <ul className="nav flex-column pl-3 sub-menu">
-                <li className="nav-item">
-                  <a className="nav-link" href="./empresa">
-                    Parâmetros XML Loader
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="./cadastroUsuarios">
-                    Parâmetros Usuários XML Loader
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Geração Arquivo Configuração
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Natureza Op Relacionada
-                  </a>
-                </li>
-              </ul>
+              {activeMenu === "cadastros" && (
+                <ul ref={submenuRef} className="nav flex-column pl-3 sub-menu">
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/empresa" onClick={(e) => handleSubMenuClick(e, "cadastros")}>
+                      Parâmetros XML Loader
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/cadastroUsuarios" onClick={(e) => handleSubMenuClick(e, "cadastros")}>
+                      Parâmetros Usuários XML Loader
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/cadastroEventos" onClick={(e) => handleSubMenuClick(e, "cadastros")}>
+                      Cadastro Eventos XML Loader
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "cadastros")}>
+                      Natureza Op Relacionada
+                    </a>
+                  </li>
+                </ul>
+              )}
             </li>
-            <li className="nav-item">
+            <li className="nav-item" onClick={() => handleMenuClick("tarefas")}>
               <a className="nav-link">
                 <FontAwesomeIcon icon={faTasks} className="mr-2" /> Tarefas
                 <span className="float-right">
-                  <FontAwesomeIcon icon={faChevronDown} />
+                  <FontAwesomeIcon icon={activeMenu === "tarefas" ? faChevronDown : faChevronRight} />
                 </span>
               </a>
-              <ul className="nav flex-column pl-3 sub-menu">
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Empresa
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Cadastro de Usuários do XML Loader
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="./cadastroEventos">
-                    Cadastro de Eventos do XML Loader
-                  </a>
-                </li>
-              </ul>
+              {activeMenu === "tarefas" && (
+                <ul ref={submenuRef} className="nav flex-column pl-3 sub-menu">
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
+                      Arquivamento de Documentos já Implatados
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
+                      Atualização Parâmetros XML Loader em Lote
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
+                      Carga de Arquivos XML
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
+                      Consulta NF Destinadas - SEFAZ
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
+                      Controle Pendências Cancelamento
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
+                      Cópia XML Colaboração x XML Loader
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
+                      Download e-mail Loader
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
+                      Emitente XML Loader
+                    </a>
+                  </li>
+                </ul>
+              )}
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
+            <li className="nav-item" onClick={() => handleMenuClick("consultas")}>
+              <a className="nav-link">
                 <FontAwesomeIcon icon={faMagnifyingGlass} className="mr-2" /> Consultas
                 <span className="float-right">
-                  <FontAwesomeIcon icon={faChevronDown} />
+                  <FontAwesomeIcon icon={activeMenu === "consultas" ? faChevronDown : faChevronRight} />
                 </span>
               </a>
-              <ul className="nav flex-column pl-3 sub-menu">
-                <li className="nav-item">
-                  <a className="nav-link" href="./consultarDocumentos">
-                    Consultar Documento
-                  </a>
-                </li>
-              </ul>
+              {activeMenu === "consultas" && (
+                <ul ref={submenuRef} className="nav flex-column pl-3 sub-menu">
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                      Consulta Disponibilidade SEFAZ
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/consultarDocumentos" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                      Consulta Documento XML
+                    </Link>
+                  </li>
+                </ul>
+              )}
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                <FontAwesomeIcon icon={faChartBar} className="mr-2" />{" "}
-                Relatórios
+            <li className="nav-item" onClick={() => handleMenuClick("relatorios")}>
+              <a className="nav-link">
+                <FontAwesomeIcon icon={faChartBar} className="mr-2" /> Relatórios
                 <span className="float-right">
-                  <FontAwesomeIcon icon={faChevronDown} />
+                  <FontAwesomeIcon icon={activeMenu === "relatorios" ? faChevronDown : faChevronRight} />
                 </span>
               </a>
+              {activeMenu === "relatorios" && (
+                <ul ref={submenuRef} className="nav flex-column pl-3 sub-menu">
+                  {/* Adicione os links dos relatórios aqui */}
+                </ul>
+              )}
             </li>
             <li className="nav-item">
               <a
