@@ -90,14 +90,14 @@ function Menu({ menuActive, toggleMenu }) {
               {activeMenu === "cadastros" && (
                 <ul ref={submenuRef} className="nav flex-column pl-3 sub-menu">
                   <li className="nav-item">
-                    <Link className="nav-link" to="/empresa" onClick={(e) => handleSubMenuClick(e, "cadastros")}>
-                      Parâmetros XML Loader
-                    </Link>
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "cadastros")}>
+                      Bloqueio CFOP Entrada
+                    </a>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/cadastroUsuarios" onClick={(e) => handleSubMenuClick(e, "cadastros")}>
-                      Parâmetros Usuários XML Loader
-                    </Link>
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "cadastros")}>
+                      Cadastro de Tipo de Divergencia
+                    </a>
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link" to="/cadastroEventos" onClick={(e) => handleSubMenuClick(e, "cadastros")}>
@@ -106,7 +106,37 @@ function Menu({ menuActive, toggleMenu }) {
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "cadastros")}>
-                      Natureza Op Relacionada
+                      Geração de Arquivo de Configuração
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "cadastros")}>
+                      Habilitação de Função XML Loader
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "cadastros")}>
+                      Manutenção Cidades NFS-e
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "cadastros")}>
+                      Manutenção Natureza Op Relacionada
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/cadastroUsuarios" onClick={(e) => handleSubMenuClick(e, "cadastros")}>
+                      Parâmetros Usuários XML Loader
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/empresa" onClick={(e) => handleSubMenuClick(e, "cadastros")}>
+                      Parâmetros XML Loader
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "cadastros")}>
+                      Relação Grupo de Estoque  para alteração NCM/GTIN
                     </a>
                   </li>
                 </ul>
@@ -161,6 +191,41 @@ function Menu({ menuActive, toggleMenu }) {
                       Emitente XML Loader
                     </a>
                   </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
+                      Exporta Documentos Fiscais
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
+                      Exporta Documentos XML
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
+                      Importa Documentos Fiscais
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
+                      Importação de Arquivos BATCH
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
+                      Importação Documento XML
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
+                      Manifestação de Documentos
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
+                      Manifestação Desconhecidos da Operação BATCH
+                    </a>
+                  </li>
                 </ul>
               )}
             </li>
@@ -183,6 +248,16 @@ function Menu({ menuActive, toggleMenu }) {
                       Consulta Documento XML
                     </Link>
                   </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                      Listagem Municipios NFS-e XML Loader
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                      LOG Importação XML Loader
+                    </a>
+                  </li>
                 </ul>
               )}
             </li>
@@ -195,7 +270,66 @@ function Menu({ menuActive, toggleMenu }) {
               </a>
               {activeMenu === "relatorios" && (
                 <ul ref={submenuRef} className="nav flex-column pl-3 sub-menu">
-                  {/* Adicione os links dos relatórios aqui */}
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                      Conciliação XML X Obrig Fiscais
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                      Conciliação XML X Recebimento
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                      Emissor DANFE
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                      Estatística de Implantação de Documentos
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                      Estastísticas XML
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                      Priorização de Documentos
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                      Relação de DANFES em atraso
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                      Relação de XML's arquivados
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                      Relação de Divergências
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                      Relatório de Duplicatas XML Loader
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                      Relatório de Eventos XML
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                      Relatório de NF-e do XML Loader
+                    </a>
+                  </li>
                 </ul>
               )}
             </li>
