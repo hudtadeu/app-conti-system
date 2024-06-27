@@ -72,12 +72,12 @@ function Menu({ menuActive, toggleMenu }) {
               </a>
               <ul className="nav flex-column pl-3 sub-menu">
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="./empresa">
                     Parâmetros XML Loader
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="./cadastroUsuarios">
                     Parâmetros Usuários XML Loader
                   </a>
                 </li>
@@ -102,12 +102,12 @@ function Menu({ menuActive, toggleMenu }) {
               </a>
               <ul className="nav flex-column pl-3 sub-menu">
                 <li className="nav-item">
-                  <a className="nav-link" href="./empresa">
+                  <a className="nav-link" href="#">
                     Empresa
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="./cadastroUsuarios">
+                  <a className="nav-link" href="#">
                     Cadastro de Usuários do XML Loader
                   </a>
                 </li>
