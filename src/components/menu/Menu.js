@@ -226,26 +226,6 @@ function Menu({ menuActive, toggleMenu }) {
                       Manifestação Desconhecidos da Operação BATCH
                     </a>
                   </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
-                      Manifestação Operação Realizada BATCH
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
-                      Monitor Eventos XML Loader
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
-                      Painel Portaria/Auditoria
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
-                      Solução de Divergencias
-                    </a>
-                  </li>
                 </ul>
               )}
             </li>

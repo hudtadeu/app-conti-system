@@ -12,12 +12,7 @@ function DetalhesConsultarDocumentos() {
   const [documento, setDocumento] = useState(null);
   const [loading, setLoading] = useState(true);
   const [sections, setSections] = useState({
-    detalhes: false,
-    valores: false,
-    valoresb: false,
-    observacao: false,
-    transp: false,
-    nfe: false
+    itens: false,
   });
 
   const [activeButton, setActiveButton] = useState('');
@@ -244,15 +239,51 @@ function DetalhesConsultarDocumentos() {
 
           <div className="button-bar">
             <button
-              className={activeButton === 'detalhes' ? 'active' : ''}
-              onClick={() => handleButtonClick('detalhes')}
+              className={activeButton === 'itens' ? 'active' : ''}
+              onClick={() => handleButtonClick('itens')}
             >
               Itens
             </button>
           </div>
 
-          <div className={`content-section ${activeButton === 'detalhes' ? 'show' : ''}`}>
-            Conteúdo
+          <div className={`content-section ${activeButton === 'itens' ? 'show' : ''}`}>
+            <div className="table-responsive-container">
+            <table className="document-itens-table">
+                  <thead>
+                    <tr>
+                      <th>Seg</th>
+                      <th>Nat Fiscal</th>
+                      <th>CFOP Fornec</th>
+                      <th>Item Documento</th>
+                      <th>Descrição</th>
+                      <th>Item EMS</th>
+                      <th>Descrição</th>
+                      <th>Qtde</th>
+                      <th>Un</th>
+                      <th>Qtde Convert</th>
+                      <th>VL Unit</th>
+                      <th>VL Total</th>
+                      <th>OC</th>
+                      <th>Cod.Sit.ICMS(CST)</th>
+                      <th>CST IPI</th>
+                      <th>CST PIS</th>
+                      <th>CST CONFINS</th>
+                      <th>NCM</th>
+                      <th>%IPI</th>
+                      <th>EAN Fornec.</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Produto A</td>
+                      <td>10</td>
+                      <td>R$ 50,00</td>
+                      <td>R$ 500,00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
           </div>
         </div>
       </div>

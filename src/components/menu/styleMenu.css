@@ -34,7 +34,7 @@
   color: #fff;
   flex-direction: column;
   justify-content: space-between;
-  width: 260px;
+  width: 240px;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -58,7 +58,7 @@
 .sidebar-title {
   color: #fff;
   padding: 7px 2px;
-  margin-bottom: 4px;
+  margin-bottom: -5px;
   font-size: 18px;
 }
 
@@ -197,13 +197,6 @@
   left: 0;
   padding: 12px;
   transform: translateX(0%);
-}
-
-.sidebar-title {
-  color: #fff;
-  padding: 7px 2px;
-  margin-bottom: 4px;
-  font-size: 18px;
 }
 
 #botaoAbrirFechar {
