@@ -4,7 +4,7 @@ import './stylePesquisaConsultarDocumentos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { getStatusInfo, getTipoDocumentoInfo } from '../../utils'; 
+import { getStatusInfo, getTipoDocumentoInfo } from '../../../utils'; 
 
 function PesquisaConsultarDocumentos() {
   const location = useLocation();

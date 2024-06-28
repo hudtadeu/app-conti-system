@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/login/Login";
-import CadastroUsuarios from "./components/menu/CadastroUsuarios/CadastroUsuarios";
-import CadastroEventos from "./components/menu/CadastroEventos/CadastroEventos";
-import ConsultarDocumentos from "./components/menu/ConsultarDocumentos/ConsultarDocumentos";
-import Empresa from "./components/menu/empresa/Empresa";
+import CadastroUsuarios from "./components/menu/cadastros/cadastroUsuarios/CadastroUsuarios";
+import CadastroEventos from "./components/menu/cadastros/cadastroEventos/CadastroEventos";
+import ConsultarDocumentos from "./components/menu/consultas/consultarDocumentos/ConsultarDocumentos";
+import Empresa from "./components/menu/cadastros/empresa/Empresa";
 import Layout from "./components/Layout";
-import PesquisaConsultarDocumentos from "./components/menu/ConsultarDocumentos/PesquisaConsultarDocumentos";
-import DetalhesConsultarDocumentos from "./components/menu/ConsultarDocumentos/DetalhesConsultarDocumentos";
+import PesquisaConsultarDocumentos from "./components/menu/consultas/consultarDocumentos/PesquisaConsultarDocumentos";
+import DetalhesConsultarDocumentos from "./components/menu/consultas/consultarDocumentos/DetalhesConsultarDocumentos";
 
 function App() {
   return (

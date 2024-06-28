@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronRight, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
 import "./styleDetalhesConsultarDocumentos.css";
-import { getStatusInfo, getTipoDocumentoInfo } from '../../utils';
+import { getStatusInfo, getTipoDocumentoInfo } from '../../../utils';
 
 function DetalhesConsultarDocumentos() {
   const location = useLocation();
@@ -247,57 +247,12 @@ function DetalhesConsultarDocumentos() {
               className={activeButton === 'detalhes' ? 'active' : ''}
               onClick={() => handleButtonClick('detalhes')}
             >
-              Detalhes
-            </button>
-            <button
-              className={activeButton === 'valores' ? 'active' : ''}
-              onClick={() => handleButtonClick('valores')}
-            >
-              Valores
-            </button>
-            <button
-              className={activeButton === 'valoresb' ? 'active' : ''}
-              onClick={() => handleButtonClick('valoresb')}
-            >
-              Valores ||
-            </button>
-            <button
-              className={activeButton === 'observacao' ? 'active' : ''}
-              onClick={() => handleButtonClick('observacao')}
-            >
-              Observação
-            </button>
-            <button
-              className={activeButton === 'transp' ? 'active' : ''}
-              onClick={() => handleButtonClick('transp')}
-            >
-              Transp
-            </button>
-            <button
-              className={activeButton === 'nfe' ? 'active' : ''}
-              onClick={() => handleButtonClick('nfe')}
-            >
-              NF3e
+              Itens
             </button>
           </div>
 
           <div className={`content-section ${activeButton === 'detalhes' ? 'show' : ''}`}>
             Conteúdo
-          </div>
-          <div className={`content-section ${activeButton === 'valores' ? 'show' : ''}`}>
-            Conteúdo dos Valores
-          </div>
-          <div className={`content-section ${activeButton === 'valoresb' ? 'show' : ''}`}>
-            Conteúdo dos Valores||
-          </div>
-          <div className={`content-section ${activeButton === 'observacao' ? 'show' : ''}`}>
-            Conteúdo da Observação
-          </div>
-          <div className={`content-section ${activeButton === 'transp' ? 'show' : ''}`}>
-            Conteúdo do Transporte
-          </div>
-          <div className={`content-section ${activeButton === 'nfe' ? 'show' : ''}`}>
-            Conteúdo do NF3e
           </div>
         </div>
       </div>
