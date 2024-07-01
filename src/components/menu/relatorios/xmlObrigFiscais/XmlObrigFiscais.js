@@ -4,11 +4,17 @@ import "./styleXmlObrigFiscais.css";
 const XmlObrigFiscais = () => {
   const [formToShow, setFormToShow] = useState('Seleção');
   const [activeButton, setActiveButton] = useState('Seleção');
+  const [classificationOption, setClassificationOption] = useState('');
 
   const showForm = (formName) => {
     setFormToShow(formName);
     setActiveButton(formName);
   };
+
+  const handleClassificationChange = (event) => {
+    setClassificationOption(event.target.value);
+  };
+
 
   const renderForm = () => {
     switch (formToShow) {
@@ -53,7 +59,26 @@ const XmlObrigFiscais = () => {
       case 'Classificação':
         return (
           <form className="form-classification">
-            {/* Conteúdo do formulário de Classificação */}
+            <label>
+              <input
+                type="radio"
+                value="PorDataFornecNroDocto"
+                checked={classificationOption === 'PorDataFornecNroDocto'}
+                onChange={handleClassificationChange}
+              />
+              <span>Por data / Fornec / Nro. Docto</span>
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="PorFornecNroDocto"
+                checked={classificationOption === 'PorFornecNroDocto'}
+                onChange={handleClassificationChange}
+              />
+             <span> Por Fornec / Nro. Docto</span>
+            </label>
+            <button className="submit-executar-fiscais" type="submit">Executar</button>
+            <button className="button-executar-fiscais" type="button">Cancelar</button>
           </form>
         );
       case 'Parâmetros':
