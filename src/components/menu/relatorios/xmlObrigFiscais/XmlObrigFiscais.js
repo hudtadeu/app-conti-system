@@ -16,7 +16,7 @@ const XmlObrigFiscais = () => {
         return (
           <form className="form-selection">
             <label>
-              <span>Estabelecimento:
+              <span><p>Estabelecimento:</p>
                 <input type="text" />
                 até
                 <input type="text" />
@@ -24,7 +24,7 @@ const XmlObrigFiscais = () => {
             </label>
             <br />
             <label>
-              <span>Data de Emissão:
+              <span><p>Data de Emissão:</p>
                 <input type="date" />
                 até
                 <input type="date" />
@@ -32,7 +32,7 @@ const XmlObrigFiscais = () => {
             </label>
             <br />
             <label>
-              <span>Emitente:
+              <span><p>Emitente:</p>
                 <input type="text" readOnly />
                 até
                 <input type="text" readOnly />
@@ -40,7 +40,7 @@ const XmlObrigFiscais = () => {
             </label>
             <br />
             <label>
-              <span>Data de Transação:
+              <span><p>Data de Transação:</p>
                 <input type="date" />
                 até
                 <input type="date" />
