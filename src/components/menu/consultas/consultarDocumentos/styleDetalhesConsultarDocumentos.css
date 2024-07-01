@@ -356,8 +356,8 @@ justify-content: center;
 }
 
 .document-itens-table th, .document-itens-table td {
-  padding: 8px;
-  text-align: left;
+  padding: 10px;
+  text-align: center;
   background-color: #fff;
   color: #0098c9;
   font-size: 10px;
@@ -374,10 +374,11 @@ justify-content: center;
   color: #0098c9;
 }
 
+
+
 .document-itens-table tbody tr:hover {
   background-color: #f0f0f0; 
 }
-
 
 .table-responsive-container {
   overflow-x: auto;
