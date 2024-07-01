@@ -16,6 +16,7 @@ function DetalhesConsultarDocumentos() {
   });
 
   const [activeButton, setActiveButton] = useState('');
+  const [itensDocumento, setItensDocumento] = useState([]);
 
   useEffect(() => {
     if (!cId) return;
@@ -51,8 +52,43 @@ function DetalhesConsultarDocumentos() {
       }
     };
 
+  const fetchItensDocumento = async () => {
+    if (!cId) return;
+  
+    const base64Credentials = sessionStorage.getItem("token");
+  
+    try {
+      const response = await fetch(`http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/piGetItemDocXML/byiddoc/${cId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Basic ${base64Credentials}`
+        }
+      });
+  
+      if (!response.ok) {
+        throw new Error('Erro ao buscar itens do documento');
+      }
+  
+      const data = await response.json();
+      console.log("Itens recebidos:", data);
+  
+      if (data && data.items && data.items.length > 0) {
+        setItensDocumento(data.items);
+      } else {
+        setItensDocumento([]);
+      }
+    } catch (error) {
+      console.error('Erro ao buscar detalhes do documento:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
     fetchDocumentoDetails();
+    fetchItensDocumento();
   }, [cId]);
+    
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -246,9 +282,10 @@ function DetalhesConsultarDocumentos() {
             </button>
           </div>
 
-          <div className={`content-section ${activeButton === 'itens' ? 'show' : ''}`}>
-            <div className="table-responsive-container">
-            <table className="document-itens-table">
+          {itensDocumento.length > 0 && (
+            <div className={`content-section ${activeButton === 'itens' ? 'show' : ''}`}>
+              <div className="table-responsive-container">
+                <table className="document-itens-table">
                   <thead>
                     <tr>
                       <th>Seg</th>
@@ -274,17 +311,37 @@ function DetalhesConsultarDocumentos() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Produto A</td>
-                      <td>10</td>
-                      <td>R$ 50,00</td>
-                      <td>R$ 500,00</td>
-                    </tr>
+                    {itensDocumento.map((item, index) => (
+                      <tr key={index}>
+                        {/* Preencha com os dados específicos de cada item */}
+                        <td>{item.seq}</td>
+                        <td>{item.CFOP_fornec}</td>
+                        <td>{item.cfop_fornec}</td>
+                        <td>{item.item_totvs}</td>
+                        <td>{item.descr_it_fornec}</td>
+                        <td>{item.item_ems}</td>
+                        <td>{item.descr_it_fornec}</td>
+                        <td>{item.qtde_fornec}</td>
+                        <td>{item.un_totvs}</td>
+                        <td>{item.qtde_convert}</td>
+                        <td>{item.preco_unit}</td>
+                        <td>{item.preco_total}</td>
+                        <td>{item.OC}</td>
+                        <td>{item.cst_icms}</td>
+                        <td>{item.cst_ipi}</td>
+                        <td>{item.cst_pis}</td>
+                        <td>{item.cst_confins}</td>
+                        <td>{item.ncm}</td>
+                        <td>{item.aliq_ipi}</td>
+                        <td>{item.ean_fornec}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
-          </div>
+            </div>
+          )}
+
         </div>
       </div>
     </div>
