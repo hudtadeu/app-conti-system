@@ -20,13 +20,18 @@
     background-color: #0077a3;
     color: #ffffff;
   }
+  
+  .button-secondary.active {
+    background-color: #0077a3;
+    color: #ffffff;
+  }
 
   .form-selection {
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     text-align: left;
     align-items: flex-end; 
-    margin: 0 auto;
     width: 100%;
   }
   
@@ -57,4 +62,43 @@
   .form-selection select:focus {
     border-color: #48599e;
     outline: none;
+  }
+
+  .submit-executar-fiscais {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 40%;
+    margin-top: 18px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .submit-exceutar-fiscais:hover {
+    background-color: #0056b3;
+  }
+  
+  .button-executar-fiscais {
+    background-color: #939196;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 40%;
+    margin-top: 5px;
+    margin-bottom: -5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .button-executar-fiscais:hover {
+    background-color: #545b62;
   }
