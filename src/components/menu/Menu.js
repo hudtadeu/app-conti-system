@@ -271,62 +271,62 @@ function Menu({ menuActive, toggleMenu }) {
               {activeMenu === "relatorios" && (
                 <ul ref={submenuRef} className="nav flex-column pl-3 sub-menu">
                   <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                    <Link className="nav-link" to="/xmlObrigFiscais" onClick={(e) => handleSubMenuClick(e, "relatorios")}>
                       Conciliação XML X Obrig Fiscais
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "relatorios")}>
                       Conciliação XML X Recebimento
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "relatorios")}>
                       Emissor DANFE
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "relatorios")}>
                       Estatística de Implantação de Documentos
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "relatorios")}>
                       Estastísticas XML
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "relatorios")}>
                       Priorização de Documentos
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "relatorios")}>
                       Relação de DANFES em atraso
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "relatorios")}>
                       Relação de XML's arquivados
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "relatorios")}>
                       Relação de Divergências
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "relatorios")}>
                       Relatório de Duplicatas XML Loader
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "relatorios")}>
                       Relatório de Eventos XML
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "consultas")}>
+                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "relatorios")}>
                       Relatório de NF-e do XML Loader
                     </a>
                   </li>

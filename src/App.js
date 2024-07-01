@@ -8,6 +8,7 @@ import Empresa from "./components/menu/cadastros/empresa/Empresa";
 import Layout from "./components/Layout";
 import PesquisaConsultarDocumentos from "./components/menu/consultas/consultarDocumentos/PesquisaConsultarDocumentos";
 import DetalhesConsultarDocumentos from "./components/menu/consultas/consultarDocumentos/DetalhesConsultarDocumentos";
+import XmlObrigFiscais from "./components/menu/relatorios/xmlObrigFiscais/XmlObrigFiscais";
 
 function App() {
   return (
@@ -62,6 +63,14 @@ function App() {
               element={
                 <Layout>
                   <DetalhesConsultarDocumentos />
+                </Layout>
+              }
+            />
+            <Route
+              path="xmlObrigFiscais"
+              element={
+                <Layout>
+                  <XmlObrigFiscais />
                 </Layout>
               }
             />

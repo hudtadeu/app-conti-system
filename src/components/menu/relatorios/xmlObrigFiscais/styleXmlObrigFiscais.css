@@ -1,0 +1,60 @@
+/* XmlObrigFiscais.css */
+
+.button-group {
+    margin-bottom: 20px;
+  }
+  
+  .button-secondary {
+    background-color: #ffffff; 
+    color: #0098c9; 
+    padding: 8px 16px; 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-secondary:hover {
+    background-color: #0077a3;
+    color: #ffffff;
+  }
+
+  .form-selection {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: flex-end; 
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .form-selection label {
+    margin-bottom: 10px;
+    color: #211915;
+    font-weight: bold;
+    justify-content: flex-end;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .form-selection input[type="text"],
+  .form-selection input[type="date"],
+  .sform-selection select {
+    padding: 1px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    flex: 1;
+    text-align: center;
+    width: 140px;
+  }
+  
+  .form-selection input[type="text"]:focus,
+  .form-selection input[type="date"]:focus,
+  .form-selection select:focus {
+    border-color: #48599e;
+    outline: none;
+  }
