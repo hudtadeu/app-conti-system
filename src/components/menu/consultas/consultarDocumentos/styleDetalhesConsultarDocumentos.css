@@ -88,11 +88,10 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 14px;
+  font-size: 13px;
   color: #555;
   cursor: pointer;
   margin: 0;
-  font-size: 14px;
 }
 
 .section-detailsdoc h2:hover {
