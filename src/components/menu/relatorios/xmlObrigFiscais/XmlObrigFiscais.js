@@ -156,7 +156,7 @@ const XmlObrigFiscais = () => {
   };
 
   return (
-    <div className="container-empresa">
+    <div className="container-xmlobrigfiscais">
       <div className="button-group">
         <button
           className={`button-secondary ${activeButton === 'Seleção' ? 'active' : ''}`}

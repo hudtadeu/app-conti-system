@@ -1,4 +1,16 @@
-/* XmlObrigFiscais.css */
+.container-xmlobrigfiscais {
+  background-color: #ebecee;
+  color: #0098c9;
+  padding: 10px;
+  border-radius: 0px 0px 7px 7px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 13px;
+  overflow-x: auto;
+  max-width: 800px;
+  margin: -30px auto; 
+}
 
 .button-group {
     margin-bottom: 20px;
@@ -112,6 +124,7 @@
 
   .form-classification {
     margin-top: 20px;
+    margin-bottom: 5px;
   }
 
   .form-classification span {
@@ -131,6 +144,7 @@
 
   .form-printing {
     margin-top: 25px;
+    margin-bottom: 5px;
   }
 
   .form-printing span {
