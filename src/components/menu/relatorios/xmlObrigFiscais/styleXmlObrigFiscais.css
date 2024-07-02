@@ -128,5 +128,31 @@
   .form-classification input[type="radio"] {
     margin-right: 6px;
   }
+
+  .form-printing {
+    margin-top: 25px;
+  }
+
+  .form-printing span {
+    color: #333
+  }
+
+  .form-printing h2 {
+    color: #333;
+    margin-bottom: 7px;
+    margin-top: 10px;
+  }
+  
+  .form-printing label {
+    display: inline-block;
+    margin-bottom: 10px;
+    text-align: center;
+    margin-right: 20px;
+  }
+  
+  
+  .form-printing input[type="radio"] {
+    margin-right: 6px;
+  }
   
   

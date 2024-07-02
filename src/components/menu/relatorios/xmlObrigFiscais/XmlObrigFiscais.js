@@ -5,6 +5,7 @@ const XmlObrigFiscais = () => {
   const [formToShow, setFormToShow] = useState('Seleção');
   const [activeButton, setActiveButton] = useState('Seleção');
   const [classificationOption, setClassificationOption] = useState('');
+  const [impressaoOption, setImpressaoOption] = useState('');
 
   const showForm = (formName) => {
     setFormToShow(formName);
@@ -13,6 +14,10 @@ const XmlObrigFiscais = () => {
 
   const handleClassificationChange = (event) => {
     setClassificationOption(event.target.value);
+  };
+
+  const handleImpressaoChange = (event) => {
+    setImpressaoOption(event.target.value);
   };
 
 
@@ -90,7 +95,59 @@ const XmlObrigFiscais = () => {
       case 'Impressão':
         return (
           <form className="form-printing">
-            {/* Conteúdo do formulário de Impressão */}
+            <div className='section-printing'>
+            <h2>Destino</h2>
+            <label>
+              <input
+                type="radio"
+                value="Impressora"
+                checked={impressaoOption === 'Impressora'}
+                onChange={handleImpressaoChange}
+              />
+              <span> Impressora </span>
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="Arquivo"
+                checked={impressaoOption === 'Arquivo'}
+                onChange={handleImpressaoChange}
+              /> 
+             <span> Arquivo </span>
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="Terminal"
+                checked={impressaoOption === 'Terminal'}
+                onChange={handleImpressaoChange}
+              /> 
+             <span> Terminal </span>
+            </label>
+            </div>
+            <div>
+            <h2>Execução</h2>
+            <label>
+              <input
+                type="radio"
+                value="OnLine"
+                checked={impressaoOption === 'OnLine'}
+                onChange={handleImpressaoChange}
+              />
+              <span> Impressora </span>
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="Batch"
+                checked={impressaoOption === 'Batch'}
+                onChange={handleImpressaoChange}
+              /> 
+             <span> Batch </span>
+            </label>
+            </div>
+            <button className="submit-executar-fiscais" type="submit">Executar</button>
+            <button className="button-executar-fiscais" type="button">Cancelar</button>
           </form>
         );
       default:
