@@ -6,6 +6,7 @@ const XmlObrigFiscais = () => {
   const [activeButton, setActiveButton] = useState('Seleção');
   const [classificationOption, setClassificationOption] = useState('');
   const [impressaoOption, setImpressaoOption] = useState('');
+  const [opcaoSelecionada, setOpcaoSelecionada] = useState('');
 
   const showForm = (formName) => {
     setFormToShow(formName);
@@ -18,6 +19,15 @@ const XmlObrigFiscais = () => {
 
   const handleImpressaoChange = (event) => {
     setImpressaoOption(event.target.value);
+  };
+
+  const handleChange = (event) => {
+    const valorSelecionado = event.target.value;
+    if (opcaoSelecionada === valorSelecionado) {
+      setOpcaoSelecionada(''); // Desmarca a opção se já estiver selecionada
+    } else {
+      setOpcaoSelecionada(valorSelecionado);
+    }
   };
 
 
@@ -89,37 +99,70 @@ const XmlObrigFiscais = () => {
       case 'Parâmetros':
         return (
           <form className="form-parameters">
-            <h2>Tipo de Comparação</h2>
-            <div>
+            <h2 className='title-group-comparacao'>Tipo de Comparação</h2>
+            <div className='section-comparacao'>
               <label>
                 <input type="checkbox" name="docNaoEncontrado" />
                 Documento não encontrado
               </label>
-            </div>
-            <div>
               <label>
                 <input type="checkbox" name="chaveNFe" />
                 Chave NF-e
               </label>
-            </div>
-            <div>
               <label>
                 <input type="checkbox" name="naturezaOperacao" />
                 Natureza Operação
               </label>
-            </div>
-            <div>
               <label>
                 <input type="checkbox" name="dataEmissao" />
                 Data Emissão
               </label>
-            </div>
-            <div>
               <label>
                 <input type="checkbox" name="valorTotal" />
                 Valor Total
               </label>
+              </div>
+              <div className='form-group-relatorio'>
+              <h2 className='title-group-relatorio'> Tipo Relatório</h2>
+              <div className='section-relatorio'>
+              <label>
+              <input
+                type="radio"
+                value="problema"
+                checked={opcaoSelecionada === 'problema'}
+                onChange={handleChange}
+              />
+             <span> Somente documentos com problema</span>
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="todos"
+                checked={opcaoSelecionada === 'todos'}
+                onChange={handleChange}
+              />
+             <span> Todos documentos</span>
+            </label>
             </div>
+            </div>
+            <div>
+            <h2 className='title-group-considera'>Tipo de Comparação</h2>
+            <div className='section-considera'>
+              <label>
+                <input type="checkbox" name="considera" />
+                Não Considera Série para documentos anteriores à:
+                <p><input type='text'/></p>
+              </label>
+              </div>
+              <div className='section-imprimexcel'>
+              <label>
+                <input type="checkbox" name="imprimeExcel" />
+                Imprime Excel
+              </label>
+              </div>
+            </div>
+            <button className="submit-executar-fiscais" type="submit">Executar</button>
+            <button className="button-executar-fiscais" type="button">Cancelar</button>
           </form>
         );
       case 'Impressão':
