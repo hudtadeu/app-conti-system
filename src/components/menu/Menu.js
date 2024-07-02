@@ -5,7 +5,7 @@ import "./styleMenu.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
-  faCogs,
+  faAddressBook,
   faTasks,
   faUserCircle,
   faChartBar,
@@ -88,7 +88,7 @@ function Menu({ menuActive, toggleMenu }) {
             </li>
             <li className="nav-item" onClick={() => handleMenuClick("cadastros")}>
               <a className="nav-link">
-                <FontAwesomeIcon icon={faCogs} className="mr-2" /> Cadastros
+                <FontAwesomeIcon icon={faAddressBook} className="mr-2" /> Cadastros
                 <span className="float-right">
                   <FontAwesomeIcon icon={activeMenu === "cadastros" ? faChevronDown : faChevronRight} />
                 </span>
