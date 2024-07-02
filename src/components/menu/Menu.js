@@ -13,6 +13,7 @@ import {
   faSignOutAlt,
   faChevronDown,
   faChevronRight,
+  faTachometerAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
 function Menu({ menuActive, toggleMenu }) {
@@ -80,6 +81,11 @@ function Menu({ menuActive, toggleMenu }) {
             <FontAwesomeIcon icon={faUserCircle} className="user-icon" /> {username}
           </h2>
           <ul className="nav flex-column">
+          <li className="nav-item" onClick={() => handleMenuClick("painel")}>
+              <a className="nav-link">
+                <FontAwesomeIcon icon={faTachometerAlt} className="mr-2" /> Painel de Controle
+              </a>
+            </li>
             <li className="nav-item" onClick={() => handleMenuClick("cadastros")}>
               <a className="nav-link">
                 <FontAwesomeIcon icon={faCogs} className="mr-2" /> Cadastros
