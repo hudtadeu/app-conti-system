@@ -89,7 +89,37 @@ const XmlObrigFiscais = () => {
       case 'Parâmetros':
         return (
           <form className="form-parameters">
-            {/* Conteúdo do formulário de Parâmetros */}
+            <h2>Tipo de Comparação</h2>
+            <div>
+              <label>
+                <input type="checkbox" name="docNaoEncontrado" />
+                Documento não encontrado
+              </label>
+            </div>
+            <div>
+              <label>
+                <input type="checkbox" name="chaveNFe" />
+                Chave NF-e
+              </label>
+            </div>
+            <div>
+              <label>
+                <input type="checkbox" name="naturezaOperacao" />
+                Natureza Operação
+              </label>
+            </div>
+            <div>
+              <label>
+                <input type="checkbox" name="dataEmissao" />
+                Data Emissão
+              </label>
+            </div>
+            <div>
+              <label>
+                <input type="checkbox" name="valorTotal" />
+                Valor Total
+              </label>
+            </div>
           </form>
         );
       case 'Impressão':
