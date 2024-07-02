@@ -8,7 +8,7 @@
   margin-right: 50px;
   font-size: 13px;
   max-width: 800px;
-  margin: -30px auto; 
+  margin: -45px auto; 
 }
 
 .button-group {
@@ -162,6 +162,12 @@
     text-align: center;
     margin-right: 20px;
   }
+
+  .form-parameters {
+    margin-left: 100px;
+    margin-bottom: 10px;
+    margin-top: 25px;
+  }
   
   
   .form-printing input[type="radio"] {
@@ -197,6 +203,7 @@
   margin-left: 20px;
   margin-bottom: 14px;
   margin-top: 10px;
+  font-size: 15px;
 }
 .title-group-relatorio {
   margin-bottom: 14px;
@@ -204,6 +211,7 @@
   text-align: left;
   margin-left: 20px;
   color: #333;
+  font-size: 15px;
 }
 
 .title-group-considera {
@@ -212,6 +220,7 @@
   text-align: left;
   margin-left: 20px;
   color: #333;
+  font-size: 15px;
 }
 
 .section-considera {
@@ -231,6 +240,30 @@
   margin-left: 20px;
   color: #333;
   margin-top: 15px;
+}
+
+#tipoNota {
+  padding: 2px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  outline: none;
+  margin-top: -5px;
+}
+
+#tipoNota option {
+  padding: 5px;
+}
+
+#tipoNota:focus {
+  border-color: #66afe9;
+  box-shadow: 0 0 5px rgba(102, 175, 233, 0.6);
+}
+
+.title-group-notas {
+  margin-bottom: 5px;
+  font-size: 15px;
 }
   
   

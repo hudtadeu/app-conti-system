@@ -121,6 +121,15 @@ const XmlObrigFiscais = () => {
                 <input type="checkbox" name="valorTotal" />
                 Valor Total
               </label>
+              <div className='section-group-notas'>
+              <h2 className='title-group-notas'>Tipo de Nota</h2>
+              <label for="tipoNota">Tipo:</label>
+                <select id="tipoNota" name="tipoNota">
+                  <option value="Todos">Todos</option>
+                  <option value="Entrada">Entrada</option>
+                  <option value="Serviço">Serviço</option>
+                </select>
+              </div>
               </div>
               <div className='form-group-relatorio'>
               <h2 className='title-group-relatorio'> Tipo Relatório</h2>
