@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import "./styleXmlObrigFiscais.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTools } from '@fortawesome/free-solid-svg-icons';
 
 const XmlObrigFiscais = () => {
   const [formToShow, setFormToShow] = useState('Seleção');
@@ -24,7 +26,7 @@ const XmlObrigFiscais = () => {
   const handleChange = (event) => {
     const valorSelecionado = event.target.value;
     if (opcaoSelecionada === valorSelecionado) {
-      setOpcaoSelecionada(''); // Desmarca a opção se já estiver selecionada
+      setOpcaoSelecionada(''); 
     } else {
       setOpcaoSelecionada(valorSelecionado);
     }
@@ -205,6 +207,9 @@ const XmlObrigFiscais = () => {
                 onChange={handleImpressaoChange}
               /> 
              <span> Terminal </span>
+             <button type="button" className="botao-fatools">
+              <FontAwesomeIcon icon={faTools} />
+            </button>
             </label>
             </div>
             <div>

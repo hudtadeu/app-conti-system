@@ -265,5 +265,24 @@
   margin-bottom: 5px;
   font-size: 15px;
 }
+
+.botao-fatools {
+  background-color: #0098c9; 
+  color: #ffffff; 
+  border: none; 
+  padding: 7px;
+  border-radius: 4px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, color 0.3s; 
+  display: inline-flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.botao-fatools:hover {
+  color: #0077a3;
+}
+
+
   
   
