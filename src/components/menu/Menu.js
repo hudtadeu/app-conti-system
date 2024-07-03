@@ -82,9 +82,9 @@ function Menu({ menuActive, toggleMenu }) {
           </h2>
           <ul className="nav flex-column">
           <li className="nav-item" >
-              <a className="nav-link">
+              <Link className="nav-link" to="/dashboard">
                 <FontAwesomeIcon icon={faChartPie} className="mr-2" /> Painel de Controle
-              </a>
+              </Link>
             </li>
             <li className="nav-item" onClick={() => handleMenuClick("cadastros")}>
               <a className="nav-link">

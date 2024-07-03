@@ -10,6 +10,7 @@ import PesquisaConsultarDocumentos from "./components/menu/consultas/consultarDo
 import DetalhesConsultarDocumentos from "./components/menu/consultas/consultarDocumentos/DetalhesConsultarDocumentos";
 import XmlObrigFiscais from "./components/menu/relatorios/xmlObrigFiscais/XmlObrigFiscais";
 import XmlRecebimento from "./components/menu/relatorios/xmlRecebimento/XmlRecebimento";
+import Dashboard from "./components/menu/painelDeControle/Dashboard";
 
 function App() {
   return (
@@ -80,6 +81,14 @@ function App() {
               element={
                 <Layout>
                   <XmlRecebimento />
+                </Layout>
+              }
+            />
+            <Route
+              path="dashboard"
+              element={
+                <Layout>
+                  <Dashboard />
                 </Layout>
               }
             />
