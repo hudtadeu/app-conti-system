@@ -34,7 +34,7 @@
   color: #fff;
   flex-direction: column;
   justify-content: space-between;
-  width: 240px;
+  width: 227px;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -64,7 +64,7 @@
 
 #botaoAbrirFechar {
   position: fixed;
-  left: 300px;
+  left: 265px;
   top: 5px;
   margin-top: 10px;
   padding: 2px 7px;
@@ -192,139 +192,3 @@
   font-size: 16px;
 }
 
-
-.sidebar.active {
-  left: 0;
-  padding: 12px;
-  transform: translateX(0%);
-}
-
-#botaoAbrirFechar {
-  position: fixed;
-  left: 300px;
-  top: 5px;
-  margin-top: 10px;
-  padding: 2px 7px;
-  border: none;
-  border-radius: 5px;
-  outline: none;
-  text-transform: uppercase;
-  background-color: #0077a3;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 14px;
-}
-
-#botaoAbrirFechar:hover {
-  box-shadow: 0px 3px 3px #211915;
-}
-
-.content {
-  padding: 30px;
-  text-align: center;
-  width: calc(100% - 210px);
-  margin-left: 210px;
-  transition: width 0.3s ease, margin-left 0.3s ease;
-}
-
-.layout.menu-active .content {
-  width: calc(100% - 210px);
-  margin-left: 210px;
-}
-
-.layout.menu-inactive .content {
-  width: 100%;
-  margin-left: 0;
-}
-
-.conti-menu {
-  text-align: center;
-}
-
-.nav-item {
-  font-size: 18px;
-  padding: 2px 0;
-  cursor: pointer;
-}
-
-.nav-link {
-  text-decoration: none;
-  color: #fff;
-  transition: background-color 0.3s ease;
-  border-radius: 5px;
-  font-size: 12px;
-  display: block;
-  transition: transform 0.3s ease;
-  padding: 3px;
-}
-
-.nav-link:hover {
-  background-color: #3498db;
-  border: none;
-  background-color: #ebecee;
-  color: #0098c9;
-  transform: translateX(10px);
-}
-.nav-link .fas {
-  margin-right: 10px;
-}
-
-.sub-menu {
-  padding-left: 20px;
-}
-
-.sub-menu:hover {
-  color: #0098c9;
-}
-
-.sub-menu .nav-item {
-  padding: 2px 0;
-}
-
-.sub-menu .nav-link {
-  color: #333;
-}
-
-#toggleMenu {
-  margin-right: 0 !important;
-}
-
-.sub-menu .nav-item {
-  list-style-type: none;
-  padding: 2px 0;
-}
-
-.sub-menu .nav-link {
-  text-decoration: none;
-  color: #fff;
-}
-
-.sub-menu .nav-link:hover {
-  color: #0098c9;
-}
-
-.float-right {
-  float: right;
-}
-
-.mr-2 {
-  font-size: 13px;
-  margin-right: 10px;
-  padding: 0px 0;
-  color: #fff;
-}
-
-.nav-link svg {
-  color: inherit;
-}
-
-.nav-link:hover svg {
-  color: #0098c9;
-}
-
-.user-icon {
-  margin-right: 5px;
-  font-size: 16px;
-}

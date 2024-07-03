@@ -27,9 +27,40 @@
     width: calc(100% - 250px);
     margin-left: 250px;
   }
-  
-  .layout.menu-inactive .content {
-    width: 100%;
-    margin-left: 0;
-  }
+
+  .layout {
+  display: flex;
+  transition: margin-left 0.3s;
+}
+
+.layout.menu-inactive .content {
+  width: 100%;
+  margin-left: 0;
+}
+
+.menu-inactive .sidebar {
+  width: 0;
+}
+
+.menu-inactive .content {
+  margin-left: 0;
+}
+
+.sidebar {
+  width: 250px;
+  transition: width 0.3s;
+}
+
+.content {
+  margin-left: 250px;
+  transition: margin-left 0.3s;
+}
+
+.menu-inactive #botaoAbrirFechar {
+  position: absolute;
+  left: 12px;
+  top: 5px;
+  transition: left 0.3s;
+}
+
   
