@@ -282,9 +282,9 @@ function Menu({ menuActive, toggleMenu }) {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "relatorios")}>
+                    <Link className="nav-link" to="/xmlRecebimento" onClick={(e) => handleSubMenuClick(e, "relatorios")}>
                       Conciliação XML X Recebimento
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "relatorios")}>
