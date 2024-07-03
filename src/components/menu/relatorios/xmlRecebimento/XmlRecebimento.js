@@ -26,7 +26,7 @@ const XmlRecebimento = () => {
   const handleChange = (event) => {
     const valorSelecionado = event.target.value;
     if (opcaoSelecionada === valorSelecionado) {
-      setOpcaoSelecionada(''); // Desmarca a opção se já estiver selecionada
+      setOpcaoSelecionada(''); 
     } else {
       setOpcaoSelecionada(valorSelecionado);
     }

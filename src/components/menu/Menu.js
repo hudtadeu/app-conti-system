@@ -81,7 +81,7 @@ function Menu({ menuActive, toggleMenu }) {
             <FontAwesomeIcon icon={faUserCircle} className="user-icon" /> {username}
           </h2>
           <ul className="nav flex-column">
-          <li className="nav-item" onClick={() => handleMenuClick("painel")}>
+          <li className="nav-item" >
               <a className="nav-link">
                 <FontAwesomeIcon icon={faChartPie} className="mr-2" /> Painel de Controle
               </a>
