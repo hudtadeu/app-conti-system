@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import "./styleXmlRecebimento.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTools } from '@fortawesome/free-solid-svg-icons';
 
 const XmlRecebimento = () => {
   const [formToShow, setFormToShow] = useState('Seleção');
@@ -205,6 +207,9 @@ const XmlRecebimento = () => {
                 onChange={handleImpressaoChange}
               /> 
              <span> Terminal </span>
+             <button type="button" className="botao-fatools">
+              <FontAwesomeIcon icon={faTools} />
+            </button>
             </label>
             </div>
             <div>
@@ -238,7 +243,7 @@ const XmlRecebimento = () => {
   };
 
   return (
-    <div className="container-xmlobrigfiscais">
+    <div className="container-xmlrecebimento">
       <div className="button-group">
         <button
           className={`button-secondary ${activeButton === 'Seleção' ? 'active' : ''}`}

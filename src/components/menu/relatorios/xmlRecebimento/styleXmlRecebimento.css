@@ -1,0 +1,288 @@
+.container-xmlrecebimento {
+    background-color: #ebecee;
+    color: #0098c9;
+    padding: 10px;
+    border-radius: 0px 0px 7px 7px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 13px;
+    max-width: 800px;
+    margin: -35px auto; 
+  }
+  
+  .button-group {
+      margin-bottom: 20px;
+    }
+    
+    .button-secondary {
+      background-color: #ffffff; 
+      color: #0098c9; 
+      padding: 8px 16px; 
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .button-secondary:hover {
+      background-color: #0077a3;
+      color: #ffffff;
+    }
+    
+    .button-secondary.active {
+      background-color: #0077a3;
+      color: #ffffff;
+    }
+  
+    .form-selection {
+      margin-top: 30px;
+      margin-bottom: 5px;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      align-items: flex-end; 
+      width: 100%;
+    }
+  
+    .form-selection p {
+      margin-bottom: 7px;
+      padding: 8px;
+    }
+    
+    .form-selection label {
+      margin-bottom: 10px;
+      color: #333;
+      font-weight: bold;
+      justify-content: flex-end;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .form-selection input[type="text"],
+    .form-selection input[type="date"],
+    .sform-selection select {
+      padding: 1px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-right: 5px;
+      margin-left: 5px;
+      flex: 1;
+      text-align: center;
+      width: 140px;
+    }
+    
+    .form-selection input[type="text"]:focus,
+    .form-selection input[type="date"]:focus,
+    .form-selection select:focus {
+      border-color: #48599e;
+      outline: none;
+    }
+  
+    .submit-executar-fiscais {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 40%;
+      margin-top: 18px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 25px;
+    }
+    
+    .submit-executar-fiscais:hover {
+      background-color: #0056b3;
+    }
+    
+    .button-executar-fiscais {
+      background-color: #939196;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 40%;
+      margin-top: 5px;
+      margin-bottom: -5px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .button-executar-fiscais:hover {
+      background-color: #545b62;
+    }
+  
+    .form-classification {
+      margin-top: 20px;
+      margin-bottom: 5px;
+    }
+  
+    .form-classification span {
+      color: #333
+    }
+    
+    .form-classification label {
+      display: block;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    
+    
+    .form-classification input[type="radio"] {
+      margin-right: 6px;
+    }
+  
+    .form-printing {
+      margin-top: 25px;
+      margin-bottom: 5px;
+    }
+  
+    .form-printing span {
+      color: #333
+    }
+  
+    .form-printing h2 {
+      color: #333;
+      margin-bottom: 7px;
+      margin-top: 10px;
+    }
+    
+    .form-printing label {
+      display: inline-block;
+      margin-bottom: 10px;
+      text-align: center;
+      margin-right: 20px;
+    }
+  
+    .form-parameters {
+      margin-left: 100px;
+      margin-bottom: 10px;
+      margin-top: 25px;
+    }
+    
+    
+    .form-printing input[type="radio"] {
+      margin-right: 6px;
+    }
+  
+    .section-comparacao {
+      color: #333;
+      display: flex;
+      justify-content: flex-start; 
+      flex-direction: column;
+      text-align: left;
+      margin-left: 20px;
+    }
+  
+    .section-relatorio {
+      color: #333;
+      display: flex;
+      justify-content: flex-start; 
+      flex-direction: column;
+      text-align: left;
+      margin-left: 20px;
+    }
+  
+  
+  .form-parameters input[type="checkbox"] {
+    margin-right: 8px;
+  }
+  
+  .title-group-comparacao {
+    color: #333;
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: 14px;
+    margin-top: 10px;
+    font-size: 15px;
+  }
+  .title-group-relatorio {
+    margin-bottom: 14px;
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 20px;
+    color: #333;
+    font-size: 15px;
+  }
+  
+  .title-group-considera {
+    margin-bottom: 14px;
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 20px;
+    color: #333;
+    font-size: 15px;
+  }
+  
+  .section-considera {
+    display: flex;
+    justify-content: flex-start; 
+    flex-direction: column;
+    text-align: left;
+    margin-left: 20px;
+    color: #333;
+  }
+  
+  .section-imprimexcel {
+    display: flex;
+    justify-content: flex-start; 
+    flex-direction: column;
+    text-align: left;
+    margin-left: 20px;
+    color: #333;
+    margin-top: 15px;
+  }
+  
+  #tipoNota {
+    padding: 2px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+    margin-top: -5px;
+  }
+  
+  #tipoNota option {
+    padding: 5px;
+  }
+  
+  #tipoNota:focus {
+    border-color: #66afe9;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.6);
+  }
+  
+  .title-group-notas {
+    margin-bottom: 5px;
+    font-size: 15px;
+  }
+  
+  .botao-fatools {
+    background-color: #0098c9; 
+    color: #ffffff; 
+    border: none; 
+    padding: 7px;
+    border-radius: 4px; 
+    cursor: pointer; 
+    transition: background-color 0.3s, color 0.3s; 
+    display: inline-flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+  
+  .botao-fatools:hover {
+    color: #0077a3;
+  }
+  
+  
+    
+    
