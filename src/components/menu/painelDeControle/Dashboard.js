@@ -120,12 +120,12 @@ const Dashboard = () => {
       
       <div className="chart-container">
         <div className="chart-item line-chart">
-          <h3>Gráfico de Linha</h3>
+          <h3>Vendas</h3>
           <Line data={lineData} options={options} />
         </div>
         
         <div className="chart-item bar-chart">
-          <h3>Gráfico de Barras</h3>
+          <h3>Lucros</h3>
           <Bar data={barData} options={options} />
         </div>
         
