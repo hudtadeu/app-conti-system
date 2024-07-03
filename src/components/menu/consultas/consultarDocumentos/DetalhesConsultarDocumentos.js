@@ -115,18 +115,14 @@ function DetalhesConsultarDocumentos() {
     setActiveButton(prevButton => (prevButton === button ? '' : button));
   };
 
-  if (loading) {
+  if (loading || documento === null) {
     return (
       <div className="overlay-dc">
-      <div className="loading-container-dc">
-        <FontAwesomeIcon icon={faSpinner} spin size="3x" />
+        <div className="loading-container-dc">
+          <FontAwesomeIcon icon={faSpinner} spin size="3x" />
         </div>
       </div>
     );
-  }
-
-  if (!documento) {
-    return <div>Documento não encontrado</div>;
   }
 
   const statusInfo = getStatusInfo(documento.situacao);
