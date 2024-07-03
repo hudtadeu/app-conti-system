@@ -1,5 +1,5 @@
 import React from 'react';
-import "./styleDashboard.css";
+import './styleDashboard.css';
 import { Line, Bar, Pie } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -27,37 +27,36 @@ ChartJS.register(
 );
 
 const Dashboard = () => {
-    const lineData = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-        datasets: [
-          {
-            label: 'Vendas',
-            data: [65, 59, 80, 81, 56, 55],
-            fill: false,
-            backgroundColor: 'rgba(75,192,192,0.2)',
-            borderColor: '#4bc0c0',
-            tension: 0.4,
-            borderWidth: 2, // Aumenta a largura da linha
-          },
-        ],
-      };
-      
-      const barData = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-        datasets: [
-          {
-            label: 'Lucros',
-            data: [50, 75, 90, 60, 70, 85],
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: '#36a2eb',
-            borderWidth: 1,
-            borderRadius: 5,
-            barPercentage: 0.7, // Ajusta a largura das barras
-            categoryPercentage: 0.7, // Ajusta o espaçamento entre as barras
-          },
-        ],
-      };
-      
+  const lineData = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    datasets: [
+      {
+        label: 'Documentos',
+        data: [65, 59, 80, 81, 56, 55],
+        fill: false,
+        backgroundColor: '#ebecee',
+        borderColor: '#ebecee', // Linhas em branco
+        tension: 0.4,
+        borderWidth: 2,
+      },
+    ],
+  };
+
+  const barData = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    datasets: [
+      {
+        label: 'Documentos',
+        data: [50, 75, 90, 60, 70, 85],
+        backgroundColor: '#ebecee', 
+        borderColor: '#ebecee',
+        borderWidth: 1,
+        borderRadius: 5,
+        barPercentage: 0.6,
+        categoryPercentage: 0.6,
+      },
+    ],
+  };
 
   const pieData = {
     labels: ['Red', 'Blue', 'Yellow'],
@@ -82,7 +81,7 @@ const Dashboard = () => {
             family: 'Poppins',
             size: 14,
           },
-          color: '#333',
+          color: '#fff',
         },
       },
       tooltip: {
@@ -90,7 +89,7 @@ const Dashboard = () => {
         backgroundColor: '#fff',
         titleColor: '#333',
         bodyColor: '#666',
-        borderColor: '#ddd',
+        borderColor: '#fff',
         borderWidth: 1,
       },
     },
@@ -100,15 +99,15 @@ const Dashboard = () => {
           display: false,
         },
         ticks: {
-          color: '#333',
+          color: '#fff',
         },
       },
       y: {
         grid: {
-          color: '#ddd',
+          color: '#fff',
         },
         ticks: {
-          color: '#333',
+          color: '#fff',
         },
       },
     },
@@ -117,18 +116,18 @@ const Dashboard = () => {
   return (
     <div className="dashboard-container">
       <h2>Painel de Controle</h2>
-      
+
       <div className="chart-container">
         <div className="chart-item line-chart">
-          <h3>Vendas</h3>
+          <h3>Documentos pendentes</h3>
           <Line data={lineData} options={options} />
         </div>
-        
+
         <div className="chart-item bar-chart">
-          <h3>Lucros</h3>
+          <h3>Documentos atualizados</h3>
           <Bar data={barData} options={options} />
         </div>
-        
+
         <div className="chart-item">
           <h3>Gráfico de Pizza</h3>
           <Pie data={pieData} options={options} />
