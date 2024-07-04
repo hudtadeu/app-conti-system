@@ -63,7 +63,7 @@
     
     .form-selection input[type="text"],
     .form-selection input[type="date"],
-    .sform-selection select {
+    .form-selection select {
       padding: 1px;
       border: 1px solid #ccc;
       border-radius: 5px;

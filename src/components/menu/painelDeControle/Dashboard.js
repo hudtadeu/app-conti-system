@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './styleDashboard.css';
 import { Line, Bar, Pie } from 'react-chartjs-2';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSyncAlt, faCog } from '@fortawesome/free-solid-svg-icons';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -27,49 +29,82 @@ ChartJS.register(
 );
 
 const Dashboard = () => {
-  const lineData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-    datasets: [
-      {
-        label: 'Documentos',
-        data: [65, 59, 80, 81, 56, 55],
-        fill: false,
-        backgroundColor: '#ebecee',
-        borderColor: '#ebecee', // Linhas em branco
-        tension: 0.4,
-        borderWidth: 2,
-      },
-    ],
-  };
+  const [lineData, setLineData] = useState(null);
+  const [barData, setBarData] = useState(null);
+  const [pieData, setPieData] = useState(null);
 
-  const barData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-    datasets: [
-      {
-        label: 'Documentos',
-        data: [50, 75, 90, 60, 70, 85],
-        backgroundColor: '#ebecee', 
-        borderColor: '#ebecee',
-        borderWidth: 1,
-        borderRadius: 5,
-        barPercentage: 0.6,
-        categoryPercentage: 0.6,
-      },
-    ],
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      const base64Credentials = sessionStorage.getItem("token");
+      try {
+        const response = await fetch('http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/piGetDocumXML', {
+          headers: {
+            method: "POST",
+            'Content-Type': 'application/json',
+            Authorization: `Basic ${base64Credentials}`,
+          },
+        });
+        const data = await response.json();
+        const items = data.items;
 
-  const pieData = {
-    labels: ['Red', 'Blue', 'Yellow'],
-    datasets: [
-      {
-        data: [300, 50, 100],
-        backgroundColor: ['#ff6384', '#36a2eb', '#ffce56'],
-        hoverBackgroundColor: ['#ff6384', '#36a2eb', '#ffce56'],
-        borderWidth: 1,
-        hoverOffset: 4,
-      },
-    ],
-  };
+        const processedLineData = {
+          labels: items.map(item => item.emissao),
+          datasets: [
+            {
+              label: 'Documentos',
+              data: items.map(item => parseInt(item.nro_docto)),
+              fill: false,
+              backgroundColor: '#ebecee',
+              borderColor: '#ebecee',
+              tension: 0.4,
+              borderWidth: 2,
+            },
+          ],
+        };
+
+        const processedBarData = {
+          labels: items.map(item => item.emissao),
+          datasets: [
+            {
+              label: 'Documentos',
+              data: items.map(item => parseInt(item.nro_docto)),
+              backgroundColor: '#ebecee',
+              borderColor: '#ebecee',
+              borderWidth: 1,
+              borderRadius: 5,
+              barPercentage: 0.6,
+              categoryPercentage: 0.6,
+            },
+          ],
+        };
+
+        const processedPieData = {
+          labels: ['Pendente', 'Atualizado', 'Cancelado'],
+          datasets: [
+            {
+              data: [
+                items.filter(item => item.situacao === 'Pendente').length,
+                items.filter(item => item.situacao === 'Atualizado').length,
+                items.filter(item => item.situacao === 'Cancelado').length,
+              ],
+              backgroundColor: ['#FFD700', '#008000', '#FF0000'],
+              hoverBackgroundColor: ['#FFD700', '#008000', '#FF0000'],
+              borderWidth: 1,
+              hoverOffset: 4,
+            },
+          ],
+        };
+
+        setLineData(processedLineData);
+        setBarData(processedBarData);
+        setPieData(processedPieData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const options = {
     plugins: {
@@ -115,22 +150,39 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <h2>Painel de Controle</h2>
-
+      <h2>Visão Geral</h2>
+      <div className="input-container">
+        <div className="input-items">
+          <div className="input-item">
+            <label htmlFor="periodo">Período:</label>
+            <input type="date" id="periodo" name="periodo" />
+          </div>
+          <div className="input-item">
+            <label htmlFor="estabInicial">Estabelecimento Inicial:</label>
+            <input type="text" id="estabInicial" name="estabInicial" />
+          </div>
+          <div className="input-item">
+            <label htmlFor="estabFinal">Estabelecimento Final:</label>
+            <input type="text" id="estabFinal" name="estabFinal" />
+          </div>
+        </div>
+        <div className="action-buttons">
+          <button className="btn btn-primary"><FontAwesomeIcon icon={faSyncAlt} /></button>
+          <button className="btn btn-secondary"><FontAwesomeIcon icon={faCog} /></button>
+        </div>
+      </div>
       <div className="chart-container">
         <div className="chart-item line-chart">
           <h3>Documentos pendentes</h3>
-          <Line data={lineData} options={options} />
+          {lineData && <Line data={lineData} options={options} />}
         </div>
-
         <div className="chart-item bar-chart">
           <h3>Documentos atualizados</h3>
-          <Bar data={barData} options={options} />
+          {barData && <Bar data={barData} options={options} />}
         </div>
-
         <div className="chart-item">
           <h3>Gráfico de Pizza</h3>
-          <Pie data={pieData} options={options} />
+          {pieData && <Pie data={pieData} options={options} />}
         </div>
       </div>
     </div>
