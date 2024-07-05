@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './styleDashboard.css';
+import Modal from 'react-modal';
 import { Line, Bar, Pie } from 'react-chartjs-2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSyncAlt, faCog } from '@fortawesome/free-solid-svg-icons';
@@ -32,6 +33,7 @@ const Dashboard = () => {
   const [lineData, setLineData] = useState(null);
   const [barData, setBarData] = useState(null);
   const [pieData, setPieData] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -168,7 +170,7 @@ const Dashboard = () => {
         </div>
         <div className="action-buttons">
           <button className="btn btn-primary"><FontAwesomeIcon icon={faSyncAlt} /></button>
-          <button className="btn btn-secondary"><FontAwesomeIcon icon={faCog} /></button>
+          <button className="btn btn-secondary" onClick={() => setModalIsOpen(true)}><FontAwesomeIcon icon={faCog} /></button>
         </div>
       </div>
       <div className="chart-container">
@@ -185,6 +187,48 @@ const Dashboard = () => {
           {pieData && <Pie data={pieData} options={options} />}
         </div>
       </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        className="config-modal-content"
+        overlayClassName="config-modal-backdrop"
+      >
+        <div className="modal-config">
+        <h2 className='title-config'>Configurações</h2>
+        <button className="close-button-dash" onClick={() => setModalIsOpen(false)}>&times;</button>
+        </div>
+        <div className="input-group-dash">
+        <h3>Seleção</h3>
+          <div className="input-item-dash">
+            <label htmlFor="considerarDocumentos">Considerar Documentos:</label>
+            <input type="text" id="considerarDocumentos" name="considerarDocumentos" />
+          </div>
+          <div className="input-item-dash">
+            <label htmlFor="filtrarPeriodoPor">Filtrar período por:</label>
+            <input type="text" id="filtrarPeriodoPor" name="filtrarPeriodoPor" />
+          </div>
+          <div className="input-item-dash">
+            <label htmlFor="periodoRecorrente">Período recorrente (dias):</label>
+            <input type="number" id="periodoRecorrente" name="periodoRecorrente" />
+          </div>
+        </div>
+        <div className="input-group-config">
+          <h3>Visualização</h3>
+            <div className="input-item-config">
+              <label htmlFor="faixasSelecao">Faixas de Seleção:</label>
+              <input type="text" id="faixasSelecao" name="faixasSelecao" className="small-input-selecao" />
+            </div>
+            <div className="input-item-config">
+              <label htmlFor="graficosDash">Gráficos:</label>
+              <input type="text" id="graficosDash" name="graficosDash" className="long-input-dash"/>
+            </div>
+            <div className="input-item-config">
+              <label htmlFor="bigNumbers">Big Numbers:</label>
+              <input type="text" id="bigNumbers" name="bigNumbers" className="long-input-dash"/>
+            </div>
+            <button className="save-button-config">Salvar</button>
+          </div>
+      </Modal>
     </div>
   );
 };

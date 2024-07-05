@@ -164,5 +164,200 @@
   .input-item select:focus {
     border-color: #48599e;
     outline: none;
+    
+  }
+
+  .config-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1040;
+    overflow: auto; 
+  }
+
+  .config-modal-content {
+    position: relative;
+    width: 650px;
+    max-width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    text-align: left;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .modal-config-dash {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title-config {
+    color: #0098c9;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: -5px;
+  }
+  
+    .modal-config {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+    .close-button-dash {
+    position: absolute;
+    top: -17px;
+    right: -10px;
+    cursor: pointer;
+    padding: 0px 5px;
+    color: #211915;
+    border-radius: 3px;
+    background-color: transparent;
+    font-size: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    border: none;
+  }
+
+  .close-button-dash:hover {
+    color: #ff0000;
+    transform: scale(1.3); 
+  }
+
+  .input-group-dash {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .input-group-dash h3 {
+    color: #0098c9;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  
+  .input-item-dash {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  
+  .input-item-dash label {
+    color: #333;
+    display: block;
+  }
+
+  .input-group-config {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .input-group-config h3 {
+    color: #0098c9;
+    margin-top: 5px;
+    margin-bottom: -5px;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .input-item-config {
+    margin: 10px 0;
+    width: 100%;
+  }
+  
+  .input-item-config label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .input-item-config input {
+    width: 100%;
+  }
+
+  .small-input-selecao {
+    max-width: 200px; 
+  }
+  
+  .long-input-dash {
+    max-width: 400px; 
+  }
+
+  .save-button-config {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 18px;
+    margin-bottom: -10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .save-button-config:hover {
+    background-color: #0056b3;
+  }
+
+  .input-item-dash input[type="text"],
+  .input-item-dash input[type="number"],
+  .input-item-dash select {
+    padding: 1px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    flex: 1;
+    text-align: center;
+    width: 180px;
+    }
+    
+  .input-item-dash input[type="text"]:focus,
+  .input-item-dash input[type="number"]:focus,
+  .input-item-dash select:focus {
+    border-color: #48599e;
+    outline: none;
+    }
+
+  .input-item-config input[type="text"],
+  .input-item-config input[type="number"],
+  .input-item-config select {
+    padding: 1px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    flex: 1;
+    text-align: center;
+    }
+    
+  .input-item-config input[type="text"]:focus,
+  .input-item-config input[type="number"]:focus,
+  .input-item-config select:focus {
+    border-color: #48599e;
+    outline: none;
     }
   
+  
+  
+
+
