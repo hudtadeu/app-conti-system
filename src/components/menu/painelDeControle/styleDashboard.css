@@ -396,8 +396,8 @@
     
     .input-config-icon svg {
       position: absolute;
-      right: 248px;
-      top: 7px;
+      right: 245px;
+      top: 5px;
       pointer-events: none;
     }
 
@@ -415,8 +415,8 @@
     
     .input-selecao-icon svg {
       position: absolute;
-      right: 448px;
-      top: 7px;
+      right: 445px;
+      top: 5px;
       pointer-events: none;
     }
   
