@@ -184,6 +184,7 @@
   .config-modal-content {
     position: relative;
     width: 650px;
+    max-height: 600px;
     max-width: 100%;
     background-color: #fff;
     border-radius: 8px;
@@ -245,9 +246,9 @@
 
   .input-group-dash h3 {
     color: #0098c9;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-size: 20px;
+    margin-top: 25px;
+    margin-bottom: 12px;
+    font-size: 18px;
   }
   
   .input-item-dash {
@@ -270,7 +271,7 @@
     color: #0098c9;
     margin-top: 5px;
     margin-bottom: -5px;
-    font-size: 20px;
+    font-size: 18px;
     width: 100%;
     text-align: center;
   }
@@ -282,12 +283,13 @@
   
   .input-item-config label {
     display: block;
-    margin-bottom: 5px;
     color: #333;
+    margin-bottom: 5px;
   }
   
   .input-item-config input {
     width: 100%;
+    margin-bottom: 7px;
   }
 
   .small-input-selecao {
@@ -302,16 +304,19 @@
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 6px 12px;
+    padding: 5px 10px;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
     width: 100%;
     margin-top: 18px;
     margin-bottom: -10px;
+    font-size: 14px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 1px 40px -12px #0098c9;
   }
   
   .save-button-config:hover {
@@ -356,7 +361,62 @@
     border-color: #48599e;
     outline: none;
     }
+
+    .input-dash-icon {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    
+    .input-dash-icon input {
+      width: calc(100% - 10px); 
+      padding: 8px;
+      font-size: 16px;
+    }
+    
+    .input-dash-icon svg {
+      position: absolute;
+      right: 10px;
+      pointer-events: none;
+    }
   
+    .input-config-icon {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    
+    .input-config-icon input {
+      width: calc(100% - 10px); 
+      padding: 8px;
+      font-size: 16px;
+    }
+    
+    .input-config-icon svg {
+      position: absolute;
+      right: 248px;
+      top: 7px;
+      pointer-events: none;
+    }
+
+    .input-selecao-icon {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    
+    .input-selecao-icon input {
+      width: calc(100% - 10px); 
+      padding: 8px;
+      font-size: 16px;
+    }
+    
+    .input-selecao-icon svg {
+      position: absolute;
+      right: 448px;
+      top: 7px;
+      pointer-events: none;
+    }
   
   
 

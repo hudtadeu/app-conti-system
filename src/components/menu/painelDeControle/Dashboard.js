@@ -3,7 +3,7 @@ import './styleDashboard.css';
 import Modal from 'react-modal';
 import { Line, Bar, Pie } from 'react-chartjs-2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSyncAlt, faCog } from '@fortawesome/free-solid-svg-icons';
+import { faSyncAlt, faCog, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -198,14 +198,20 @@ const Dashboard = () => {
         <button className="close-button-dash" onClick={() => setModalIsOpen(false)}>&times;</button>
         </div>
         <div className="input-group-dash">
-        <h3>Seleção</h3>
+        <h3>SELEÇÃO</h3>
           <div className="input-item-dash">
             <label htmlFor="considerarDocumentos">Considerar Documentos:</label>
+            <div className="input-dash-icon">
             <input type="text" id="considerarDocumentos" name="considerarDocumentos" />
+            <FontAwesomeIcon icon={faAngleDown} />
+          </div>
           </div>
           <div className="input-item-dash">
             <label htmlFor="filtrarPeriodoPor">Filtrar período por:</label>
+            <div className="input-dash-icon">
             <input type="text" id="filtrarPeriodoPor" name="filtrarPeriodoPor" />
+            <FontAwesomeIcon icon={faAngleDown} />
+          </div>
           </div>
           <div className="input-item-dash">
             <label htmlFor="periodoRecorrente">Período recorrente (dias):</label>
@@ -213,20 +219,29 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="input-group-config">
-          <h3>Visualização</h3>
+          <h3>VISUALIZAÇÃO</h3>
             <div className="input-item-config">
               <label htmlFor="faixasSelecao">Faixas de Seleção:</label>
+              <div className="input-selecao-icon">
               <input type="text" id="faixasSelecao" name="faixasSelecao" className="small-input-selecao" />
+              <FontAwesomeIcon icon={faAngleDown} />
             </div>
             <div className="input-item-config">
               <label htmlFor="graficosDash">Gráficos:</label>
+              <div className="input-config-icon">
               <input type="text" id="graficosDash" name="graficosDash" className="long-input-dash"/>
+              <FontAwesomeIcon icon={faAngleDown} />
+            </div>
             </div>
             <div className="input-item-config">
               <label htmlFor="bigNumbers">Big Numbers:</label>
+              <div className="input-config-icon">
               <input type="text" id="bigNumbers" name="bigNumbers" className="long-input-dash"/>
+              <FontAwesomeIcon icon={faAngleDown} />
+            </div>
             </div>
             <button className="save-button-config">Salvar</button>
+          </div>
           </div>
       </Modal>
     </div>
