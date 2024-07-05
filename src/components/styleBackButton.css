@@ -8,8 +8,8 @@
   border: none;
   right: 60px;
   position: fixed;
-  background-color: transparent;
-  z-index: 100;
+  background-color: #fff;
+  z-index: 1;
 }
 
 .back-icon:hover {
