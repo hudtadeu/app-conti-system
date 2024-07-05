@@ -74,7 +74,7 @@ function Menu({ menuActive, toggleMenu }) {
         <div className="sidebar-sticky">
           <img
             id="img-menu"
-            src="./conti-bg.png"
+            src="./conti_peb-transparente.png"
             alt="Logo da ConTI Consultoria"
           />
           <h2 className="sidebar-title">

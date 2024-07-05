@@ -1,19 +1,21 @@
 .container-xmlrecebimento {
-    background-color: #ebecee;
-    color: #0098c9;
-    padding: 10px;
-    border-radius: 0px 0px 7px 7px;
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-    margin-left: 50px;
-    margin-right: 50px;
-    font-size: 13px;
-    max-width: 800px;
-    margin: -35px auto; 
-  }
+  position: relative;
+  background-color: #ebecee;
+  color: #0098c9;
+  padding: 17px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 13px;
+  max-width: 800px;
+  margin: -30px auto; 
+  z-index: 1;
+}
   
-  .button-group {
-      margin-bottom: 20px;
-    }
+.button-group {
+  margin-bottom: 20px;
+}
     
     .button-secondary {
       background-color: #ffffff; 
@@ -38,7 +40,7 @@
     }
   
     .form-selection {
-      margin-top: 30px;
+      margin-top: 1px;
       margin-bottom: 5px;
       display: flex;
       flex-direction: column;

@@ -3,7 +3,7 @@ import './styleDashboard.css';
 import Modal from 'react-modal';
 import { Line, Bar, Pie } from 'react-chartjs-2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSyncAlt, faCog, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faSyncAlt, faCog, faAngleDown, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -161,11 +161,17 @@ const Dashboard = () => {
           </div>
           <div className="input-item">
             <label htmlFor="estabInicial">Estabelecimento Inicial:</label>
+            <div className="input-estab-icon">
+            <FontAwesomeIcon icon={faBuilding} />
             <input type="text" id="estabInicial" name="estabInicial" />
+          </div>
           </div>
           <div className="input-item">
             <label htmlFor="estabFinal">Estabelecimento Final:</label>
+            <div className="input-estab-icon">
+            <FontAwesomeIcon icon={faBuilding} />
             <input type="text" id="estabFinal" name="estabFinal" />
+          </div>
           </div>
         </div>
         <div className="action-buttons">

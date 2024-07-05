@@ -1,6 +1,6 @@
 .back-icon {
   cursor: pointer;
-  color: #0077a3;
+  color: #0098c9;
   border-radius: 50%;
   font-size: 26px;
   margin-top: 15px;
@@ -9,7 +9,7 @@
   right: 60px;
   position: fixed;
   background-color: transparent;
-  z-index: 1000;
+  z-index: 100;
 }
 
 .back-icon:hover {

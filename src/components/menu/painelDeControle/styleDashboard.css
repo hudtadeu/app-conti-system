@@ -1,15 +1,17 @@
 .dashboard-container {
-    background-color: #ebecee;
-    color: #0098c9;
-    padding: 10px;
-    border-radius: 0px 0px 7px 7px;
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-    margin-left: 10px;
-    margin-right: 60px;
-    font-size: 13px;
-    margin-top: -35px;
-  }
-  
+  position: relative;
+  background-color: #ebecee;
+  color: #0098c9;
+  padding: 10px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+  margin-left: 10px;
+  margin-right: 60px;
+  font-size: 13px;
+  margin-top: -35px;
+  z-index: 1;
+}
+
   .dashboard-container h2 {
     color: #0098c9;
     align-items: center;
@@ -156,7 +158,7 @@
     width: 200px; 
     box-sizing: border-box;
     text-align: center;
-    
+    padding: 1px;
   }
     
   .input-item input[type="text"]:focus,
@@ -420,6 +422,23 @@
       pointer-events: none;
     }
   
-  
+    .input-estab-icon {
+      position: relative;
+    }
+    
+    .input-estab-icon svg {
+      position: absolute;
+      left: 6px; 
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      font-size: 12px;
+      color: #333;
+    }
+    
+    .input-estab-icon input {
+      padding-left: 20px; 
+    }
+    
 
 

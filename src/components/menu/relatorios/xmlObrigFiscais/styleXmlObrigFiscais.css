@@ -1,14 +1,16 @@
 .container-xmlobrigfiscais {
+  position: relative;
   background-color: #ebecee;
   color: #0098c9;
-  padding: 10px;
-  border-radius: 0px 0px 7px 7px;
+  padding: 17px;
+  border-radius: 10px 10px 10px 10px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
   margin-left: 50px;
   margin-right: 50px;
   font-size: 13px;
   max-width: 800px;
-  margin: -35px auto; 
+  margin: -30px auto; 
+  z-index: 1;
 }
 
 .button-group {

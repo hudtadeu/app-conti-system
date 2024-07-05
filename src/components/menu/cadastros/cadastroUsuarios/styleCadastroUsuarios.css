@@ -12,14 +12,22 @@ html, body {
   height: 100%;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2); 
+  z-index: 1; 
+}
+
 .body-usuario {
   background-size: cover;
   background-position: center;
   margin: 0;
   padding: 0;
-}
-
-.body-usuario {
   position: relative;
 }
 
@@ -51,19 +59,21 @@ html, body {
   margin-top: 10px;
   color: #0098c9;
   font-size: 35px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .container-usuario {
   background-color: #ebecee;
+  position: relative;
   color: #0098c9;
   padding: 10px;
-  border-radius: 0px 0px 7px 7px;
+  border-radius: 10px 10px 10px 10px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
   margin-left: 10px;
   margin-right: 60px;
   font-size: 13px;
   margin-top: -35px;
+  z-index: 1;
 }
 
 .search-section-usuario {
