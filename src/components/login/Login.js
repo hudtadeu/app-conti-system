@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./styleLogin.css";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,6 +14,14 @@ function Login() {
 
   const usernameRef = useRef();
   const passwordRef = useRef();
+
+  useEffect(() => {
+    document.body.classList.add("login-page");
+
+    return () => {
+      document.body.classList.remove("login-page");
+    };
+  }, []);
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -52,7 +60,7 @@ function Login() {
       ) {
         sessionStorage.setItem("token", base64Credentials);
         sessionStorage.setItem("username", username);
-        navigate("/home");
+        navigate("/dashboard");
       } else {
         throw new Error("Usuário ou senha incorretos");
       }

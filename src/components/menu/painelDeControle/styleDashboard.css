@@ -224,8 +224,8 @@
   
     .close-button-dash {
     position: absolute;
-    top: -17px;
-    right: -10px;
+    top: -19px;
+    right: -15px;
     cursor: pointer;
     padding: 0px 5px;
     color: #211915;
@@ -439,6 +439,43 @@
     .input-estab-icon input {
       padding-left: 20px; 
     }
+
+    .input-item-dash-rec {
+      display: inline-block;
+      margin: 0 10px;
+    }
     
+    .input-item-dash-rec label {
+      color: #333;
+      display: block;
+    }
+
+    .input-item-dash-rec input[type="number"],
+    .input-item-dash select {
+      padding: 1px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-right: 5px;
+      margin-left: 5px;
+      flex: 1;
+      text-align: center;
+      width: 180px;
+      font-size: 13px;
+      }
+      
+    .input-item-dash-rec input[type="number"]:focus,
+    .input-item-dash select:focus {
+      border-color: #48599e;
+      outline: none;
+      }
+    
+      .input-item-dash-rec svg {
+        position: absolute;
+        right: 206px;
+        top: 149px;
+        color: #333;
+        cursor: pointer;
+        font-size: 13px;
+      }
 
 
