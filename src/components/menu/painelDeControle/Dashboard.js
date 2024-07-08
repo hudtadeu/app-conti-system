@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './styleDashboard.css';
 import Modal from 'react-modal';
 import { Line, Bar, Pie } from 'react-chartjs-2';
@@ -36,6 +36,7 @@ const Dashboard = () => {
   const [modalIsOpen, setModalIsOpen] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -108,6 +109,20 @@ const Dashboard = () => {
     };
 
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
   }, []);
 
   const options = {
@@ -223,7 +238,7 @@ const Dashboard = () => {
         <h3>SELEÇÃO</h3>
           <div className="input-item-dash">
             <label htmlFor="considerarDocumentos">Considerar Documentos:</label>
-            <div className="input-dash-icon">
+            <div className="input-dash-icon" ref={dropdownRef}>
             <input type="text" id="considerarDocumentos" name="considerarDocumentos" onClick={toggleDropdown} readOnly />
             <FontAwesomeIcon icon={faAngleDown} />
           </div>
