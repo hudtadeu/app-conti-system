@@ -473,9 +473,31 @@
         position: absolute;
         right: 206px;
         top: 149px;
-        color: #333;
-        cursor: pointer;
         font-size: 13px;
       }
 
+      .dropdown-content-considera {
+        position: absolute;
+        background-color: #f9f9f9;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 175px;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+      
+      .dropdown-content-considera label {
+        text-align: left;
+        display: block;
+        margin-bottom: 8px;
+      }
+      
+      .dropdown-content-considera input[type="checkbox"] {
+        margin-right: 8px;
+      }
+      
+      
 

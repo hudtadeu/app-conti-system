@@ -34,6 +34,8 @@ const Dashboard = () => {
   const [barData, setBarData] = useState(null);
   const [pieData, setPieData] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [selectedOptions, setSelectedOptions] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -150,6 +152,20 @@ const Dashboard = () => {
     },
   };
 
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  // Função para lidar com a seleção das opções
+  const handleOptionSelect = (option) => {
+    const index = selectedOptions.indexOf(option);
+    if (index === -1) {
+      setSelectedOptions([...selectedOptions, option]);
+    } else {
+      setSelectedOptions(selectedOptions.filter(item => item !== option));
+    }
+  };
+
   return (
     <div className="dashboard-container">
       <h2>Visão Geral</h2>
@@ -208,9 +224,40 @@ const Dashboard = () => {
           <div className="input-item-dash">
             <label htmlFor="considerarDocumentos">Considerar Documentos:</label>
             <div className="input-dash-icon">
-            <input type="text" id="considerarDocumentos" name="considerarDocumentos" />
+            <input type="text" id="considerarDocumentos" name="considerarDocumentos" onClick={toggleDropdown} readOnly />
             <FontAwesomeIcon icon={faAngleDown} />
           </div>
+          {dropdownOpen && (
+              <div className="dropdown-content-considera">
+                <label>
+                  <input
+                    type="checkbox"
+                    value="Selecionar todos"
+                    checked={selectedOptions.includes("Selecionar todos")}
+                    onChange={() => handleOptionSelect("Selecionar todos")}
+                  />
+                  Selecionar todos
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="Cancelados"
+                    checked={selectedOptions.includes("Cancelados")}
+                    onChange={() => handleOptionSelect("Cancelados")}
+                  />
+                  Cancelados
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value="Em validação"
+                    checked={selectedOptions.includes("Em validação")}
+                    onChange={() => handleOptionSelect("Em validação")}
+                  />
+                  Em validação
+                </label>
+              </div>
+            )}
           </div>
           <div className="input-item-dash">
             <label htmlFor="filtrarPeriodoPor">Filtrar período por:</label>
