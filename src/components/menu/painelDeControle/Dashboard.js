@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styleDashboard.css';
 import Modal from 'react-modal';
 import { Line, Bar, Pie } from 'react-chartjs-2';
@@ -33,10 +33,23 @@ const Dashboard = () => {
   const [lineData, setLineData] = useState(null);
   const [barData, setBarData] = useState(null);
   const [pieData, setPieData] = useState(null);
-  const [modalIsOpen, setModalIsOpen] = useState(null);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState([]);
-  const dropdownRef = useRef(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [considerarDocumentos, setConsiderarDocumentos] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const optionsList = ['Selecionar Todos', 'Cancelados', 'Em Validação'];
+
+  const toggleOption = (option) => {
+    if (considerarDocumentos.includes(option)) {
+      setConsiderarDocumentos(considerarDocumentos.filter(item => item !== option));
+    } else {
+      setConsiderarDocumentos([...considerarDocumentos, option]);
+    }
+  };
+
+  const removeOption = (option) => {
+    setConsiderarDocumentos(considerarDocumentos.filter(item => item !== option));
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -111,20 +124,6 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleOutsideClick);
-
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, []);
-
   const options = {
     plugins: {
       legend: {
@@ -167,20 +166,6 @@ const Dashboard = () => {
     },
   };
 
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
-
-  // Função para lidar com a seleção das opções
-  const handleOptionSelect = (option) => {
-    const index = selectedOptions.indexOf(option);
-    if (index === -1) {
-      setSelectedOptions([...selectedOptions, option]);
-    } else {
-      setSelectedOptions(selectedOptions.filter(item => item !== option));
-    }
-  };
-
   return (
     <div className="dashboard-container">
       <h2>Visão Geral</h2>
@@ -193,16 +178,16 @@ const Dashboard = () => {
           <div className="input-item">
             <label htmlFor="estabInicial">Estabelecimento Inicial:</label>
             <div className="input-estab-icon">
-            <FontAwesomeIcon icon={faBuilding} />
-            <input type="text" id="estabInicial" name="estabInicial" />
-          </div>
+              <FontAwesomeIcon icon={faBuilding} />
+              <input type="text" id="estabInicial" name="estabInicial" />
+            </div>
           </div>
           <div className="input-item">
             <label htmlFor="estabFinal">Estabelecimento Final:</label>
             <div className="input-estab-icon">
-            <FontAwesomeIcon icon={faBuilding} />
-            <input type="text" id="estabFinal" name="estabFinal" />
-          </div>
+              <FontAwesomeIcon icon={faBuilding} />
+              <input type="text" id="estabFinal" name="estabFinal" />
+            </div>
           </div>
         </div>
         <div className="action-buttons">
@@ -231,87 +216,79 @@ const Dashboard = () => {
         overlayClassName="config-modal-backdrop"
       >
         <div className="modal-config">
-        <h2 className='title-config'>Configurações</h2>
-        <button className="close-button-dash" onClick={() => setModalIsOpen(false)}>&times;</button>
+          <h2 className='title-config'>Configurações</h2>
+          <button className="close-button-dash" onClick={() => setModalIsOpen(false)}>&times;</button>
         </div>
         <div className="input-group-dash">
-        <h3>SELEÇÃO</h3>
+          <h3>SELEÇÃO</h3>
           <div className="input-item-dash">
             <label htmlFor="considerarDocumentos">Considerar Documentos:</label>
-            <div className="input-dash-icon" ref={dropdownRef}>
-            <input type="text" id="considerarDocumentos" name="considerarDocumentos" onClick={toggleDropdown} readOnly />
-            <FontAwesomeIcon icon={faAngleDown} />
-          </div>
-          {dropdownOpen && (
-              <div className="dropdown-content-considera">
-                <label>
-                  <input
-                    type="checkbox"
-                    value="Selecionar todos"
-                    checked={selectedOptions.includes("Selecionar todos")}
-                    onChange={() => handleOptionSelect("Selecionar todos")}
-                  />
-                  Selecionar todos
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    value="Cancelados"
-                    checked={selectedOptions.includes("Cancelados")}
-                    onChange={() => handleOptionSelect("Cancelados")}
-                  />
-                  Cancelados
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    value="Em validação"
-                    checked={selectedOptions.includes("Em validação")}
-                    onChange={() => handleOptionSelect("Em validação")}
-                  />
-                  Em validação
-                </label>
+            <div className="multi-select">
+              <div className="multi-select__control" onClick={() => setShowDropdown(!showDropdown)}>
+                <span>{considerarDocumentos.length > 0 ? considerarDocumentos.join(', ') : 'Selecionar...'}</span>
+                <FontAwesomeIcon icon={faAngleDown} />
               </div>
-            )}
+              {showDropdown && (
+                <div className="multi-select__menu">
+                  {optionsList.map(option => (
+                    <label key={option}>
+                      <input
+                        type="checkbox"
+                        checked={considerarDocumentos.includes(option)}
+                        onChange={() => toggleOption(option)}
+                      />
+                      {option}
+                    </label>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div className="selected-options">
+              {considerarDocumentos.map(option => (
+                <div key={option} className="selected-option">
+                  {option}
+                  <button onClick={() => removeOption(option)}>x</button>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="input-item-dash">
             <label htmlFor="filtrarPeriodoPor">Filtrar período por:</label>
             <div className="input-dash-icon">
-            <input type="text" id="filtrarPeriodoPor" name="filtrarPeriodoPor" />
-            <FontAwesomeIcon icon={faAngleDown} />
-          </div>
+              <input type="text" id="filtrarPeriodoPor" name="filtrarPeriodoPor" />
+              <FontAwesomeIcon icon={faAngleDown} />
+            </div>
           </div>
           <div className="input-item-dash-rec">
             <label htmlFor="periodoRecorrente">Período recorrente (dias):</label>
             <input type="number" id="periodoRecorrente" name="periodoRecorrente" />
-            <FontAwesomeIcon icon={faSyncAlt} />
           </div>
         </div>
         <div className="input-group-config">
           <h3>VISUALIZAÇÃO</h3>
-            <div className="input-item-config">
-              <label htmlFor="faixasSelecao">Faixas de Seleção:</label>
-              <div className="input-selecao-icon">
+          <div className="input-item-config">
+            <label htmlFor="faixasSelecao">Faixas de Seleção:</label>
+            <div className="input-selecao-icon">
               <input type="text" id="faixasSelecao" name="faixasSelecao" className="small-input-selecao" />
               <FontAwesomeIcon icon={faAngleDown} />
             </div>
-            <div className="input-item-config">
-              <label htmlFor="graficosDash">Gráficos:</label>
-              <div className="input-config-icon">
-              <input type="text" id="graficosDash" name="graficosDash" className="long-input-dash"/>
+          </div>
+          <div className="input-item-config">
+            <label htmlFor="graficosDash">Gráficos:</label>
+            <div className="input-config-icon">
+              <input type="text" id="graficosDash" name="graficosDash" className="long-input-dash" />
               <FontAwesomeIcon icon={faAngleDown} />
             </div>
-            </div>
-            <div className="input-item-config">
-              <label htmlFor="bigNumbers">Big Numbers:</label>
-              <div className="input-config-icon">
-              <input type="text" id="bigNumbers" name="bigNumbers" className="long-input-dash"/>
+          </div>
+          <div className="input-item-config">
+            <label htmlFor="bigNumbers">Big Numbers:</label>
+            <div className="input-config-icon">
+              <input type="text" id="bigNumbers" name="bigNumbers" className="long-input-dash" />
               <FontAwesomeIcon icon={faAngleDown} />
             </div>
-            </div>
-            <button className="save-button-config">Salvar</button>
           </div>
-          </div>
+          <button className="save-button-config">Salvar</button>
+        </div>
       </Modal>
     </div>
   );
