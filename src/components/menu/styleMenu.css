@@ -24,11 +24,10 @@
 }
 
 #img-menu {
-  width: 200px;
-  height: 100px;
-  margin-top: -10px;
-  margin-bottom: -12px;
-  margin-left: 5px;
+  width: 235px;
+  height: 128px;
+  margin-top: -18px;
+  margin-bottom: -15px;
 }
 
 .sidebar {
@@ -60,7 +59,7 @@
 .sidebar-title {
   color: #fff;
   padding: 7px 2px;
-  margin-bottom: -5px;
+  margin-bottom: -2px;
   font-size: 18.5px;
 }
 
