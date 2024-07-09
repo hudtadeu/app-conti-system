@@ -181,9 +181,9 @@
 
 .config-modal-content {
   position: relative;
-  width: 650px;
-  max-height: 600px;
-  max-width: 100%;
+  min-height: 580px;
+  min-width: 650px;
+  max-width: 500px;
   background-color: #fff;
   border-radius: 8px;
   padding: 20px;
@@ -244,8 +244,8 @@
 
 .input-group-dash h3 {
   color: #0098c9;
-  margin-top: 25px;
-  margin-bottom: 12px;
+  margin-top: 15px;
+  margin-bottom: 1px;
   font-size: 18px;
 }
 
@@ -258,6 +258,9 @@
 .input-item-dash label {
   color: #333;
   display: block;
+  margin-top: 8px;
+  margin-bottom: 5px;
+  margin-top: 12px;
 }
 
 .input-group-config {
@@ -268,8 +271,8 @@
 
 .input-group-config h3 {
   color: #0098c9;
-  margin-top: 5px;
-  margin-bottom: -5px;
+  margin-top: -5px;
+  margin-bottom: 1px;
   font-size: 18px;
   width: 100%;
   text-align: center;
@@ -283,12 +286,12 @@
 .input-item-config label {
   display: block;
   color: #333;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
 
 .input-item-config input {
   width: 100%;
-  margin-bottom: 7px;
+  margin-bottom: 3px;
 }
 
 .small-input-selecao {
@@ -310,7 +313,7 @@
   width: 100%;
   margin-top: 18px;
   margin-bottom: -10px;
-  font-size: 14px;
+  font-size: 15px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -445,7 +448,9 @@
 .input-item-dash-rec label {
   color: #333;
   display: block;
+  margin-top: 12px;
 }
+
 
 .input-item-dash-rec input[type="number"],
 .input-item-dash select {
@@ -456,7 +461,7 @@
   margin-left: 5px;
   flex: 1;
   text-align: center;
-  width: 180px;
+  width: 200px;
   font-size: 13px;
 }
 
@@ -477,7 +482,7 @@
   position: relative;
   display: block;
   align-items: center;
-  width: 500px;
+  width: 400px;
   font-size: 12px;
 }
 
@@ -487,7 +492,7 @@
   justify-content: space-between;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 5px;
+  padding: 3px;
   background-color: #fff;
   cursor: pointer;
 }
@@ -518,6 +523,9 @@
 .multi-select__menu label:hover {
   background-color: #f0f0f0;
 }
+.multi-select__menu input[type="checkbox"] {
+  margin-right: 8px;
+}
 
 .selected-options {
   display: flex;
@@ -542,4 +550,14 @@
   border: none;
   color: #fff;
   cursor: pointer;
+}
+
+.input-item-dash-config {
+    margin: 10px 0;
+    width: 100%;
+}
+
+.input-item-dash-config label {
+  color: #333;
+  margin-bottom: 2px;
 }
