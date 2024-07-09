@@ -513,6 +513,7 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+
 .multi-select__menu label {
   display: flex;
   align-items: center;
@@ -525,6 +526,7 @@
 .multi-select__menu label:hover {
   background-color: #f0f0f0;
 }
+
 .multi-select__menu input[type="checkbox"] {
   margin-right: 8px;
 }
@@ -564,15 +566,28 @@
   margin-bottom: 2px;
 }
 
+.input-item-dash-rec {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  position: relative;
+}
+
+.input-item-dash-rec label {
+  margin-bottom: 10px; 
+}
+
+.input-item-dash-rec input {
+  padding-right: 30px; 
+  max-width: 200px; 
+}
+
 .input-item-dash-rec svg {
   position: absolute;
-  top: 276px;
-  right: 445px;
+  top: 47px;
+  right: 415px; 
+  bottom: 12px; 
   font-size: 12px;
   pointer-events: none;
 }
 
-.input-item-dash-rec input {
-  width: 100%;
-  padding-right: 30px; 
-}
