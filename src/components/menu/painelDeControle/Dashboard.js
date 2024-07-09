@@ -342,6 +342,7 @@ const Dashboard = () => {
           <div className="input-item-dash-rec">
             <label htmlFor="periodoRecorrente">Período recorrente (dias):</label>
             <input type="number" id="periodoRecorrente" name="periodoRecorrente" />
+            <FontAwesomeIcon icon={faSyncAlt} />
           </div>
         </div>
         <div className="input-group-config">
