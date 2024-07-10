@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './styleDashboard.css';
 import Modal from 'react-modal';
-import { Line, Bar, Pie } from 'react-chartjs-2';
+import { Line, Bar } from 'react-chartjs-2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSyncAlt, faCog, faAngleDown, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import ApexCharts from 'react-apexcharts';
@@ -156,15 +156,34 @@ const Dashboard = () => {
       const data = await response.json();
       const items = data.items;
 
+      const pendingDocumentsByDate = items
+        .filter(item => item.situacao === 'Pendente')
+        .reduce((acc, item) => {
+          const date = item.emissao;
+          acc[date] = (acc[date] || 0) + 1;
+          return acc;
+        }, {});
+
+      const updatedDocumentsByDate = items
+        .filter(item => item.situacao === 'Atualizado')
+        .reduce((acc, item) => {
+          const date = item.emissao;
+          acc[date] = (acc[date] || 0) + 1;
+          return acc;
+        }, {});
+
+      const pendingDates = Object.keys(pendingDocumentsByDate);
+      const updatedDates = Object.keys(updatedDocumentsByDate);
+
       const processedLineData = {
-        labels: items.map(item => item.emissao),
+        labels: pendingDates,
         datasets: [
           {
-            label: 'Documentos',
-            data: items.map(item => parseInt(item.nro_docto)),
+            label: 'Documentos Pendentes',
+            data: pendingDates.map(date => pendingDocumentsByDate[date]),
             fill: false,
-            backgroundColor: '#ebecee',
-            borderColor: '#ebecee',
+            backgroundColor: '#fff',
+            borderColor: '#fff',
             tension: 0.4,
             borderWidth: 2,
           },
@@ -172,13 +191,13 @@ const Dashboard = () => {
       };
 
       const processedBarData = {
-        labels: items.map(item => item.emissao),
+        labels: updatedDates,
         datasets: [
           {
-            label: 'Documentos',
-            data: items.map(item => parseInt(item.nro_docto)),
-            backgroundColor: '#ebecee',
-            borderColor: '#ebecee',
+            label: 'Documentos Atualizados',
+            data: updatedDates.map(date => updatedDocumentsByDate[date]),
+            backgroundColor: '#fff',
+            borderColor: '#fff',
             borderWidth: 1,
             borderRadius: 5,
             barPercentage: 0.6,
@@ -188,20 +207,45 @@ const Dashboard = () => {
       };
 
       const processedPieData = {
-        labels: ['Pendente', 'Atualizado', 'Cancelado'],
-        datasets: [
-          {
-            data: [
-              items.filter(item => item.situacao === 'Pendente').length,
-              items.filter(item => item.situacao === 'Atualizado').length,
-              items.filter(item => item.situacao === 'Cancelado').length,
-            ],
-            backgroundColor: ['#FFD700', '#008000', '#FF0000'],
-            hoverBackgroundColor: ['#FFD700', '#008000', '#FF0000'],
-            borderWidth: 1,
-            hoverOffset: 4,
-          },
+        series: [
+          items.filter(item => item.situacao === 'Pendente').length,
+          items.filter(item => item.situacao === 'Atualizado').length,
+          items.filter(item => item.situacao === 'Cancelado').length,
         ],
+        options: {
+          chart: {
+            type: 'donut',
+            height: 350,
+            toolbar: {
+              show: false
+            }
+          },
+          labels: ['Pendente', 'Atualizado', 'Cancelado'],
+          plotOptions: {
+            pie: {
+              startAngle: -90,
+              endAngle: 270,
+              donut: {
+                size: '65%',
+                labels: {
+                  show: true,
+                  total: {
+                    show: true,
+                    showAlways: true,
+                    label: 'Total',
+                    fontSize: '22px',
+                    fontWeight: 600,
+                    color: '#373d3f'
+                  }
+                }
+              }
+            }
+          },
+          colors: ['#FFD700', '#008000', '#FF0000'],
+          legend: {
+            position: 'bottom'
+          }
+        }
       };
 
       const processedChartData = items.reduce((acc, item) => {
@@ -334,7 +378,7 @@ const Dashboard = () => {
         </div>
         <div className="chart-item" onClick={() => setPieModalIsOpen(true)}>
           <h3>Gráfico de Pizza</h3>
-          {pieData && <Pie data={pieData} options={options} />}
+          {pieData && <ApexCharts type="donut" series={pieData.series} options={pieData.options} height={350} />}
         </div>
       </div>
       <Modal
@@ -504,7 +548,7 @@ const Dashboard = () => {
           <button className="close-button-dash-graph" onClick={() => setPieModalIsOpen(false)}>&times;</button>
         </div>
         <div className="chart-container-graph" onClick={handleChartClick}>
-          {pieData && <Pie data={pieData} options={options} />}
+          {pieData && <ApexCharts type="donut" series={pieData.series} options={pieData.options} height={350} />}
         </div>
       </Modal>
       <Modal
@@ -527,7 +571,7 @@ const Dashboard = () => {
                 radialBar: {
                   track: {
                     background: '#fff',
-                    strokeWidth: '50%',
+                    strokeWidth: '55%',
                   },
                   dataLabels: {
                     total: {
@@ -538,7 +582,7 @@ const Dashboard = () => {
                       formatter: (val) => (val / 100) * 100,
                       offsetY: 12,
                       color: '#333',
-                      fontSize: '20px',
+                      fontSize: '14px',
                     },
                   },
                 },
@@ -547,7 +591,7 @@ const Dashboard = () => {
                 show: true,
                 position: 'bottom',
                 horizontalAlign: 'center',
-                fontSize: '13px',
+                fontSize: '14px',
                 labels: {
                   colors: '#333',
                 },
@@ -558,7 +602,7 @@ const Dashboard = () => {
                 followCursor: false,
                 intersect: false,
                 style: {
-                  fontSize: '14px',
+                  fontSize: '13px',
                 },
                 onDatasetHover: {
                   highlightDataSeries: true,
@@ -571,6 +615,7 @@ const Dashboard = () => {
                 },
               },
               labels: chartData.map(item => item.tipoDoc),
+              colors: chartData.map(item => item.color),
             }}
             series={chartData.map(item => item.count)}
             type="radialBar"
