@@ -73,7 +73,7 @@
 }
 
 .chart-container .chart-item:hover {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .config-modal-content-graph,
@@ -720,8 +720,4 @@
   color: #ffffff;
 }
 
-.detail-button-chart.active {
-  background-color: #0077a3;
-  color: #ffffff;
-}
 
