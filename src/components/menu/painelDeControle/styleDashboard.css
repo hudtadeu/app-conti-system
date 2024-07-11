@@ -32,9 +32,9 @@
 .chart-item {
   flex: 1;
   min-width: 100px;
-  max-width: 200px;
+  max-width: 270px;
   min-height: 90px;
-  background-color: #0098c9;
+  background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -44,12 +44,13 @@
   flex: 1;
   min-width: 380px;
   max-width: 400px; 
-  min-height: 90px;
-  background-color: #0098c9;
+  min-height: 80px;
+  background-color: #fff;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 
 .chart-item.bar-chart {
   flex: 1;
@@ -58,13 +59,13 @@
   padding: 15px; 
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color:  #0098c9;
+  background-color:  #fff;
 }
 
 .chart-item h3 {
   text-align: center;
-  margin-bottom: 10px;
-  color: #fff;
+  margin-bottom: 23px;
+  color: #0098c9;
 }
 
 .chart-container .chart-item {
@@ -72,7 +73,7 @@
 }
 
 .chart-container .chart-item:hover {
-  background-color: #007bb5;
+  background-color: #fff;
 }
 
 .config-modal-content-graph,
@@ -133,7 +134,7 @@
   display: flex;
   justify-content: center;
   font-size: 22px;
-  margin-bottom: -20px;
+  margin-bottom: 20px;
   width: 100%; 
 }
 
@@ -142,9 +143,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90%;
-  height: 90%;
 }
+
 
 .chart-container-graph .chart-graph {
   width: 80% !important; 

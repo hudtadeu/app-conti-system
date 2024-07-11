@@ -1,34 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './styleDashboard.css';
 import Modal from 'react-modal';
-import { Line, Bar } from 'react-chartjs-2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSyncAlt, faCog, faAngleDown, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import ApexCharts from 'react-apexcharts';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  ArcElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  ArcElement,
-  Title,
-  Tooltip,
-  Legend
-);
 
 const getTipoDocumentoInfo = (tipoDoc) => {
   let tipoText;
@@ -176,34 +151,35 @@ const Dashboard = () => {
       const updatedDates = Object.keys(updatedDocumentsByDate);
 
       const processedLineData = {
-        labels: pendingDates,
-        datasets: [
+        chart: {
+          type: 'line',
+        },
+        series: [
           {
-            label: 'Documentos Pendentes',
+            name: 'Documentos Pendentes',
             data: pendingDates.map(date => pendingDocumentsByDate[date]),
-            fill: false,
-            backgroundColor: '#fff',
-            borderColor: '#fff',
-            tension: 0.4,
-            borderWidth: 2,
           },
         ],
+        xaxis: {
+          categories: pendingDates,
+        },
+        colors: ['#0098c9'],
       };
 
       const processedBarData = {
-        labels: updatedDates,
-        datasets: [
+        chart: {
+          type: 'bar',
+        },
+        series: [
           {
-            label: 'Documentos Atualizados',
+            name: 'Documentos Atualizados',
             data: updatedDates.map(date => updatedDocumentsByDate[date]),
-            backgroundColor: '#fff',
-            borderColor: '#fff',
-            borderWidth: 1,
-            borderRadius: 5,
-            barPercentage: 0.6,
-            categoryPercentage: 0.6,
           },
         ],
+        xaxis: {
+          categories: updatedDates,
+        },
+        colors: ['#0098c9'],
       };
 
       const processedPieData = {
@@ -217,8 +193,8 @@ const Dashboard = () => {
             type: 'donut',
             height: 350,
             toolbar: {
-              show: false
-            }
+              show: false,
+            },
           },
           labels: ['Pendente', 'Atualizado', 'Cancelado'],
           plotOptions: {
@@ -235,17 +211,17 @@ const Dashboard = () => {
                     label: 'Total',
                     fontSize: '22px',
                     fontWeight: 600,
-                    color: '#373d3f'
-                  }
-                }
-              }
-            }
+                    color: '#373d3f',
+                  },
+                },
+              },
+            },
           },
           colors: ['#FFD700', '#008000', '#FF0000'],
           legend: {
-            position: 'bottom'
-          }
-        }
+            position: 'bottom',
+          },
+        },
       };
 
       const processedChartData = items.reduce((acc, item) => {
@@ -292,48 +268,6 @@ const Dashboard = () => {
     };
   }, []);
 
-  const options = {
-    plugins: {
-      legend: {
-        display: true,
-        position: 'top',
-        labels: {
-          font: {
-            family: 'Poppins',
-            size: 14,
-          },
-          color: '#fff',
-        },
-      },
-      tooltip: {
-        enabled: true,
-        backgroundColor: '#fff',
-        titleColor: '#333',
-        bodyColor: '#666',
-        borderColor: '#fff',
-        borderWidth: 1,
-      },
-    },
-    scales: {
-      x: {
-        grid: {
-          display: false,
-        },
-        ticks: {
-          color: '#fff',
-        },
-      },
-      y: {
-        grid: {
-          color: '#fff',
-        },
-        ticks: {
-          color: '#fff',
-        },
-      },
-    },
-  };
-
   const handleChartClick = () => {
     setSecondModalIsOpen(true);
   };
@@ -370,14 +304,14 @@ const Dashboard = () => {
       <div className="chart-container">
         <div className="chart-item line-chart">
           <h3>Documentos pendentes</h3>
-          {lineData && <Line data={lineData} options={options} />}
+          {lineData && <ApexCharts options={lineData} series={lineData.series} type="line" height={350} />}
         </div>
         <div className="chart-item bar-chart">
           <h3>Documentos atualizados</h3>
-          {barData && <Bar data={barData} options={options} />}
+          {barData && <ApexCharts options={barData} series={barData.series} type="bar" height={350} />}
         </div>
         <div className="chart-item" onClick={() => setPieModalIsOpen(true)}>
-          <h3>Gráfico de Pizza</h3>
+          <h3>Status do Documento</h3>
           {pieData && <ApexCharts type="donut" series={pieData.series} options={pieData.options} height={350} />}
         </div>
       </div>
@@ -544,11 +478,11 @@ const Dashboard = () => {
         overlayClassName="config-modal-backdrop-graph"
       >
         <div className="modal-config-graph">
-          <h2 className='title-config-graph'>Gráfico de Pizza Ampliado</h2>
+          <h2 className='title-config-graph'>Status do Documento</h2>
           <button className="close-button-dash-graph" onClick={() => setPieModalIsOpen(false)}>&times;</button>
         </div>
-        <div className="chart-container-graph" onClick={handleChartClick}>
-          {pieData && <ApexCharts type="donut" series={pieData.series} options={pieData.options} height={350} />}
+        <div className="chart-container-graph centered-chart" onClick={handleChartClick}>
+          {pieData && <ApexCharts type="donut" series={pieData.series} options={pieData.options} height={500} width={500} />}
         </div>
       </Modal>
       <Modal
@@ -558,7 +492,7 @@ const Dashboard = () => {
         overlayClassName="config-modal-backdrop-second-graph"
       >
         <div className="modal-config-second-graph">
-          <h2 className='title-config-second-graph'>Gráfico de Tipo de Documento</h2>
+          <h2 className='title-config-second-graph'>Tipo de Documento</h2>
           <button className="close-button-dash-second-graph" onClick={() => setSecondModalIsOpen(false)}>&times;</button>
         </div>
         <div className="chart-container-second-graph">
@@ -580,9 +514,9 @@ const Dashboard = () => {
                     value: {
                       show: true,
                       formatter: (val) => (val / 100) * 100,
-                      offsetY: 12,
+                      offsetY: 14,
                       color: '#333',
-                      fontSize: '14px',
+                      fontSize: '22px',
                     },
                   },
                 },
@@ -619,8 +553,8 @@ const Dashboard = () => {
             }}
             series={chartData.map(item => item.count)}
             type="radialBar"
-            height={450}
-            width={450}
+            height={500}
+            width={500}
           />
         </div>
       </Modal>
