@@ -65,8 +65,7 @@
   
   .form-selection input[type="text"],
   .form-selection input[type="date"],
-  .sform-selection select {
-    padding: 1px;
+  .form-selection select {
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-right: 5px;
@@ -285,6 +284,19 @@
   color: #0077a3;
 }
 
+.section-considera input[type="text"] {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex: 1;
+  text-align: center;
+  width: 200px;
+  margin-top: 10px;
+}
+
+.section-considera input[type="text"]:focus {
+  border-color: #48599e;
+  outline: none;
+}
 
   
   

@@ -16,7 +16,7 @@
   transition: margin-left 0.3s ease;
   width: 100%;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
 }
 
 .header-menu.menu-active {
@@ -26,8 +26,8 @@
 #img-menu {
   width: 235px;
   height: 128px;
-  margin-top: -18px;
-  margin-bottom: -15px;
+  margin-top: -20px;
+  margin-bottom: -16px;
   margin-left: -15px;
 }
 
@@ -37,7 +37,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 220px;
-  height: 100vh;
+  height: 97vh;
   position: fixed;
   top: 0;
   left: 0;
