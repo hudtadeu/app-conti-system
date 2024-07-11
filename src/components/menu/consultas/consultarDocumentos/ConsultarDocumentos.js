@@ -130,50 +130,62 @@ function ConsultarDocumentos() {
           <h2 className="consultarDocumentos">Consultar Documentos</h2>
           <h3 className="title-consultarDocumentos">Pesquisar Documentos:</h3>
           {error && <p className="error-message">{error}</p>}
-          <form ref={formRef} className="search-section-consultardocumentos" onKeyDown={handleKeyDown} onSubmit={handleSubmit}>
-            <label>
-              Cod. Estabelecimento:
-              <input type="text" name="codEstabelIni" />
-              até
-              <input type="text" name="codEstabelFim" />
-            </label>
-            <br />
-            <label>
-              <span>Documento:</span>
-              <input type="text" name="documentoDe" />
-              até
-              <input type="text" name="documentoAte" />
-            </label>
-            <br />
-            <label>
-              <span>Fornecedor:</span>
-              <input type="text" name="fornecedorDe" />
-              até
-              <input type="text" name="fornecedorAte" />
-            </label>
-            <br />
-            <label>
-              <span>Data de recebimento:</span>
-              <input type="date" name="dataRecebimentoDe" required />
-              até
-              <input type="date" name="dataRecebimentoAte" required />
-            </label>
-            <br />
-            <label>
-              <span>Série Documento:</span>
-              <input type="text" name="serieDe" />
-              até
-              <input type="text" name="serieAte" />
-            </label>
-            <br />
-            <label>
-              <span>Chave Documento:</span>
-              <input type="text" name="chaveDocumentoDe" />
-              até
-              <input type="text" name="chaveDocumentoAte" />
-            </label>
-            <br />
-             <label>
+         <form ref={formRef} className="search-section-consultardocumentos" onKeyDown={handleKeyDown} onSubmit={handleSubmit}>
+                <label>
+                  <span>Cod. Estabelecimento:</span>
+                  <div class="input-group-search">
+                    <input type="text" name="codEstabelIni" />
+                    até
+                    <input type="text" name="codEstabelFim" />
+                  </div>
+                </label>
+                <br />
+                <label>
+                  <span>Documento:</span>
+                  <div class="input-group-search">
+                    <input type="text" name="documentoDe" />
+                    até
+                    <input type="text" name="documentoAte" />
+                  </div>
+                </label>
+                <br />
+                <label>
+                  <span>Fornecedor:</span>
+                  <div class="input-group-search">
+                    <input type="text" name="fornecedorDe" />
+                    até
+                    <input type="text" name="fornecedorAte" />
+                  </div>
+                </label>
+                <br />
+                <label>
+                  <span>Data de recebimento:</span>
+                  <div class="input-group-search">
+                    <input type="date" name="dataRecebimentoDe" required />
+                    até
+                    <input type="date" name="dataRecebimentoAte" required />
+                  </div>
+                </label>
+                <br />
+                <label>
+                  <span>Série Documento:</span>
+                  <div class="input-group-search">
+                    <input type="text" name="serieDe" />
+                    até
+                    <input type="text" name="serieAte" />
+                  </div>
+                </label>
+                <br />
+                <label>
+                  <span>Chave Documento:</span>
+                  <div class="input-group-search">
+                  <input type="text" name="chaveDocumentoDe" />
+                  até
+                  <input type="text" name="chaveDocumentoAte" />
+                  </div>
+                </label>
+                <br />
+                <label>
               <span>Tipo de Documento:</span>
               <select
                 onChange={handleTipoDocumentoChange}
