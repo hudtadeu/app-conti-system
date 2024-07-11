@@ -503,8 +503,11 @@ const Dashboard = () => {
           <h2 className='title-config-graph'>Status do Documento</h2>
           <button className="close-button-dash-graph" onClick={() => setPieModalIsOpen(false)}>&times;</button>
         </div>
-        <div className="chart-container-graph centered-chart" onClick={handleChartClick}>
+        <div className="chart-container-graph centered-chart">
           {pieData && <ApexCharts type="donut" series={pieData.series} options={pieData.options} height={500} width={500} />}
+          </div>
+          <div>
+          <button className="detail-button-chart" onClick={handleChartClick}>Detalhar Documento</button>
         </div>
       </Modal>
       <Modal

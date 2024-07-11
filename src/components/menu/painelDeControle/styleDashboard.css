@@ -91,7 +91,7 @@
   width: 70%;  
   max-width: 650px;
   height: 100%;  
-  max-height: 650px;
+  max-height: 600px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
@@ -698,5 +698,29 @@
 
 .loading-spinner-chart svg {
   font-size: 20px;
+}
+
+.detail-button-chart {
+  background-color: #0098c9; 
+  color: #ffffff; 
+  padding: 6px 12px; 
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 13px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 35px;
+}
+
+.detail-button-chart:hover {
+  background-color: #0077a3;
+  color: #ffffff;
+}
+
+.detail-button-chart.active {
+  background-color: #0077a3;
+  color: #ffffff;
 }
 
