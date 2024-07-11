@@ -696,3 +696,7 @@
   pointer-events: none;
 }
 
+.loading-spinner-chart svg {
+  font-size: 20px;
+}
+

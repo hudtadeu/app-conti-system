@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './styleDashboard.css';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSyncAlt, faCog, faAngleDown, faBuilding } from '@fortawesome/free-solid-svg-icons';
+import { faSyncAlt, faCog, faAngleDown, faBuilding, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import ApexCharts from 'react-apexcharts';
 
 const getTipoDocumentoInfo = (tipoDoc) => {
@@ -53,6 +53,7 @@ const Dashboard = () => {
   const [showFaixasDropdown, setShowFaixasDropdown] = useState(false);
   const [showGraficosDropdown, setShowGraficosDropdown] = useState(false);
   const [showBigNumbersDropdown, setShowBigNumbersDropdown] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const dropdownRef = useRef(null);
   const faixasDropdownRef = useRef(null);
@@ -119,6 +120,7 @@ const Dashboard = () => {
   };
 
   const fetchData = async () => {
+    setLoading(true);
     const base64Credentials = sessionStorage.getItem("token");
     try {
       const response = await fetch('http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/piGetDocumXML/graph', {
@@ -236,9 +238,11 @@ const Dashboard = () => {
       setLineData(processedLineData);
       setBarData(processedBarData);
       setPieData(processedPieData);
+      setLoading(false);
       setChartData(Object.values(processedChartData));
     } catch (error) {
       console.error('Error fetching data:', error);
+      setLoading(false);
     }
   };
 
@@ -304,15 +308,33 @@ const Dashboard = () => {
       <div className="chart-container">
         <div className="chart-item line-chart">
           <h3>Documentos pendentes</h3>
-          {lineData && <ApexCharts options={lineData} series={lineData.series} type="line" height={350} />}
+          {loading ? (
+            <div className="loading-spinner-chart">
+              <FontAwesomeIcon icon={faSpinner} spin />
+            </div>
+          ) : (
+            lineData && <ApexCharts options={lineData} series={lineData.series} type="line" height={350} />
+          )}
         </div>
         <div className="chart-item bar-chart">
           <h3>Documentos atualizados</h3>
-          {barData && <ApexCharts options={barData} series={barData.series} type="bar" height={350} />}
+          {loading ? (
+            <div className="loading-spinner-chart">
+              <FontAwesomeIcon icon={faSpinner} spin />
+            </div>
+          ) : (
+            barData && <ApexCharts options={barData} series={barData.series} type="bar" height={350} />
+          )}
         </div>
         <div className="chart-item" onClick={() => setPieModalIsOpen(true)}>
           <h3>Status do Documento</h3>
-          {pieData && <ApexCharts type="donut" series={pieData.series} options={pieData.options} height={350} />}
+          {loading ? (
+            <div className="loading-spinner-chart">
+              <FontAwesomeIcon icon={faSpinner} spin />
+            </div>
+          ) : (
+            pieData && <ApexCharts type="donut" series={pieData.series} options={pieData.options} height={350} />
+          )}
         </div>
       </div>
       <Modal
