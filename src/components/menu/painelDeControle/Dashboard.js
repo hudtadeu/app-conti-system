@@ -538,26 +538,12 @@ const Dashboard = () => {
           <ApexCharts
             options={{
               chart: {
-                type: 'radialBar',
+                type: 'bar',
               },
               plotOptions: {
-                radialBar: {
-                  track: {
-                    background: '#fff',
-                    strokeWidth: '55%',
-                  },
-                  dataLabels: {
-                    total: {
-                      show: false,
-                    },
-                    value: {
-                      show: true,
-                      formatter: (val) => (val / 100) * 100,
-                      offsetY: 14,
-                      color: '#333',
-                      fontSize: '22px',
-                    },
-                  },
+                bar: {
+                  distributed: true,
+                  borderRadius: 5, 
                 },
               },
               legend: {
@@ -583,15 +569,22 @@ const Dashboard = () => {
                 x: {
                   show: true,
                 },
+                y: {
+                  formatter: ( value, { series, seriesIndex, dataPointIndex, w }) => {
+                    return `${chartData[dataPointIndex].tipoDoc}: ${value}`;
+                  }
+                },
                 marker: {
                   show: true,
                 },
               },
-              labels: chartData.map(item => item.tipoDoc),
+              xaxis: {
+                categories: chartData.map(item => item.tipoDoc),
+              },
               colors: chartData.map(item => item.color),
             }}
-            series={chartData.map(item => item.count)}
-            type="radialBar"
+            series={[{ data: chartData.map(item => item.count) }]}
+            type="bar"
             height={500}
             width={500}
           />
