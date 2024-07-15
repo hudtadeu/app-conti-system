@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './styleDashboard.css';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSyncAlt, faCog, faAngleDown, faBuilding, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faSyncAlt, faCog, faAngleDown, faBuilding, faSpinner, faTimes } from '@fortawesome/free-solid-svg-icons';
 import ApexCharts from 'react-apexcharts';
 
 const getTipoDocumentoInfo = (tipoDoc) => {
@@ -345,7 +345,9 @@ const Dashboard = () => {
       >
         <div className="modal-config">
           <h2 className='title-config'>Configurações</h2>
-          <button className="close-button-dash" onClick={() => setModalIsOpen(false)}>&times;</button>
+          <button className="close-button-dash" onClick={() => setModalIsOpen(false)}>
+            <FontAwesomeIcon icon={faTimes} />
+          </button>
         </div>
         <div className="input-group-dash">
           <h3>SELEÇÃO</h3>
@@ -375,7 +377,9 @@ const Dashboard = () => {
               {considerarDocumentos.map(option => (
                 <div key={option} className="selected-option">
                   {option}
-                  <button onClick={() => removeOption(option)}>x</button>
+                  <button onClick={() => removeOption(option)}>
+                    <FontAwesomeIcon icon={faTimes} />
+                  </button>
                 </div>
               ))}
             </div>
@@ -423,7 +427,9 @@ const Dashboard = () => {
               {faixasSelecao.map(option => (
                 <div key={option} className="selected-option">
                   {option}
-                  <button onClick={() => removeFaixasOption(option)}>x</button>
+                  <button onClick={() => removeFaixasOption(option)}>
+                    <FontAwesomeIcon icon={faTimes} />
+                  </button>
                 </div>
               ))}
             </div>
@@ -454,7 +460,9 @@ const Dashboard = () => {
               {graficosSelecao.map(option => (
                 <div key={option} className="selected-option">
                   {option}
-                  <button onClick={() => removeGraficosOption(option)}>x</button>
+                  <button onClick={() => removeGraficosOption(option)}>
+                    <FontAwesomeIcon icon={faTimes} />
+                  </button>
                 </div>
               ))}
             </div>
@@ -485,7 +493,9 @@ const Dashboard = () => {
               {bigNumbersSelecao.map(option => (
                 <div key={option} className="selected-option">
                   {option}
-                  <button onClick={() => removeBigNumbersOption(option)}>x</button>
+                  <button onClick={() => removeBigNumbersOption(option)}>
+                    <FontAwesomeIcon icon={faTimes} />
+                  </button>
                 </div>
               ))}
             </div>
@@ -501,7 +511,9 @@ const Dashboard = () => {
       >
         <div className="modal-config-graph">
           <h2 className='title-config-graph'>Status do Documento</h2>
-          <button className="close-button-dash-graph" onClick={() => setPieModalIsOpen(false)}>&times;</button>
+          <button className="close-button-dash-graph" onClick={() => setPieModalIsOpen(false)}>
+            <FontAwesomeIcon icon={faTimes} />
+          </button>
         </div>
         <div className="chart-container-graph centered-chart">
           {pieData && <ApexCharts type="donut" series={pieData.series} options={pieData.options} height={500} width={500} />}
@@ -518,7 +530,9 @@ const Dashboard = () => {
       >
         <div className="modal-config-second-graph">
           <h2 className='title-config-second-graph'>Tipo de Documento</h2>
-          <button className="close-button-dash-second-graph" onClick={() => setSecondModalIsOpen(false)}>&times;</button>
+          <button className="close-button-dash-second-graph" onClick={() => setSecondModalIsOpen(false)}>
+            <FontAwesomeIcon icon={faTimes} />
+          </button>
         </div>
         <div className="chart-container-second-graph">
           <ApexCharts
