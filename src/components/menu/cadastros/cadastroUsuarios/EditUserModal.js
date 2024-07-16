@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import ToggleButton from "./ToggleButton";
+import AuditoriaModal from "./AuditoriaModal";
 import "./styleEditUserModal.css";
 
 function EditUserModal({ isOpen, onClose, user, updateUser }) {
   const [editableUser, setEditableUser] = useState(user);
+  const [auditoriaModalOpen, setAuditoriaModalOpen] = useState(user["log-auditoria"]);
 
   const handleToggleChange = (name, newValue) => {
     setEditableUser({ ...editableUser, [name]: newValue });
+    if (name === "log-auditoria") {
+      setAuditoriaModalOpen(newValue);
+    }
   };
 
   const handleSave = () => {
@@ -87,6 +92,9 @@ function EditUserModal({ isOpen, onClose, user, updateUser }) {
           </form>
         </div>
         <div className="modal-footer-edituser">
+              {auditoriaModalOpen && (
+              <AuditoriaModal onClose={() => setAuditoriaModalOpen(false)} user={editableUser} />
+            )}
           <button
             type="button"
             className="button-primary-edituser"

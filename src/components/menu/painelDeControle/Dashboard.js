@@ -570,6 +570,10 @@ const Dashboard = () => {
                 labels: {
                   colors: '#333',
                 },
+                itemMargin: {
+                  horizontal: 10, 
+                  vertical: 5     
+                }
               },
               tooltip: {
                 enabled: true,

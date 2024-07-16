@@ -26,7 +26,7 @@ function ToggleButton({ defaultChecked, onToggle }) {
 }
 
 function VisualizarModal({ isOpen, onClose, user }) {
-  const [auditoriaModalOpen, setAuditoriaModalOpen] = useState(false);
+  const [auditoriaModalOpen, setAuditoriaModalOpen] = useState(user["log-auditoria"]);
 
   if (!isOpen || !user) return null;
 
@@ -34,8 +34,8 @@ function VisualizarModal({ isOpen, onClose, user }) {
     console.log(`O usuário está ${isActive ? "ativo" : "inativo"}`);
   };
 
-  const toggleAuditoriaModal = () => {
-    setAuditoriaModalOpen(!auditoriaModalOpen);
+  const handleToggleAuditoria = (isActive) => {
+    setAuditoriaModalOpen(isActive);
   };
 
   const handleBackdropClick = (e) => {
@@ -93,18 +93,13 @@ function VisualizarModal({ isOpen, onClose, user }) {
           <div className="button-title-user">
             <ToggleButton
               defaultChecked={user["log-auditoria"]}
-              onToggle={handleToggleActive}
+              onToggle={handleToggleAuditoria}
             />
-            <button
-              className="button-audit-user"
-              onClick={toggleAuditoriaModal}
-            >
-              Acesso a Auditoria
-            </button>
+            <span className="toggle-text">Acesso a Auditoria</span>
           </div>
         </div>
         {auditoriaModalOpen && (
-          <AuditoriaModal onClose={toggleAuditoriaModal} user={user} />
+          <AuditoriaModal onClose={() => setAuditoriaModalOpen(false)} user={user} />
         )}
       </div>
     </div>
