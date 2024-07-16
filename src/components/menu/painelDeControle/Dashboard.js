@@ -199,6 +199,7 @@ const Dashboard = () => {
           items.filter(item => item.situacao === 'Pendente').length,
           items.filter(item => item.situacao === 'Atualizado').length,
           items.filter(item => item.situacao === 'Cancelado').length,
+          items.filter(item => item.situacao === 'Status Desconhecido').length,
         ],
         options: {
           chart: {
@@ -208,7 +209,7 @@ const Dashboard = () => {
               show: false,
             },
           },
-          labels: ['Pendente', 'Atualizado', 'Cancelado'],
+          labels: ['Pendente', 'Atualizado', 'Cancelado', 'Status Desconhecido'],
           plotOptions: {
             pie: {
               startAngle: -90,
@@ -229,7 +230,7 @@ const Dashboard = () => {
               },
             },
           },
-          colors: ['#FFD700', '#008000', '#FF0000'],
+          colors: ['#FFD700', '#008000', '#FF0000', '#808080'],
           legend: {
             position: 'bottom',
           },
