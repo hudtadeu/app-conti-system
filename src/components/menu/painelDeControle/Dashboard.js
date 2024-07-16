@@ -539,6 +539,9 @@ const Dashboard = () => {
             options={{
               chart: {
                 type: 'bar',
+                toolbar: {
+                  show: false 
+                }
               },
               plotOptions: {
                 bar: {
@@ -557,25 +560,14 @@ const Dashboard = () => {
               },
               tooltip: {
                 enabled: true,
-                shared: true,
                 followCursor: false,
                 intersect: false,
-                style: {
-                  fontSize: '13px',
-                },
-                onDatasetHover: {
-                  highlightDataSeries: true,
-                },
-                x: {
-                  show: true,
-                },
-                y: {
-                  formatter: ( value, { series, seriesIndex, dataPointIndex, w }) => {
-                    return `${chartData[dataPointIndex].tipoDoc}: ${value}`;
-                  }
-                },
-                marker: {
-                  show: true,
+                custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                  const { tipoDoc, color } = chartData[dataPointIndex];
+                  const value = series[seriesIndex][dataPointIndex];
+                  return `<div style="padding: 10px; background-color: ${color}; color: #fff;">
+                            ${tipoDoc}: ${value}
+                          </div>`;
                 },
               },
               xaxis: {
