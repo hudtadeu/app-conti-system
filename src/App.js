@@ -18,7 +18,7 @@ function App() {
       <div className="App">
         <main>
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/home" element={<Layout></Layout>} />
             <Route
               path="cadastroEventos"

@@ -209,7 +209,7 @@ const Dashboard = () => {
               show: false,
             },
           },
-          labels: ['Pendente', 'Atualizado', 'Cancelado', 'Status Desconhecido'],
+          labels: ['Pendente', 'Atualizado', 'Cancelado', 'Desconhecido'],
           plotOptions: {
             pie: {
               startAngle: -90,
@@ -220,9 +220,9 @@ const Dashboard = () => {
                   show: true,
                   total: {
                     show: true,
-                    showAlways: true,
+                    showAlways: false,
                     label: 'Total',
-                    fontSize: '22px',
+                    fontSize: '20px',
                     fontWeight: 600,
                     color: '#373d3f',
                   },
