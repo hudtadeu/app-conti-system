@@ -171,6 +171,9 @@ const Dashboard = () => {
       const processedBarData = {
         chart: {
           type: 'bar',
+          toolbar: {
+            show: false 
+          }
         },
         series: [
           {
@@ -182,6 +185,13 @@ const Dashboard = () => {
           categories: updatedDates,
         },
         colors: ['#0098c9'],
+        plotOptions: {
+          bar: {
+            borderRadius: 5, 
+            borderRadiusApplication: 'end',
+            borderRadiusWhenStacked: 'all', 
+          },
+        },
       };
 
       const processedPieData = {
@@ -547,6 +557,8 @@ const Dashboard = () => {
                 bar: {
                   distributed: true,
                   borderRadius: 5, 
+                  borderRadiusApplication: 'end',
+                  borderRadiusWhenStacked: 'last'
                 },
               },
               legend: {
