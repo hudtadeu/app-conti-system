@@ -37,6 +37,11 @@ const getTipoDocumentoInfo = (tipoDoc) => {
   return { text: tipoText, color: tipoColor };
 };
 
+const formatDate = (dateStr) => {
+  const [year, month, day] = dateStr.split('-');
+  return `${day}-${month}-${year}`;
+};
+
 const Dashboard = () => {
   const [lineData, setLineData] = useState(null);
   const [barData, setBarData] = useState(null);
@@ -54,6 +59,10 @@ const Dashboard = () => {
   const [showGraficosDropdown, setShowGraficosDropdown] = useState(false);
   const [showBigNumbersDropdown, setShowBigNumbersDropdown] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [estabInicial, setEstabInicial] = useState('');
+  const [estabFinal, setEstabFinal] = useState('');
+  const [dataInicio, setDataInicio] = useState('');
+  const [dataFim, setDataFim] = useState('');
 
   const dropdownRef = useRef(null);
   const faixasDropdownRef = useRef(null);
@@ -123,7 +132,11 @@ const Dashboard = () => {
     setLoading(true);
     const base64Credentials = sessionStorage.getItem("token");
     try {
-      const response = await fetch('http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/piGetDocumXML/graph', {
+      const url = new URL('http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/piGetDocumXML/graph');
+      if (estabInicial) url.searchParams.append('estabInicial', estabInicial);
+      if (estabFinal) url.searchParams.append('estabFinal', estabFinal);
+
+      const response = await fetch(url, {
         method: "GET",
         headers: {
           'Content-Type': 'application/json',
@@ -133,7 +146,18 @@ const Dashboard = () => {
       const data = await response.json();
       const items = data.items;
 
-      const pendingDocumentsByDate = items
+      const filteredItems = items.filter(item => {
+        const emissaoDate = new Date(item.emissao);
+        const startDate = dataInicio ? new Date(dataInicio) : null;
+        const endDate = dataFim ? new Date(dataFim) : null;
+
+        if (startDate && emissaoDate < startDate) return false;
+        if (endDate && emissaoDate > endDate) return false;
+
+        return true;
+      });
+
+      const pendingDocumentsByDate = filteredItems
         .filter(item => item.situacao === 'Pendente')
         .reduce((acc, item) => {
           const date = item.emissao;
@@ -141,7 +165,7 @@ const Dashboard = () => {
           return acc;
         }, {});
 
-      const updatedDocumentsByDate = items
+      const updatedDocumentsByDate = filteredItems
         .filter(item => item.situacao === 'Atualizado')
         .reduce((acc, item) => {
           const date = item.emissao;
@@ -149,8 +173,8 @@ const Dashboard = () => {
           return acc;
         }, {});
 
-      const pendingDates = Object.keys(pendingDocumentsByDate);
-      const updatedDates = Object.keys(updatedDocumentsByDate);
+      const pendingDates = Object.keys(pendingDocumentsByDate).map(date => formatDate(date));
+      const updatedDates = Object.keys(updatedDocumentsByDate).map(date => formatDate(date));
 
       const processedLineData = {
         chart: {
@@ -159,7 +183,7 @@ const Dashboard = () => {
         series: [
           {
             name: 'Documentos Pendentes',
-            data: pendingDates.map(date => pendingDocumentsByDate[date]),
+            data: Object.keys(pendingDocumentsByDate).map(date => pendingDocumentsByDate[date]),
           },
         ],
         xaxis: {
@@ -178,7 +202,7 @@ const Dashboard = () => {
         series: [
           {
             name: 'Documentos Atualizados',
-            data: updatedDates.map(date => updatedDocumentsByDate[date]),
+            data: Object.keys(updatedDocumentsByDate).map(date => updatedDocumentsByDate[date]),
           },
         ],
         xaxis: {
@@ -196,10 +220,10 @@ const Dashboard = () => {
 
       const processedPieData = {
         series: [
-          items.filter(item => item.situacao === 'Pendente').length,
-          items.filter(item => item.situacao === 'Atualizado').length,
-          items.filter(item => item.situacao === 'Cancelado').length,
-          items.filter(item => item.situacao === 'Status Desconhecido').length,
+          filteredItems.filter(item => item.situacao === 'Pendente').length,
+          filteredItems.filter(item => item.situacao === 'Atualizado').length,
+          filteredItems.filter(item => item.situacao === 'Cancelado').length,
+          filteredItems.filter(item => item.situacao === 'Status Desconhecido').length,
         ],
         options: {
           chart: {
@@ -237,7 +261,7 @@ const Dashboard = () => {
         },
       };
 
-      const processedChartData = items.reduce((acc, item) => {
+      const processedChartData = filteredItems.reduce((acc, item) => {
         const tipoInfo = getTipoDocumentoInfo(item.tipo_doc);
         if (!acc[item.tipo_doc]) {
           acc[item.tipo_doc] = { tipoDoc: tipoInfo.text, count: 0, color: tipoInfo.color };
@@ -259,7 +283,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [estabInicial, estabFinal, dataInicio, dataFim]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -294,25 +319,55 @@ const Dashboard = () => {
         <div className="input-items">
           <div className="input-item">
             <label htmlFor="periodo">Período:</label>
-            <input type="date" id="periodo" name="periodo" />
+            <div className="input-periodo">
+              <input 
+                type="date" 
+                id="dataInicio" 
+                name="dataInicio" 
+                value={dataInicio}
+                onChange={(e) => setDataInicio(e.target.value)} 
+              />
+              <span>até</span>
+              <input 
+                type="date" 
+                id="dataFim" 
+                name="dataFim" 
+                value={dataFim}
+                onChange={(e) => setDataFim(e.target.value)} 
+              />
+            </div>
           </div>
           <div className="input-item">
             <label htmlFor="estabInicial">Estabelecimento Inicial:</label>
             <div className="input-estab-icon">
               <FontAwesomeIcon icon={faBuilding} />
-              <input type="text" id="estabInicial" name="estabInicial" />
+              <input
+                type="text"
+                id="estabInicial"
+                name="estabInicial"
+                value={estabInicial}
+                onChange={(e) => setEstabInicial(e.target.value)}
+              />
             </div>
           </div>
           <div className="input-item">
             <label htmlFor="estabFinal">Estabelecimento Final:</label>
             <div className="input-estab-icon">
               <FontAwesomeIcon icon={faBuilding} />
-              <input type="text" id="estabFinal" name="estabFinal" />
+              <input
+                type="text"
+                id="estabFinal"
+                name="estabFinal"
+                value={estabFinal}
+                onChange={(e) => setEstabFinal(e.target.value)}
+              />
             </div>
           </div>
         </div>
         <div className="action-buttons">
-          <button className="btn btn-primary"><FontAwesomeIcon icon={faSyncAlt} /></button>
+          <button className="btn btn-primary" onClick={fetchData}>
+            {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : <FontAwesomeIcon icon={faSyncAlt} />}
+          </button>
           <button className="btn btn-secondary" onClick={() => setModalIsOpen(true)}><FontAwesomeIcon icon={faCog} /></button>
         </div>
       </div>
