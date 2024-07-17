@@ -327,7 +327,7 @@ const Dashboard = () => {
                 value={dataInicio}
                 onChange={(e) => setDataInicio(e.target.value)} 
               />
-              <span>até</span>
+              <span>-</span>
               <input 
                 type="date" 
                 id="dataFim" 
