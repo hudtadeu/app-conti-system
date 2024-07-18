@@ -73,8 +73,8 @@ function PesquisaConsultarDocumentos() {
                 <th>Série</th>
                 <th>Natureza da Operação</th>
                 <th>Data de Emissão</th>
-                <th>Situação</th>
-                <th>Tipo</th>
+                <th>Status</th>
+                <th>Tipo Documento</th>
                 <th>Ações</th>
               </tr>
             </thead>
