@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronRight, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';  // Import useHistory
 import "./styleDetalhesConsultarDocumentos.css";
 import { getStatusInfo, getTipoDocumentoInfo } from '../../../utils';
 
 function DetalhesConsultarDocumentos() {
   const location = useLocation();
+  const navigate = useNavigate();  // Initialize useHistory
   const { cId } = location.state || {};
 
   const [documento, setDocumento] = useState(null);
@@ -52,38 +53,38 @@ function DetalhesConsultarDocumentos() {
       }
     };
 
-  const fetchItensDocumento = async () => {
-    if (!cId) return;
-  
-    const base64Credentials = sessionStorage.getItem("token");
-  
-    try {
-      const response = await fetch(`http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/piGetItemDocXML/byiddoc/${cId}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Basic ${base64Credentials}`
+    const fetchItensDocumento = async () => {
+      if (!cId) return;
+    
+      const base64Credentials = sessionStorage.getItem("token");
+    
+      try {
+        const response = await fetch(`http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/piGetItemDocXML/byiddoc/${cId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Basic ${base64Credentials}`
+          }
+        });
+    
+        if (!response.ok) {
+          throw new Error('Erro ao buscar itens do documento');
         }
-      });
-  
-      if (!response.ok) {
-        throw new Error('Erro ao buscar itens do documento');
+    
+        const data = await response.json();
+        console.log("Itens recebidos:", data);
+    
+        if (data && data.items && data.items.length > 0) {
+          setItensDocumento(data.items);
+        } else {
+          setItensDocumento([]);
+        }
+      } catch (error) {
+        console.error('Erro ao buscar detalhes do documento:', error);
+      } finally {
+        setLoading(false);
       }
-  
-      const data = await response.json();
-      console.log("Itens recebidos:", data);
-  
-      if (data && data.items && data.items.length > 0) {
-        setItensDocumento(data.items);
-      } else {
-        setItensDocumento([]);
-      }
-    } catch (error) {
-      console.error('Erro ao buscar detalhes do documento:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
 
     fetchDocumentoDetails();
     fetchItensDocumento();
@@ -115,6 +116,10 @@ function DetalhesConsultarDocumentos() {
     setActiveButton(prevButton => (prevButton === button ? '' : button));
   };
 
+  const handleGoBack = () => {
+    navigate(-1);  
+  };
+
   if (loading || documento === null) {
     return (
       <div className="overlay-dc">
@@ -130,6 +135,7 @@ function DetalhesConsultarDocumentos() {
   return (
     <div className="body-detailsdoc">
       <div className={`container-detailsdoc ${loading ? 'blur' : ''}`}>
+        <button className="back-button" onClick={handleGoBack}>VOLTAR</button>
         <div className="selected-documento-details">
           <h1 className="title-detailsdoc">Detalhes do Documento</h1>
           <div className="document-info-dcd">

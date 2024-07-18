@@ -4,7 +4,7 @@ import './stylePesquisaConsultarDocumentos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { getStatusInfo, getTipoDocumentoInfo } from '../../../utils'; 
+import { getStatusInfo, getTipoDocumentoInfo } from '../../../utils';
 
 function PesquisaConsultarDocumentos() {
   const location = useLocation();
@@ -64,46 +64,56 @@ function PesquisaConsultarDocumentos() {
             </button>
           </div>
         </div>
-        <div className="lista-documentos-pcd">
-          {filteredDocumentData.map((documento, index) => {
-            const statusInfo = getStatusInfo(documento.situacao);
-            const tipoDocumentoInfo = getTipoDocumentoInfo(documento.tipo_doc);
-            return (
-              <div className="documento-item-pcd" key={index} onClick={() => handleDocumentoClick(documento)}>
-                <div className="documento-titulo-pcd">
-                  <p>{documento.nro_docto.toUpperCase()}</p>
-                </div>
-                <div className="documento-detalhes-pcd">
-                  <div className="documento-status-fornecedor-pcd">
-                    <div className="status-container">
-                      <div className="status-description" style={{ backgroundColor: statusInfo.color }}>{statusInfo.text}</div>
-                      <div className="tipo-container">
-                        <div className="tipo-description" style={{ backgroundColor: tipoDocumentoInfo.color }}>{tipoDocumentoInfo.text}</div>
+        <div className="table-container">
+          <table className="table-documentos-pcd">
+            <thead>
+              <tr>
+                <th>Número</th>
+                <th>Fornecedor</th>
+                <th>Série</th>
+                <th>Natureza da Operação</th>
+                <th>Data de Emissão</th>
+                <th>Situação</th>
+                <th>Tipo</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredDocumentData.map((documento, index) => {
+                const statusInfo = getStatusInfo(documento.situacao);
+                const tipoDocumentoInfo = getTipoDocumentoInfo(documento.tipo_doc);
+                return (
+                  <tr key={index} onClick={() => handleDocumentoClick(documento)}>
+                    <td>{documento.nro_docto.toUpperCase()}</td>
+                    <td>{documento.forneced}</td>
+                    <td>{documento.serie_docto}</td>
+                    <td>{documento.nat_operacao}</td>
+                    <td>{formatDate(documento.emissao)}</td>
+                    <td>
+                      <div className="status-description" style={{ backgroundColor: statusInfo.color }}>
+                        {statusInfo.text}
                       </div>
-                    </div>
-                    <p className='title-forneced-pcd'>{documento.forneced}</p>
-                  </div>
-                  <div className="documento-serie-natureza-pcd">
-                    <p><strong>Série:</strong> {documento.serie_docto}</p>
-                    <p><strong>Natureza da Operação:</strong> {documento.nat_operacao}</p>
-                  </div>
-                  <div className="documento-data-pcd">
-                    <p><strong>Data de Emissão:</strong> {formatDate(documento.emissao)}</p>
-                  </div>
-                  <div className="documento-acoes-pcd">
-                    <div className="dropdown" title="Outras opções">
-                      <button className="dropbtn">...</button>
-                      <div className="dropdown-content">
-                        <a href="#">Opção 1</a>
-                        <a href="#">Opção 2</a>
-                        <a href="#">Opção 3</a>
+                    </td>
+                    <td>
+                      <div className="tipo-description" style={{ backgroundColor: tipoDocumentoInfo.color }}>
+                        {tipoDocumentoInfo.text}
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+                    </td>
+                    <td>
+                      <div className="dropdown" title="Outras opções">
+                        <button className="dropbtn">...</button>
+                        <div className="dropdown-content">
+                          <a href="#">Opção 1</a>
+                          <a href="#">Opção 2</a>
+                          <a href="#">Opção 3</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

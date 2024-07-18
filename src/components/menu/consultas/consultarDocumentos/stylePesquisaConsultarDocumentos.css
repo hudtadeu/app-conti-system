@@ -23,8 +23,8 @@ html, body {
   position: relative;
   background-color: #ebecee;
   color: #0098c9;
-  padding: 10px;
-  border-radius: 10px 10px 10px 10px;
+  padding: 20px;
+  border-radius: 10px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
   margin-left: 7px;
   margin-right: 60px;
@@ -83,135 +83,53 @@ html, body {
   background-color: #007bb5;
 }
 
-.lista-documentos-pcd {
+.table-container {
+  overflow-x: auto;
+  border-radius: 5px;
+}
+
+.table-documentos-pcd {
+  width: 100%;
+  border-collapse: collapse;
   background-color: #fff;
   border-radius: 10px;
-  padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 5px;
+}
+
+.table-documentos-pcd th, .table-documentos-pcd td {
+  border: 1px solid #ddd;
+  padding: 8px;
   text-align: left;
+  border-left: none;
+  border-right: none;
 }
 
-.documento-item-pcd {
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-  margin-bottom: 10px;
-  transition: box-shadow 0.3s ease;
-  border-radius: 10px;
+.table-documentos-pcd th {
+  background-color: #fff;
+  color:  #0098c9;
+  padding: 14px;
 }
 
-.documento-item-pcd:hover {
+.table-documentos-pcd tbody tr:hover {
+  background-color: #f1f1f1;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
-.documento-item-pcd:last-child {
-  border-bottom: none;
-}
-
-.documento-titulo-pcd {
-  font-size: 18px;
-  font-weight: 600;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  text-align: left;
-  margin-left: 10px;
-  gap: 20px;
-}
-
-.documento-detalhes-pcd {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-left: 10px;
-  border-radius: 10px;
-}
-
-.documento-status-fornecedor-pcd {
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.status-container {
-  display: flex;
-  font-size: 10px;
-  align-items: center;
-  gap: 5px;
-  margin-bottom: 6px;
-}
-
-.status-circle {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  color: white;
+.status-description, .tipo-description {
+  color: #fff;
+  padding: 2px;
+  border-radius: 5px;
+  display: inline-block;
+  min-width: 70px;
   text-align: center;
-  line-height: 20px;
-}
-
-.status-description {
-  color: #fff;
-  padding: 5px;
-  border-radius: 5px;
-  background-color: #0098c9;
-}
-
-.tipo-description {
-  color: #fff;
-  padding: 5px;
-  border-radius: 5px;
-  background-color: #0098c9;
-}
-
-.title-forneced-pcd {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.documento-serie-natureza-pcd {
-  flex: 2.7;
-  margin-left: 10px;
-}
-
-.documento-serie-natureza-pcd p,
-.documento-data-pcd p {
-  margin-left: 10px;
-}
-
-.documento-data-pcd {
-  flex: 1.3;
-  margin-left: 10px;
-  margin-right: 20px;
-}
-
-.documento-acoes-pcd {
-  flex: 0.5;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.button-secondary-pcd {
-  background-color: #0098c9;
-  color: #fff;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: background-color 0.3s ease;
-}
-
-.button-secondary-pcd:hover {
-  background-color: #007bb5;
+  margin: 0 auto;
+  border: 1px solid #ddd;
 }
 
 .dropdown {
   position: relative;
   display: inline-block;
-  right: 1px;
-  top: -20px;
 }
 
 .dropbtn {
@@ -219,7 +137,7 @@ html, body {
   color: #0098c9;
   background: none;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 18px;
 }
 
 .dropdown-content {
@@ -229,7 +147,7 @@ html, body {
   min-width: 160px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   z-index: 1;
-  right: 16px;
+  right: 0;
   top: 25px;
 }
 
@@ -252,17 +170,11 @@ html, body {
   background-color: transparent;
 }
 
-.loading-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
 @media screen and (max-width: 768px) {
   .container-pesquisaConsultarDocumentos {
-    margin: 0 20px;
+    margin: 20px;
     padding: 10px;
+    width: calc(100% - 40px);
   }
 
   .title-pesquisaConsultarDocumentos {
@@ -289,16 +201,12 @@ html, body {
     margin-top: 10px;
   }
 
-  .documento-detalhes-pcd {
-    flex-direction: column;
-    align-items: flex-start;
+  .table-documentos-pcd {
+    font-size: 12px;
   }
 
-  .documento-serie-natureza-pcd,
-  .documento-data-pcd,
-  .documento-acoes-pcd {
-    margin-left: 0;
-    margin-top: 10px;
+  .table-documentos-pcd th, .table-documentos-pcd td {
+    padding: 6px;
   }
 }
 
@@ -307,12 +215,12 @@ html, body {
     font-size: 24px;
   }
 
-  .documento-titulo-pcd {
-    font-size: 16px;
+  .table-documentos-pcd {
+    font-size: 10px;
   }
 
-  .documento-detalhes-pcd p {
-    font-size: 12px;
+  .table-documentos-pcd th, .table-documentos-pcd td {
+    padding: 4px;
   }
 
   .button-primary-pcd,
