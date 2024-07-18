@@ -135,7 +135,7 @@ function ConsultarDocumentos() {
                   <span>Cod. Estabelecimento:</span>
                   <div class="input-group-search">
                     <input type="text" name="codEstabelIni" />
-                    até
+                    -
                     <input type="text" name="codEstabelFim" />
                   </div>
                 </label>
@@ -144,7 +144,7 @@ function ConsultarDocumentos() {
                   <span>Documento:</span>
                   <div class="input-group-search">
                     <input type="text" name="documentoDe" />
-                    até
+                    -
                     <input type="text" name="documentoAte" />
                   </div>
                 </label>
@@ -153,7 +153,7 @@ function ConsultarDocumentos() {
                   <span>Fornecedor:</span>
                   <div class="input-group-search">
                     <input type="text" name="fornecedorDe" />
-                    até
+                    -
                     <input type="text" name="fornecedorAte" />
                   </div>
                 </label>
@@ -162,7 +162,7 @@ function ConsultarDocumentos() {
                   <span>Data de recebimento:</span>
                   <div class="input-group-search">
                     <input type="date" name="dataRecebimentoDe" required />
-                    até
+                    -
                     <input type="date" name="dataRecebimentoAte" required />
                   </div>
                 </label>
@@ -171,7 +171,7 @@ function ConsultarDocumentos() {
                   <span>Série Documento:</span>
                   <div class="input-group-search">
                     <input type="text" name="serieDe" />
-                    até
+                    -
                     <input type="text" name="serieAte" />
                   </div>
                 </label>
@@ -180,7 +180,7 @@ function ConsultarDocumentos() {
                   <span>Chave Documento:</span>
                   <div class="input-group-search">
                   <input type="text" name="chaveDocumentoDe" />
-                  até
+                  -
                   <input type="text" name="chaveDocumentoAte" />
                   </div>
                 </label>

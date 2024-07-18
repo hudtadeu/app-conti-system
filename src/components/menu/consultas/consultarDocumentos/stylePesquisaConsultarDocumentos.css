@@ -94,7 +94,7 @@ html, body {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-top: 5px;
+  margin-top: 3px;
 }
 
 .table-documentos-pcd th, .table-documentos-pcd td {
@@ -124,7 +124,6 @@ html, body {
   min-width: 70px;
   text-align: center;
   margin: 0 auto;
-  border: 1px solid #ddd;
 }
 
 .dropdown {
