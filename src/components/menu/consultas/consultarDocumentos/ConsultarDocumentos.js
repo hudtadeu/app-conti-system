@@ -142,7 +142,7 @@ function ConsultarDocumentos() {
                 <br />
                 <label>
                   <span>Documento:</span>
-                  <div class="input-group-search">
+                  <div className="input-group-search">
                     <input type="text" name="documentoDe" />
                     -
                     <input type="text" name="documentoAte" />
@@ -151,7 +151,7 @@ function ConsultarDocumentos() {
                 <br />
                 <label>
                   <span>Fornecedor:</span>
-                  <div class="input-group-search">
+                  <div className="input-group-search">
                     <input type="text" name="fornecedorDe" />
                     -
                     <input type="text" name="fornecedorAte" />
