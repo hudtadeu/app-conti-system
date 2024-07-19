@@ -41,7 +41,7 @@ const XmlObrigFiscais = () => {
             <label>
               <span><p>Estabelecimento:</p>
                 <input type="text" />
-                até
+                -
                 <input type="text" />
               </span>
             </label>
@@ -49,7 +49,7 @@ const XmlObrigFiscais = () => {
             <label>
               <span><p>Data de Emissão:</p>
                 <input type="date" />
-                até
+                -
                 <input type="date" />
               </span>
             </label>
@@ -57,7 +57,7 @@ const XmlObrigFiscais = () => {
             <label>
               <span><p>Emitente:</p>
                 <input type="text" readOnly />
-                até
+                -
                 <input type="text" readOnly />
               </span>
             </label>
@@ -65,7 +65,7 @@ const XmlObrigFiscais = () => {
             <label>
               <span><p>Data de Transação:</p>
                 <input type="date" />
-                até
+                -
                 <input type="date" />
               </span>
             </label>

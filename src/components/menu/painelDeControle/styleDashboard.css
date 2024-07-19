@@ -345,7 +345,7 @@
 
 .close-button-dash {
   position: absolute;
-  top: -17px;
+  top: -15px;
   right: -15px;
   cursor: pointer;
   padding: 0px 5px;
@@ -740,4 +740,8 @@
   color: #ffffff;
 }
 
+.loading-spinner {
+  text-align: center;
+  padding: 20px;
+}
 
