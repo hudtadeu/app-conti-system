@@ -160,7 +160,7 @@ function ConsultarDocumentos() {
                 <br />
                 <label>
                   <span>Data de recebimento:</span>
-                  <div class="input-group-search">
+                  <div className="input-group-search">
                     <input type="date" name="dataRecebimentoDe" required />
                     -
                     <input type="date" name="dataRecebimentoAte" required />
@@ -169,7 +169,7 @@ function ConsultarDocumentos() {
                 <br />
                 <label>
                   <span>Série Documento:</span>
-                  <div class="input-group-search">
+                  <div className="input-group-search">
                     <input type="text" name="serieDe" />
                     -
                     <input type="text" name="serieAte" />
@@ -178,7 +178,7 @@ function ConsultarDocumentos() {
                 <br />
                 <label>
                   <span>Chave Documento:</span>
-                  <div class="input-group-search">
+                  <div className="input-group-search">
                   <input type="text" name="chaveDocumentoDe" />
                   -
                   <input type="text" name="chaveDocumentoAte" />
