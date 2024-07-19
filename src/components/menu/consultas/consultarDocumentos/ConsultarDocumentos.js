@@ -133,7 +133,7 @@ function ConsultarDocumentos() {
          <form ref={formRef} className="search-section-consultardocumentos" onKeyDown={handleKeyDown} onSubmit={handleSubmit}>
                 <label>
                   <span>Cod. Estabelecimento:</span>
-                  <div class="input-group-search">
+                  <div className="input-group-search">
                     <input type="text" name="codEstabelIni" />
                     -
                     <input type="text" name="codEstabelFim" />
