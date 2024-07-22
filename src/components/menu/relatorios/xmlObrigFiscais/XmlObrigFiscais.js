@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
+import * as XLSX from 'xlsx';
 import "./styleXmlObrigFiscais.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTools } from '@fortawesome/free-solid-svg-icons';
 
 const XmlObrigFiscais = () => {
   const [formToShow, setFormToShow] = useState('Seleção');
   const [activeButton, setActiveButton] = useState('Seleção');
   const [classificationOption, setClassificationOption] = useState('');
-  const [impressaoOption, setImpressaoOption] = useState('');
   const [opcaoSelecionada, setOpcaoSelecionada] = useState('');
 
   const showForm = (formName) => {
@@ -19,25 +17,57 @@ const XmlObrigFiscais = () => {
     setClassificationOption(event.target.value);
   };
 
-  const handleImpressaoChange = (event) => {
-    setImpressaoOption(event.target.value);
-  };
-
   const handleChange = (event) => {
     const valorSelecionado = event.target.value;
     if (opcaoSelecionada === valorSelecionado) {
-      setOpcaoSelecionada(''); 
+      setOpcaoSelecionada('');
     } else {
       setOpcaoSelecionada(valorSelecionado);
     }
   };
 
+  const handleExport = (data) => {
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+    XLSX.writeFile(workbook, 'DataExport.xlsx');
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    let data = [];
+
+    switch (formToShow) {
+      case 'Seleção':
+        data = [
+          { 'Estabelecimento': 'Example 1', 'Data de Emissão': '2024-01-01', 'Emitente': 'Example Emitente 1', 'Data de Transação': '2024-01-02' },
+          // Adicione mais dados conforme necessário
+        ];
+        break;
+      case 'Classificação':
+        data = [
+          { 'Classificação': classificationOption },
+          // Adicione mais dados conforme necessário
+        ];
+        break;
+      case 'Parâmetros':
+        data = [
+          { 'Tipo de Comparação': 'Example Comparação', 'Tipo de Nota': 'Example Nota', 'Tipo de Relatório': opcaoSelecionada },
+          // Adicione mais dados conforme necessário
+        ];
+        break;
+      default:
+        data = [];
+    }
+
+    handleExport(data);
+  };
 
   const renderForm = () => {
     switch (formToShow) {
       case 'Seleção':
         return (
-          <form className="form-selection">
+          <form className="form-selection" onSubmit={handleSubmit}>
             <label>
               <span><p>Estabelecimento:</p>
                 <input type="text" />
@@ -75,7 +105,7 @@ const XmlObrigFiscais = () => {
         );
       case 'Classificação':
         return (
-          <form className="form-classification">
+          <form className="form-classification" onSubmit={handleSubmit}>
             <label>
               <input
                 type="radio"
@@ -100,7 +130,7 @@ const XmlObrigFiscais = () => {
         );
       case 'Parâmetros':
         return (
-          <form className="form-parameters">
+          <form className="form-parameters" onSubmit={handleSubmit}>
             <h2 className='title-group-comparacao'>Tipo de Comparação</h2>
             <div className='section-comparacao'>
               <label>
@@ -176,67 +206,6 @@ const XmlObrigFiscais = () => {
             <button className="button-executar-fiscais" type="button">Cancelar</button>
           </form>
         );
-      case 'Impressão':
-        return (
-          <form className="form-printing">
-            <div className='section-printing'>
-            <h2>Destino</h2>
-            <label>
-              <input
-                type="radio"
-                value="Impressora"
-                checked={impressaoOption === 'Impressora'}
-                onChange={handleImpressaoChange}
-              />
-              <span> Impressora </span>
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="Arquivo"
-                checked={impressaoOption === 'Arquivo'}
-                onChange={handleImpressaoChange}
-              /> 
-             <span> Arquivo </span>
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="Terminal"
-                checked={impressaoOption === 'Terminal'}
-                onChange={handleImpressaoChange}
-              /> 
-             <span> Terminal </span>
-             <button type="button" className="botao-fatools">
-              <FontAwesomeIcon icon={faTools} />
-            </button>
-            </label>
-            </div>
-            <div>
-            <h2>Execução</h2>
-            <label>
-              <input
-                type="radio"
-                value="OnLine"
-                checked={impressaoOption === 'OnLine'}
-                onChange={handleImpressaoChange}
-              />
-              <span> Impressora </span>
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="Batch"
-                checked={impressaoOption === 'Batch'}
-                onChange={handleImpressaoChange}
-              /> 
-             <span> Batch </span>
-            </label>
-            </div>
-            <button className="submit-executar-fiscais" type="submit">Executar</button>
-            <button className="button-executar-fiscais" type="button">Cancelar</button>
-          </form>
-        );
       default:
         return null;
     }
@@ -262,12 +231,6 @@ const XmlObrigFiscais = () => {
           onClick={() => showForm('Parâmetros')}
         >
           Parâmetros
-        </button>
-        <button
-          className={`button-secondary ${activeButton === 'Impressão' ? 'active' : ''}`}
-          onClick={() => showForm('Impressão')}
-        >
-          Impressão
         </button>
       </div>
 
