@@ -6,7 +6,7 @@ import { faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getStatusInfo, getTipoDocumentoInfo } from '../../../utils';
 
-const ITEMS_PER_PAGE = 20; 
+const ITEMS_PER_PAGE = 20;
 
 function PesquisaConsultarDocumentos() {
   const location = useLocation();
@@ -19,11 +19,15 @@ function PesquisaConsultarDocumentos() {
   const scrollRef = useRef();
 
   useEffect(() => {
+    // Reset state when documentData changes
+    setDisplayedDocuments([]);
+    setHasMore(true);
+    setIsLoading(false);
     loadMoreDocuments();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [documentData]);
 
   const loadMoreDocuments = () => {
+    if (isLoading || !hasMore) return;
     setIsLoading(true);
     setTimeout(() => {
       const start = displayedDocuments.length;
@@ -32,7 +36,7 @@ function PesquisaConsultarDocumentos() {
       setDisplayedDocuments(prevDocuments => [...prevDocuments, ...newDocuments]);
       setHasMore(newDocuments.length === ITEMS_PER_PAGE);
       setIsLoading(false);
-    }, 500); 
+    }, 500); // Simula o tempo de resposta da API
   };
 
   const handleScroll = () => {
@@ -54,7 +58,6 @@ function PesquisaConsultarDocumentos() {
         currentRef.removeEventListener('scroll', handleScroll);
       }
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasMore, isLoading]);
 
   const formatDate = (dateString) => {
@@ -74,7 +77,7 @@ function PesquisaConsultarDocumentos() {
     setSearchTerm(event.target.value);
   };
 
-  const filteredDocumentData = displayedDocuments.filter(documento => {
+  const filteredDocumentData = documentData.filter(documento => {
     return (
       documento.nro_docto.toLowerCase().includes(searchTerm.toLowerCase()) ||
       documento.situacao.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -85,6 +88,8 @@ function PesquisaConsultarDocumentos() {
       documento.emissao.toLowerCase().includes(searchTerm.toLowerCase())
     );
   });
+
+  const displayedData = searchTerm ? filteredDocumentData : displayedDocuments;
 
   return (
     <div className="body-pesquisaConsultarDocumentos">
@@ -120,7 +125,7 @@ function PesquisaConsultarDocumentos() {
               </tr>
             </thead>
             <tbody>
-              {filteredDocumentData.map((documento, index) => {
+              {displayedData.map((documento, index) => {
                 const statusInfo = getStatusInfo(documento.situacao);
                 const tipoDocumentoInfo = getTipoDocumentoInfo(documento.tipo_doc);
                 return (
