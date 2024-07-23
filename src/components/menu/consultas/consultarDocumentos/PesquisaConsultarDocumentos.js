@@ -20,6 +20,7 @@ function PesquisaConsultarDocumentos() {
 
   useEffect(() => {
     loadMoreDocuments();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [documentData]);
 
   const loadMoreDocuments = () => {
@@ -31,7 +32,7 @@ function PesquisaConsultarDocumentos() {
       setDisplayedDocuments(prevDocuments => [...prevDocuments, ...newDocuments]);
       setHasMore(newDocuments.length === ITEMS_PER_PAGE);
       setIsLoading(false);
-    }, 500); // Simula o tempo de resposta da API
+    }, 500); 
   };
 
   const handleScroll = () => {
@@ -53,6 +54,7 @@ function PesquisaConsultarDocumentos() {
         currentRef.removeEventListener('scroll', handleScroll);
       }
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasMore, isLoading]);
 
   const formatDate = (dateString) => {

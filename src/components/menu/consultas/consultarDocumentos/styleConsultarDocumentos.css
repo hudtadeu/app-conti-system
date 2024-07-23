@@ -48,7 +48,7 @@ html, body {
   font-size: 13px;
   overflow-x: auto;
   max-width: 700px;
-  margin: -30px auto; 
+  margin: -38px auto; 
   z-index: 1;
 }
 
@@ -57,7 +57,7 @@ html, body {
   margin-top: 2px;
   color: #0098c9;
   font-size: 35px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .button-primary-consultardocumentos {
@@ -84,7 +84,7 @@ html, body {
 .title-consultarDocumentos {
   color: #0098c9;
   font-size: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .search-section-consultardocumentos {
@@ -131,6 +131,11 @@ html, body {
   text-align: center;
   width: auto;
   font-size: 13px;
+}
+
+.search-section-consultardocumentos input[type="text"],
+.search-section-consultardocumentos input[type="date"] {
+  margin-bottom: -8px;
 }
 
 .search-section-consultardocumentos input[type="date"] {
