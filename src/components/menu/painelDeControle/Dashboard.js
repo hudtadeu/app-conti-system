@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './styleDashboard.css';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSyncAlt, faCog, faAngleDown, faBuilding, faSpinner, faTimes } from '@fortawesome/free-solid-svg-icons';
 import ApexCharts from 'react-apexcharts';
-import debounce from 'lodash.debounce';
 
 const getTipoDocumentoInfo = (tipoDoc) => {
   let tipoText;
@@ -44,7 +43,6 @@ const formatDate = (dateStr) => {
 };
 
 const Dashboard = () => {
-  const [data, setData] = useState([]);
   const [lineData, setLineData] = useState(null);
   const [barData, setBarData] = useState(null);
   const [pieData, setPieData] = useState(null);
@@ -146,19 +144,145 @@ const Dashboard = () => {
         },
       });
       const data = await response.json();
-      setData(data.items);
+      const items = data.items;
+
+      const filteredItems = items.filter(item => {
+        const emissaoDate = new Date(item.emissao);
+        const startDate = dataInicio ? new Date(dataInicio) : null;
+        const endDate = dataFim ? new Date(dataFim) : null;
+
+        if (startDate && emissaoDate < startDate) return false;
+        if (endDate && emissaoDate > endDate) return false;
+
+        return true;
+      });
+
+      const pendingDocumentsByDate = filteredItems
+        .filter(item => item.situacao === 'Pendente')
+        .reduce((acc, item) => {
+          const date = item.emissao;
+          acc[date] = (acc[date] || 0) + 1;
+          return acc;
+        }, {});
+
+      const updatedDocumentsByDate = filteredItems
+        .filter(item => item.situacao === 'Atualizado')
+        .reduce((acc, item) => {
+          const date = item.emissao;
+          acc[date] = (acc[date] || 0) + 1;
+          return acc;
+        }, {});
+
+      const pendingDates = Object.keys(pendingDocumentsByDate).map(date => formatDate(date));
+      const updatedDates = Object.keys(updatedDocumentsByDate).map(date => formatDate(date));
+
+      const processedLineData = {
+        chart: {
+          type: 'line',
+        },
+        series: [
+          {
+            name: 'Documentos Pendentes',
+            data: Object.keys(pendingDocumentsByDate).map(date => pendingDocumentsByDate[date]),
+          },
+        ],
+        xaxis: {
+          categories: pendingDates,
+        },
+        colors: ['#0098c9'],
+      };
+
+      const processedBarData = {
+        chart: {
+          type: 'bar',
+          toolbar: {
+            show: false 
+          }
+        },
+        series: [
+          {
+            name: 'Documentos Atualizados',
+            data: Object.keys(updatedDocumentsByDate).map(date => updatedDocumentsByDate[date]),
+          },
+        ],
+        xaxis: {
+          categories: updatedDates,
+        },
+        colors: ['#0098c9'],
+        plotOptions: {
+          bar: {
+            borderRadius: 5, 
+            borderRadiusApplication: 'end',
+            borderRadiusWhenStacked: 'all', 
+          },
+        },
+      };
+
+      const processedPieData = {
+        series: [
+          filteredItems.filter(item => item.situacao === 'Pendente').length,
+          filteredItems.filter(item => item.situacao === 'Atualizado').length,
+          filteredItems.filter(item => item.situacao === 'Cancelado').length,
+          filteredItems.filter(item => item.situacao === 'Status Desconhecido').length,
+        ],
+        options: {
+          chart: {
+            type: 'donut',
+            height: 350,
+            toolbar: {
+              show: false,
+            },
+          },
+          labels: ['Pendente', 'Atualizado', 'Cancelado', 'Desconhecido'],
+          plotOptions: {
+            pie: {
+              startAngle: -90,
+              endAngle: 270,
+              donut: {
+                size: '65%',
+                labels: {
+                  show: true,
+                  total: {
+                    show: true,
+                    showAlways: false,
+                    label: 'Total',
+                    fontSize: '20px',
+                    fontWeight: 600,
+                    color: '#373d3f',
+                  },
+                },
+              },
+            },
+          },
+          colors: ['#FFD700', '#008000', '#FF0000', '#808080'],
+          legend: {
+            position: 'bottom',
+          },
+        },
+      };
+
+      const processedChartData = filteredItems.reduce((acc, item) => {
+        const tipoInfo = getTipoDocumentoInfo(item.tipo_doc);
+        if (!acc[item.tipo_doc]) {
+          acc[item.tipo_doc] = { tipoDoc: tipoInfo.text, count: 0, color: tipoInfo.color };
+        }
+        acc[item.tipo_doc].count += 1;
+        return acc;
+      }, {});
+
+      setLineData(processedLineData);
+      setBarData(processedBarData);
+      setPieData(processedPieData);
       setLoading(false);
+      setChartData(Object.values(processedChartData));
     } catch (error) {
       console.error('Error fetching data:', error);
       setLoading(false);
     }
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const debouncedFetchData = useCallback(debounce(fetchData, 300), [estabInicial, estabFinal, dataInicio, dataFim]);
-
   useEffect(() => {
-    debouncedFetchData();
+    fetchData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [estabInicial, estabFinal, dataInicio, dataFim]);
 
@@ -187,141 +311,6 @@ const Dashboard = () => {
   const handleChartClick = () => {
     setSecondModalIsOpen(true);
   };
-
-  const filteredItems = useMemo(() => data.filter(item => {
-    const emissaoDate = new Date(item.emissao);
-    const startDate = dataInicio ? new Date(dataInicio) : null;
-    const endDate = dataFim ? new Date(dataFim) : null;
-
-    if (startDate && emissaoDate < startDate) return false;
-    if (endDate && emissaoDate > endDate) return false;
-
-    return true;
-  }), [data, dataInicio, dataFim]);
-
-  const pendingDocumentsByDate = useMemo(() => filteredItems
-    .filter(item => item.situacao === 'Pendente')
-    .reduce((acc, item) => {
-      const date = item.emissao;
-      acc[date] = (acc[date] || 0) + 1;
-      return acc;
-    }, {}), [filteredItems]);
-
-  const updatedDocumentsByDate = useMemo(() => filteredItems
-    .filter(item => item.situacao === 'Atualizado')
-    .reduce((acc, item) => {
-      const date = item.emissao;
-      acc[date] = (acc[date] || 0) + 1;
-      return acc;
-    }, {}), [filteredItems]);
-
-  const pendingDates = useMemo(() => Object.keys(pendingDocumentsByDate).map(date => formatDate(date)), [pendingDocumentsByDate]);
-  const updatedDates = useMemo(() => Object.keys(updatedDocumentsByDate).map(date => formatDate(date)), [updatedDocumentsByDate]);
-
-  const processedLineData = useMemo(() => ({
-    chart: {
-      type: 'line',
-    },
-    series: [
-      {
-        name: 'Documentos Pendentes',
-        data: Object.keys(pendingDocumentsByDate).map(date => pendingDocumentsByDate[date]),
-      },
-    ],
-    xaxis: {
-      categories: pendingDates,
-    },
-    colors: ['#0098c9'],
-  }), [pendingDocumentsByDate, pendingDates]);
-
-  const processedBarData = useMemo(() => ({
-    chart: {
-      type: 'bar',
-      toolbar: {
-        show: false 
-      }
-    },
-    series: [
-      {
-        name: 'Documentos Atualizados',
-        data: Object.keys(updatedDocumentsByDate).map(date => updatedDocumentsByDate[date]),
-      },
-    ],
-    xaxis: {
-      categories: updatedDates,
-    },
-    colors: ['#0098c9'],
-    plotOptions: {
-      bar: {
-        borderRadius: 5, 
-        borderRadiusApplication: 'end',
-        borderRadiusWhenStacked: 'all', 
-      },
-    },
-  }), [updatedDocumentsByDate, updatedDates]);
-
-  const processedPieData = useMemo(() => ({
-    series: [
-      filteredItems.filter(item => item.situacao === 'Pendente').length,
-      filteredItems.filter(item => item.situacao === 'Atualizado').length,
-      filteredItems.filter(item => item.situacao === 'Cancelado').length,
-      filteredItems.filter(item => item.situacao === 'Status Desconhecido').length,
-    ],
-    options: {
-      chart: {
-        type: 'donut',
-        height: 350,
-        toolbar: {
-          show: false,
-        },
-      },
-      labels: ['Pendente', 'Atualizado', 'Cancelado', 'Desconhecido'],
-      plotOptions: {
-        pie: {
-          startAngle: -90,
-          endAngle: 270,
-          donut: {
-            size: '65%',
-            labels: {
-              show: true,
-              total: {
-                show: true,
-                showAlways: false,
-                label: 'Total',
-                fontSize: '20px',
-                fontWeight: 600,
-                color: '#373d3f',
-              },
-            },
-          },
-        },
-      },
-      colors: ['#FFD700', '#008000', '#FF0000', '#808080'],
-      legend: {
-        position: 'bottom',
-      },
-    },
-  }), [filteredItems]);
-
-  const processedChartData = useMemo(() => filteredItems.reduce((acc, item) => {
-    const tipoInfo = getTipoDocumentoInfo(item.tipo_doc);
-    if (!acc[item.tipo_doc]) {
-      acc[item.tipo_doc] = { tipoDoc: tipoInfo.text, count: 0, color: tipoInfo.color };
-    }
-    acc[item.tipo_doc].count += 1;
-    return acc;
-  }, {}), [filteredItems]);
-
-  useEffect(() => {
-    setLineData(processedLineData);
-    setBarData(processedBarData);
-    setPieData(processedPieData);
-    setChartData(Object.values(processedChartData));
-  }, [processedLineData, processedBarData, processedPieData, processedChartData]);
-
-  useEffect(() => {
-    console.log("lineData:", lineData);
-  }, [lineData]);
 
   return (
     <div className="dashboard-container">
@@ -376,7 +365,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="action-buttons">
-          <button className="btn btn-primary" onClick={debouncedFetchData}>
+          <button className="btn btn-primary" onClick={fetchData}>
             {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : <FontAwesomeIcon icon={faSyncAlt} />}
           </button>
           <button className="btn btn-secondary" onClick={() => setModalIsOpen(true)}><FontAwesomeIcon icon={faCog} /></button>
