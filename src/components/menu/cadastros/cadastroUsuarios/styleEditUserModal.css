@@ -62,8 +62,8 @@
 
   .close-button-edituser {
     position: absolute;
-    top: -9px;
-    right: -5px;
+    top: -10px;
+    right: -6px;
     cursor: pointer;
     padding: 0px 5px;
     color: #211915;

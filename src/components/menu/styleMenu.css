@@ -24,15 +24,15 @@
 }
 
 #img-menu {
-  width: 235px;
-  height: 128px;
+  width: 227px;
+  height: 120px;
   margin-top: -20px;
   margin-bottom: -16px;
-  margin-left: -15px;
+  margin-left: -6px;
 }
 
 .sidebar {
-  background-color: #0098c9;
+  background-color: #0077a3;;
   color: #fff;
   flex-direction: column;
   justify-content: space-between;
@@ -67,14 +67,14 @@
 #botaoAbrirFechar {
   position: fixed;
   left: 285px;
-  top: 5px;
+  top: 2px;
   margin-top: 10px;
   padding: 3px 7px;
   border: none;
   border-radius: 5px;
   outline: none;
   text-transform: uppercase;
-  background-color: #0098c9;
+  background-color: #0077a3;;
   color: #fff;
   font-weight: bold;
   cursor: pointer;
