@@ -24,6 +24,7 @@ function PesquisaConsultarDocumentos() {
     setHasMore(true);
     setIsLoading(false);
     loadMoreDocuments();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [documentData]);
 
   const loadMoreDocuments = () => {
@@ -58,6 +59,7 @@ function PesquisaConsultarDocumentos() {
         currentRef.removeEventListener('scroll', handleScroll);
       }
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasMore, isLoading]);
 
   const formatDate = (dateString) => {
