@@ -37,8 +37,8 @@
 
 .modal-close {
   position: absolute;
-  top: 4px;
-  right: 5px;
+  top: -2px;
+  right: 2px;
   padding: 0px 5px;
   cursor: pointer;
   color: #211915; 
@@ -90,18 +90,17 @@
 
 .container-datails {
   border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 4px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   text-align: left;
-  margin: 15px 0px;
+  margin: 15px 15px;
 }
 
 .container-datails span {
   margin-left: 4px;
   color: #211915;
   text-align: left;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .container-datails p {
@@ -112,20 +111,20 @@
 .container-datails strong {
   color: #0098c9;
   margin-right: 0px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .quadrante-details {
   border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 8px;
   font-size: 12px;
-  margin-bottom: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.3s ease-in-out;
   text-align: left;
   color: #0098c9;
-  margin-top: 35px;
+  margin: 15px 15px;
+  margin-top: 33px;
 }
 
 .quadrante-details p {
@@ -156,22 +155,22 @@
 }
 
 .quadrante-traducao {
-    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     padding: 8px;
     font-size: 12px;
     margin-bottom: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.3s ease-in-out;
     text-align: left;
     color: #0098c9;
-    margin-top: 35px;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
+    margin: 15px 15px;
+    margin-top: 33px;
 }
 
 .quadrante-traducao p {
@@ -185,9 +184,9 @@
 }
 
 .modal-content-fixed {
-  min-height: 660px; 
+  min-height: 658px; 
   overflow-y: auto; 
-  min-width: 760px; 
+  min-width: 750px; 
   max-width: 500px; 
   overflow-x: auto; 
 }
@@ -195,17 +194,17 @@
 .quadrante-configuracoes {
   display: grid;
   grid-template-columns: 1fr 1.3fr;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   gap: 10px; 
   border-radius: 5px;
   padding: 3px;
   font-size: 12px;
-  margin-bottom: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.3s ease-in-out;
   text-align: left;
   color: #0098c9;
-  margin-top: 25px;
+  margin: 15px 15px;
+  margin-top: 28px;
 }
 
 .quadrante-configuracoes p {

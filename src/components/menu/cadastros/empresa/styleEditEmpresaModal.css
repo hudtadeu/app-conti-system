@@ -153,11 +153,10 @@
 
 .container-editempresa {
     border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 4px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     text-align: left;
-    margin: 15px 0px;
+    margin: 15px 15px;
     margin-top: 4px;
 }
 
@@ -170,13 +169,13 @@
     margin-left: 4px;
     color: #211915;
     text-align: left;
-    font-size: 14px;
+    font-size: 13px;
   }
   
   .container-editempresa strong {
     color: #0098c9;
     margin-right: 0px;
-    font-size: 14px;
+    font-size: 13px;
 
   }
   
@@ -284,28 +283,27 @@
 .quadrante-editempresa {
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   align-items: flex-start; 
   border-radius: 5px;
   padding: 8px;
   font-size: 12px;
   margin-bottom: 14px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.3s ease-in-out;
   text-align: left;
   color: #0098c9;
   margin-top: 14px;
+  margin: 15px 15px;
   gap: 5px;
 }
 
 .quadrante-editempresatraducao {
     flex-direction: column;
-    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     padding: 8px;
     font-size: 12px;
     margin-bottom: 14px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.3s ease-in-out;
     text-align: left;
     color: #0098c9;
@@ -315,17 +313,17 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
+    margin: 15px 15px;
   }
 
 
   .quadrante-editempresaconfiguracoes {
     flex-direction: column;
-    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     padding: 5px;
     font-size: 12px;
     margin-bottom: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.3s ease-in-out;
     text-align: left;
     color: #0098c9;
@@ -335,6 +333,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 7px;
+    margin: 15px 15px;
   }
 
   .quadrante-editempresaconfiguracoes input {
