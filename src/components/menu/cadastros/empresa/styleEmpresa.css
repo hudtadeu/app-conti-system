@@ -292,3 +292,16 @@ body::before {
   background-color: #c82333;
   border-color: #bd2130;
 }
+
+.text-center-em {
+  text-align: center;
+}
+
+.spinner-container-em {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+

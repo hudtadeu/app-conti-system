@@ -155,11 +155,11 @@ body::before {
 }
 
 .user-table tr:nth-child(odd) {
-  background-color: #ebecee;
+  background-color: #fff;
 }
 
 .user-table tr:nth-child(even) {
-  background-color: #fff;
+  background-color: #ebecee;
 }
 
 .user-title {
@@ -302,4 +302,15 @@ body::before {
 .icon-option-user {
   margin-right: 6px;
   margin-left: -5px;
+}
+
+.loading-spinner-user {
+  text-align: center;
+}
+
+.spinner-container-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; 
 }

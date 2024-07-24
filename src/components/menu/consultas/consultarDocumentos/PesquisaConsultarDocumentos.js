@@ -163,7 +163,9 @@ function PesquisaConsultarDocumentos() {
               {isLoading && (
                 <tr>
                   <td colSpan="8" className="loading-spinner-doc">
-                    <FontAwesomeIcon icon={faSpinner} spin />
+                    <div className="spinner-container-doc">
+                      <FontAwesomeIcon icon={faSpinner} spin />
+                    </div>
                   </td>
                 </tr>
               )}

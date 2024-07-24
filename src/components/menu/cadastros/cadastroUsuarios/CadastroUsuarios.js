@@ -30,6 +30,7 @@ function CadastroUsuarios() {
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
+  const [overlayLoading, setOverlayLoading] = useState(false); // Estado separado para o overlay
 
   const fetchUsers = useCallback(() => {
     const base64Credentials = sessionStorage.getItem("token");
@@ -37,6 +38,8 @@ function CadastroUsuarios() {
       console.error("base64Credentials not found in sessionStorage");
       return;
     }
+
+    setLoading(true);
 
     fetch(
       "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestUsuarioLoader",
@@ -57,7 +60,8 @@ function CadastroUsuarios() {
           console.error("Nenhum item encontrado na resposta.");
         }
       })
-      .catch((error) => console.error("Erro ao carregar dados da API:", error));
+      .catch((error) => console.error("Erro ao carregar dados da API:", error))
+      .finally(() => setLoading(false));
   }, []);
 
   useEffect(() => {
@@ -77,27 +81,21 @@ function CadastroUsuarios() {
   }, [searchTerm, users]);
 
   const toggleNewUserModal = () => {
-    setLoading(true);
     setShowNewUserModal(!showNewUserModal);
-    setLoading(false);
   };
 
   const openViewModal = (user) => {
-    setLoading(true);
     setSelectedUser(user);
     setViewModalOpen(true);
-    setLoading(false);
   };
 
   const openEditModal = (user) => {
-    setLoading(true);
     setSelectedUser(user);
     setEditModalOpen(true);
-    setLoading(false);
   };
 
   const deleteUser = async (user) => {
-    setLoading(true);
+    setOverlayLoading(true);
     const base64Credentials = sessionStorage.getItem("token");
     try {
       const response = await fetch(
@@ -120,12 +118,12 @@ function CadastroUsuarios() {
     } catch (error) {
       console.error("Erro ao excluir usuário:", error);
     } finally {
-      setLoading(false);
+      setOverlayLoading(false);
     }
   };
 
   const updateUser = async (updatedUser) => {
-    setLoading(true);
+    setOverlayLoading(true);
     const base64Credentials = sessionStorage.getItem("token");
     try {
       const response = await fetch(
@@ -155,22 +153,18 @@ function CadastroUsuarios() {
     } catch (error) {
       console.error("Erro ao atualizar usuário:", error);
     } finally {
-      setLoading(false);
+      setOverlayLoading(false);
     }
   };
 
   const addNewUser = (newUser) => {
-    setLoading(true);
     setUsers((prevUsers) => [...prevUsers, newUser]);
-    setLoading(false);
   };
 
   const handleDuplicateUser = (user) => {
-    setLoading(true);
-    const newUserCode = `${user['cod-usuario']}${Date.now()}`;
+    const newUserCode = `${user["cod-usuario"]}${Date.now()}`;
     const newUser = { ...user, "cod-usuario": newUserCode };
     addNewUser(newUser);
-    setLoading(false);
   };
 
   const handleSearch = (term) => {
@@ -178,26 +172,34 @@ function CadastroUsuarios() {
   };
 
   const handleExport = () => {
-    setLoading(true);
+    setOverlayLoading(true);
     setTimeout(() => {
-      setLoading(false);
-    }, 2000); 
+      setOverlayLoading(false);
+    }, 2000);
   };
 
   return (
     <div className="body-usuario">
-      {loading && (
+      {overlayLoading && (
         <div className="overlay-cadastro-usuarios">
           <div className="loading-container-usuarios">
             <FontAwesomeIcon icon={faSpinner} spin size="3x" />
           </div>
         </div>
       )}
-      <div className={`container-usuario ${loading ? 'blur' : ''}`}>
+      <div className={`container-usuario ${overlayLoading ? "blur" : ""}`}>
         <h1 className="cadastroUsuario">Cadastro de Usuários</h1>
         <br />
         <SearchComponent toggleModal={toggleNewUserModal} onSearch={handleSearch} />
-        <UserTable users={filteredUsers} openViewModal={openViewModal} openEditModal={openEditModal} deleteUser={deleteUser} handleDuplicateUser={handleDuplicateUser} handleExport={handleExport} />
+        <UserTable
+          users={filteredUsers}
+          openViewModal={openViewModal}
+          openEditModal={openEditModal}
+          deleteUser={deleteUser}
+          handleDuplicateUser={handleDuplicateUser}
+          handleExport={handleExport}
+          loading={loading}
+        />
         {showNewUserModal && <NewUserModal toggleModal={toggleNewUserModal} addNewUser={addNewUser} />}
         {isViewModalOpen && (
           <VisualizarModal
@@ -249,7 +251,7 @@ function SearchComponent({ toggleModal, onSearch }) {
   );
 }
 
-function UserTable({ users, openViewModal, openEditModal, deleteUser, handleDuplicateUser, handleExport }) {
+function UserTable({ users, openViewModal, openEditModal, deleteUser, handleDuplicateUser, handleExport, loading }) {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
   const dropdownRefs = useRef([]);
 
@@ -310,118 +312,128 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser, handleDupl
           </tr>
         </thead>
         <tbody>
-          {users.map((user, index) => (
-            <tr key={index}>
-              <td>{user["cod-usuario"]}</td>
-              <td>{user["cod-estabel"]}</td>
-              {[
-                "l-importa",
-                "l-elimina",
-                "l-cancela-doc",
-                "l-altera-cfop",
-                "l-atualiza",
-                "l-efetua-download",
-                "l-arquiva-xml",
-                "l-manifesta",
-                "l-prioriza-documento",
-                "l-recebe-fiscal",
-                "l-recebe-fisico",
-              ].map((permission, permissionIndex) => (
-                <td key={`${index}-${permissionIndex}`}>
-                  {user[permission] ? (
-                    <FontAwesomeIcon
-                      icon={faCheck}
-                      className="text-success"
-                    />
-                  ) : (
-                    <FontAwesomeIcon
-                      icon={faTimes}
-                      className="text-danger"
-                    />
-                  )}
-                </td>
-              ))}
-              <td>
-              <div className="dropdown-user" ref={(el) => (dropdownRefs.current[index] = el)}>
-                  <button
-                    className="button-secondary-user"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    onClick={() => toggleDropdown(index)}
-                  >
-                    <FontAwesomeIcon icon={faEllipsisH} />
-                  </button>
-                  {dropdownOpenIndex === index && (
-                    <div
-                      className="dropdown-menu-user show"
-                      aria-labelledby="dropdownMenuButton"
-                    >
-                      <a
-                        className="dropdown-item-user"
-                        href="#"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          openViewModal(user);
-                        }}
-                      >
-                        <FontAwesomeIcon icon={faEye} className="icon-option-user" />
-                        Visualizar
-                      </a>
-                      <a
-                        className="dropdown-item-user"
-                        href="#"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          openEditModal(user);
-                        }}
-                      >
-                        <FontAwesomeIcon
-                          icon={faPencilAlt}
-                          className="icon-option-user"
-                        />
-                        Editar
-                      </a>
-                      <a className="dropdown-item-user"
-                       href="#"
-                       onClick={(e) => {
-                        e.preventDefault();
-                        handleDuplicateUser(user);
-                      }}>
-                        <FontAwesomeIcon
-                          icon={faClone}
-                          className="icon-option-user"
-                        />
-                        Duplicar
-                      </a>
-                      <a className="dropdown-item-user" href="#" onClick={(e) => { e.preventDefault(); handleExport(); }}>
-                        <FontAwesomeIcon
-                          icon={faFileExport}
-                          className="icon-option-user"
-                        />
-                        Exportar
-                      </a>
-                      <a
-                        className="dropdown-item-user red-text"
-                        href="#"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          deleteUser(user);
-                        }}
-                      >
-                        <FontAwesomeIcon
-                          icon={faTrash}
-                          className="icon-option-user"
-                        />
-                        Excluir
-                      </a>
-                    </div>
-                  )}
+          {loading && (
+            <tr>
+              <td colSpan="14" className="loading-spinner-user">
+                <div className="spinner-container-user">
+                  <FontAwesomeIcon icon={faSpinner} spin size="2x" />
                 </div>
               </td>
             </tr>
-          ))}
+          )}
+          {!loading &&
+            users.map((user, index) => (
+              <tr key={index}>
+                <td>{user["cod-usuario"]}</td>
+                <td>{user["cod-estabel"]}</td>
+                {[
+                  "l-importa",
+                  "l-elimina",
+                  "l-cancela-doc",
+                  "l-altera-cfop",
+                  "l-atualiza",
+                  "l-efetua-download",
+                  "l-arquiva-xml",
+                  "l-manifesta",
+                  "l-prioriza-documento",
+                  "l-recebe-fiscal",
+                  "l-recebe-fisico",
+                ].map((permission, permissionIndex) => (
+                  <td key={`${index}-${permissionIndex}`}>
+                    {user[permission] ? (
+                      <FontAwesomeIcon
+                        icon={faCheck}
+                        className="text-success"
+                      />
+                    ) : (
+                      <FontAwesomeIcon
+                        icon={faTimes}
+                        className="text-danger"
+                      />
+                    )}
+                  </td>
+                ))}
+                <td>
+                  <div className="dropdown-user" ref={(el) => (dropdownRefs.current[index] = el)}>
+                    <button
+                      className="button-secondary-user"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      onClick={() => toggleDropdown(index)}
+                    >
+                      <FontAwesomeIcon icon={faEllipsisH} />
+                    </button>
+                    {dropdownOpenIndex === index && (
+                      <div
+                        className="dropdown-menu-user show"
+                        aria-labelledby="dropdownMenuButton"
+                      >
+                        <a
+                          className="dropdown-item-user"
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            openViewModal(user);
+                          }}
+                        >
+                          <FontAwesomeIcon icon={faEye} className="icon-option-user" />
+                          Visualizar
+                        </a>
+                        <a
+                          className="dropdown-item-user"
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            openEditModal(user);
+                          }}
+                        >
+                          <FontAwesomeIcon
+                            icon={faPencilAlt}
+                            className="icon-option-user"
+                          />
+                          Editar
+                        </a>
+                        <a className="dropdown-item-user"
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleDuplicateUser(user);
+                        }}>
+                          <FontAwesomeIcon
+                            icon={faClone}
+                            className="icon-option-user"
+                          />
+                          Duplicar
+                        </a>
+                        <a className="dropdown-item-user" href="#" onClick={(e) => { e.preventDefault(); handleExport(); }}>
+                          <FontAwesomeIcon
+                            icon={faFileExport}
+                            className="icon-option-user"
+                          />
+                          Exportar
+                        </a>
+                        <a
+                          className="dropdown-item-user red-text"
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            deleteUser(user);
+                          }}
+                        >
+                          <FontAwesomeIcon
+                            icon={faTrash}
+                            className="icon-option-user"
+                          />
+                          Excluir
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>

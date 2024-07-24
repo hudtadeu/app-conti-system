@@ -21,7 +21,7 @@ function Empresa() {
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [empresaEditando, setEmpresaEditando] = useState(null);
   const [novaEmpresaModalOpen, setNovaEmpresaModalOpen] = useState(false);
-  //const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true); // Estado de carregamento
   const [overlayVisible, setOverlayVisible] = useState(false);
   const apiUrl =
     "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa";
@@ -31,6 +31,7 @@ function Empresa() {
 
     if (!base64Credentials) {
       console.error("base64Credentials não encontrado na sessionStorage");
+      setLoading(false); // Defina como falso se houver um erro
       return;
     }
 
@@ -56,6 +57,9 @@ function Empresa() {
       })
       .catch((error) => {
         console.error("Erro ao carregar dados da API:", error);
+      })
+      .finally(() => {
+        setLoading(false); // Defina como falso quando a solicitação for concluída
       });
   }, []);
 
@@ -271,43 +275,53 @@ function Empresa() {
               </tr>
             </thead>
             <tbody>
-              {empresasFiltradas.map((empresa, index) => (
-                <tr key={index}>
-                  <td>{empresa["cod-estabel"]}</td>
-                  <td>{empresa["cgc"]}</td>
-                  <td>{empresa["ins-municipal"]}</td>
-                  <td>{empresa["inscr-estad"]}</td>
-                  <td>{empresa["razao-social"]}</td>
-                  <td>
-                    <div className="container-de-botoes">
-                      <button
-                        type="button"
-                        className="btn btn-primary-options"
-                        onClick={() => detalharModal(empresa["cod-estabel"])}
-                        title="Detalhar"
-                      >
-                        <FontAwesomeIcon icon={faEye} className="icon-small" />
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-warning-options"
-                        onClick={() => openEditModal(empresa)}
-                        title="Editar"
-                      >
-                        <FontAwesomeIcon icon={faPencilAlt} className="icon-small" />
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-danger-options"
-                        onClick={() => excluirEmpresa(empresa["cod-estabel"])}
-                        title="Excluir"
-                      >
-                        <FontAwesomeIcon icon={faTrash} className="icon-small" />
-                      </button>
+              {loading ? (
+                <tr>
+                  <td colSpan="6" className="text-center-em">
+                    <div className="spinner-container-em">
+                      <FontAwesomeIcon icon={faSpinner} spin size="2x" />
                     </div>
                   </td>
                 </tr>
-              ))}
+              ) : (
+                empresasFiltradas.map((empresa, index) => (
+                  <tr key={index}>
+                    <td>{empresa["cod-estabel"]}</td>
+                    <td>{empresa["cgc"]}</td>
+                    <td>{empresa["ins-municipal"]}</td>
+                    <td>{empresa["inscr-estad"]}</td>
+                    <td>{empresa["razao-social"]}</td>
+                    <td>
+                      <div className="container-de-botoes">
+                        <button
+                          type="button"
+                          className="btn btn-primary-options"
+                          onClick={() => detalharModal(empresa["cod-estabel"])}
+                          title="Detalhar"
+                        >
+                          <FontAwesomeIcon icon={faEye} className="icon-small" />
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-warning-options"
+                          onClick={() => openEditModal(empresa)}
+                          title="Editar"
+                        >
+                          <FontAwesomeIcon icon={faPencilAlt} className="icon-small" />
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-danger-options"
+                          onClick={() => excluirEmpresa(empresa["cod-estabel"])}
+                          title="Excluir"
+                        >
+                          <FontAwesomeIcon icon={faTrash} className="icon-small" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
