@@ -1,66 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import './stylePesquisaConsultarDocumentos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getStatusInfo, getTipoDocumentoInfo } from '../../../utils';
-
-const ITEMS_PER_PAGE = 20;
 
 function PesquisaConsultarDocumentos() {
   const location = useLocation();
   const navigate = useNavigate();
   const { documentData } = location.state || { documentData: [] };
   const [searchTerm, setSearchTerm] = useState("");
-  const [displayedDocuments, setDisplayedDocuments] = useState([]);
-  const [hasMore, setHasMore] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
-  const scrollRef = useRef();
-
-  useEffect(() => {
-    // Reset state when documentData changes
-    setDisplayedDocuments([]);
-    setHasMore(true);
-    setIsLoading(false);
-    loadMoreDocuments();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [documentData]);
-
-  const loadMoreDocuments = () => {
-    if (isLoading || !hasMore) return;
-    setIsLoading(true);
-    setTimeout(() => {
-      const start = displayedDocuments.length;
-      const end = start + ITEMS_PER_PAGE;
-      const newDocuments = documentData.slice(start, end);
-      setDisplayedDocuments(prevDocuments => [...prevDocuments, ...newDocuments]);
-      setHasMore(newDocuments.length === ITEMS_PER_PAGE);
-      setIsLoading(false);
-    }, 500); // Simula o tempo de resposta da API
-  };
-
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const { scrollTop, scrollHeight, clientHeight } = scrollRef.current;
-      if (scrollTop + clientHeight >= scrollHeight - 5 && hasMore && !isLoading) {
-        loadMoreDocuments();
-      }
-    }
-  };
-
-  useEffect(() => {
-    const currentRef = scrollRef.current;
-    if (currentRef) {
-      currentRef.addEventListener('scroll', handleScroll);
-    }
-    return () => {
-      if (currentRef) {
-        currentRef.removeEventListener('scroll', handleScroll);
-      }
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasMore, isLoading]);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -91,8 +41,6 @@ function PesquisaConsultarDocumentos() {
     );
   });
 
-  const displayedData = searchTerm ? filteredDocumentData : displayedDocuments;
-
   return (
     <div className="body-pesquisaConsultarDocumentos">
       <div className="container-pesquisaConsultarDocumentos">
@@ -112,7 +60,7 @@ function PesquisaConsultarDocumentos() {
             </button>
           </div>
         </div>
-        <div className="table-container" ref={scrollRef}>
+        <div className="table-container">
           <table className="table-documentos-pcd">
             <thead>
               <tr>
@@ -127,7 +75,7 @@ function PesquisaConsultarDocumentos() {
               </tr>
             </thead>
             <tbody>
-              {displayedData.map((documento, index) => {
+              {filteredDocumentData.map((documento, index) => {
                 const statusInfo = getStatusInfo(documento.situacao);
                 const tipoDocumentoInfo = getTipoDocumentoInfo(documento.tipo_doc);
                 return (
@@ -160,15 +108,6 @@ function PesquisaConsultarDocumentos() {
                   </tr>
                 );
               })}
-              {isLoading && (
-                <tr>
-                  <td colSpan="8" className="loading-spinner-doc">
-                    <div className="spinner-container-doc">
-                      <FontAwesomeIcon icon={faSpinner} spin />
-                    </div>
-                  </td>
-                </tr>
-              )}
             </tbody>
           </table>
         </div>
