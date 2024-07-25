@@ -63,6 +63,7 @@ const Dashboard = () => {
   const [estabFinal, setEstabFinal] = useState('');
   const [dataInicio, setDataInicio] = useState('');
   const [dataFim, setDataFim] = useState('');
+  const [tipoDocumento, setTipoDocumento] = useState(''); // Novo estado
 
   const dropdownRef = useRef(null);
   const faixasDropdownRef = useRef(null);
@@ -153,6 +154,7 @@ const Dashboard = () => {
 
         if (startDate && emissaoDate < startDate) return false;
         if (endDate && emissaoDate > endDate) return false;
+        if (tipoDocumento && item.tipo_doc !== tipoDocumento) return false; // Filtrando pelo tipo de documento
 
         return true;
       });
@@ -284,7 +286,7 @@ const Dashboard = () => {
   useEffect(() => {
     fetchData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [estabInicial, estabFinal, dataInicio, dataFim]);
+  }, [estabInicial, estabFinal, dataInicio, dataFim, tipoDocumento]); // Adicionando tipoDocumento como dependência
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -361,6 +363,25 @@ const Dashboard = () => {
                 value={estabFinal}
                 onChange={(e) => setEstabFinal(e.target.value)}
               />
+            </div>
+          </div>
+          <div className="input-item">
+            <label htmlFor="tipoDocumento">Tipo de Documento:</label>
+            <div className="input-tipo-doc">
+              <select
+                id="tipoDocumento"
+                name="tipoDocumento"
+                value={tipoDocumento}
+                onChange={(e) => setTipoDocumento(e.target.value)}
+              >
+                <option value="">Todos</option>
+                <option value="NF-e">NF-e</option>
+                <option value="CT-e">CT-e</option>
+                <option value="CTe-OS">CTe-OS</option>
+                <option value="NFS-e">NFS-e</option>
+                <option value="NF3e">NF3e</option>
+                <option value="Diversos">Diversos</option>
+              </select>
             </div>
           </div>
         </div>
