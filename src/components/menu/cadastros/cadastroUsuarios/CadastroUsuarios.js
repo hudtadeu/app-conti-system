@@ -17,6 +17,7 @@ import {
   faLongArrowAltUp,
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
+import { utils, writeFile } from 'xlsx'; // Importação da biblioteca xlsx
 import VisualizarModal from "./VisualizarModal";
 import NewUserModal from "./NewUserModal";
 import EditUserModal from "./EditUserModal";
@@ -171,8 +172,29 @@ function CadastroUsuarios() {
     setSearchTerm(term);
   };
 
-  const handleExport = () => {
+  const handleExport = (user) => {
     setOverlayLoading(true);
+    const dataToExport = [{
+      Usuário: user["cod-usuario"],
+      Estabelecimento: user["cod-estabel"],
+      Importa: user["l-importa"] ? "Sim" : "Não",
+      Elimina: user["l-elimina"] ? "Sim" : "Não",
+      Cancela: user["l-cancela-doc"] ? "Sim" : "Não",
+      Altera: user["l-altera-cfop"] ? "Sim" : "Não",
+      Atualiza: user["l-atualiza"] ? "Sim" : "Não",
+      Efetua: user["l-efetua-download"] ? "Sim" : "Não",
+      Arquiva: user["l-arquiva-xml"] ? "Sim" : "Não",
+      Manifesta: user["l-manifesta"] ? "Sim" : "Não",
+      Prioriza: user["l-prioriza-documento"] ? "Sim" : "Não",
+      "Rec.Fiscal": user["l-recebe-fiscal"] ? "Sim" : "Não",
+      "Rec.Físico": user["l-recebe-fisico"] ? "Sim" : "Não",
+    }];
+
+    const worksheet = utils.json_to_sheet(dataToExport);
+    const workbook = utils.book_new();
+    utils.book_append_sheet(workbook, worksheet, "User");
+    writeFile(workbook, `Usuario_${user["cod-usuario"]}.xlsx`);
+
     setTimeout(() => {
       setOverlayLoading(false);
     }, 2000);
@@ -407,7 +429,7 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser, handleDupl
                           />
                           Duplicar
                         </a>
-                        <a className="dropdown-item-user" href="#" onClick={(e) => { e.preventDefault(); handleExport(); }}>
+                        <a className="dropdown-item-user" href="#" onClick={(e) => { e.preventDefault(); handleExport(user); }}>
                           <FontAwesomeIcon
                             icon={faFileExport}
                             className="icon-option-user"
