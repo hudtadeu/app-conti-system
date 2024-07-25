@@ -26,6 +26,7 @@ function Login() {
   const handleLogin = async (event) => {
     event.preventDefault();
     setIsLoading(true);
+    setError(""); 
 
     try {
       const dataToSend = {
@@ -46,26 +47,17 @@ function Login() {
         }
       );
 
-      if (!response.ok) {
-        throw new Error("Erro ao autenticar usuário");
-      }
-
       const responseData = await response.json();
 
-      if (
-        responseData.total === 1 &&
-        responseData.items &&
-        responseData.items.length > 0 &&
-        responseData.items[0].Erro === 0
-      ) {
+      if (response.ok && responseData.total === 1 && responseData.items && responseData.items.length > 0 && responseData.items[0].Erro === 0) {
         sessionStorage.setItem("token", base64Credentials);
         sessionStorage.setItem("username", username);
         navigate("/dashboard");
       } else {
-        throw new Error("Usuário ou senha incorretos");
+        setError("Usuário ou senha inválidos.");
       }
     } catch (error) {
-      setError(error.message);
+      setError("Erro ao autenticar usuário");
       console.error("Erro ao efetuar login:", error);
     } finally {
       setIsLoading(false);

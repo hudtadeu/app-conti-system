@@ -21,15 +21,15 @@
 }
 
 .title-newuser {
-    color: #0098c9;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    font-size: 22px;
-    margin-bottom: -5px;
-  }
+  color: #0098c9;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: -5px;
+}
 
-  .modal-content-newuser {
+.modal-content-newuser {
   position: relative;
   width: 500px;
   max-width: 90%;
@@ -42,151 +42,151 @@
   display: block;
   font-size: 14px;
   font-weight: bold;
-  }
+}
 
-  .modal-newuser {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.modal-newuser {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .modal-body-newuser {
-    border-radius: 8px;
-    padding: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    text-align: left;
-    margin: 15px 0px;
-  }
+.modal-body-newuser {
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  margin: 15px 0px;
+}
 
-  .close-button-newuser {
-    position: absolute;
-    top: -21px;
-    right: -17px;
-    cursor: pointer;
-    padding: 0px 5px;
-    color: #211915;
-    border-radius: 3px;
-    background-color: transparent;
-    font-size: 20px;
-    transition: background-color 0.3s, color 0.3s;
-    border: none;
-  }
+.close-button-newuser {
+  position: absolute;
+  top: -21px;
+  right: -17px;
+  cursor: pointer;
+  padding: 0px 5px;
+  color: #211915;
+  border-radius: 3px;
+  background-color: transparent;
+  font-size: 20px;
+  transition: background-color 0.3s, color 0.3s;
+  border: none;
+}
 
-  .close-button-newuser:hover {
-    color: #ff0000;
-    transform: scale(1.3); 
-  }
+.close-button-newuser:hover {
+  color: #ff0000;
+  transform: scale(1.3); 
+}
 
-  .button-title-newuser {
-    display: flex;
-    align-items: center;
-    gap: 0px;
-  }
-  
-  .toggle-text {
-    font-size: 14px;
-  }
-  
-  .toggle-button {
-    border: none;
-    background-color: transparent;
-    padding: 5px;
-    cursor: pointer;
-    outline: none;
-    font-size: 10px;
-    display: inline-flex;
-    align-items: center;
-  }
-  
-  .toggle-button:active {
-    transform: scale(0.95);
-  }
+.button-title-newuser {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+}
 
-  .toggle-button:focus {
-    outline: none;
-  }
-  
-  .quadrante-newuser {
-    flex-direction: column;
-    align-items: flex-start; 
-    flex-wrap: wrap;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-radius: 5px;
-    padding: 8px;
-    font-size: 12px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: box-shadow 0.3s ease-in-out;
-    text-align: left;
-    color: #0098c9;
-    margin-top: 18px;
-    gap: 10px;
-  }
-  
-  .newuser-view {
-    color: #211915;
-    font-weight: normal;
-    border: 1px solid #ccc;
-    margin-top: 5px;
-    border-radius: 6px 0 0 6px;
-    outline: none;
-    transition: border 0.3s, box-shadow 0.3s;
-    font-size: 14px;
-  }
+.toggle-text {
+  font-size: 14px;
+}
 
-  .newuser-view:focus {
-    border-color: #5a67d8;
-    box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.3);
-  }
+.toggle-button {
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+  cursor: pointer;
+  outline: none;
+  font-size: 10px;
+  display: inline-flex;
+  align-items: center;
+}
 
-  .button-primary-newuser {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%;
-    margin-top: 8px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+.toggle-button:active {
+  transform: scale(0.95);
+}
 
-  .button-primary-newuser:hover {
-    background-color: #0056b3;
-  }
+.toggle-button:focus {
+  outline: none;
+}
 
-  .button-secondary-newuser {
-    background-color: #939196;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%;
-    margin-top: 5px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: -10px;
-  }
-  
-  .button-secondary-newuser:hover {
-    background-color: #545b62;
-  }
+.quadrante-newuser {
+  flex-direction: column;
+  align-items: flex-start; 
+  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease-in-out;
+  text-align: left;
+  color: #0098c9;
+  margin-top: 18px;
+  gap: 10px;
+}
 
-  .modal-footer-newuser {
-    display: block;
-    justify-content: center;
-    margin-top: 10px;
-  }
+.newuser-view {
+  color: #211915;
+  font-weight: normal;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  border-radius: 6px 0 0 6px;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+  font-size: 14px;
+}
 
-  .button-newuser-search {
+.newuser-view:focus {
+  border-color: #5a67d8;
+  box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.3);
+}
+
+.button-primary-newuser {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  margin-top: 8px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button-primary-newuser:hover {
+  background-color: #0056b3;
+}
+
+.button-secondary-newuser {
+  background-color: #939196;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  margin-top: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -10px;
+}
+
+.button-secondary-newuser:hover {
+  background-color: #545b62;
+}
+
+.modal-footer-newuser {
+  display: block;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.button-newuser-search {
   background-color: #0098c9;
   color: #fff;
   border: 1px solid #0098c9;
@@ -196,13 +196,13 @@
   box-shadow: 0px 10px 15px -14px #0098c9;
   font-size: 14px;
   cursor: pointer;
-  }
+}
 
-  .button-newuser-search:hover {
-    background-color: #0077a0;
-    border-color: #0077a0;
-  }
+.button-newuser-search:hover {
+  background-color: #0077a0;
+  border-color: #0077a0;
+}
 
-  .search-usericon {
-    font-size: 12px;
-  }
+.search-usericon {
+  font-size: 12px;
+}

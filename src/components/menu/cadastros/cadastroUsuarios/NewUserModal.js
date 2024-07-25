@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import SearchUserModal from "./SearchUserModal";
 import SearchEstablishmentModal from "./SearchEstablishmentModal";
+import AuditoriaModal from "./AuditoriaModal";
 
 function NewUserModal({ toggleModal, addNewUser }) {
   const [base64Credentials, setBase64Credentials] = useState("");
@@ -29,6 +30,7 @@ function NewUserModal({ toggleModal, addNewUser }) {
 
   const [showSearchUserModal, setShowSearchUserModal] = useState(false);
   const [showSearchEstablishmentModal, setShowSearchEstablishmentModal] = useState(false);
+  const [auditoriaModalOpen, setAuditoriaModalOpen] = useState(false);
 
   useEffect(() => {
     const credentials = sessionStorage.getItem("token");
@@ -51,6 +53,9 @@ function NewUserModal({ toggleModal, addNewUser }) {
 
   const handleToggleChange = (name, newValue) => {
     setUser({ ...user, [name]: newValue });
+    if (name === "log-auditoria") {
+      setAuditoriaModalOpen(newValue);
+    }
   };
 
   const handleSave = async () => {
@@ -216,6 +221,12 @@ function NewUserModal({ toggleModal, addNewUser }) {
                 </div>
               ))}
             </div>
+            {auditoriaModalOpen && (
+              <AuditoriaModal
+                onClose={() => setAuditoriaModalOpen(false)}
+                user={user}
+              />
+            )}
           </form>
         </div>
         <div className="modal-footer-newuser">

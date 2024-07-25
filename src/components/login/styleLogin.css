@@ -189,17 +189,18 @@ body.login-page {
 }
 
 .input-error {
-  border-color: #FF6666;
+  border-color: #FF3333;
 }
 
 .error-icon {
-  color: #FF6666;
+  color: #FF3333;
   margin-right: 5px;
 }
 
 .error-message-login {
-  color: #FF6666;
-  margin-top: 10px;
+  color: #FF3333;
+  margin-top: 12px;
+  font-size: 14px;
 }
 
 
