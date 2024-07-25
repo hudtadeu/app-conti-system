@@ -69,9 +69,7 @@ function VisualizarModal({ isOpen, onClose, user }) {
         <div className="quadrante-visualizar">
           {[
             ["l-importa", "Importa XML"],
-            ["l-exporta", "Exporta XML"],
             ["l-manifesta", "Manifesta Documento"],
-            ["l-nota-servico", "Visualiza NFS-e"],
             ["l-elimina", "Elimina XML"],
             ["l-atualiza", "Atualiza XML"],
             ["l-prioriza-documento", "Prioriza/Confirma Documento"],
