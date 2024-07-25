@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PesquisaConsultarDocumentos from './PesquisaConsultarDocumentos';
+import Popup from './Popup';
 import './styleConsultarDocumentos.css';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,6 +12,7 @@ function ConsultarDocumentos() {
   const [documentData, setDocumentData] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
   const formRef = useRef(null);
   const navigate = useNavigate();
 
@@ -24,7 +26,6 @@ function ConsultarDocumentos() {
           field.value = savedFormData[fieldName];
         }
       });
-      
     } else {
       formRef.current.elements['tipoDocumento'].value = '';
     }
@@ -108,7 +109,7 @@ function ConsultarDocumentos() {
 
         localStorage.setItem('consultarDocumentosFormData', JSON.stringify(Object.fromEntries(formData.entries())));
       } else {
-        setError("Nenhum item encontrado na resposta.");
+        setPopupMessage("Nenhum item encontrado na resposta.");
       }
     } catch (error) {
       setError("Erro ao buscar documentos.");
@@ -121,6 +122,10 @@ function ConsultarDocumentos() {
   const handleTipoDocumentoChange = (e) => {
     setDocumentData(null); 
     setError('');
+  };
+
+  const closePopup = () => {
+    setPopupMessage('');
   };
 
   return (
@@ -215,6 +220,7 @@ function ConsultarDocumentos() {
       {showResults && (
         <PesquisaConsultarDocumentos documentData={documentData} />
       )}
+      {popupMessage && <Popup message={popupMessage} onClose={closePopup} />}
     </div>
   );
 }
