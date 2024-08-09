@@ -15,6 +15,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "apexcharts": "^3.50.0",
+    "app-conti-system": "file:",
     "axios": "^1.7.2",
     "chart.js": "^4.4.3",
     "lodash.debounce": "^4.0.8",
@@ -30,8 +31,7 @@
     "react-scripts": "5.0.1",
     "react-tooltip": "^5.26.4",
     "victory": "^37.0.2",
-    "web-vitals": "^2.1.4",
-    "xlsx": "^0.18.5"
+    "web-vitals": "^2.1.4"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.18.6"
