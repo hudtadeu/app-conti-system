@@ -500,6 +500,7 @@ justify-content: center;
   overflow-y: auto; 
   overflow-x: auto; 
   margin-bottom: 20px; 
+  border-radius: 8px;
 }
 
 .tabs button {
@@ -528,12 +529,27 @@ justify-content: center;
   width: 400%;
   border-collapse: collapse;
   font-size: 12px;
-  
 }
 
 .details-table-itens th, .details-table-itens td {
-  border: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   padding: 8px;
+}
+
+.details-table-itens th {
+  background-color: #fff;
+  background-color: #0098c9;
+  color: #fff;
+  overflow-x: auto;
+  padding: 10px;
+  font-size: 12px;
+}
+
+.details-table-itens td {
+  font-size: 1rem;
+  color: #666666;
+  font-weight: 500;
+  font-size: 12px;
 }
 
 .details-button {
