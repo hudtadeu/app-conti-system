@@ -306,7 +306,7 @@ function DetalhesConsultarDocumentos() {
               className={activeButton === 'itens' ? 'active' : ''}
               onClick={() => handleButtonClick('itens')}
             >
-              Itens
+              ITENS
             </button>
           </div>
 
@@ -402,104 +402,175 @@ function DetalhesConsultarDocumentos() {
                 </div>
 
                 <div className="tab-content-itens">
-                  {activeTab === 'detalhes' && (
-                    <div className="tab-detail-itens">
-                      <div className="table-responsive-container">
-                      <table className="details-table-itens">
-                        <thead>
-                        <tr>
-                          <th>Seq</th>
-                          <th>Item</th>
-                          <th>Descrição</th>
-                          <th>Un.Med. Forn</th>
-                          <th>Item EMS</th>
-                          <th>Un</th>
-                          <th>Agregado</th>
-                          <th>CFOP Fornec</th>
-                          <th>Natureza</th>
-                          <th>Quantidade</th>
-                          <th>Preço Unitário</th>
-                          <th>Preço Total</th>
-                          <th>Desconto</th>
-                          <th>OC Fornec</th>
-                          <th>Ped. Compr Forn</th>
-                          <th>Ordem Compra</th>
-                          <th>Parc</th>
-                          <th>Nr Contrato</th>
-                          <th>Seq Item</th>
-                          <th>Seq Event</th>
-                          <th>Seq Medição</th>
-                          <th>Sit Trib ICMS (CST)</th>
-                          <th>%ICMS</th>
-                          <th>Valor ICMS</th>
-                          <th>CST IPI</th>
-                          <th>%IPI</th>
-                          <th>Valor IPI</th>
-                          <th>Valor Subs</th>
-                          <th>NCM</th>
-                          <th>CEST</th>
-                          <th>Tipo Serviço</th>
-                          <th>EAN Fornec</th>
-                          <th>Vl Seguro</th>
-                          <th>CST COFINS</th>
-                          <th>CST PIS</th>
-                          <th>Vl Frete</th>
-                          <th>Outras Desp</th>
-                          <th>Valor efetivo do PIS</th>
-                          <th>Valor efetivo do COFINS</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>{selectedItem.seq}</td>
-                          <td>{selectedItem.item_totvs}</td>
-                          <td>{selectedItem.descr_it_fornec}</td>
-                          <td>{selectedItem.un_med_forn}</td>
-                          <td>{selectedItem.item_ems}</td>
-                          <td>{selectedItem.un}</td>
-                          <td>{selectedItem.agregado}</td>
-                          <td>{selectedItem.cfop_fornec}</td>
-                          <td>{selectedItem.natureza}</td>
-                          <td>{selectedItem.qtde_fornec}</td>
-                          <td>{selectedItem.preco_unit}</td>
-                          <td>{selectedItem.preco_total}</td>
-                          <td>{selectedItem.desconto}</td>
-                          <td>{selectedItem.oc_fornec}</td>
-                          <td>{selectedItem.ped_compr_forn}</td>
-                          <td>{selectedItem.ordem_compra}</td>
-                          <td>{selectedItem.parc}</td>
-                          <td>{selectedItem.nr_contrato}</td>
-                          <td>{selectedItem.seq_item}</td>
-                          <td>{selectedItem.seq_event}</td>
-                          <td>{selectedItem.seq_medicao}</td>
-                          <td>{selectedItem.sit_trib_icms}</td>
-                          <td>{selectedItem.percent_icms}</td>
-                          <td>{selectedItem.valor_icms}</td>
-                          <td>{selectedItem.cst_ipi}</td>
-                          <td>{selectedItem.percent_ipi}</td>
-                          <td>{selectedItem.valor_ipi}</td>
-                          <td>{selectedItem.valor_subs}</td>
-                          <td>{selectedItem.ncm}</td>
-                          <td>{selectedItem.cest}</td>
-                          <td>{selectedItem.tipo_servico}</td>
-                          <td>{selectedItem.ean_fornec}</td>
-                          <td>{selectedItem.vl_seguro}</td>
-                          <td>{selectedItem.cst_cofins}</td>
-                          <td>{selectedItem.cst_pis}</td>
-                          <td>{selectedItem.vl_frete}</td>
-                          <td>{selectedItem.outras_desp}</td>
-                          <td>{selectedItem.valor_efetivo_pis}</td>
-                          <td>{selectedItem.valor_efetivo_cofins}</td>
-                        </tr>
-                          {/* Adicione mais linhas conforme necessário */}
-                        </tbody>
-                      </table>
+                    {activeTab === 'detalhes' && (
+                      <div className="tab-detail-itens">
+                        <div className="details-container">
+                        <div className="details-section">
+                          <div className="info-row">
+                            <label>Seq:</label>
+                            <input type="text" value={selectedItem.seq} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Item:</label>
+                            <input type="text" value={selectedItem.item_totvs} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Descrição:</label>
+                            <input type="text" value={selectedItem.descr_it_fornec} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Un.Med. Forn:</label>
+                            <input type="text" value={selectedItem.un_med_forn} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Item EMS:</label>
+                            <input type="text" value={selectedItem.item_ems} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Un:</label>
+                            <input type="text" value={selectedItem.un} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Agregado:</label>
+                            <input type="text" value={selectedItem.agregado} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>CFOP Fornec:</label>
+                            <input type="text" value={selectedItem.cfop_fornec} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Natureza:</label>
+                            <input type="text" value={selectedItem.natureza} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Quantidade:</label>
+                            <input type="text" value={selectedItem.qtde_fornec} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Preço Unitário:</label>
+                            <input type="text" value={selectedItem.preco_unit} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Preço Total:</label>
+                            <input type="text" value={selectedItem.preco_total} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Desconto:</label>
+                            <input type="text" value={selectedItem.desconto} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>OC Fornec:</label>
+                            <input type="text" value={selectedItem.oc_fornec} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Ped. Compr Forn:</label>
+                            <input type="text" value={selectedItem.ped_compr_forn} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Ordem Compra:</label>
+                            <input type="text" value={selectedItem.ordem_compra} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Parc:</label>
+                            <input type="text" value={selectedItem.parc} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Nr Contrato:</label>
+                            <input type="text" value={selectedItem.nr_contrato} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Seq Item:</label>
+                            <input type="text" value={selectedItem.seq_item} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Seq Event:</label>
+                            <input type="text" value={selectedItem.seq_event} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Seq Medição:</label>
+                            <input type="text" value={selectedItem.seq_medicao} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Sit Trib ICMS (CST):</label>
+                            <input type="text" value={selectedItem.sit_trib_icms} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>%ICMS:</label>
+                            <input type="text" value={selectedItem.percent_icms} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Valor ICMS:</label>
+                            <input type="text" value={selectedItem.valor_icms} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>CST IPI:</label>
+                            <input type="text" value={selectedItem.cst_ipi} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>%IPI:</label>
+                            <input type="text" value={selectedItem.percent_ipi} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Valor IPI:</label>
+                            <input type="text" value={selectedItem.valor_ipi} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Valor Subs:</label>
+                            <input type="text" value={selectedItem.valor_subs} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>NCM:</label>
+                            <input type="text" value={selectedItem.ncm} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>CEST:</label>
+                            <input type="text" value={selectedItem.cest} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Tipo Serviço:</label>
+                            <input type="text" value={selectedItem.tipo_servico} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>EAN Fornec:</label>
+                            <input type="text" value={selectedItem.ean_fornec} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Vl Seguro:</label>
+                            <input type="text" value={selectedItem.vl_seguro} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>CST COFINS:</label>
+                            <input type="text" value={selectedItem.cst_cofins} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>CST PIS:</label>
+                            <input type="text" value={selectedItem.cst_pis} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Vl Frete:</label>
+                            <input type="text" value={selectedItem.vl_frete} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Outras Desp:</label>
+                            <input type="text" value={selectedItem.outras_desp} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Valor efetivo do PIS:</label>
+                            <input type="text" value={selectedItem.valor_efetivo_pis} readOnly />
+                          </div>
+                          <div className="info-row">
+                            <label>Valor efetivo do COFINS:</label>
+                            <input type="text" value={selectedItem.valor_efetivo_cofins} readOnly />
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                    )}
                   </div>
-                  )}
 
                   {activeTab === 'info-adicional' && (
                     <div className="tab-info-adicional">
+                      <div className="info-adicional-container">
                       <h3>EC 87</h3>
                       <div className="info-section">
                         <label>% FCP UF Destino:</label>
@@ -572,11 +643,11 @@ function DetalhesConsultarDocumentos() {
                         <input type="text" value={selectedItem.unid_med_emit_xml} readOnly />
                       </div>
                     </div>
+                    </div>
                   )}
 
                 </div>
               </div>
-            </div>
           )}
         </div>
       </div>
