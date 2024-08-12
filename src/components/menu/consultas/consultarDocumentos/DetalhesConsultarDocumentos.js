@@ -500,10 +500,80 @@ function DetalhesConsultarDocumentos() {
 
                   {activeTab === 'info-adicional' && (
                     <div className="tab-info-adicional">
-                      <p><strong>Outras Informações:</strong> {selectedItem.outras_informacoes}</p>
-                      {/* Adicione outras informações adicionais conforme necessário */}
+                      <h3>EC 87</h3>
+                      <div className="info-section">
+                        <label>% FCP UF Destino:</label>
+                        <input type="text" value={selectedItem.fcp_uf_dest} readOnly />
+                        
+                        <label>% ICMS UF Dest:</label>
+                        <input type="text" value={selectedItem.icms_uf_dest} readOnly />
+                        
+                        <label>Valor ICMS UF Rem:</label>
+                        <input type="text" value={selectedItem.valor_icms_uf_rem} readOnly />
+                        
+                        <label>Valor ICMS FCP Dest:</label>
+                        <input type="text" value={selectedItem.valor_icms_fcp_dest} readOnly />
+                        
+                        <label>Valor BC ICMS UF Dest:</label>
+                        <input type="text" value={selectedItem.valor_bc_icms_uf_dest} readOnly />
+                        
+                        <label>% ICMS Interest:</label>
+                        <input type="text" value={selectedItem.icms_interest} readOnly />
+                        
+                        <label>% ICMS Partilha/Provisório:</label>
+                        <input type="text" value={selectedItem.icms_partilha} readOnly />
+                        
+                        <label>Aliquota Sub.Trib.:</label>
+                        <input type="text" value={selectedItem.aliq_sub_trib} readOnly />
+                        
+                        <label>Base ICMS Sub.Trib.:</label>
+                        <input type="text" value={selectedItem.base_icms_sub_trib} readOnly />
+                        
+                        <label>Valor ICMS Sub.Trib.:</label>
+                        <input type="text" value={selectedItem.valor_icms_sub_trib} readOnly />
+                      </div>
+
+                      <h3>Diferimento ICMS</h3>
+                      <div className="info-section">
+                        <label>VI ICMS Operação:</label>
+                        <input type="text" value={selectedItem.vi_icms_operacao} readOnly />
+                        
+                        <label>VI ICMS Dif:</label>
+                        <input type="text" value={selectedItem.vi_icms_dif} readOnly />
+                        
+                        <label>% Diferimento:</label>
+                        <input type="text" value={selectedItem.percent_diferimento} readOnly />
+                      </div>
+
+                      <h3>Simples Nacional</h3>
+                      <div className="info-section">
+                        <label>CSOSN:</label>
+                        <input type="text" value={selectedItem.csosn} readOnly />
+                        
+                        <label>Base Simples Nac.:</label>
+                        <input type="text" value={selectedItem.base_simples_nac} readOnly />
+                        
+                        <label>Aliq. Simples Nac.:</label>
+                        <input type="text" value={selectedItem.aliq_simples_nac} readOnly />
+                        
+                        <label>Valor Simples Nac.:</label>
+                        <input type="text" value={selectedItem.valor_simples_nac} readOnly />
+                      </div>
+
+                      <h3>Dados XML</h3>
+                      <div className="info-section">
+                        <label>Sequência XML:</label>
+                        <input type="text" value={selectedItem.seq_xml} readOnly />
+                        
+                        <label>Descrição Item XML:</label>
+                        <input type="text" value={selectedItem.desc_item_xml} readOnly />
+                        
+                        <label>Unid Med Emit XML:</label>
+                        <input type="text" value={selectedItem.unid_med_emit_xml} readOnly />
+                      </div>
                     </div>
                   )}
+
                 </div>
               </div>
             </div>
