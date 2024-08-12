@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronRight, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faChevronRight, faSpinner, faTimes  } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, useNavigate } from 'react-router-dom';  // Import useHistory
 import "./styleDetalhesConsultarDocumentos.css";
 import { getStatusInfo, getTipoDocumentoInfo } from '../../../utils';
 
 function DetalhesConsultarDocumentos() {
   const location = useLocation();
-  const navigate = useNavigate();  // Initialize useHistory
+  const navigate = useNavigate(); 
   const { cId } = location.state || {};
 
   const [documento, setDocumento] = useState(null);
@@ -18,6 +18,9 @@ function DetalhesConsultarDocumentos() {
 
   const [activeButton, setActiveButton] = useState('');
   const [itensDocumento, setItensDocumento] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [activeTab, setActiveTab] = useState('detalhes'); // Estado para a aba ativa
 
   useEffect(() => {
     if (!cId) return;
@@ -89,7 +92,6 @@ function DetalhesConsultarDocumentos() {
     fetchDocumentoDetails();
     fetchItensDocumento();
   }, [cId]);
-    
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -120,6 +122,20 @@ function DetalhesConsultarDocumentos() {
     navigate(-1);  
   };
 
+  const handleItemDetails = (item) => {
+    setSelectedItem(item);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedItem(null);
+  };
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+  };
+
   if (loading || documento === null) {
     return (
       <div className="overlay-dc">
@@ -132,6 +148,7 @@ function DetalhesConsultarDocumentos() {
 
   const statusInfo = getStatusInfo(documento.situacao);
   const tipoDocumentoInfo = getTipoDocumentoInfo(documento.tipo_doc);
+  
   return (
     <div className="body-detailsdoc">
       <div className={`container-detailsdoc ${loading ? 'blur' : ''}`}>
@@ -319,12 +336,12 @@ function DetalhesConsultarDocumentos() {
                       <th>NCM</th>
                       <th>%IPI</th>
                       <th>EAN Fornec.</th>
+                      <th>Ações</th>
                     </tr>
                   </thead>
                   <tbody>
                     {itensDocumento.map((item, index) => (
                       <tr key={index}>
-                        {/* Preencha com os dados específicos de cada item */}
                         <td>{item.seq}</td>
                         <td>{item.CFOP_fornec}</td>
                         <td>{item.cfop_fornec}</td>
@@ -345,6 +362,14 @@ function DetalhesConsultarDocumentos() {
                         <td>{item.ncm}</td>
                         <td>{item.aliq_ipi}</td>
                         <td>{item.ean_fornec}</td>
+                        <td>
+                          <button
+                            className="details-button"
+                            onClick={() => handleItemDetails(item)}
+                          >
+                            Detalhes
+                          </button> {/* Botão para ações */}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -353,6 +378,136 @@ function DetalhesConsultarDocumentos() {
             </div>
           )}
 
+          {showModal && selectedItem && (
+            <div className="modal-overlay-itens-detail">
+              <div className="modal-content-itens-detail">
+                <button className="close-button" onClick={closeModal}>
+                  <FontAwesomeIcon icon={faTimes} size="lg" />
+                </button>
+                <h2>Detalhes do Item</h2>
+                
+                <div className="tabs">
+                  <button
+                    className={activeTab === 'detalhes' ? 'active-tab' : ''}
+                    onClick={() => handleTabClick('detalhes')}
+                  >
+                    Detalhes
+                  </button>
+                  <button
+                    className={activeTab === 'info-adicional' ? 'active-tab' : ''}
+                    onClick={() => handleTabClick('info-adicional')}
+                  >
+                    Info Adicional
+                  </button>
+                </div>
+
+                <div className="tab-content-itens">
+                  {activeTab === 'detalhes' && (
+                    <div className="tab-detail-itens">
+                      <div className="table-responsive-container">
+                      <table className="details-table-itens">
+                        <thead>
+                        <tr>
+                          <th>Seq</th>
+                          <th>Item</th>
+                          <th>Descrição</th>
+                          <th>Un.Med. Forn</th>
+                          <th>Item EMS</th>
+                          <th>Un</th>
+                          <th>Agregado</th>
+                          <th>CFOP Fornec</th>
+                          <th>Natureza</th>
+                          <th>Quantidade</th>
+                          <th>Preço Unitário</th>
+                          <th>Preço Total</th>
+                          <th>Desconto</th>
+                          <th>OC Fornec</th>
+                          <th>Ped. Compr Forn</th>
+                          <th>Ordem Compra</th>
+                          <th>Parc</th>
+                          <th>Nr Contrato</th>
+                          <th>Seq Item</th>
+                          <th>Seq Event</th>
+                          <th>Seq Medição</th>
+                          <th>Sit Trib ICMS (CST)</th>
+                          <th>%ICMS</th>
+                          <th>Valor ICMS</th>
+                          <th>CST IPI</th>
+                          <th>%IPI</th>
+                          <th>Valor IPI</th>
+                          <th>Valor Subs</th>
+                          <th>NCM</th>
+                          <th>CEST</th>
+                          <th>Tipo Serviço</th>
+                          <th>EAN Fornec</th>
+                          <th>Vl Seguro</th>
+                          <th>CST COFINS</th>
+                          <th>CST PIS</th>
+                          <th>Vl Frete</th>
+                          <th>Outras Desp</th>
+                          <th>Valor efetivo do PIS</th>
+                          <th>Valor efetivo do COFINS</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{selectedItem.seq}</td>
+                          <td>{selectedItem.item_totvs}</td>
+                          <td>{selectedItem.descr_it_fornec}</td>
+                          <td>{selectedItem.un_med_forn}</td>
+                          <td>{selectedItem.item_ems}</td>
+                          <td>{selectedItem.un}</td>
+                          <td>{selectedItem.agregado}</td>
+                          <td>{selectedItem.cfop_fornec}</td>
+                          <td>{selectedItem.natureza}</td>
+                          <td>{selectedItem.qtde_fornec}</td>
+                          <td>{selectedItem.preco_unit}</td>
+                          <td>{selectedItem.preco_total}</td>
+                          <td>{selectedItem.desconto}</td>
+                          <td>{selectedItem.oc_fornec}</td>
+                          <td>{selectedItem.ped_compr_forn}</td>
+                          <td>{selectedItem.ordem_compra}</td>
+                          <td>{selectedItem.parc}</td>
+                          <td>{selectedItem.nr_contrato}</td>
+                          <td>{selectedItem.seq_item}</td>
+                          <td>{selectedItem.seq_event}</td>
+                          <td>{selectedItem.seq_medicao}</td>
+                          <td>{selectedItem.sit_trib_icms}</td>
+                          <td>{selectedItem.percent_icms}</td>
+                          <td>{selectedItem.valor_icms}</td>
+                          <td>{selectedItem.cst_ipi}</td>
+                          <td>{selectedItem.percent_ipi}</td>
+                          <td>{selectedItem.valor_ipi}</td>
+                          <td>{selectedItem.valor_subs}</td>
+                          <td>{selectedItem.ncm}</td>
+                          <td>{selectedItem.cest}</td>
+                          <td>{selectedItem.tipo_servico}</td>
+                          <td>{selectedItem.ean_fornec}</td>
+                          <td>{selectedItem.vl_seguro}</td>
+                          <td>{selectedItem.cst_cofins}</td>
+                          <td>{selectedItem.cst_pis}</td>
+                          <td>{selectedItem.vl_frete}</td>
+                          <td>{selectedItem.outras_desp}</td>
+                          <td>{selectedItem.valor_efetivo_pis}</td>
+                          <td>{selectedItem.valor_efetivo_cofins}</td>
+                        </tr>
+                          {/* Adicione mais linhas conforme necessário */}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  )}
+
+                  {activeTab === 'info-adicional' && (
+                    <div className="tab-info-adicional">
+                      <p><strong>Outras Informações:</strong> {selectedItem.outras_informacoes}</p>
+                      {/* Adicione outras informações adicionais conforme necessário */}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
