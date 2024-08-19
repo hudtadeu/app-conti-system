@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEye,
   faPencilAlt,
-  faTrash,
   faSearch,
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
@@ -59,7 +58,7 @@ function Empresa() {
         console.error("Erro ao carregar dados da API:", error);
       })
       .finally(() => {
-        setLoading(false); // Defina como falso quando a solicitação for concluída
+        setLoading(false); 
       });
   }, []);
 
@@ -159,37 +158,6 @@ function Empresa() {
       })
       .catch((error) => {
         console.error("Erro ao editar empresa:", error);
-      })
-      .finally(() => {
-        setOverlayVisible(false);
-      });
-  };
-
-  const excluirEmpresa = (epCodigo) => {
-    setOverlayVisible(true);
-    const urlExcluir = `${apiUrl}/?ep-codigo=${epCodigo}`;
-
-    fetch(urlExcluir, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Basic ${sessionStorage.getItem("token")}`,
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Erro ao excluir empresa");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Empresa excluída com sucesso:", data);
-        setEmpresas((prevEmpresas) =>
-          prevEmpresas.filter((empresa) => empresa["cod-estabel"] !== epCodigo)
-        );
-        filtrarEmpresas(pesquisa);
-      })
-      .catch((error) => {
-        console.error("Erro ao excluir empresa:", error);
       })
       .finally(() => {
         setOverlayVisible(false);
@@ -308,14 +276,6 @@ function Empresa() {
                           title="Editar"
                         >
                           <FontAwesomeIcon icon={faPencilAlt} className="icon-small" />
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-danger-options"
-                          onClick={() => excluirEmpresa(empresa["cod-estabel"])}
-                          title="Excluir"
-                        >
-                          <FontAwesomeIcon icon={faTrash} className="icon-small" />
                         </button>
                       </div>
                     </td>
