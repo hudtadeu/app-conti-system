@@ -348,7 +348,7 @@ function DetalhesConsultarDocumentos() {
                 <table className="document-itens-table">
                   <thead>
                     <tr>
-                      <th>Seg</th>
+                      <th>Seq</th>
                       <th>Nat Fiscal</th>
                       <th>CFOP Fornec</th>
                       <th>Item Documento</th>
