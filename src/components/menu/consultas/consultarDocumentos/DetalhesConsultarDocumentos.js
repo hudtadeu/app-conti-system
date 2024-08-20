@@ -434,169 +434,203 @@ function DetalhesConsultarDocumentos() {
                 </div>
 
                 {activeTab === 'detalhes' && (
-                  <div className="tab-detail-itens">
-                    <div className="details-container">
-                      <div className="details-section">
-                        <div className="info-row">
-                          <label>Seq:</label>
-                          <input type="text" value={itemDetails.seq} readOnly />
+                    <div className="tab-detail-itens">
+                      <div className="details-container">
+
+                        {/* Grupo: Identificação do Item */}
+                        <div className="details-group">
+                          <h3 className="group-title">Identificação do Item</h3>
+                          <div className="details-section">
+                            <div className="info-row">
+                              <label>Seq:</label>
+                              <input type="text" value={itemDetails.seq} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Item:</label>
+                              <input type="text" value={itemDetails.item_totvs} readOnly />
+                            </div>
+                            <div className="info-row-section">
+                              <label>Descrição:</label>
+                              <input type="text" value={itemDetails.descr_it_fornec} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Un.Med. Forn:</label>
+                              <input type="text" value={itemDetails.un_med_fornec} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Item EMS:</label>
+                              <input type="text" value={itemDetails.item_ems} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Un:</label>
+                              <input type="text" value={itemDetails.un_totvs} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Agregado:</label>
+                              <input type="text" value={itemDetails.item_agregado ? "Sim" : "Não"} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>CFOP Fornec:</label>
+                              <input type="text" value={itemDetails.CFOP_fornec} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Natureza:</label>
+                              <input type="text" value={itemDetails.nat_operacao} readOnly />
+                            </div>
+                          </div>
                         </div>
-                        <div className="info-row">
-                          <label>Item:</label>
-                          <input type="text" value={itemDetails.item_totvs} readOnly />
+
+                        {/* Grupo: Quantidade e Preços */}
+                        <div className="details-group">
+                          <h3 className="group-title">Quantidade e Preços</h3>
+                          <div className="details-section">
+                            <div className="info-row">
+                              <label>Quantidade:</label>
+                              <input type="text" value={itemDetails.qtde_fornec} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Preço Unitário:</label>
+                              <input type="text" value={itemDetails.preco_unit} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Preço Total:</label>
+                              <input type="text" value={itemDetails.preco_total} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Desconto:</label>
+                              <input type="text" value={itemDetails.desconto} readOnly />
+                            </div>
+                          </div>
                         </div>
-                        <div className="info-row">
-                          <label>Descrição:</label>
-                          <input type="text" value={itemDetails.descr_it_fornec} readOnly />
+
+                        {/* Grupo: Pedido e Contrato */}
+                        <div className="details-group">
+                          <h3 className="group-title">Pedido e Contrato</h3>
+                          <div className="details-section">
+                            <div className="info-row">
+                              <label>OC Fornec:</label>
+                              <input type="text" value={itemDetails.OC_fornec} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Ped. Compr Forn:</label>
+                              <input type="text" value={itemDetails.ped_compr_forn} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Ordem Compra:</label>
+                              <input type="text" value={itemDetails.ordem_compra} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Parc:</label>
+                              <input type="text" value={itemDetails.parcela} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Nr Contrato:</label>
+                              <input type="text" value={itemDetails.nr_contrato} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Seq Item:</label>
+                              <input type="text" value={itemDetails.seq_item} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Seq Event:</label>
+                              <input type="text" value={itemDetails.seq_event} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Seq Medição:</label>
+                              <input type="text" value={itemDetails.seq_medicao} readOnly />
+                            </div>
+                          </div>
                         </div>
-                        <div className="info-row">
-                          <label>Un.Med. Forn:</label>
-                          <input type="text" value={itemDetails.un_med_fornec} readOnly />
+
+                        {/* Grupo: Informações Fiscais */}
+                        <div className="details-group">
+                          <h3 className="group-title">Informações Fiscais</h3>
+                          <div className="details-section">
+                            <div className="info-row">
+                              <label>Sit Trib ICMS (CST):</label>
+                              <input type="text" value={itemDetails.cst_icms} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>%ICMS:</label>
+                              <input type="text" value={itemDetails.aliq_ICM} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Valor ICMS:</label>
+                              <input type="text" value={itemDetails.vlr_icm} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>CST IPI:</label>
+                              <input type="text" value={itemDetails.cst_ipi} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>%IPI:</label>
+                              <input type="text" value={itemDetails.Aliq_IPI} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Valor IPI:</label>
+                              <input type="text" value={itemDetails.vlr_ipi} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Valor Subs:</label>
+                              <input type="text" value={itemDetails.vlr_subs} readOnly />
+                            </div>
+                            <div className="info-row-section">
+                              <label>NCM:</label>
+                              <input type="text" value={itemDetails.ncm} readOnly />
+                            </div>
+                            <div className="info-row-section">
+                              <label>CEST:</label>
+                              <input type="text" value={itemDetails.CEST} readOnly />
+                            </div>
+                          </div>
                         </div>
-                        <div className="info-row">
-                          <label>Item EMS:</label>
-                          <input type="text" value={itemDetails.item_ems} readOnly />
+
+                        {/* Grupo: Outros Detalhes */}
+                        <div className="details-group">
+                          <h3 className="group-title">Outros Detalhes</h3>
+                          <div className="details-section">
+                            <div className="info-row">
+                              <label>Tipo Serviço:</label>
+                              <input type="text" value={itemDetails.tipo_servico} readOnly />
+                            </div>
+                            <div className="info-row-section">
+                              <label>EAN Fornec:</label>
+                              <input type="text" value={itemDetails.ean_fornec} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Vl Seguro:</label>
+                              <input type="text" value={itemDetails.vlr_seguro} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>CST COFINS:</label>
+                              <input type="text" value={itemDetails.cst_cofins} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>CST PIS:</label>
+                              <input type="text" value={itemDetails.cst_pis} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Vl Frete:</label>
+                              <input type="text" value={itemDetails.vlr_frete} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Outras Desp:</label>
+                              <input type="text" value={itemDetails.outras_despesas} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Valor efetivo do PIS:</label>
+                              <input type="text" value={itemDetails.pis_efet} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>Valor efetivo do COFINS:</label>
+                              <input type="text" value={itemDetails.cofins_efet} readOnly />
+                            </div>
+                          </div>
                         </div>
-                        <div className="info-row">
-                          <label>Un:</label>
-                          <input type="text" value={itemDetails.un_totvs} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Agregado:</label>
-                          <input type="text" value={itemDetails.item_agregado ? "Sim" : "Não"} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>CFOP Fornec:</label>
-                          <input type="text" value={itemDetails.CFOP_fornec} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Natureza:</label>
-                          <input type="text" value={itemDetails.nat_operacao} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Quantidade:</label>
-                          <input type="text" value={itemDetails.qtde_fornec} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Preço Unitário:</label>
-                          <input type="text" value={itemDetails.preco_unit} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Preço Total:</label>
-                          <input type="text" value={itemDetails.preco_total} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Desconto:</label>
-                          <input type="text" value={itemDetails.desconto} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>OC Fornec:</label>
-                          <input type="text" value={itemDetails.OC_fornec} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Ped. Compr Forn:</label>
-                          <input type="text" value={itemDetails.ped_compr_forn} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Ordem Compra:</label>
-                          <input type="text" value={itemDetails.ordem_compra} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Parc:</label>
-                          <input type="text" value={itemDetails.parcela} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Nr Contrato:</label>
-                          <input type="text" value={itemDetails.nr_contrato} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Seq Item:</label>
-                          <input type="text" value={itemDetails.seq_item} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Seq Event:</label>
-                          <input type="text" value={itemDetails.seq_event} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Seq Medição:</label>
-                          <input type="text" value={itemDetails.seq_medicao} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Sit Trib ICMS (CST):</label>
-                          <input type="text" value={itemDetails.cst_icms} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>%ICMS:</label>
-                          <input type="text" value={itemDetails.aliq_ICM} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Valor ICMS:</label>
-                          <input type="text" value={itemDetails.vlr_icm} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>CST IPI:</label>
-                          <input type="text" value={itemDetails.cst_ipi} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>%IPI:</label>
-                          <input type="text" value={itemDetails.Aliq_IPI} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Valor IPI:</label>
-                          <input type="text" value={itemDetails.vlr_ipi} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Valor Subs:</label>
-                          <input type="text" value={itemDetails.vlr_subs} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>NCM:</label>
-                          <input type="text" value={itemDetails.ncm} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>CEST:</label>
-                          <input type="text" value={itemDetails.CEST} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Tipo Serviço:</label>
-                          <input type="text" value={itemDetails.tipo_servico} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>EAN Fornec:</label>
-                          <input type="text" value={itemDetails.ean_fornec} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Vl Seguro:</label>
-                          <input type="text" value={itemDetails.vlr_seguro} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>CST COFINS:</label>
-                          <input type="text" value={itemDetails.cst_cofins} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>CST PIS:</label>
-                          <input type="text" value={itemDetails.cst_pis} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Vl Frete:</label>
-                          <input type="text" value={itemDetails.vlr_frete} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Outras Desp:</label>
-                          <input type="text" value={itemDetails.outras_despesas} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Valor efetivo do PIS:</label>
-                          <input type="text" value={itemDetails.pis_efet} readOnly />
-                        </div>
-                        <div className="info-row">
-                          <label>Valor efetivo do COFINS:</label>
-                          <input type="text" value={itemDetails.cofins_efet} readOnly />
-                        </div>
+
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
 
 

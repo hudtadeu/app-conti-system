@@ -20,7 +20,7 @@ function Empresa() {
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [empresaEditando, setEmpresaEditando] = useState(null);
   const [novaEmpresaModalOpen, setNovaEmpresaModalOpen] = useState(false);
-  const [loading, setLoading] = useState(true); // Estado de carregamento
+  const [loading, setLoading] = useState(true); 
   const [overlayVisible, setOverlayVisible] = useState(false);
   const apiUrl =
     "http://131.161.43.14:8280/dts/datasul-rest/resources/prg/etq/v1/boRequestEmpresa";
