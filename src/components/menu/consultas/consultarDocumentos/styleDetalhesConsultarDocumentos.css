@@ -392,6 +392,26 @@ justify-content: center;
   max-height: 300px;
 }
 
+.table-responsive-container::-webkit-scrollbar {
+  width: 10px; 
+  height: 10px;
+}
+
+.table-responsive-container::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1; 
+  border-radius: 4px;
+}
+
+.table-responsive-container::-webkit-scrollbar-thumb:hover {
+  background-color: #a1a1a1;
+}
+
+.table-responsive-container::-webkit-scrollbar-track {
+  background-color: #eaeaea; 
+  border-radius: 4px;
+}
+
+
 .back-button {
   position: absolute;
   top: 10px;

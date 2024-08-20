@@ -137,6 +137,25 @@ body::before {
   width: 100%;
 }
 
+.table-responsive-usuario::-webkit-scrollbar {
+  height: 10px; /* Altura da barra de rolagem horizontal */
+}
+
+.table-responsive-usuario::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1; 
+  border-radius: 4px;
+}
+
+.table-responsive-usuario::-webkit-scrollbar-thumb:hover {
+  background-color: #a1a1a1;
+}
+
+.table-responsive-usuario::-webkit-scrollbar-track {
+  background-color: #eaeaea; 
+  border-radius: 4px;
+}
+
+
 .user-table {
   width: 100%;
   border-collapse: collapse;
