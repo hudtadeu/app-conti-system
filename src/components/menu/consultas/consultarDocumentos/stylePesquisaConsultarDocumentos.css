@@ -114,10 +114,11 @@ html, body {
 }
 
 .table-documentos-pcd th {
-  background-color: #fff;
-  color:  #0098c9;
+  background-color: #0098c9;
+  color:  #fff;
   padding: 14px;
-  font-size: 13.5px;
+  font-size: 13px;
+  font-weight: 550;
 }
 
 .table-documentos-pcd tbody tr:hover {
