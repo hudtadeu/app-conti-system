@@ -533,7 +533,7 @@ justify-content: center;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   overflow-y: auto; 
-  max-height: calc(100vh - 220px); 
+  max-height: calc(100vh - 205px); 
 }
 
 .details-group {
@@ -687,7 +687,8 @@ justify-content: center;
   border-radius: 8px; 
   width: 150%;
   max-width: 900px;
-  max-height: 700px;
+  max-height: 720px;
+  min-height: 720px;
   position: relative;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
