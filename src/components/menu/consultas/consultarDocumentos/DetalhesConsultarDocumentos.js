@@ -21,7 +21,7 @@ function DetalhesConsultarDocumentos() {
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [activeTab, setActiveTab] = useState('detalhes');
-  const [itemDetails, setItemDetails] = useState(null); // Estado para armazenar detalhes do item
+  const [itemDetails, setItemDetails] = useState(null); 
 
   useEffect(() => {
     if (!cId) return;
@@ -161,7 +161,7 @@ function DetalhesConsultarDocumentos() {
   const closeModal = () => {
     setShowModal(false);
     setSelectedItem(null);
-    setItemDetails(null); // Limpa os detalhes do item quando o modal é fechado
+    setItemDetails(null); 
   };
 
   const handleTabClick = (tab) => {

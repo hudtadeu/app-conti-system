@@ -106,6 +106,13 @@ html, body {
   border-right: none;
 }
 
+.table-documentos-pcd td {
+  font-size: 1rem;
+  color: #666666;
+  font-size: 12px;
+  font-weight: 500;
+}
+
 .table-documentos-pcd th {
   background-color: #fff;
   color:  #0098c9;
