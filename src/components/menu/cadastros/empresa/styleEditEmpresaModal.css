@@ -413,6 +413,26 @@
     max-width: 500px; 
     overflow-x: auto; 
   }
+  
+  .modal-contentedit-fixed::-webkit-scrollbar {
+    width: 9px; 
+    height: 9px;
+  }
+  
+  .modal-contentedit-fixed::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1; 
+    border-radius: 4px;
+  }
+  
+  .modal-contentedit-fixed::-webkit-scrollbar-thumb:hover {
+    background-color: #a1a1a1;
+  }
+  
+  .modal-contentedit-fixed::-webkit-scrollbar-track {
+    background-color: #eaeaea; 
+    border-radius: 4px;
+  }
+  
 
   .input-containeredit {
     position: relative;
