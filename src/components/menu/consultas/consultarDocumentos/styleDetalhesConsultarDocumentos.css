@@ -604,6 +604,37 @@ justify-content: center;
   text-align: center; 
 }
 
+.info-row-section-descr input{
+  width: 100%;
+  max-width: 200px; 
+  min-width: 220px; 
+  padding: 2px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f7f7f7;
+  color: #333;
+  font-size: 12px;
+  text-align: center; 
+}
+
+.info-row-section-descr label {
+  font-weight: 500;
+  margin-bottom: 3px;
+  margin-top: 5px;
+  font-size: 11px;
+  color: #333333;
+}
+
+.info-row-section-descr input:read-only {
+  background-color: #f2f2f2;
+}
+
+.info-row-setion-descr input:focus {
+  outline: none;
+  border-color: #007bff;
+  background-color: #e8f0fe;
+}
+
 .info-row-section input:read-only {
   background-color: #f2f2f2;
 }

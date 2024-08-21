@@ -446,35 +446,35 @@ function DetalhesConsultarDocumentos() {
                               <input type="text" value={itemDetails.seq} readOnly />
                             </div>
                             <div className="info-row">
-                              <label>Item:</label>
-                              <input type="text" value={itemDetails.item_totvs} readOnly />
+                              <label>Item Fornecedor:</label>
+                              <input type="text" value={itemDetails.item_fornec} readOnly />
                             </div>
-                            <div className="info-row-section">
+                            <div className="info-row">
+                              <label>Un. Med. Fornecedor:</label>
+                              <input type="text" value={itemDetails.un_med_fornec} readOnly />
+                            </div>
+                            <div className="info-row">
+                              <label>CFOP Fornecedor:</label>
+                              <input type="text" value={itemDetails.CFOP_fornec} readOnly />
+                            </div>
+                            <div className="info-row-section-descr">
                               <label>Descrição:</label>
                               <input type="text" value={itemDetails.descr_it_fornec} readOnly />
                             </div>
                             <div className="info-row">
-                              <label>Un.Med. Forn:</label>
-                              <input type="text" value={itemDetails.un_med_fornec} readOnly />
+                              <label>Item EMS:</label>
+                              <input type="text" value={itemDetails.descr_it_totvs} readOnly />
                             </div>
                             <div className="info-row">
-                              <label>Item EMS:</label>
-                              <input type="text" value={itemDetails.item_ems} readOnly />
+                              <label>Item Agregado:</label>
+                              <input type="text" value={itemDetails.item_agregado ? "Sim" : "Não"} readOnly />
                             </div>
                             <div className="info-row">
                               <label>Un:</label>
                               <input type="text" value={itemDetails.un_totvs} readOnly />
                             </div>
                             <div className="info-row">
-                              <label>Agregado:</label>
-                              <input type="text" value={itemDetails.item_agregado ? "Sim" : "Não"} readOnly />
-                            </div>
-                            <div className="info-row">
-                              <label>CFOP Fornec:</label>
-                              <input type="text" value={itemDetails.CFOP_fornec} readOnly />
-                            </div>
-                            <div className="info-row">
-                              <label>Natureza:</label>
+                              <label>Natureza Operação:</label>
                               <input type="text" value={itemDetails.nat_operacao} readOnly />
                             </div>
                           </div>
@@ -508,11 +508,11 @@ function DetalhesConsultarDocumentos() {
                           <h3 className="group-title">Pedido e Contrato</h3>
                           <div className="details-section">
                             <div className="info-row">
-                              <label>OC Fornec:</label>
+                              <label>OC Fornecedor:</label>
                               <input type="text" value={itemDetails.OC_fornec} readOnly />
                             </div>
                             <div className="info-row">
-                              <label>Ped. Compr Forn:</label>
+                              <label>Pedido Compra Fornecedor:</label>
                               <input type="text" value={itemDetails.ped_compr_forn} readOnly />
                             </div>
                             <div className="info-row">
@@ -520,16 +520,16 @@ function DetalhesConsultarDocumentos() {
                               <input type="text" value={itemDetails.ordem_compra} readOnly />
                             </div>
                             <div className="info-row">
-                              <label>Parc:</label>
+                              <label>Parcela:</label>
                               <input type="text" value={itemDetails.parcela} readOnly />
                             </div>
                             <div className="info-row">
                               <label>Nr Contrato:</label>
-                              <input type="text" value={itemDetails.nr_contrato} readOnly />
+                              <input type="text" value={itemDetails.contrato} readOnly />
                             </div>
                             <div className="info-row">
                               <label>Seq Item:</label>
-                              <input type="text" value={itemDetails.seq_item} readOnly />
+                              <input type="text" value={itemDetails.item_totvs} readOnly />
                             </div>
                             <div className="info-row">
                               <label>Seq Event:</label>
@@ -537,7 +537,7 @@ function DetalhesConsultarDocumentos() {
                             </div>
                             <div className="info-row">
                               <label>Seq Medição:</label>
-                              <input type="text" value={itemDetails.seq_medicao} readOnly />
+                              <input type="text" value={itemDetails.medicao} readOnly />
                             </div>
                           </div>
                         </div>
