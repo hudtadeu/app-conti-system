@@ -154,8 +154,15 @@ body::before {
 }
 
 .table-striped th {
-  background-color: #fff;
-  color: #0098c9;
+  background-color: #0098c9;
+  color: #fff;
+}
+
+.table-striped td {
+  font-size: 1rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: #666;
 }
 
 .table-striped-even {

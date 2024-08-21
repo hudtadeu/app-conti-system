@@ -168,9 +168,18 @@ body::before {
   border-bottom: 1px solid #ccc;
 }
 
+.user-table th {
+  background-color: #0098c9;
+  color: #fff;
+}
+
 .user-table td {
   position: relative;
   overflow: visible;
+  font-size: 1rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: #666;
 }
 
 .user-table tr:nth-child(odd) {
@@ -288,13 +297,13 @@ body::before {
   white-space: nowrap;
 }
 .icon-up {
-  color: #0098c9;
+  color: #fff;
   font-size: 11px;
   margin-left: 5px;
 }
 
 .icon-down {
-  color: #0098c9;
+  color: #fff;
   font-size: 11px;
   margin-left: 1px;
 }
