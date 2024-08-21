@@ -701,7 +701,7 @@ function DetalhesConsultarDocumentos() {
                           <input type="text" value={itemDetails.seq_it_xml} readOnly />
                           
                           <label>Descrição Item XML:</label>
-                          <input type="text" value={itemDetails.descr_it_totvs} className="larger-input" readOnly />
+                          <textarea value={itemDetails.descr_it_totvs} readOnly className="larger-input-descr"> </textarea>
                           
                           <label>Un. Medida Emit XML:</label>
                           <input type="text" value={itemDetails.un_med_fornec} readOnly />
