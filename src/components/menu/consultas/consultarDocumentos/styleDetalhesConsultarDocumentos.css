@@ -623,19 +623,22 @@ justify-content: center;
   text-align: center; 
 }
 
-.info-row-section-descr input {
+.textarea-descricao {
   width: 100%;
   max-width: 150px; 
   min-width: 210px; 
-  height: 20px; 
+  height: 69px; 
   padding: 5px; 
   border: 1px solid #ddd;
   border-radius: 4px;
   background-color: #f7f7f7;
   color: #333;
   font-size: 12px;
-  text-align: left; 
+  line-height: 1.2; 
+  overflow-y: hidden; 
+  resize: none; 
 }
+
 
 .info-row-section-descr {
   grid-column: span 1; 

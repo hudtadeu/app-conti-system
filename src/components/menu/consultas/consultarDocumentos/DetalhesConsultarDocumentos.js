@@ -459,7 +459,7 @@ function DetalhesConsultarDocumentos() {
                             </div>
                             <div className="info-row-section-descr">
                               <label>Descrição:</label>
-                              <input type="text" value={itemDetails.descr_it_fornec} readOnly />
+                              <textarea value={itemDetails.descr_it_fornec} readOnly className="textarea-descricao"></textarea>
                             </div>
                             <div className="info-row">
                               <label>Item EMS:</label>
