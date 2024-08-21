@@ -658,7 +658,7 @@ function DetalhesConsultarDocumentos() {
                           <label>% ICMS Partilha/Provisório:</label>
                           <input type="text" value={`${itemDetails.aliq_icm_inter_part}%`} readOnly />
                           
-                          <label>Aliquota Sub. Trib.:</label>
+                          <label>% Sub. Trib.:</label>
                           <input type="text" value={itemDetails.aliq_sub_trib} readOnly />
                           
                           <label>Base ICMS Sub. Trib.:</label>
@@ -688,8 +688,8 @@ function DetalhesConsultarDocumentos() {
                           <label>Base Simples Nacional:</label>
                           <input type="text" value={itemDetails.base_simples_nac} readOnly />
                           
-                          <label>Aliq. Simples Nacional:</label>
-                          <input type="text" value={itemDetails.aliq_simples_nac} readOnly />
+                          <label>% Simples Nacional:</label>
+                          <input type="text" value={`${itemDetails.aliq_simples_nac}%`} readOnly />
                           
                           <label>Valor Simples Nacional:</label>
                           <input type="text" value={itemDetails.vlr_simples_nac} readOnly />
