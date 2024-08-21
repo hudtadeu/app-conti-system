@@ -553,7 +553,7 @@ justify-content: center;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   overflow-y: auto; 
-  max-height: calc(100vh - 190px); 
+  max-height: calc(100vh - 194px); 
 }
 
 .details-container::-webkit-scrollbar {
