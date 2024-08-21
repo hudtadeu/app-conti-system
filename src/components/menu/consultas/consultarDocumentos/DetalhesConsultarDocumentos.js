@@ -429,7 +429,7 @@ function DetalhesConsultarDocumentos() {
                     className={activeTab === 'info-adicional' ? 'active-tab' : ''}
                     onClick={() => handleTabClick('info-adicional')}
                   >
-                    Info Adicional
+                    Info. Adicional
                   </button>
                 </div>
 
@@ -640,16 +640,16 @@ function DetalhesConsultarDocumentos() {
                           <label>% FCP UF Destino:</label>
                           <input type="text" value={`${itemDetails.aliq_fcp_uf_dest}%`} readOnly />
                           
-                          <label>% ICMS UF Dest:</label>
+                          <label>% ICMS UF Destino:</label>
                           <input type="text" value={`${itemDetails.aliq_icm_uf_dest}%`} readOnly />
                           
                           <label>Valor ICMS UF Rem:</label>
                           <input type="text" value={itemDetails.vlr_icm_uf_rem} readOnly />
                           
-                          <label>Valor ICMS FCP Dest:</label>
+                          <label>Valor ICMS FCP Destino:</label>
                           <input type="text" value={itemDetails.vlr_fcp_uf_dest} readOnly />
                           
-                          <label>Valor BC ICMS UF Dest:</label>
+                          <label>Valor BC ICMS UF Destino:</label>
                           <input type="text" value={itemDetails.vlr_bc_fcp_uf_dest} readOnly />
                           
                           <label>% ICMS Interest:</label>
@@ -658,13 +658,13 @@ function DetalhesConsultarDocumentos() {
                           <label>% ICMS Partilha/Provisório:</label>
                           <input type="text" value={`${itemDetails.aliq_icm_inter_part}%`} readOnly />
                           
-                          <label>Aliquota Sub.Trib.:</label>
+                          <label>Aliquota Sub. Trib.:</label>
                           <input type="text" value={itemDetails.aliq_sub_trib} readOnly />
                           
-                          <label>Base ICMS Sub.Trib.:</label>
+                          <label>Base ICMS Sub. Trib.:</label>
                           <input type="text" value={itemDetails.base_simples_nac} readOnly />
                           
-                          <label>Valor ICMS Sub.Trib.:</label>
+                          <label>Valor ICMS Sub. Trib.:</label>
                           <input type="text" value={itemDetails.vlr_subs} readOnly />
                         </div>
 
@@ -685,13 +685,13 @@ function DetalhesConsultarDocumentos() {
                           <label>CSOSN:</label>
                           <input type="text" value={itemDetails.csosn} readOnly />
                           
-                          <label>Base Simples Nac.:</label>
+                          <label>Base Simples Nacional:</label>
                           <input type="text" value={itemDetails.base_simples_nac} readOnly />
                           
-                          <label>Aliq. Simples Nac.:</label>
+                          <label>Aliq. Simples Nacional:</label>
                           <input type="text" value={itemDetails.aliq_simples_nac} readOnly />
                           
-                          <label>Valor Simples Nac.:</label>
+                          <label>Valor Simples Nacional:</label>
                           <input type="text" value={itemDetails.vlr_simples_nac} readOnly />
                         </div>
 
@@ -701,9 +701,9 @@ function DetalhesConsultarDocumentos() {
                           <input type="text" value={itemDetails.seq_it_xml} readOnly />
                           
                           <label>Descrição Item XML:</label>
-                          <input type="text" value={itemDetails.descr_it_totvs} readOnly />
+                          <input type="text" value={itemDetails.descr_it_totvs} className="larger-input" readOnly />
                           
-                          <label>Unid Med Emit XML:</label>
+                          <label>Un. Medida Emit XML:</label>
                           <input type="text" value={itemDetails.un_med_fornec} readOnly />
                         </div>
                       </div>
