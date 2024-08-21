@@ -483,7 +483,7 @@ function DetalhesConsultarDocumentos() {
                         {/* Grupo: Quantidade e Preços */}
                         <div className="details-group">
                           <h3 className="group-title">Quantidade e Preços</h3>
-                          <div className="details-section">
+                          <div className="details-section-group">
                             <div className="info-row">
                               <label>Quantidade:</label>
                               <input type="text" value={itemDetails.qtde_fornec} readOnly />
@@ -506,7 +506,7 @@ function DetalhesConsultarDocumentos() {
                         {/* Grupo: Pedido e Contrato */}
                         <div className="details-group">
                           <h3 className="group-title">Pedido e Contrato</h3>
-                          <div className="details-section">
+                          <div className="details-section-group">
                             <div className="info-row">
                               <label>OC Fornecedor:</label>
                               <input type="text" value={itemDetails.OC_fornec} readOnly />
