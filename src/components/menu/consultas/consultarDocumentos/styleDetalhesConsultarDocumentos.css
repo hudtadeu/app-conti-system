@@ -814,8 +814,9 @@ justify-content: center;
 }
 
 .info-section .larger-input {
-  width: 300px; /* Defina o tamanho que desejar */
-  max-width: 90%; /* Evita que o input ultrapasse o tamanho da tela */
+  width: 300px; 
+  max-width: 90%; 
+  height: 20px;
 }
 
 
