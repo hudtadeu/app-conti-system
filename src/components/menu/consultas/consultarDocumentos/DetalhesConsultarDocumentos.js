@@ -375,12 +375,12 @@ function DetalhesConsultarDocumentos() {
                     {itensDocumento.map((item, index) => (
                       <tr key={index}>
                         <td>{item.seq}</td>
+                        <td>{item.nat_operacao}</td>
                         <td>{item.CFOP_fornec}</td>
-                        <td>{item.cfop_fornec}</td>
                         <td>{item.item_totvs}</td>
                         <td>{item.descr_it_fornec}</td>
-                        <td>{item.item_ems}</td>
-                        <td>{item.descr_it_fornec}</td>
+                        <td>{item.descr_it_totvs}</td>
+                        <td>{item.descr_it_totvs}</td>
                         <td>{item.qtde_fornec}</td>
                         <td>{item.un_totvs}</td>
                         <td>{item.qtde_convert}</td>
@@ -390,7 +390,7 @@ function DetalhesConsultarDocumentos() {
                         <td>{item.cst_icms}</td>
                         <td>{item.cst_ipi}</td>
                         <td>{item.cst_pis}</td>
-                        <td>{item.cst_confins}</td>
+                        <td>{item.cst_cofins}</td>
                         <td>{item.ncm}</td>
                         <td>{item.aliq_ipi}</td>
                         <td>{item.ean_fornec}</td>

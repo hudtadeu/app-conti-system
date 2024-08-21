@@ -407,7 +407,7 @@ justify-content: center;
 }
 
 .table-responsive-container::-webkit-scrollbar-track {
-  background-color: #eaeaea; 
+  background-color: #fff; 
   border-radius: 4px;
 }
 
