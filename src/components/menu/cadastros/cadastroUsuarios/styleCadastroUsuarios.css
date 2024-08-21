@@ -231,13 +231,12 @@ body::before {
 .dropdown-menu-user {
   display: block;
   position: absolute;
-  top: 50%;
-  left: -190%;
+  top: 75%;
+  left: -150%;
   transform: translateX(-50%);
   background-color: white;
-  border: 3px solid #ddd;
   border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   min-width: 160px;
   z-index: 1000;
   padding: 0;
@@ -274,6 +273,7 @@ body::before {
 
 .dropdown-menu-user.show {
   display: block;
+  border-radius: 7px;
 }
 
 .dropdown-item-user {
@@ -283,7 +283,7 @@ body::before {
   text-align: left;
   background-color: #fff;
   font-size: 12px;
-  border: none;
+  border-radius: 7px;
   white-space: nowrap;
   text-decoration: none;
 }
