@@ -179,7 +179,7 @@ body::before {
   font-size: 1rem;
   font-size: 13px;
   font-weight: 500;
-  color: #666;
+  color: #555;
 }
 
 .user-table tr:nth-child(odd) {
