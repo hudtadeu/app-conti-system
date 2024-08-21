@@ -394,7 +394,7 @@ justify-content: center;
 
 .table-responsive-container::-webkit-scrollbar {
   width: 8px; 
-  height: 8px;
+  height: 9px;
 }
 
 .table-responsive-container::-webkit-scrollbar-thumb {
