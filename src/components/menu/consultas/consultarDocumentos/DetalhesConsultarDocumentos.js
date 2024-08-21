@@ -552,7 +552,7 @@ function DetalhesConsultarDocumentos() {
                             </div>
                             <div className="info-row">
                               <label>%ICMS:</label>
-                              <input type="text" value={itemDetails.aliq_ICM} readOnly />
+                              <input type="text" value={`${itemDetails.aliq_ICM}%`} readOnly />
                             </div>
                             <div className="info-row">
                               <label>Valor ICMS:</label>
@@ -564,7 +564,7 @@ function DetalhesConsultarDocumentos() {
                             </div>
                             <div className="info-row">
                               <label>%IPI:</label>
-                              <input type="text" value={itemDetails.Aliq_IPI} readOnly />
+                              <input type="text" value={`${itemDetails.Aliq_IPI}%`} readOnly />
                             </div>
                             <div className="info-row">
                               <label>Valor IPI:</label>
@@ -632,18 +632,16 @@ function DetalhesConsultarDocumentos() {
                     </div>
                   )}
 
-
-
                   {activeTab === 'info-adicional' && itemDetails && (
                     <div className="tab-info-adicional">
                       <div className="info-adicional-container">
                         <h3>EC 87</h3>
                         <div className="info-section">
                           <label>% FCP UF Destino:</label>
-                          <input type="text" value={itemDetails.aliq_fcp_uf_dest} readOnly />
+                          <input type="text" value={`${itemDetails.aliq_fcp_uf_dest}%`} readOnly />
                           
                           <label>% ICMS UF Dest:</label>
-                          <input type="text" value={itemDetails.aliq_icm_uf_dest} readOnly />
+                          <input type="text" value={`${itemDetails.aliq_icm_uf_dest}%`} readOnly />
                           
                           <label>Valor ICMS UF Rem:</label>
                           <input type="text" value={itemDetails.vlr_icm_uf_rem} readOnly />
@@ -655,10 +653,10 @@ function DetalhesConsultarDocumentos() {
                           <input type="text" value={itemDetails.vlr_bc_fcp_uf_dest} readOnly />
                           
                           <label>% ICMS Interest:</label>
-                          <input type="text" value={itemDetails.aliq_icm_interestadual} readOnly />
+                          <input type="text" value={`${itemDetails.aliq_icm_interestadual}%`} readOnly />
                           
                           <label>% ICMS Partilha/Provisório:</label>
-                          <input type="text" value={itemDetails.aliq_icm_inter_part} readOnly />
+                          <input type="text" value={`${itemDetails.aliq_icm_inter_part}%`} readOnly />
                           
                           <label>Aliquota Sub.Trib.:</label>
                           <input type="text" value={itemDetails.aliq_sub_trib} readOnly />
@@ -679,7 +677,7 @@ function DetalhesConsultarDocumentos() {
                           <input type="text" value={itemDetails.vlr_icm_diferimento} readOnly />
                           
                           <label>% Diferimento:</label>
-                          <input type="text" value={itemDetails.perc_diferimento} readOnly />
+                          <input type="text" value={`${itemDetails.perc_diferimento}%`} readOnly />
                         </div>
 
                         <h3>Simples Nacional</h3>
