@@ -30,6 +30,7 @@ html, body {
   margin-right: 60px;
   font-size: 13px;
   margin-top: -35px;
+  min-height: 680px;
   z-index: 1;
 }
 
@@ -85,7 +86,7 @@ html, body {
 
 .table-container {
   overflow-y: auto;
-  max-height: 63.5vh; 
+  max-height: 67.8vh; 
   border-radius: 5px;
   max-width: 82vw;
 }

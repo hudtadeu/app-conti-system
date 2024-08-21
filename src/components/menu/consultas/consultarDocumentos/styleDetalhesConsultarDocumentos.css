@@ -183,7 +183,7 @@ html, body {
   padding: 10px;
   border-radius: 5px;
   background-color: #f9f9f9;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid #e0e0e0;
 }
 
 .document-details-dcd {
