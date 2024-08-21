@@ -51,6 +51,26 @@
   overflow-y: auto;
 }
 
+
+.sidebar::-webkit-scrollbar {
+  width: 10px; 
+  height: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #a1a1a1; 
+  border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #828282;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background-color: #eaeaea; 
+  border-radius: 4px;
+}
+
 .sidebar.active {
   left: 0;
   padding: 12px;
