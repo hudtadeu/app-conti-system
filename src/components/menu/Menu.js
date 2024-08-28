@@ -159,12 +159,7 @@ function Menu({ menuActive, toggleMenu }) {
                 <ul ref={submenuRef} className="nav flex-column pl-3 sub-menu">
                   <li className="nav-item">
                     <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
-                      Arquivamento de Documentos já Implatados
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
-                      Atualização Parâmetros XML sLoader em Lote
+                      Atualização Parâmetros XML Loader em Lote
                     </a>
                   </li>
                   <li className="nav-item">
@@ -180,11 +175,6 @@ function Menu({ menuActive, toggleMenu }) {
                   <li className="nav-item">
                     <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
                       Controle Pendências Cancelamento
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
-                      Cópia XML Colaboração x XML Loader
                     </a>
                   </li>
                   <li className="nav-item">
@@ -214,22 +204,12 @@ function Menu({ menuActive, toggleMenu }) {
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
-                      Importação de Arquivos BATCH
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
                       Importação Documento XML
                     </a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
                       Manifestação de Documentos
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
-                      Manifestação Desconhecidos da Operação BATCH
                     </a>
                   </li>
                 </ul>

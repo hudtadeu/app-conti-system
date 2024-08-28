@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import './stylePesquisaConsultarDocumentos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,6 +10,7 @@ function PesquisaConsultarDocumentos() {
   const navigate = useNavigate();
   const { documentData } = location.state || { documentData: [] };
   const [searchTerm, setSearchTerm] = useState("");
+  const [activeDropdown, setActiveDropdown] = useState(null); // Track the active dropdown
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -27,6 +27,11 @@ function PesquisaConsultarDocumentos() {
 
   const handleSearchInputChange = (event) => {
     setSearchTerm(event.target.value);
+  };
+
+  const handleDropdownToggle = (index, event) => {
+    event.stopPropagation(); // Prevents the event from propagating to parent elements
+    setActiveDropdown(activeDropdown === index ? null : index);
   };
 
   const filteredDocumentData = documentData.filter(documento => {
@@ -96,9 +101,13 @@ function PesquisaConsultarDocumentos() {
                       </div>
                     </td>
                     <td>
-                      <div className="dropdown" title="Outras opções">
-                        <button className="dropbtn">...</button>
-                        <div className="dropdown-content">
+                      <div 
+                        className="dropdown" 
+                        onMouseEnter={(event) => handleDropdownToggle(index, event)} 
+                        onMouseLeave={() => setActiveDropdown(null)}
+                      >
+                        <button className="dropbtn" onClick={(event) => handleDropdownToggle(index, event)}>...</button>
+                        <div className={`dropdown-content ${activeDropdown === index ? 'show' : ''}`}>
                           <a href="#">Opção 1</a>
                           <a href="#">Opção 2</a>
                           <a href="#">Opção 3</a>

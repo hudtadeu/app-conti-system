@@ -95,7 +95,7 @@ function ModalCargaArquivosXml ({ onSubmit, closeModal }) {
 
   return (
     <div className="modal-overlay" onClick={handleClickOutside}>
-      <div className="modal-content" ref={modalRef}>
+      <div className="modal-content" ref={modalRef} onClick={(e) => e.stopPropagation()}>
         <button className="modal-close-button" onClick={closeModal}>
           <FontAwesomeIcon icon={faTimes} />
         </button>

@@ -11,6 +11,7 @@ function PesquisaCargaArquivosXml() {
   const [documentData, setDocumentData] = useState(initialDocumentData || []);
   const [searchTerm, setSearchTerm] = useState("");
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [openDropdownIndex, setOpenDropdownIndex] = useState(null); // Estado para controlar o dropdown
   const modalRef = useRef(null);
 
   const handleSearchInputChange = (event) => {
@@ -27,8 +28,8 @@ function PesquisaCargaArquivosXml() {
   };
 
   const handleFilterSubmit = (filteredData) => {
-    setDocumentData(filteredData);  // Atualiza os dados da tabela
-    closeFilterModal();  // Fecha o modal após a atualização dos dados
+    setDocumentData(filteredData);
+    closeFilterModal();
   };
 
   const handleOutsideClick = (event) => {
@@ -47,6 +48,14 @@ function PesquisaCargaArquivosXml() {
       document.removeEventListener('click', handleOutsideClick);
     };
   }, [isFilterModalOpen]);
+
+  const handleMouseEnter = (index) => {
+    setOpenDropdownIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setOpenDropdownIndex(null);
+  };
 
   const filteredDocumentData = documentData
     .filter(documento => documento.situacao.toLowerCase() === 'pendente')
@@ -116,13 +125,19 @@ function PesquisaCargaArquivosXml() {
                       </div>
                     </td>
                     <td>
-                      <div className="dropdown" >
+                      <div 
+                        className="dropdown" 
+                        onMouseEnter={() => handleMouseEnter(index)}
+                        onMouseLeave={handleMouseLeave}
+                      >
                         <button className="dropbtn">...</button>
-                        <div className="dropdown-content">
-                          <a href="#">Atualizar EMS</a>
-                          <a href="#">Priorizar</a>
-                          <a href="#">Confirmar</a>
-                        </div>
+                        {openDropdownIndex === index && (
+                          <div className="dropdown-content">
+                            <a href="#">Atualizar EMS</a>
+                            <a href="#">Priorizar</a>
+                            <a href="#">Confirmar</a>
+                          </div>
+                        )}
                       </div>
                     </td>
                   </tr>
