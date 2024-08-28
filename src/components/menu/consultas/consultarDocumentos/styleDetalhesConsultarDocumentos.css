@@ -60,6 +60,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 .selected-documento-details {
@@ -772,16 +773,16 @@ justify-content: center;
   padding: 20px; 
   border-radius: 8px; 
   width: 150%;
-  max-width: 900px;
+  max-width: 800px;
   max-height: 720px;
-  min-height: 730px;
+  min-height: 650px;
   position: relative;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .info-adicional-container {
-  padding: 20px;
-  margin-top: 5px; 
+  padding: 10px;
+  margin-top: 1px; 
   background-color: #ffffff; 
   border-radius: 8px; 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -796,14 +797,14 @@ justify-content: center;
 }
 
 .info-adicional-container h3:not(:first-child) {
-  margin-top: 10px; 
+  margin-top: 5px; 
 }
 
 .info-section {
   display: grid;
   grid-template-columns: repeat(4, 1fr); 
   gap: 10px;
-  margin-bottom: 20px; 
+  margin-bottom: 1px; 
 }
 
 .info-section label {

@@ -34,6 +34,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 .container-consultardocumentos {
@@ -48,7 +49,7 @@ html, body {
   font-size: 13px;
   overflow-x: auto;
   max-width: 700px;
-  margin: -38px auto; 
+  margin: -45px auto; 
   z-index: 1;
 }
 
@@ -97,7 +98,7 @@ html, body {
 }
 
 .search-section-consultardocumentos label {
-  margin-bottom: 10px;
+  margin-bottom: 7px;
   color: #211915;
   font-weight: bold;
   display: flex;

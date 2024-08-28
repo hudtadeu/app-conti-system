@@ -262,6 +262,7 @@ html, body {
 .loading-spinner-doc {
   text-align: center;
   font-size: 25px;
+  color: white;
 }
 
 .spinner-container-doc {
