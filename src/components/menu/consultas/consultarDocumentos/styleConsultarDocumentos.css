@@ -100,7 +100,7 @@ html, body {
 .search-section-consultardocumentos label {
   margin-bottom: 7px;
   color: #211915;
-  font-weight: bold;
+  font-weight: 550;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

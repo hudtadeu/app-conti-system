@@ -30,7 +30,7 @@ html, body {
   margin-right: 60px;
   font-size: 13px;
   margin-top: -35px;
-  min-height: 680px;
+  min-height: 600px;
   z-index: 1;
 }
 
@@ -53,7 +53,7 @@ html, body {
 }
 
 .search-input-pcd {
-  padding: 8px;
+  padding: 5px;
   border: 2px solid #0098c9;
   border-radius: 5px 0 0 5px;
 }
@@ -61,7 +61,7 @@ html, body {
 .button-search-pcd {
   background-color: #0098c9;
   border: none;
-  padding: 8px;
+  padding: 5px;
   border-radius: 0 5px 5px 0;
   color: #fff;
   cursor: pointer;
@@ -72,8 +72,8 @@ html, body {
   background-color: #0098c9;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 5px 10px;
+  border-radius: 7px;
   cursor: pointer;
   text-transform: uppercase;
   transition: background-color 0.3s ease;
@@ -88,7 +88,7 @@ html, body {
   overflow-y: auto;
   max-height: 67.8vh; 
   border-radius: 5px;
-  max-width: 82vw;
+  max-width: 98vw;
 }
 
 .table-container::-webkit-scrollbar {
@@ -106,7 +106,7 @@ html, body {
 }
 
 .table-container::-webkit-scrollbar-track {
-  background-color: #eaeaea; 
+  background-color: white; 
   border-radius: 4px;
 }
 
@@ -131,13 +131,14 @@ html, body {
   font-size: 1rem;
   color: #555;
   font-size: 12px;
+  padding: 5px;
   font-weight: 500;
 }
 
 .table-documentos-pcd th {
   background-color: #0098c9;
   color:  #fff;
-  padding: 14px;
+  padding: 13px;
   font-size: 13px;
   font-weight: 550;
 }

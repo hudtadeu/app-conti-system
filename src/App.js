@@ -11,6 +11,8 @@ import DetalhesConsultarDocumentos from "./components/menu/consultas/consultarDo
 import XmlObrigFiscais from "./components/menu/relatorios/xmlObrigFiscais/XmlObrigFiscais";
 import XmlRecebimento from "./components/menu/relatorios/xmlRecebimento/XmlRecebimento";
 import Dashboard from "./components/menu/painelDeControle/Dashboard";
+import ConsultaCargaArquivosXml from "./components/menu/tarefas/cargaArqXml/ConsultaCargaArquivosXml";
+import PesquisaCargaArquivosXml from "./components/menu/tarefas/cargaArqXml/PesquisaCargaArquivosXml";
 
 function App() {
   return (
@@ -81,6 +83,22 @@ function App() {
               element={
                 <Layout>
                   <XmlRecebimento />
+                </Layout>
+              }
+            />
+            <Route
+              path="consultaCargaArquivosXml"
+              element={
+                <Layout>
+                  <ConsultaCargaArquivosXml />
+                </Layout>
+              }
+            />
+            <Route
+              path="pesquisaCargaArquivosXml"
+              element={
+                <Layout>
+                  <PesquisaCargaArquivosXml />
                 </Layout>
               }
             />

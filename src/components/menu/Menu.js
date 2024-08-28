@@ -164,13 +164,13 @@ function Menu({ menuActive, toggleMenu }) {
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
-                      Atualização Parâmetros XML Loader em Lote
+                      Atualização Parâmetros XML sLoader em Lote
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
+                    <Link className="nav-link" to="/consultaCargaArquivosXml" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
                       Carga de Arquivos XML
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="#" onClick={(e) => handleSubMenuClick(e, "tarefas")}>
