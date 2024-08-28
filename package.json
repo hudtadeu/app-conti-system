@@ -30,8 +30,11 @@
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
     "react-tooltip": "^5.26.4",
+    "recharts": "^2.12.7",
+    "shadcn-ui": "^0.8.0",
     "victory": "^37.0.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.18.6"
