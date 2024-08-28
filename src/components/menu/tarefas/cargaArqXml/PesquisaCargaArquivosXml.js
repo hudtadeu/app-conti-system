@@ -116,7 +116,7 @@ function PesquisaCargaArquivosXml() {
                       </div>
                     </td>
                     <td>
-                      <div className="dropdown" title="Outras opções">
+                      <div className="dropdown" >
                         <button className="dropbtn">...</button>
                         <div className="dropdown-content">
                           <a href="#">Atualizar EMS</a>

@@ -8,10 +8,17 @@ function ModalCargaArquivosXml ({ onSubmit, closeModal }) {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const formRef = useRef(null);
+  const modalRef = useRef(null);
 
   const formatDate = (dateString) => {
     const [year, month, day] = dateString.split('-');
     return `${day.padStart(2, '0')}${month.padStart(2, '0')}${year}`;
+  };
+
+  const handleClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      closeModal();
+    }
   };
 
   const handleSubmit = async (event) => {
@@ -87,14 +94,15 @@ function ModalCargaArquivosXml ({ onSubmit, closeModal }) {
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
+    <div className="modal-overlay" onClick={handleClickOutside}>
+      <div className="modal-content" ref={modalRef}>
         <button className="modal-close-button" onClick={closeModal}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
         <h2 className="modal-title">Carga de Arquivos Xml</h2>
         {error && <p className="error-message">{error}</p>}
         <form ref={formRef} className="modal-form-carga" onSubmit={handleSubmit}>
+          {/* Form content here */}
           <label>
             <span>Cod. Estabelecimento:</span>
             <div className="input-group-search">
