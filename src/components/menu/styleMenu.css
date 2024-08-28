@@ -36,7 +36,8 @@
   color: #fff;
   flex-direction: column;
   justify-content: space-between;
-  width: 220px;
+  min-width: 230px;
+  max-width: 150px;
   height: 98vh;
   position: fixed;
   top: 0;
