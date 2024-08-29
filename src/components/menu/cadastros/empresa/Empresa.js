@@ -211,12 +211,6 @@ function Empresa() {
           >
             Nova Empresa
           </button>
-          <button
-            className="btn btn-outline-primary-empresa"
-            onClick={() => setOverlayVisible(true)}
-          >
-            Outras Opções
-          </button>
           <div className="search-container">
             <input
               type="text"
