@@ -14,7 +14,7 @@ function PesquisaConsultarDocumentos() {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [sortConfig, setSortConfig] = useState({ key: 'emissao', direction: 'ascending' });
+  const [sortConfig, setSortConfig] = useState({ key: 'emissao', direction: 'descending' });
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -62,6 +62,11 @@ function PesquisaConsultarDocumentos() {
   };
 
   const sortedDocumentData = [...documentData].sort((a, b) => {
+    if (a.priorizado && !b.priorizado) return -1;
+    if (!a.priorizado && b.priorizado) return 1;
+    if (a.confirmado && !b.confirmado) return -1;
+    if (!a.confirmado && b.confirmado) return 1;
+
     const aValue = a[sortConfig.key];
     const bValue = b[sortConfig.key];
 

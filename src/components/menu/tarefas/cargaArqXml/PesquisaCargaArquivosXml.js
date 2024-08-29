@@ -15,7 +15,7 @@ function PesquisaCargaArquivosXml() {
   const [searchTerm, setSearchTerm] = useState("");
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [openDropdownIndex, setOpenDropdownIndex] = useState(null);
-  const [sortConfig, setSortConfig] = useState({ key: 'emissao', direction: 'ascending' });
+  const [sortConfig, setSortConfig] = useState({ key: 'emissao', direction: 'descending' });
   const modalRef = useRef(null);
 
   const handleSearchInputChange = (event) => {
