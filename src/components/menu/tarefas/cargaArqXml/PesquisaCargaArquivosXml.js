@@ -57,6 +57,23 @@ function PesquisaCargaArquivosXml() {
     setOpenDropdownIndex(null);
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    date.setDate(date.getDate() + 1); 
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${day < 10 ? '0' + day : day}-${month < 10 ? '0' + month : month}-${year}`;
+  };
+
+  const sortDocuments = (a, b) => {
+    if (a.priorizado && !b.priorizado) return -1;
+    if (!a.priorizado && b.priorizado) return 1;
+    if (a.confirmado && !b.confirmado) return -1;
+    if (!a.confirmado && b.confirmado) return 1;
+    return new Date(b.emissao) - new Date(a.emissao);
+  };
+
   const filteredDocumentData = documentData
     .filter(documento => documento.situacao.toLowerCase() === 'pendente')
     .filter(documento => {
@@ -68,7 +85,8 @@ function PesquisaCargaArquivosXml() {
         documento.tipo_doc.toLowerCase().includes(searchTerm.toLowerCase()) ||
         documento.emissao.toLowerCase().includes(searchTerm.toLowerCase())
       );
-    });
+    })
+    .sort(sortDocuments); // Aplicando a ordenação
 
   return (
     <div className="body-pesquisaConsultarDocumentos">
@@ -113,7 +131,7 @@ function PesquisaCargaArquivosXml() {
                     <td>{documento.forneced}</td>
                     <td>{documento.serie_docto}</td>
                     <td>{documento.nat_operacao}</td>
-                    <td>{documento.emissao}</td>
+                    <td>{formatDate(documento.emissao)}</td> {/* Formatando a data aqui */}
                     <td>
                       <div className="status-description" style={{ backgroundColor: statusInfo.color }}>
                         {statusInfo.text}

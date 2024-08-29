@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import ModalPesquisaConsultarDocumentos from './ModalPesquisaConsultarDocumentos'; // Certifique-se de importar o modal corretamente
 import './stylePesquisaConsultarDocumentos.css';
@@ -46,20 +47,26 @@ function PesquisaConsultarDocumentos() {
 
   const handleSearch = (data) => {
     setDocumentData(data);
-    handleCloseModal(); // Fecha o modal após a pesquisa
+    handleCloseModal(); 
   };
 
-  const filteredDocumentData = documentData.filter(documento => {
-    return (
-      documento.nro_docto.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      documento.situacao.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      documento.forneced.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      documento.serie_docto.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      documento.nat_operacao.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      documento.tipo_doc.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      documento.emissao.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  });
+  const sortDocumentsByDate = (a, b) => {
+    return new Date(b.emissao) - new Date(a.emissao);
+  };
+
+  const filteredDocumentData = documentData
+    .filter(documento => {
+      return (
+        documento.nro_docto.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        documento.situacao.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        documento.forneced.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        documento.serie_docto.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        documento.nat_operacao.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        documento.tipo_doc.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        documento.emissao.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    })
+    .sort(sortDocumentsByDate); 
 
   return (
     <div className="body-pesquisaConsultarDocumentos">

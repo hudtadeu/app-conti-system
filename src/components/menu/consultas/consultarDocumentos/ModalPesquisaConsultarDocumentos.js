@@ -74,7 +74,7 @@ function ModalPesquisaConsultarDocumentos ({ onSubmit, closeModal }) {
       console.log("Dados recebidos:", data);
       if (data && data.items && data.items.length > 0) {
         setDocumentData(data.items);
-        onSubmit(data.items); // Passa os novos dados para o componente pai
+        onSubmit(data.items); 
       } else {
         setError("Nenhum item encontrado na resposta.");
       }
@@ -83,7 +83,7 @@ function ModalPesquisaConsultarDocumentos ({ onSubmit, closeModal }) {
       console.error("Erro ao buscar documentos:", error);
     } finally {
       setLoading(false);
-      closeModal(); // Fecha o modal após a consulta
+      closeModal(); 
     }
   };
 
