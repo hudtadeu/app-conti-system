@@ -199,7 +199,7 @@ function PesquisaCargaArquivosXml() {
                     </td>
                     <td>
                       <div 
-                        className="dropdown" 
+                        className="dropdown-container" 
                         onMouseEnter={() => handleMouseEnter(index)}
                         onMouseLeave={handleMouseLeave}
                       >

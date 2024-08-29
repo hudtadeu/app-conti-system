@@ -166,7 +166,7 @@ function PesquisaConsultarDocumentos() {
                     </td>
                     <td>
                       <div 
-                        className="dropdown" 
+                        className="dropdown-container" 
                         onMouseEnter={(event) => handleDropdownToggle(index, event)} 
                         onMouseLeave={() => setActiveDropdown(null)}
                       >

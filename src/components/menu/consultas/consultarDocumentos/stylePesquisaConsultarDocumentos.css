@@ -123,7 +123,6 @@ html, body {
 
 .table-documentos-pcd th, .table-documentos-pcd td {
   border: 1px solid #ddd;
-  padding: 8px;
   border-left: none;
   border-right: none;
 }
@@ -160,11 +159,6 @@ html, body {
   margin: 0 auto;
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
 .dropbtn {
   border: none;
   color: #0098c9;
@@ -185,6 +179,12 @@ html, body {
   top: 25px;
 }
 
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
@@ -196,11 +196,11 @@ html, body {
   background-color: #f1f1f1;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown-container:hover .dropdown-content {
   display: block;
 }
 
-.dropdown:hover .dropbtn {
+.dropdown-container:hover .dropbtn {
   background-color: transparent;
 }
 
