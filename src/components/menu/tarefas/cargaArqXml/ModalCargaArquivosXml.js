@@ -3,12 +3,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faTimes } from '@fortawesome/free-solid-svg-icons';
 import './ModalCargaArquivosXml.css';
 
-function ModalCargaArquivosXml ({ onSubmit, closeModal }) {
-  const [documentData, setDocumentData] = useState(null);
+function ModalCargaArquivosXml({ onSubmit, closeModal }) {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const formRef = useRef(null);
   const modalRef = useRef(null);
+
+  // Refs for each input field
+  const codEstabelFimRef = useRef(null);
+  const documentoDeRef = useRef(null);
+  const documentoAteRef = useRef(null);
+  const fornecedorDeRef = useRef(null);
+  const fornecedorAteRef = useRef(null);
+  const dataRecebimentoDeRef = useRef(null);
+  const dataRecebimentoAteRef = useRef(null);
+  const serieDeRef = useRef(null);
+  const serieAteRef = useRef(null);
+  const chaveDocumentoDeRef = useRef(null);
+  const chaveDocumentoAteRef = useRef(null);
+  const tipoDocumentoRef = useRef(null);
+  const submitButtonRef = useRef(null);
 
   const formatDate = (dateString) => {
     const [year, month, day] = dateString.split('-');
@@ -18,6 +32,17 @@ function ModalCargaArquivosXml ({ onSubmit, closeModal }) {
   const handleClickOutside = (event) => {
     if (modalRef.current && !modalRef.current.contains(event.target)) {
       closeModal();
+    }
+  };
+
+  const handleKeyDown = (event, nextFieldRef) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      if (nextFieldRef) {
+        nextFieldRef.current.focus();
+      } else {
+        handleSubmit(event); // Trigger form submit on the last field
+      }
     }
   };
 
@@ -74,8 +99,7 @@ function ModalCargaArquivosXml ({ onSubmit, closeModal }) {
       const data = await response.json();
       console.log("Dados recebidos:", data);
       if (data && data.items && data.items.length > 0) {
-        setDocumentData(data.items);
-        onSubmit(data.items); // Passa os novos dados para o componente pai
+        onSubmit(data.items); 
       } else {
         setError("Nenhum item encontrado na resposta.");
       }
@@ -84,12 +108,11 @@ function ModalCargaArquivosXml ({ onSubmit, closeModal }) {
       console.error("Erro ao buscar documentos:", error);
     } finally {
       setLoading(false);
-      closeModal(); // Fecha o modal após a consulta
+      closeModal(); 
     }
   };
 
   const handleTipoDocumentoChange = () => {
-    setDocumentData(null); 
     setError('');
   };
 
@@ -102,58 +125,57 @@ function ModalCargaArquivosXml ({ onSubmit, closeModal }) {
         <h2 className="modal-title">Carga de Arquivos Xml</h2>
         {error && <p className="error-message">{error}</p>}
         <form ref={formRef} className="modal-form-carga" onSubmit={handleSubmit}>
-          {/* Form content here */}
           <label>
             <span>Cod. Estabelecimento:</span>
             <div className="input-group-search">
-              <input type="text" name="codEstabelIni" />
+              <input type="text" name="codEstabelIni" onKeyDown={(e) => handleKeyDown(e, codEstabelFimRef)} />
               -
-              <input type="text" name="codEstabelFim" />
+              <input type="text" name="codEstabelFim" ref={codEstabelFimRef} onKeyDown={(e) => handleKeyDown(e, documentoDeRef)} />
             </div>
           </label>
           <br />
           <label>
             <span>Documento:</span>
             <div className="input-group-search">
-              <input type="text" name="documentoDe" />
+              <input type="text" name="documentoDe" ref={documentoDeRef} onKeyDown={(e) => handleKeyDown(e, documentoAteRef)} />
               -
-              <input type="text" name="documentoAte" />
+              <input type="text" name="documentoAte" ref={documentoAteRef} onKeyDown={(e) => handleKeyDown(e, fornecedorDeRef)} />
             </div>
           </label>
           <br />
           <label>
             <span>Fornecedor:</span>
             <div className="input-group-search">
-              <input type="text" name="fornecedorDe" />
+              <input type="text" name="fornecedorDe" ref={fornecedorDeRef} onKeyDown={(e) => handleKeyDown(e, fornecedorAteRef)} />
               -
-              <input type="text" name="fornecedorAte" />
+              <input type="text" name="fornecedorAte" ref={fornecedorAteRef} onKeyDown={(e) => handleKeyDown(e, dataRecebimentoDeRef)} />
             </div>
           </label>
           <br />
           <label>
             <span>Data de recebimento:</span>
             <div className="input-group-search">
-              <input type="date" name="dataRecebimentoDe" required />
+              <input type="date" name="dataRecebimentoDe" ref={dataRecebimentoDeRef} onKeyDown={(e) => handleKeyDown(e, dataRecebimentoAteRef)} required />
               -
-              <input type="date" name="dataRecebimentoAte" required />
+              <input type="date" name="dataRecebimentoAte" ref={dataRecebimentoAteRef} onKeyDown={(e) => handleKeyDown(e, serieDeRef)} required />
             </div>
           </label>
           <br />
           <label>
             <span>Série Documento:</span>
             <div className="input-group-search">
-              <input type="text" name="serieDe" />
+              <input type="text" name="serieDe" ref={serieDeRef} onKeyDown={(e) => handleKeyDown(e, serieAteRef)} />
               -
-              <input type="text" name="serieAte" />
+              <input type="text" name="serieAte" ref={serieAteRef} onKeyDown={(e) => handleKeyDown(e, chaveDocumentoDeRef)} />
             </div>
           </label>
           <br />
           <label>
             <span>Chave Documento:</span>
             <div className="input-group-search">
-              <input type="text" name="chaveDocumentoDe" />
+              <input type="text" name="chaveDocumentoDe" ref={chaveDocumentoDeRef} onKeyDown={(e) => handleKeyDown(e, chaveDocumentoAteRef)} />
               -
-              <input type="text" name="chaveDocumentoAte" />
+              <input type="text" name="chaveDocumentoAte" ref={chaveDocumentoAteRef} onKeyDown={(e) => handleKeyDown(e, tipoDocumentoRef)} />
             </div>
           </label>
           <br />
@@ -162,6 +184,8 @@ function ModalCargaArquivosXml ({ onSubmit, closeModal }) {
             <select
               onChange={handleTipoDocumentoChange}
               name="tipoDocumento"
+              ref={tipoDocumentoRef}
+              onKeyDown={(e) => handleKeyDown(e, submitButtonRef)}
               required 
             >
               <option value="">Selecione</option>
@@ -174,14 +198,14 @@ function ModalCargaArquivosXml ({ onSubmit, closeModal }) {
             </select>
           </label>
           <br />
-          <button type="submit" className="button-primary-consultardocumentos">Pesquisar</button>
+          <button type="submit" className="button-primary-consultardocumentos" ref={submitButtonRef}>Pesquisar</button>
         </form>
         {loading && (
         <div className="overlay-carga">
           <div className="loading-container-carga">
             <FontAwesomeIcon icon={faSpinner} spin size="3x" />
           </div>
-          </div>
+        </div>
         )}
       </div>
     </div>
