@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faLongArrowAltUp, faLongArrowAltDown } from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
 import { getStatusInfo, getTipoDocumentoInfo } from '../../../utils';
 import ModalCargaArquivosXml from './ModalCargaArquivosXml';
+import './stylePesquisaCargaArquivosXml.css';
 
 function PesquisaCargaArquivosXml() {
   const location = useLocation();
@@ -11,7 +13,8 @@ function PesquisaCargaArquivosXml() {
   const [documentData, setDocumentData] = useState(initialDocumentData || []);
   const [searchTerm, setSearchTerm] = useState("");
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
-  const [openDropdownIndex, setOpenDropdownIndex] = useState(null); // Estado para controlar o dropdown
+  const [openDropdownIndex, setOpenDropdownIndex] = useState(null);
+  const [sortConfig, setSortConfig] = useState({ key: 'emissao', direction: 'ascending' });
   const modalRef = useRef(null);
 
   const handleSearchInputChange = (event) => {
@@ -66,15 +69,37 @@ function PesquisaCargaArquivosXml() {
     return `${day < 10 ? '0' + day : day}-${month < 10 ? '0' + month : month}-${year}`;
   };
 
-  const sortDocuments = (a, b) => {
+  const handleSort = (key) => {
+    let direction = 'ascending';
+    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
+      direction = 'descending';
+    } else if (sortConfig.key === key && sortConfig.direction === 'descending') {
+      direction = 'ascending';
+    }
+    setSortConfig({ key, direction });
+  };
+
+  const sortedDocumentData = [...documentData].sort((a, b) => {
     if (a.priorizado && !b.priorizado) return -1;
     if (!a.priorizado && b.priorizado) return 1;
     if (a.confirmado && !b.confirmado) return -1;
     if (!a.confirmado && b.confirmado) return 1;
-    return new Date(b.emissao) - new Date(a.emissao);
-  };
 
-  const filteredDocumentData = documentData
+    const aValue = a[sortConfig.key];
+    const bValue = b[sortConfig.key];
+
+    if (sortConfig.key === 'emissao') {
+      return sortConfig.direction === 'ascending'
+        ? new Date(aValue) - new Date(bValue)
+        : new Date(bValue) - new Date(aValue);
+    }
+
+    return sortConfig.direction === 'ascending'
+      ? aValue.localeCompare(bValue)
+      : bValue.localeCompare(aValue);
+  });
+
+  const filteredDocumentData = sortedDocumentData
     .filter(documento => documento.situacao.toLowerCase() === 'pendente')
     .filter(documento => {
       return (
@@ -85,8 +110,14 @@ function PesquisaCargaArquivosXml() {
         documento.tipo_doc.toLowerCase().includes(searchTerm.toLowerCase()) ||
         documento.emissao.toLowerCase().includes(searchTerm.toLowerCase())
       );
-    })
-    .sort(sortDocuments); // Aplicando a ordenação
+    });
+
+  const renderSortIcons = (key) => (
+    <span className="sort-icons-carga">
+      <FontAwesomeIcon icon={faLongArrowAltUp} className={`sort-icon ${sortConfig.key === key && sortConfig.direction === 'ascending' ? 'active' : ''}`} />
+      <FontAwesomeIcon icon={faLongArrowAltDown} className={`sort-icon ${sortConfig.key === key && sortConfig.direction === 'descending' ? 'active' : ''}`} />
+    </span>
+  );
 
   return (
     <div className="body-pesquisaConsultarDocumentos">
@@ -111,13 +142,37 @@ function PesquisaCargaArquivosXml() {
           <table className="table-documentos-pcd">
             <thead>
               <tr>
-                <th>Número</th>
-                <th>Fornecedor</th>
-                <th>Série</th>
-                <th>Natureza da Operação</th>
-                <th>Data de Emissão</th>
+                <th onClick={() => handleSort('nro_docto')}>
+                  <span>
+                    Número {renderSortIcons('nro_docto')}
+                  </span>
+                </th>
+                <th onClick={() => handleSort('forneced')}>
+                  <span>
+                    Fornecedor {renderSortIcons('forneced')}
+                  </span>
+                </th>
+                <th onClick={() => handleSort('serie_docto')}>
+                  <span>
+                    Série {renderSortIcons('serie_docto')}
+                  </span>
+                </th>
+                <th onClick={() => handleSort('nat_operacao')}>
+                  <span>
+                    Natureza da Operação {renderSortIcons('nat_operacao')}
+                  </span>
+                </th>
+                <th onClick={() => handleSort('emissao')}>
+                  <span>
+                    Data de Emissão {renderSortIcons('emissao')}
+                  </span>
+                </th>
                 <th>Status</th>
-                <th>Tipo Documento</th>
+                <th onClick={() => handleSort('tipo_doc')}>
+                  <span>
+                    Tipo Documento {renderSortIcons('tipo_doc')}
+                  </span>
+                </th>
                 <th>Ações</th>
               </tr>
             </thead>
@@ -131,7 +186,7 @@ function PesquisaCargaArquivosXml() {
                     <td>{documento.forneced}</td>
                     <td>{documento.serie_docto}</td>
                     <td>{documento.nat_operacao}</td>
-                    <td>{formatDate(documento.emissao)}</td> {/* Formatando a data aqui */}
+                    <td>{formatDate(documento.emissao)}</td>
                     <td>
                       <div className="status-description" style={{ backgroundColor: statusInfo.color }}>
                         {statusInfo.text}

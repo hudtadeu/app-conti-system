@@ -32,6 +32,7 @@ function CadastroUsuarios() {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
   const [overlayLoading, setOverlayLoading] = useState(false); // Estado separado para o overlay
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
 
   const fetchUsers = useCallback(() => {
     const base64Credentials = sessionStorage.getItem("token");
@@ -200,6 +201,30 @@ function CadastroUsuarios() {
     }, 2000);
   };
 
+  const handleSort = (key) => {
+    let direction = 'ascending';
+    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
+      direction = 'descending';
+    } else if (sortConfig.key === key && sortConfig.direction === 'descending') {
+      direction = 'ascending';
+    }
+    setSortConfig({ key, direction });
+
+    const sortedUsers = [...filteredUsers].sort((a, b) => {
+      const aValue = a[key];
+      const bValue = b[key];
+
+      if (typeof aValue === 'string' && typeof bValue === 'string') {
+        return direction === 'ascending' ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+      } else if (typeof aValue === 'boolean' && typeof bValue === 'boolean') {
+        return direction === 'ascending' ? (aValue === bValue ? 0 : aValue ? -1 : 1) : (aValue === bValue ? 0 : aValue ? 1 : -1);
+      }
+      return 0;
+    });
+
+    setFilteredUsers(sortedUsers);
+  };
+
   return (
     <div className="body-usuario">
       {overlayLoading && (
@@ -221,6 +246,8 @@ function CadastroUsuarios() {
           handleDuplicateUser={handleDuplicateUser}
           handleExport={handleExport}
           loading={loading}
+          handleSort={handleSort}
+          sortConfig={sortConfig}
         />
         {showNewUserModal && <NewUserModal toggleModal={toggleNewUserModal} addNewUser={addNewUser} />}
         {isViewModalOpen && (
@@ -273,7 +300,7 @@ function SearchComponent({ toggleModal, onSearch }) {
   );
 }
 
-function UserTable({ users, openViewModal, openEditModal, deleteUser, handleDuplicateUser, handleExport, loading }) {
+function UserTable({ users, openViewModal, openEditModal, deleteUser, handleDuplicateUser, handleExport, loading, handleSort, sortConfig }) {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
   const dropdownRefs = useRef([]);
 
@@ -299,6 +326,13 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser, handleDupl
     };
   }, [dropdownOpenIndex, handleClickOutside]);
 
+  const renderSortIcons = (key) => (
+    <span className="sort-icons-user" onClick={() => handleSort(key)}>
+      <FontAwesomeIcon icon={faLongArrowAltUp} className={`sort-icon ${sortConfig.key === key && sortConfig.direction === 'ascending' ? 'active' : ''}`} />
+      <FontAwesomeIcon icon={faLongArrowAltDown} className={`sort-icon ${sortConfig.key === key && sortConfig.direction === 'descending' ? 'active' : ''}`} />
+    </span>
+  );
+
   return (
     <div className="table-responsive-usuario">
       <table className="user-table">
@@ -307,25 +341,21 @@ function UserTable({ users, openViewModal, openEditModal, deleteUser, handleDupl
             <th scope="col">Usuário</th>
             <th scope="col">Estabelecimento</th>
             {[
-              "Importa",
-              "Elimina",
-              "Cancela",
-              "Altera",
-              "Atualiza",
-              "Efetua",
-              "Arquiva",
-              "Manifesta",
-              "Prioriza",
-              "Rec.Fiscal",
-              "Rec.Físico",
+              { label: "Importa", key: "l-importa" },
+              { label: "Elimina", key: "l-elimina" },
+              { label: "Cancela", key: "l-cancela-doc" },
+              { label: "Altera", key: "l-altera-cfop" },
+              { label: "Atualiza", key: "l-atualiza" },
+              { label: "Efetua", key: "l-efetua-download" },
+              { label: "Arquiva", key: "l-arquiva-xml" },
+              { label: "Manifesta", key: "l-manifesta" },
+              { label: "Prioriza", key: "l-prioriza-documento" },
+              { label: "Rec.Fiscal", key: "l-recebe-fiscal" },
+              { label: "Rec.Físico", key: "l-recebe-fisico" },
             ].map((action, index) => (
-              <th key={index} scope="col" className="header-with-icon">
-                {action}
-                <FontAwesomeIcon className="icon-up" icon={faLongArrowAltUp} />
-                <FontAwesomeIcon
-                  className="icon-down"
-                  icon={faLongArrowAltDown}
-                />
+              <th key={index} scope="col" className="header-with-icon" onClick={() => handleSort(action.key)}>
+                {action.label}
+                {renderSortIcons(action.key)}
               </th>
             ))}
             <th scope="col">

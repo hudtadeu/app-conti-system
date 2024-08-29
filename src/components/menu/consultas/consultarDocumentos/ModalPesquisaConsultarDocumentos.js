@@ -93,12 +93,12 @@ function ModalPesquisaConsultarDocumentos ({ onSubmit, closeModal }) {
   };
 
   return (
-    <div className="modal-overlay" onClick={handleClickOutside}>
-      <div className="modal-content" ref={modalRef} onClick={(e) => e.stopPropagation()}>
+    <div className="modal-overlay-carga" onClick={handleClickOutside}>
+      <div className="modal-content-carga" ref={modalRef} onClick={(e) => e.stopPropagation()}>
         <button className="modal-close-button" onClick={closeModal}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
-        <h2 className="modal-title">Carga de Arquivos Xml</h2>
+        <h2 className="modal-title">Consultar Documento</h2>
         {error && <p className="error-message">{error}</p>}
         <form ref={formRef} className="modal-form-carga" onSubmit={handleSubmit}>
           {/* Form content here */}

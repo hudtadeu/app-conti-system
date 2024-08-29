@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import ModalPesquisaConsultarDocumentos from './ModalPesquisaConsultarDocumentos'; // Certifique-se de importar o modal corretamente
 import './stylePesquisaConsultarDocumentos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faLongArrowAltUp, faLongArrowAltDown } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getStatusInfo, getTipoDocumentoInfo } from '../../../utils';
 
@@ -12,8 +12,9 @@ function PesquisaConsultarDocumentos() {
   const navigate = useNavigate();
   const [documentData, setDocumentData] = useState(location.state?.documentData || []);
   const [searchTerm, setSearchTerm] = useState("");
-  const [activeDropdown, setActiveDropdown] = useState(null); 
+  const [activeDropdown, setActiveDropdown] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [sortConfig, setSortConfig] = useState({ key: 'emissao', direction: 'ascending' });
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -50,11 +51,32 @@ function PesquisaConsultarDocumentos() {
     handleCloseModal(); 
   };
 
-  const sortDocumentsByDate = (a, b) => {
-    return new Date(b.emissao) - new Date(a.emissao);
+  const handleSort = (key) => {
+    let direction = 'ascending';
+    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
+      direction = 'descending';
+    } else if (sortConfig.key === key && sortConfig.direction === 'descending') {
+      direction = 'ascending';
+    }
+    setSortConfig({ key, direction });
   };
 
-  const filteredDocumentData = documentData
+  const sortedDocumentData = [...documentData].sort((a, b) => {
+    const aValue = a[sortConfig.key];
+    const bValue = b[sortConfig.key];
+
+    if (sortConfig.key === 'emissao') {
+      return sortConfig.direction === 'ascending'
+        ? new Date(aValue) - new Date(bValue)
+        : new Date(bValue) - new Date(aValue);
+    }
+
+    return sortConfig.direction === 'ascending'
+      ? aValue.localeCompare(bValue)
+      : bValue.localeCompare(aValue);
+  });
+
+  const filteredDocumentData = sortedDocumentData
     .filter(documento => {
       return (
         documento.nro_docto.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -65,8 +87,14 @@ function PesquisaConsultarDocumentos() {
         documento.tipo_doc.toLowerCase().includes(searchTerm.toLowerCase()) ||
         documento.emissao.toLowerCase().includes(searchTerm.toLowerCase())
       );
-    })
-    .sort(sortDocumentsByDate); 
+    });
+
+  const renderSortIcons = (key) => (
+    <span className="sort-icons-pcd" onClick={() => handleSort(key)}>
+      <FontAwesomeIcon icon={faLongArrowAltUp} className={`sort-icon ${sortConfig.key === key && sortConfig.direction === 'ascending' ? 'active' : ''}`} />
+      <FontAwesomeIcon icon={faLongArrowAltDown} className={`sort-icon ${sortConfig.key === key && sortConfig.direction === 'descending' ? 'active' : ''}`} />
+    </span>
+  );
 
   return (
     <div className="body-pesquisaConsultarDocumentos">
@@ -93,13 +121,25 @@ function PesquisaConsultarDocumentos() {
           <table className="table-documentos-pcd">
             <thead>
               <tr>
-                <th>Número</th>
-                <th>Fornecedor</th>
-                <th>Série</th>
-                <th>Natureza da Operação</th>
-                <th>Data de Emissão</th>
+                <th onClick={() => handleSort('nro_docto')}>
+                  <span>Número {renderSortIcons('nro_docto')}</span>
+                </th>
+                <th onClick={() => handleSort('forneced')}>
+                  <span>Fornecedor {renderSortIcons('forneced')}</span>
+                </th>
+                <th onClick={() => handleSort('serie_docto')}>
+                  <span>Série {renderSortIcons('serie_docto')}</span>
+                </th>
+                <th onClick={() => handleSort('nat_operacao')}>
+                  <span>Natureza da Operação {renderSortIcons('nat_operacao')}</span>
+                </th>
+                <th onClick={() => handleSort('emissao')}>
+                  <span>Data de Emissão {renderSortIcons('emissao')}</span>
+                </th>
                 <th>Status</th>
-                <th>Tipo Documento</th>
+                <th onClick={() => handleSort('tipo_doc')}>
+                  <span>Tipo Documento {renderSortIcons('tipo_doc')}</span>
+                </th>
                 <th>Ações</th>
               </tr>
             </thead>

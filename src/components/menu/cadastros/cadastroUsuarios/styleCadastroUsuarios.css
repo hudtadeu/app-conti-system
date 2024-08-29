@@ -69,8 +69,8 @@ body::before {
   padding: 10px;
   border-radius: 10px 10px 10px 10px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-  margin-left: 7px;
-  margin-right: 60px;
+  margin-left: -10px;
+  margin-right: 50px;
   font-size: 13px;
   margin-top: -35px;
   z-index: 1;
@@ -155,7 +155,6 @@ body::before {
   border-radius: 4px;
 }
 
-
 .user-table {
   width: 100%;
   border-collapse: collapse;
@@ -164,22 +163,23 @@ body::before {
 .user-table th,
 .user-table td {
   text-align: center;
-  padding: 15px;
   border-bottom: 1px solid #ccc;
 }
 
 .user-table th {
   background-color: #0098c9;
   color: #fff;
+  font-size: 12px;
+  padding: 10px;
 }
 
 .user-table td {
   position: relative;
   overflow: visible;
-  font-size: 1rem;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: #555;
+  padding: 8px;
 }
 
 .user-table tr:nth-child(odd) {
@@ -196,12 +196,12 @@ body::before {
 
 .text-success {
   color: green;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .text-danger {
   color: red;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .modal-usuario {
@@ -295,7 +295,16 @@ body::before {
 .header-with-icon {
   align-items: center;
   white-space: nowrap;
+  cursor: pointer;
 }
+
+.sort-icons-user {
+  display: inline-flex;
+  margin-left: 2px;
+  cursor: pointer;
+  margin-top: -15px; 
+}
+
 .icon-up {
   color: #fff;
   font-size: 11px;
