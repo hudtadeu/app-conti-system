@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ModalPesquisaConsultarDocumentos from './ModalPesquisaConsultarDocumentos'; // Certifique-se de importar o modal corretamente
 import './stylePesquisaConsultarDocumentos.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -8,9 +9,10 @@ import { getStatusInfo, getTipoDocumentoInfo } from '../../../utils';
 function PesquisaConsultarDocumentos() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { documentData } = location.state || { documentData: [] };
+  const [documentData, setDocumentData] = useState(location.state?.documentData || []);
   const [searchTerm, setSearchTerm] = useState("");
-  const [activeDropdown, setActiveDropdown] = useState(null); // Track the active dropdown
+  const [activeDropdown, setActiveDropdown] = useState(null); 
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -30,8 +32,21 @@ function PesquisaConsultarDocumentos() {
   };
 
   const handleDropdownToggle = (index, event) => {
-    event.stopPropagation(); // Prevents the event from propagating to parent elements
+    event.stopPropagation();
     setActiveDropdown(activeDropdown === index ? null : index);
+  };
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleSearch = (data) => {
+    setDocumentData(data);
+    handleCloseModal(); // Fecha o modal após a pesquisa
   };
 
   const filteredDocumentData = documentData.filter(documento => {
@@ -51,7 +66,9 @@ function PesquisaConsultarDocumentos() {
       <div className="container-pesquisaConsultarDocumentos">
         <h1 className="title-pesquisaConsultarDocumentos">Consultar Documentos</h1>
         <div className="controls-container-pesquisaConsultarDocumentos">
-          <button className="button-primary-pcd">Filtrar Documentos</button>
+          <button className="button-primary-pcd" onClick={handleOpenModal}>
+            Filtrar Documentos
+          </button>
           <div className="search-container-pcd">
             <input
               type="text"
@@ -120,6 +137,12 @@ function PesquisaConsultarDocumentos() {
             </tbody>
           </table>
         </div>
+        {isModalOpen && (
+          <ModalPesquisaConsultarDocumentos 
+            onSubmit={handleSearch} 
+            closeModal={handleCloseModal} 
+          />
+        )}
       </div>
     </div>
   );

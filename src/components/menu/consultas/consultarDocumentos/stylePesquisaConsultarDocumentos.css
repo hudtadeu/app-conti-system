@@ -197,15 +197,6 @@ html, body {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-.dropdown-container:hover .dropdown-content,
-.dropdown-container.active .dropdown-content {
-  display: block;
-}
-
-.dropdown-container:hover .dropdown-button,
-.dropdown-container.active .dropdown-button {
-  background-color: #3e8e41;
-}
 
 .dropdown:hover .dropbtn {
   background-color: transparent;
