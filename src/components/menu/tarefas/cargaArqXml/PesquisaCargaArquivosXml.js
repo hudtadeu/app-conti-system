@@ -2,13 +2,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faLongArrowAltUp, faLongArrowAltDown } from '@fortawesome/free-solid-svg-icons';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { getStatusInfo, getTipoDocumentoInfo } from '../../../utils';
 import ModalCargaArquivosXml from './ModalCargaArquivosXml';
 import './stylePesquisaCargaArquivosXml.css';
 
 function PesquisaCargaArquivosXml() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { documentData: initialDocumentData } = location.state || { documentData: [] };
   const [documentData, setDocumentData] = useState(initialDocumentData || []);
   const [searchTerm, setSearchTerm] = useState("");
@@ -58,6 +59,10 @@ function PesquisaCargaArquivosXml() {
 
   const handleMouseLeave = () => {
     setOpenDropdownIndex(null);
+  };
+
+  const handleAtualizarEMSClick = () => {
+    navigate('/atualizarDocumento');
   };
 
   const formatDate = (dateString) => {
@@ -206,7 +211,7 @@ function PesquisaCargaArquivosXml() {
                         <button className="dropbtn">...</button>
                         {openDropdownIndex === index && (
                           <div className="dropdown-content">
-                            <a href="#">Atualizar EMS</a>
+                            <a href="#" onClick={handleAtualizarEMSClick}>Atualizar EMS</a>
                             <a href="#">Priorizar</a>
                             <a href="#">Confirmar</a>
                           </div>
