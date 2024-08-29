@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faLongArrowAltUp, faLongArrowAltDown } from '@fortawesome/free-solid-svg-icons';
@@ -16,6 +17,10 @@ function PesquisaCargaArquivosXml() {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [openDropdownIndex, setOpenDropdownIndex] = useState(null);
   const [sortConfig, setSortConfig] = useState({ key: 'emissao', direction: 'descending' });
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isEditingPage, setIsEditingPage] = useState(false); 
+  const [inputPage, setInputPage] = useState(currentPage); 
+  const itemsPerPage = 11; 
   const modalRef = useRef(null);
 
   const handleSearchInputChange = (event) => {
@@ -117,6 +122,45 @@ function PesquisaCargaArquivosXml() {
       );
     });
 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredDocumentData.slice(indexOfFirstItem, indexOfLastItem);
+
+  const nextPage = () => {
+    if (currentPage < Math.ceil(filteredDocumentData.length / itemsPerPage)) {
+      setCurrentPage(currentPage + 1);
+      setInputPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+      setInputPage(currentPage - 1);
+    }
+  };
+
+  const handlePageNumberClick = () => {
+    setIsEditingPage(true);
+  };
+
+  const handlePageInputChange = (event) => {
+    setInputPage(event.target.value);
+  };
+
+  const handlePageInputBlur = () => {
+    if (inputPage >= 1 && inputPage <= Math.ceil(filteredDocumentData.length / itemsPerPage)) {
+      setCurrentPage(Number(inputPage));
+    }
+    setIsEditingPage(false);
+  };
+
+  const handlePageInputKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handlePageInputBlur();
+    }
+  };
+
   const renderSortIcons = (key) => (
     <span className="sort-icons-carga">
       <FontAwesomeIcon icon={faLongArrowAltUp} className={`sort-icon ${sortConfig.key === key && sortConfig.direction === 'ascending' ? 'active' : ''}`} />
@@ -182,7 +226,7 @@ function PesquisaCargaArquivosXml() {
               </tr>
             </thead>
             <tbody>
-              {filteredDocumentData.map((documento, index) => {
+              {currentItems.map((documento, index) => {
                 const statusInfo = getStatusInfo(documento.situacao);
                 const tipoDocumentoInfo = getTipoDocumentoInfo(documento.tipo_doc);
                 return (
@@ -223,6 +267,28 @@ function PesquisaCargaArquivosXml() {
               })}
             </tbody>
           </table>
+        </div>
+        <div className="pagination-container">
+          <button onClick={prevPage} disabled={currentPage === 1} className="page-item">
+            Anterior
+          </button>
+          {isEditingPage ? (
+            <input
+              type="number"
+              value={inputPage}
+              onChange={handlePageInputChange}
+              onBlur={handlePageInputBlur}
+              onKeyPress={handlePageInputKeyPress}
+              className="page-input"
+            />
+          ) : (
+            <span className="page-number" onClick={handlePageNumberClick}>
+              Página {currentPage}
+            </span>
+          )}
+          <button onClick={nextPage} disabled={currentPage === Math.ceil(filteredDocumentData.length / itemsPerPage)} className="page-item">
+            Próxima
+          </button>
         </div>
         {isFilterModalOpen && (
           <div className="modal-carga" ref={modalRef}>

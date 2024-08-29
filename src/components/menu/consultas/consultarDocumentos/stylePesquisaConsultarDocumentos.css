@@ -29,7 +29,7 @@ html, body {
   margin-left: -10px;
   margin-right: 50px;
   font-size: 13px;
-  margin-top: -35px;
+  margin-top: -38px;
   min-height: 600px;
   z-index: 1;
 }
@@ -44,7 +44,7 @@ html, body {
 .controls-container-pesquisaConsultarDocumentos {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .search-container-pcd {
@@ -131,7 +131,7 @@ html, body {
   font-size: 1rem;
   color: #555;
   font-size: 12px;
-  padding: 5px;
+  padding: 4px;
   font-weight: 500;
 }
 
@@ -202,6 +202,48 @@ html, body {
 
 .dropdown-container:hover .dropbtn {
   background-color: transparent;
+}
+
+.page-input {
+  width: 50px;
+  text-align: center;
+  border: 1px solid #0098c9;
+  border-radius: 5px;
+  margin: 0 10px;
+  padding: 5px;
+  font-size: 12px;
+  color: #0098c9;
+}
+
+.page-number {
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 550;
+  color: #0098c9;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: -3px;
+}
+
+.page-item {
+  margin: 0 10px;
+  padding: 3px 6px;
+  border: none;
+  background-color: #0098c9;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.page-item:disabled {
+  background-color: #c1c1c1;
+  cursor: not-allowed;
 }
 
 @media screen and (max-width: 768px) {

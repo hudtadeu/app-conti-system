@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import ModalPesquisaConsultarDocumentos from './ModalPesquisaConsultarDocumentos'; // Certifique-se de importar o modal corretamente
 import './stylePesquisaConsultarDocumentos.css';
@@ -15,6 +14,10 @@ function PesquisaConsultarDocumentos() {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [sortConfig, setSortConfig] = useState({ key: 'emissao', direction: 'descending' });
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isEditingPage, setIsEditingPage] = useState(false); // Novo estado para controlar a edição do número da página
+  const [inputPage, setInputPage] = useState(currentPage); // Novo estado para armazenar o valor digitado
+  const itemsPerPage = 11; 
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -62,11 +65,6 @@ function PesquisaConsultarDocumentos() {
   };
 
   const sortedDocumentData = [...documentData].sort((a, b) => {
-    if (a.priorizado && !b.priorizado) return -1;
-    if (!a.priorizado && b.priorizado) return 1;
-    if (a.confirmado && !b.confirmado) return -1;
-    if (!a.confirmado && b.confirmado) return 1;
-
     const aValue = a[sortConfig.key];
     const bValue = b[sortConfig.key];
 
@@ -93,6 +91,45 @@ function PesquisaConsultarDocumentos() {
         documento.emissao.toLowerCase().includes(searchTerm.toLowerCase())
       );
     });
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredDocumentData.slice(indexOfFirstItem, indexOfLastItem);
+
+  const nextPage = () => {
+    if (currentPage < Math.ceil(filteredDocumentData.length / itemsPerPage)) {
+      setCurrentPage(currentPage + 1);
+      setInputPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+      setInputPage(currentPage - 1);
+    }
+  };
+
+  const handlePageNumberClick = () => {
+    setIsEditingPage(true);
+  };
+
+  const handlePageInputChange = (event) => {
+    setInputPage(event.target.value);
+  };
+
+  const handlePageInputBlur = () => {
+    if (inputPage >= 1 && inputPage <= Math.ceil(filteredDocumentData.length / itemsPerPage)) {
+      setCurrentPage(Number(inputPage));
+    }
+    setIsEditingPage(false);
+  };
+
+  const handlePageInputKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handlePageInputBlur();
+    }
+  };
 
   const renderSortIcons = (key) => (
     <span className="sort-icons-pcd" onClick={() => handleSort(key)}>
@@ -149,7 +186,7 @@ function PesquisaConsultarDocumentos() {
               </tr>
             </thead>
             <tbody>
-              {filteredDocumentData.map((documento, index) => {
+              {currentItems.map((documento, index) => {
                 const statusInfo = getStatusInfo(documento.situacao);
                 const tipoDocumentoInfo = getTipoDocumentoInfo(documento.tipo_doc);
                 return (
@@ -188,6 +225,28 @@ function PesquisaConsultarDocumentos() {
               })}
             </tbody>
           </table>
+        </div>
+        <div className="pagination-container">
+          <button onClick={prevPage} disabled={currentPage === 1} className="page-item">
+            Anterior
+          </button>
+          {isEditingPage ? (
+            <input
+              type="number"
+              value={inputPage}
+              onChange={handlePageInputChange}
+              onBlur={handlePageInputBlur}
+              onKeyPress={handlePageInputKeyPress}
+              className="page-input"
+            />
+          ) : (
+            <span className="page-number" onClick={handlePageNumberClick}>
+              Página {currentPage}
+            </span>
+          )}
+          <button onClick={nextPage} disabled={currentPage === Math.ceil(filteredDocumentData.length / itemsPerPage)} className="page-item">
+            Próxima
+          </button>
         </div>
         {isModalOpen && (
           <ModalPesquisaConsultarDocumentos 
