@@ -1,0 +1,80 @@
+.body-cargaxml {
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container-cargaxml {
+    position: relative;
+    background-color: #ebecee;
+    color: #0098c9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+    margin-left: -10px;
+    margin-right: 50px;
+    font-size: 13px;
+    margin-top: -38px;
+    min-height: 600px;
+    z-index: 1;
+}
+
+.title-cargaxml {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0098c9;
+    font-size: 28px;
+}
+
+.document-info-cargaxml {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.row-cargaxml {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.col-cargaxml {
+    margin-right: 10px;
+    display: flex;
+    align-items: center; 
+}
+
+.col-cargaxml label {
+    margin-right: 10px;
+    margin-bottom: 0; 
+    font-size: 12px;
+    font-weight: 500;
+    color: #555;
+}
+
+.col-cargaxml.col-span-2 {
+    flex: 2;
+    width: 80%;
+}
+
+.col-cargaxml input  {
+    padding: 2px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 12px;
+    width: 100%;
+}
+
+.col-cargaxml select {
+    width: 100%;
+    padding: 2px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 12px;
+}

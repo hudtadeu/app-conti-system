@@ -13,7 +13,7 @@ import XmlRecebimento from "./components/menu/relatorios/xmlRecebimento/XmlReceb
 import Dashboard from "./components/menu/painelDeControle/Dashboard";
 import ConsultaCargaArquivosXml from "./components/menu/tarefas/cargaArqXml/ConsultaCargaArquivosXml";
 import PesquisaCargaArquivosXml from "./components/menu/tarefas/cargaArqXml/PesquisaCargaArquivosXml";
-import AtualizarCargaArquivosXml from "./components/menu/tarefas/cargaArqXml/AtualizarCargaArquivosXml";
+import DetalheCargaXml from "./components/menu/tarefas/cargaArqXml/DetalheCargaXml";
 
 function App() {
   return (
@@ -104,10 +104,10 @@ function App() {
               }
             />
             <Route
-              path="atualizarDocumento"
+              path="detalheDocumento"
               element={
                 <Layout>
-                  <AtualizarCargaArquivosXml />
+                  <DetalheCargaXml />
                 </Layout>
               }
             />

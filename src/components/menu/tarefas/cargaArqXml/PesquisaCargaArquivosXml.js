@@ -67,7 +67,7 @@ function PesquisaCargaArquivosXml() {
   };
 
   const handleAtualizarEMSClick = () => {
-    navigate('/atualizarDocumento');
+    navigate('/detalheDocumento');
   };
 
   const formatDate = (dateString) => {

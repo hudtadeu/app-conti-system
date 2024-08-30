@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import ModalPesquisaConsultarDocumentos from './ModalPesquisaConsultarDocumentos'; // Certifique-se de importar o modal corretamente
 import './stylePesquisaConsultarDocumentos.css';
@@ -15,8 +16,8 @@ function PesquisaConsultarDocumentos() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [sortConfig, setSortConfig] = useState({ key: 'emissao', direction: 'descending' });
   const [currentPage, setCurrentPage] = useState(1);
-  const [isEditingPage, setIsEditingPage] = useState(false); // Novo estado para controlar a edição do número da página
-  const [inputPage, setInputPage] = useState(currentPage); // Novo estado para armazenar o valor digitado
+  const [isEditingPage, setIsEditingPage] = useState(false); 
+  const [inputPage, setInputPage] = useState(currentPage);
   const itemsPerPage = 11; 
 
   const formatDate = (dateString) => {

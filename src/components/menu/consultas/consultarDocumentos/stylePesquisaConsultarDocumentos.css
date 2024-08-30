@@ -30,13 +30,13 @@ html, body {
   margin-right: 50px;
   font-size: 13px;
   margin-top: -38px;
-  min-height: 600px;
+  min-height: 550px;
   z-index: 1;
 }
 
 .title-pesquisaConsultarDocumentos {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   color: #0098c9;
   font-size: 35px;
 }
@@ -44,7 +44,7 @@ html, body {
 .controls-container-pesquisaConsultarDocumentos {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .search-container-pcd {
@@ -89,7 +89,7 @@ html, body {
 .table-container {
   overflow-y: auto;
   max-height: 67.8vh; 
-  border-radius: 5px;
+  border-radius: 7px;
   max-width: 98vw;
 }
 
@@ -125,13 +125,14 @@ html, body {
   border: 1px solid #ddd;
   border-left: none;
   border-right: none;
+  white-space: nowrap; 
 }
 
 .table-documentos-pcd td {
   font-size: 1rem;
   color: #555;
   font-size: 12px;
-  padding: 4px;
+  padding: 2px;
   font-weight: 500;
 }
 
@@ -227,7 +228,7 @@ html, body {
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-  margin-bottom: -3px;
+  margin-bottom: -8px;
 }
 
 .page-item {

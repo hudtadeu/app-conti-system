@@ -9,7 +9,6 @@ function ModalCargaArquivosXml({ onSubmit, closeModal }) {
   const formRef = useRef(null);
   const modalRef = useRef(null);
 
-  // Refs for each input field
   const codEstabelFimRef = useRef(null);
   const documentoDeRef = useRef(null);
   const documentoAteRef = useRef(null);
@@ -41,7 +40,7 @@ function ModalCargaArquivosXml({ onSubmit, closeModal }) {
       if (nextFieldRef) {
         nextFieldRef.current.focus();
       } else {
-        handleSubmit(event); // Trigger form submit on the last field
+        handleSubmit(event); 
       }
     }
   };
