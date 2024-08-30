@@ -7,23 +7,23 @@ function DetalheCargaXml() {
       <div className="container-cargaxml">
         <h1 className="title-cargaxml">Detalhe Carga Xml</h1>
         <div className="document-info-cargaxml">
-          <div className="row-cargaxml">
-            <div className="col-cargaxml">
+          <div className="row-cargaxml-one">
+            <div className="col-cargaxml-one">
               <label>Estab:</label>
               <input type="text" value="10" readOnly />
             </div>
-            <div className="col-cargaxml">
+            <div className="col-cargaxml-one">
               <label>Fornecedor:</label>
               <input type="text" value="3349" readOnly />
             </div>
-            <div className="col-cargaxml col-span-2">
-              <input type="text" value="DITO TRANSPORTES" readOnly />
+            <div className="col-cargaxml-large">
+              <input type="text" value="DITO TRANSPORTES" className='large-input-carga' readOnly />
             </div>
           </div>
           <div className="row-cargaxml">
             <div className="col-cargaxml">
               <label>Série:</label>
-              <input type="text" value="1" readOnly />
+              <input type="text" value="1" className="cargaxml-serie" readOnly />
             </div>
             <div className="col-cargaxml">
               <label>CNPJ:</label>
@@ -31,7 +31,7 @@ function DetalheCargaXml() {
             </div>
             <div className="col-cargaxml">
               <label>UF:</label>
-              <input type="text" value="SP" className="cargaxml-one" readOnly />
+              <input type="text" value="SP" className="cargaxml-uf" readOnly />
             </div>
             <div className="col-cargaxml">
               <label>Inscr.Est:</label>

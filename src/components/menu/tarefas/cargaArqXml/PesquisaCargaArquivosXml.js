@@ -20,7 +20,7 @@ function PesquisaCargaArquivosXml() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isEditingPage, setIsEditingPage] = useState(false); 
   const [inputPage, setInputPage] = useState(currentPage); 
-  const itemsPerPage = 11; 
+  const itemsPerPage = 12; 
   const modalRef = useRef(null);
 
   const handleSearchInputChange = (event) => {

@@ -33,48 +33,93 @@
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow-x: auto;
+    white-space: nowrap;
+    max-width: 100%;
 }
 
-.row-cargaxml {
+.row-cargaxml, .row-cargaxml-one {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 10px;
+    gap: 10px; 
 }
 
-.col-cargaxml {
-    margin-right: 10px;
+.col-cargaxml-one {
+    margin-right: 50px;
     display: flex;
-    align-items: center; 
+    align-items: center;
+    min-width: 200px;
 }
 
-.col-cargaxml label {
+.col-cargaxml-one input {
+    margin-left: 5px;
+    padding: 2px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 12px;
+    width: 100px;
+    text-align: center;
+}
+
+.col-cargaxml-one label {
     margin-right: 10px;
-    margin-bottom: 0; 
+    margin-bottom: 0;
     font-size: 12px;
     font-weight: 500;
     color: #555;
 }
 
-.col-cargaxml.col-span-2 {
+.col-cargaxml {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    min-width: 200px; 
+}
+
+.col-cargaxml label {
+    margin-right: 10px;
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: #555;
+}
+
+.col-cargaxml input, .col-cargaxml select {
+    padding: 2px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+}
+
+.col-cargaxml-large {
+    margin-right: 20px;
+    align-items: center;
+}
+
+.col-cargaxml-large input {
+    padding: 2px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 12px;
+    width: 100%; 
+}
+
+.col-cargaxml-large {
     flex: 2;
-    width: 80%;
+    margin-left: -40px;
 }
 
-.col-cargaxml input  {
-    padding: 2px;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    background-color: #fff;
-    font-size: 12px;
-    width: 100%;
+.col-cargaxml .cargaxml-uf {
+    width: 50%;
 }
 
-.col-cargaxml select {
-    width: 100%;
-    padding: 2px;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    background-color: #fff;
-    font-size: 12px;
+.col-cargaxml .cargaxml-serie {
+    width: 50%;
 }
